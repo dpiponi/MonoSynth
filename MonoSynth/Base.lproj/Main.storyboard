@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9058" systemVersion="15B38b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9048"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Impact Label.ttf">
+            <string>ImpactLabel</string>
+            <string>ImpactLabel</string>
+        </mutableArray>
+    </customFonts>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MonoSynth" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="TNr-mc-Jsb">
+                                <rect key="frame" x="235" y="0.0" width="131" height="180"/>
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="440 Hz" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="bey-bg-15G">
+                                        <rect key="frame" x="0.0" y="0.0" width="131" height="36"/>
+                                        <animations/>
+                                        <fontDescription key="fontDescription" name="ImpactLabel" family="Impact Label" pointSize="36"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KOL-GB-xfc" customClass="Knob" customModule="MonoSynth" customModuleProvider="target">
+                                        <rect key="frame" x="18" y="36" width="96" height="96"/>
+                                        <animations/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <action selector="knobChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="uXQ-j2-5SX"/>
+                                        </connections>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Qv-7t-RhS">
+                                        <rect key="frame" x="33" y="132" width="65" height="48"/>
+                                        <animations/>
+                                        <fontDescription key="fontDescription" name="ImpactLabel" family="Impact Label" pointSize="36"/>
+                                        <size key="titleShadowOffset" width="2.2250738585072014e-308" height="2.2250738585072014e-308"/>
+                                        <state key="normal" title="Off">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="togglePlay:" destination="BYZ-38-t0r" eventType="touchUpInside" id="94A-9U-dbp"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstItem="KOL-GB-xfc" firstAttribute="centerX" secondItem="TNr-mc-Jsb" secondAttribute="centerX" id="0wz-bh-dfj"/>
+                                    <constraint firstItem="1Qv-7t-RhS" firstAttribute="centerX" secondItem="TNr-mc-Jsb" secondAttribute="centerX" id="AJy-8d-wNo"/>
+                                    <constraint firstItem="bey-bg-15G" firstAttribute="centerX" secondItem="TNr-mc-Jsb" secondAttribute="centerX" id="Idz-Ds-wIM"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="TNr-mc-Jsb" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Bcf-jg-uaw"/>
+                            <constraint firstItem="TNr-mc-Jsb" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="gtD-gz-SpQ"/>
+                            <constraint firstItem="TNr-mc-Jsb" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" id="slh-cA-rEq"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Bcf-jg-uaw"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="frequencyKnob" destination="KOL-GB-xfc" id="BQW-5I-Ro6"/>
+                        <outlet property="frequencyLabel" destination="bey-bg-15G" id="mA5-kT-coP"/>
+                        <outlet property="playButton" destination="1Qv-7t-RhS" id="Vk8-mO-dmF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="317" y="390"/>
+        </scene>
+    </scenes>
+</document>
