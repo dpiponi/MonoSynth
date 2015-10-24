@@ -1,0 +1,2 @@
+# MonoSynth
+Monophonic synth framework
