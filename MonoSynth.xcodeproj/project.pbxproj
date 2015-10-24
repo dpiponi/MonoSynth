@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		375D36031BDC207C00C55DBE /* PianoKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375D36021BDC207C00C55DBE /* PianoKey.swift */; };
 		375D36051BDC286900C55DBE /* PianoKeyLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375D36041BDC286900C55DBE /* PianoKeyLayer.swift */; };
+		37BE9DF41BDC343600CE8751 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 37BE9DF31BDC343600CE8751 /* README.md */; };
 		BD87175E1BD724DB00A6A4BD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD87175D1BD724DB00A6A4BD /* AppDelegate.swift */; };
 		BD8717601BD724DB00A6A4BD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD87175F1BD724DB00A6A4BD /* ViewController.swift */; };
 		BD8717631BD724DB00A6A4BD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD8717611BD724DB00A6A4BD /* Main.storyboard */; };
@@ -25,6 +26,7 @@
 /* Begin PBXFileReference section */
 		375D36021BDC207C00C55DBE /* PianoKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PianoKey.swift; sourceTree = "<group>"; };
 		375D36041BDC286900C55DBE /* PianoKeyLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PianoKeyLayer.swift; sourceTree = "<group>"; };
+		37BE9DF31BDC343600CE8751 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		BD87175A1BD724DB00A6A4BD /* MonoSynth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MonoSynth.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD87175D1BD724DB00A6A4BD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BD87175F1BD724DB00A6A4BD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -56,6 +58,7 @@
 			isa = PBXGroup;
 			children = (
 				BDB1FBE71BD9BC03001B05E8 /* Impact Label Licence.txt */,
+				37BE9DF31BDC343600CE8751 /* README.md */,
 				BD87175C1BD724DB00A6A4BD /* MonoSynth */,
 				BD87175B1BD724DB00A6A4BD /* Products */,
 			);
@@ -168,6 +171,7 @@
 				375D36031BDC207C00C55DBE /* PianoKey.swift in Sources */,
 				BD8717601BD724DB00A6A4BD /* ViewController.swift in Sources */,
 				BD8717721BD881E900A6A4BD /* KnobLayer.swift in Sources */,
+				37BE9DF41BDC343600CE8751 /* README.md in Sources */,
 				375D36051BDC286900C55DBE /* PianoKeyLayer.swift in Sources */,
 				BD8717701BD881E000A6A4BD /* Knob.swift in Sources */,
 				BD87175E1BD724DB00A6A4BD /* AppDelegate.swift in Sources */,
