@@ -42,8 +42,8 @@ class PianoKey: UIButton {
     
     func setLayerFrames() -> Void {
 //        knobWidth = bounds.size.height
-        
-        pianoKeyLayer.frame = CGRectMake(0, 0, 64.0, 128.0)
+        let keyWidth = 40.0
+        pianoKeyLayer.frame = CGRectMake(0, 0, CGFloat(7.0*keyWidth), 128.0)
         
         pianoKeyLayer.setNeedsDisplay()
     }

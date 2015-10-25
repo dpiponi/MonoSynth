@@ -78,9 +78,9 @@
 				BD87175D1BD724DB00A6A4BD /* AppDelegate.swift */,
 				BD87175F1BD724DB00A6A4BD /* ViewController.swift */,
 				375D36021BDC207C00C55DBE /* PianoKey.swift */,
+				375D36041BDC286900C55DBE /* PianoKeyLayer.swift */,
 				BD87176F1BD881E000A6A4BD /* Knob.swift */,
 				BD8717711BD881E900A6A4BD /* KnobLayer.swift */,
-				375D36041BDC286900C55DBE /* PianoKeyLayer.swift */,
 				BDB1FBDD1BD9B38F001B05E8 /* Impact Label.ttf */,
 				BD8717771BD8AB4900A6A4BD /* knob1.png */,
 				BD8717781BD8AB4900A6A4BD /* knob2.png */,
@@ -125,6 +125,7 @@
 				TargetAttributes = {
 					BD8717591BD724DB00A6A4BD = {
 						CreatedOnToolsVersion = 7.1;
+						DevelopmentTeam = 8X94X6Z25L;
 					};
 				};
 			};
@@ -287,10 +288,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = MonoSynth/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sigfpe.MonoSynth;
 				PRODUCT_NAME = MonoSynth;
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -298,10 +302,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = MonoSynth/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sigfpe.MonoSynth;
 				PRODUCT_NAME = MonoSynth;
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

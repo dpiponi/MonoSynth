@@ -102,31 +102,57 @@ class ViewController: UIViewController {
         //
         // http://stackoverflow.com/questions/1378765/how-do-i-create-a-basic-uibutton-programmatically
         //
-        let octave : [Int] = [0, 2, 4, 5, 7, 9, 11]
-        for i in 0..<7 {
-            let button = PianoKey(type:.System)
-            button.frame = CGRectMake(16.0+64.0*CGFloat(i), 160, 64.0, 128.0)
-            button.backgroundColor = UIColor.blackColor()
-            button.setTitle("Hello", forState: .Normal)
-            view.addSubview(button)
-            button.addTarget(self, action:"keyDown:", forControlEvents: .TouchDown)
-            button.addTarget(self, action:"keyDown:", forControlEvents: .TouchDragEnter)
-            button.addTarget(self, action:"keyUp:", forControlEvents: .TouchUpInside)
-            button.addTarget(self, action:"keyUp:", forControlEvents: .TouchUpOutside)
-            button.tag = octave[i]
-            keys.append(button)
-        }
+        let button = PianoKey(type:.System)
+        button.frame = CGRectMake(16.0, 160.0, 320, 128.0)
+        button.backgroundColor = UIColor.blackColor()
+//        button.setTitle("Hello", forState: .Normal)
+        view.addSubview(button)
+        button.addTarget(self, action:"keyDown:event:", forControlEvents: .TouchDown)
+        button.addTarget(self, action:"keyDown:event:", forControlEvents: .TouchDragInside)
+//        button.addTarget(self, action:"keyDown:event:", forControlEvents: .TouchDragOutside)
+        button.addTarget(self, action:"keyUp:", forControlEvents: .TouchUpInside)
+        button.addTarget(self, action:"keyUp:", forControlEvents: .TouchUpOutside)
+//        button.tag = octave[i]
+        keys.append(button)
     }
     
-    func keyDown(sender: PianoKey) -> Void{
-        print("Down", sender.tag)
+    func noteFromXY(x : CGFloat, y : CGFloat) -> Double {
+        // Could it be a balck key?
+        let keyWidth = CGFloat(40.0)
+        if y < 64.0 {
+            let keyMask = [true, true, false, true, true, true, false, true]
+            let blackKeyNumber = Int(floor((x-0.5*keyWidth)/keyWidth))
+            if blackKeyNumber >= 0 {
+                if keyMask[blackKeyNumber] {
+                    let octave : [Int] = [0, 2, 4, 5, 7, 9, 11, 12]
+                    let noteNumber = octave[blackKeyNumber]+1
+                    let middleC = 261.625565
+                    return pow(2.0, Double(noteNumber)/12.0)*middleC
+                }
+            }
+        }
+        
+        let keyNumber = Int(x/keyWidth)
+        let octave : [Int] = [0, 2, 4, 5, 7, 9, 11, 12]
+        let noteNumber = octave[keyNumber]
+        let middleC = 261.625565
+        return pow(2.0, Double(noteNumber)/12.0)*middleC
+    }
+    
+    func keyDown(sender: PianoKey, event: UIEvent) -> Void{
+//        print("Down", sender.tag)
+        let touches = event.touchesForView(sender)
+        let touch = touches!.first
+        let touchPoint = touch!.locationInView(sender)
+//        print("x,y=", touchPoint)
         targetAmplitude = 1.0
-        frequency = 440.0*pow(2.0, Double(sender.tag)/12.0)
+        frequency = noteFromXY(touchPoint.x, y: touchPoint.y)
+        print("frequency=", frequency)
     }
     
     func keyUp(sender: PianoKey) -> Void {
         targetAmplitude = 0.0
-        print("Up", sender.tag)
+//        print("Up", sender.tag)
     }
 
     override func didReceiveMemoryWarning() {

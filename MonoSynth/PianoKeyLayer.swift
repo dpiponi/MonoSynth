@@ -6,23 +6,35 @@ class PianoKeyLayer: CALayer {
     weak var key : PianoKey! = nil
     
     override func drawInContext(ctx: CGContextRef) -> Void {
+        let keyWidth : CGFloat = 40.0
         
-        let pianoKeyFrame = CGRectInset(bounds, 2.0, 2.0)
+        // White keys
+        for i in 0..<9 {
+            let keyBounds = CGRect(x: CGFloat(i)*keyWidth, y: 0.0, width: CGFloat(keyWidth), height: 128.0)
+            let pianoKeyFrame = CGRectInset(keyBounds, 2.0, 2.0)
+            
+            let rect = CGRectInset(pianoKeyFrame, 2.0, 2.0)
+            
+            let redColor = UIColor(red:0.9, green:0.9, blue:0.9, alpha:1.0)
+            
+            CGContextSetFillColorWithColor(ctx, redColor.CGColor);
+            CGContextFillRect(ctx, rect)
+        }
         
-        // 1) fill - with a subtle shadow
-        let rect = CGRectInset(pianoKeyFrame, 2.0, 2.0)
-        
-        CGContextSaveGState(ctx);
-        
-        //
-        // http://stackoverflow.com/questions/14404877/anti-aliasing-uiimage-looks-blurred-or-jagged
-        //
-        
-        let redColor = UIColor(red:1.0, green:0.0, blue:0.0, alpha:1.0)
-        
-        CGContextSetFillColorWithColor(ctx, redColor.CGColor);
-        CGContextFillRect(ctx, rect)
-//        CGContextRestoreGState(ctx);
+        // Black keys
+        let blacks : [Int] = [0, 1, 3, 4, 5]
+        for j in 0..<5 {
+            let i = blacks[j]
+            let keyBounds = CGRect(x: 0.5*keyWidth+CGFloat(i)*keyWidth, y: 0.0, width: CGFloat(keyWidth), height: 64.0)
+            let pianoKeyFrame = CGRectInset(keyBounds, 2.0, 2.0)
+            
+            let rect = CGRectInset(pianoKeyFrame, 2.0, 2.0)
+            
+            let redColor = UIColor(red:0.1, green:0.1, blue:0.1, alpha:1.0)
+            
+            CGContextSetFillColorWithColor(ctx, redColor.CGColor);
+            CGContextFillRect(ctx, rect)
+        }
         
     }
 }
