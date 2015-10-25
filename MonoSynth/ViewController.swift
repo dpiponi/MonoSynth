@@ -30,7 +30,7 @@ func sampleShader(
             viewController.actualFrequency = 0.999*viewController.actualFrequency+0.001*viewController.frequency
             var rate : Double = 0.0
             if viewController.targetAmplitude > viewController.amplitude {
-                rate = 0.999
+                rate = 0.9
             } else {
                 rate = 0.9999
             }
@@ -108,7 +108,7 @@ class ViewController: UIViewController {
 //        button.setTitle("Hello", forState: .Normal)
         view.addSubview(button)
         button.addTarget(self, action:"keyDown:event:", forControlEvents: .TouchDown)
-        button.addTarget(self, action:"keyDown:event:", forControlEvents: .TouchDragInside)
+        button.addTarget(self, action:"keySlide:event:", forControlEvents: .TouchDragInside)
 //        button.addTarget(self, action:"keyDown:event:", forControlEvents: .TouchDragOutside)
         button.addTarget(self, action:"keyUp:", forControlEvents: .TouchUpInside)
         button.addTarget(self, action:"keyUp:", forControlEvents: .TouchUpOutside)
@@ -140,14 +140,33 @@ class ViewController: UIViewController {
     }
     
     func keyDown(sender: PianoKey, event: UIEvent) -> Void{
-//        print("Down", sender.tag)
         let touches = event.touchesForView(sender)
         let touch = touches!.first
         let touchPoint = touch!.locationInView(sender)
-//        print("x,y=", touchPoint)
-        targetAmplitude = 1.0
+//        targetAmplitude = 1.0
+        if traitCollection.forceTouchCapability == .Available {
+            print("Touch pressure is \(touch!.force), maximum possible force is \(touch!.maximumPossibleForce)")
+            targetAmplitude = Double(touch!.force/touch!.maximumPossibleForce)
+        } else {
+            targetAmplitude = 1.0
+        }
         frequency = noteFromXY(touchPoint.x, y: touchPoint.y)
         print("frequency=", frequency)
+    }
+    
+    func keySlide(sender: PianoKey, event: UIEvent) -> Void{
+        let touches = event.touchesForView(sender)
+        let touch = touches!.first
+        print("Touch pressure is \(touch!.force), maximum possible force is \(touch!.maximumPossibleForce)")
+        let touchPoint = touch!.locationInView(sender)
+        if traitCollection.forceTouchCapability == .Available {
+            print("Touch pressure is \(touch!.force), maximum possible force is \(touch!.maximumPossibleForce)")
+            targetAmplitude = Double(touch!.force/touch!.maximumPossibleForce)
+        } else {
+            targetAmplitude = 1.0
+        }
+        frequency = noteFromXY(touchPoint.x, y: touchPoint.y)
+//        print("frequency=", frequency)
     }
     
     func keyUp(sender: PianoKey) -> Void {
