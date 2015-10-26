@@ -1,5 +1,6 @@
 //
 // http://stackoverflow.com/questions/17744319/duplicate-and-rename-xcode-project-associated-folders
+// http://ios.robertlinnemann.com/configure-a-uiscrollview-entirely-in-storyboard-with-interface-builder/
 //
 
 import UIKit

@@ -8,7 +8,6 @@
     <customFonts key="customFonts">
         <mutableArray key="Impact Label.ttf">
             <string>ImpactLabel</string>
-            <string>ImpactLabel</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -24,26 +23,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="TNr-mc-Jsb">
-                                <rect key="frame" x="235" y="0.0" width="131" height="180"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="TNr-mc-Jsb">
+                                <rect key="frame" x="235" y="0.0" width="65" height="48"/>
                                 <subviews>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="440 Hz" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="bey-bg-15G">
-                                        <rect key="frame" x="0.0" y="0.0" width="131" height="36"/>
-                                        <animations/>
-                                        <fontDescription key="fontDescription" name="ImpactLabel" family="Impact Label" pointSize="36"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    </label>
-                                    <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KOL-GB-xfc" customClass="Knob" customModule="MonoSynth" customModuleProvider="target">
-                                        <rect key="frame" x="18" y="36" width="96" height="96"/>
-                                        <animations/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <connections>
-                                            <action selector="knobChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="uXQ-j2-5SX"/>
-                                        </connections>
-                                    </view>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Qv-7t-RhS">
-                                        <rect key="frame" x="33" y="132" width="65" height="48"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Qv-7t-RhS">
+                                        <rect key="frame" x="0.0" y="0.0" width="65" height="48"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" name="ImpactLabel" family="Impact Label" pointSize="36"/>
                                         <size key="titleShadowOffset" width="2.2250738585072014e-308" height="2.2250738585072014e-308"/>
@@ -57,11 +41,53 @@
                                 </subviews>
                                 <animations/>
                                 <constraints>
-                                    <constraint firstItem="KOL-GB-xfc" firstAttribute="centerX" secondItem="TNr-mc-Jsb" secondAttribute="centerX" id="0wz-bh-dfj"/>
                                     <constraint firstItem="1Qv-7t-RhS" firstAttribute="centerX" secondItem="TNr-mc-Jsb" secondAttribute="centerX" id="AJy-8d-wNo"/>
-                                    <constraint firstItem="bey-bg-15G" firstAttribute="centerX" secondItem="TNr-mc-Jsb" secondAttribute="centerX" id="Idz-Ds-wIM"/>
                                 </constraints>
                             </stackView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ouL-6I-mI4">
+                                <rect key="frame" x="0.0" y="92" width="600" height="168"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oJ3-Ga-n9u" customClass="SignalPathView" customModule="MonoSynth" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1024"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7vZ-yZ-Mze" customClass="Knob" customModule="MonoSynth" customModuleProvider="target">
+                                                <rect key="frame" x="448" y="36" width="96" height="96"/>
+                                                <animations/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <connections>
+                                                    <action selector="knobChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="UeI-Ug-5ja"/>
+                                                </connections>
+                                            </view>
+                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KOL-GB-xfc" customClass="Knob" customModule="MonoSynth" customModuleProvider="target">
+                                                <rect key="frame" x="344" y="36" width="96" height="96"/>
+                                                <animations/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <connections>
+                                                    <action selector="knobChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="uXQ-j2-5SX"/>
+                                                </connections>
+                                            </view>
+                                        </subviews>
+                                        <animations/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="gU1-wm-6YR">
+                                        <rect key="frame" x="10" y="10" width="121" height="29"/>
+                                        <animations/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <segments>
+                                            <segment title="First"/>
+                                            <segment title="Second"/>
+                                        </segments>
+                                        <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    </segmentedControl>
+                                </subviews>
+                                <animations/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="contentSize">
+                                        <size key="value" width="1024" height="1024"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </scrollView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -79,8 +105,8 @@
                     </view>
                     <connections>
                         <outlet property="frequencyKnob" destination="KOL-GB-xfc" id="BQW-5I-Ro6"/>
-                        <outlet property="frequencyLabel" destination="bey-bg-15G" id="mA5-kT-coP"/>
                         <outlet property="playButton" destination="1Qv-7t-RhS" id="Vk8-mO-dmF"/>
+                        <outlet property="signalPathView" destination="oJ3-Ga-n9u" id="Kfj-E0-DHL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

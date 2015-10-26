@@ -49,8 +49,8 @@ func sampleShader(
 class ViewController: UIViewController {
 
     @IBOutlet weak var playButton: UIButton!
-    @IBOutlet weak var frequencyLabel: UILabel!
     @IBOutlet weak var frequencyKnob: Knob!
+    @IBOutlet weak var signalPathView: SignalPathView!
     
     var gen : AudioComponentInstance = nil
 
@@ -103,7 +103,8 @@ class ViewController: UIViewController {
         // http://stackoverflow.com/questions/1378765/how-do-i-create-a-basic-uibutton-programmatically
         //
         let button = PianoKey(type:.System)
-        button.frame = CGRectMake(16.0, 160.0, 320, 128.0)
+        button.frame = CGRectMake(16.0, 280.0, 480, 128.0)
+        button.numWhiteKeys = 16
         button.backgroundColor = UIColor.blackColor()
 //        button.setTitle("Hello", forState: .Normal)
         view.addSubview(button)
@@ -116,8 +117,13 @@ class ViewController: UIViewController {
         keys.append(button)
     }
     
+    func frequencyFromNote(noteNumber: Int) -> Double {
+        let middleC = 261.625565
+        return pow(2.0, Double(noteNumber)/12.0)*middleC
+    }
+    
     func noteFromXY(x : CGFloat, y : CGFloat) -> Double {
-        // Could it be a balck key?
+        // Could it be a black key?
         let keyWidth = CGFloat(40.0)
         if y < 64.0 {
             let keyMask = [true, true, false, true, true, true, false, true]
@@ -126,8 +132,7 @@ class ViewController: UIViewController {
                 if keyMask[blackKeyNumber] {
                     let octave : [Int] = [0, 2, 4, 5, 7, 9, 11, 12]
                     let noteNumber = octave[blackKeyNumber]+1
-                    let middleC = 261.625565
-                    return pow(2.0, Double(noteNumber)/12.0)*middleC
+                    return frequencyFromNote(noteNumber)
                 }
             }
         }
@@ -135,8 +140,7 @@ class ViewController: UIViewController {
         let keyNumber = Int(x/keyWidth)
         let octave : [Int] = [0, 2, 4, 5, 7, 9, 11, 12]
         let noteNumber = octave[keyNumber]
-        let middleC = 261.625565
-        return pow(2.0, Double(noteNumber)/12.0)*middleC
+        return frequencyFromNote(noteNumber)
     }
     
     func keyDown(sender: PianoKey, event: UIEvent) -> Void{
@@ -188,7 +192,6 @@ class ViewController: UIViewController {
     
     @IBAction func knobChanged(knob: Knob) {
         frequency = Double(knob.value)
-        frequencyLabel.text = String(format:"%4.1f Hz", frequency)
     }
     func getAudioComponentDescription() -> AudioComponentDescription {
         return AudioComponentDescription(

@@ -19,6 +19,11 @@ class PianoKey: UIButton {
     */
     
     var pianoKeyLayer : PianoKeyLayer! = nil
+    var numWhiteKeys : Int = 0 {
+        didSet {
+            self.setLayerFrames()
+        }
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -42,8 +47,8 @@ class PianoKey: UIButton {
     
     func setLayerFrames() -> Void {
 //        knobWidth = bounds.size.height
-        let keyWidth = 40.0
-        pianoKeyLayer.frame = CGRectMake(0, 0, CGFloat(7.0*keyWidth), 128.0)
+        let keyWidth : CGFloat = 40.0
+        pianoKeyLayer.frame = CGRectMake(0, 0, CGFloat(numWhiteKeys)*keyWidth, 128.0)
         
         pianoKeyLayer.setNeedsDisplay()
     }
