@@ -63,23 +63,19 @@ class MultiButtonLayer: CALayer {
         let buttonheight : CGFloat = bounds.height
         let x : CGFloat = 0.0
         let y : CGFloat = 0.0
-        let myRect = CGRect(x:x, y:y, width:buttonWidth, height:buttonheight)
-        let myRect2 = CGRect(x:x+buttonWidth, y:y, width:buttonWidth, height:buttonheight)
-        let myRect3 = CGRect(x:x+2*buttonWidth, y:y, width:buttonWidth, height:buttonheight)
-        let myRect4 = CGRect(x:x+3*buttonWidth, y:y, width:buttonWidth, height:buttonheight)
-        
-        savingContext(context) {
-            let colorSpace = CGColorSpaceCreateDeviceRGB()
-            let components : [CGFloat] = [0.4, 0.4, 0.4, 1.0]
-            let shadowColor : CGColorRef = CGColorCreate(colorSpace, components)!
-            CGContextSetShadowWithColor(context, CGSize(width: 1.0,height: 1.0), 6.0, shadowColor)
+        for i in 0..<numElements {
+            let myRect = CGRect(x:x+CGFloat(i)*buttonWidth, y:y, width:buttonWidth, height:buttonheight)
             
-            CGContextBeginTransparencyLayer(context, nil)
-            self.drawButton(context, rect:myRect, selected: self.slider.selectedButton == 0)
-            self.drawButton(context, rect:myRect2, selected: self.slider.selectedButton == 1)
-            self.drawButton(context, rect:myRect3, selected: self.slider.selectedButton == 2)
-            self.drawButton(context, rect:myRect4, selected: self.slider.selectedButton == 3)
-            CGContextEndTransparencyLayer(context)
+            savingContext(context) {
+                let colorSpace = CGColorSpaceCreateDeviceRGB()
+                let components : [CGFloat] = [0.4, 0.4, 0.4, 1.0]
+                let shadowColor : CGColorRef = CGColorCreate(colorSpace, components)!
+                CGContextSetShadowWithColor(context, CGSize(width: 1.0,height: 1.0), 6.0, shadowColor)
+                
+                CGContextBeginTransparencyLayer(context, nil)
+                self.drawButton(context, rect:myRect, selected: self.slider.selectedButton == i)
+                CGContextEndTransparencyLayer(context)
+            }
         }
         
     }
