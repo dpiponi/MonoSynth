@@ -45,12 +45,14 @@ func sampleShader(
 
 //
 // https://grokswift.com/custom-fonts/
+// https://github.com/HeshamMegid/HMSegmentedControl/blob/master/HMSegmentedControl/HMSegmentedControl.m
 //
 class ViewController: UIViewController {
 
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var frequencyKnob: Knob!
     @IBOutlet weak var signalPathView: SignalPathView!
+    @IBOutlet weak var waveformSelector: MultiButton!
     
     var gen : AudioComponentInstance = nil
 
@@ -98,6 +100,16 @@ class ViewController: UIViewController {
         frequencyKnob.value = 200
         
         knobChanged(frequencyKnob)
+        
+//        let normalImage = UIImage(named:"normal.png")
+//        let selectedImage = UIImage(named:"selected.png")
+//        let normalNormalImage = UIImage(named:"normalnormal.png")
+//        let normalSelectedImage = UIImage(named:"normalselected.png")
+//        waveformSelector.setBackgroundImage(normalImage, forState: .Normal, barMetrics: UIBarMetrics.Default)
+//        waveformSelector.setBackgroundImage(selectedImage, forState: .Selected, barMetrics: UIBarMetrics.Default)
+//        waveformSelector.setDividerImage(normalNormalImage, forLeftSegmentState: .Normal, rightSegmentState: .Normal, barMetrics: UIBarMetrics.Default)
+//        waveformSelector.setDividerImage(normalSelectedImage, forLeftSegmentState: .Normal, rightSegmentState: .Selected, barMetrics: UIBarMetrics.Default)
+//        waveformSelector.setNeedsDisplay()
         
         //
         // http://stackoverflow.com/questions/1378765/how-do-i-create-a-basic-uibutton-programmatically

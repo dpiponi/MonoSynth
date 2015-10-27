@@ -9,7 +9,9 @@
 import UIKit
 import QuartzCore
 
-class Knob: UIControl {
+class MultiButton: UIControl {
+    
+    var selectedButton : Int = 0
     
     var value : CGFloat = 0.0 {
         didSet {
@@ -23,7 +25,7 @@ class Knob: UIControl {
         }
     }
     
-    var knobLayer1 : KnobLayer! = nil
+    var knobLayer1 : MultiButtonLayer! = nil
     
     var minAngle : CGFloat = 0.0 /*{
         didSet { redrawLayers() }
@@ -45,7 +47,7 @@ class Knob: UIControl {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        knobLayer1 = KnobLayer()
+        knobLayer1 = MultiButtonLayer()
         knobLayer1.slider = self
         self.layer.addSublayer(knobLayer1)
         
@@ -53,9 +55,10 @@ class Knob: UIControl {
     }
     
     func setLayerFrames() -> Void {
-        knobWidth = bounds.size.height
+//        knobWidth = bounds.size.height
         
-        knobLayer1.frame = CGRectMake(0, 0, knobWidth, knobWidth)
+//        knobLayer1.frame = CGRectMake(0, 0, knobWidth, knobWidth)
+        knobLayer1.frame = bounds
         
         knobLayer1.setNeedsDisplay()
     }
@@ -67,15 +70,22 @@ class Knob: UIControl {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
-        knobLayer1 = KnobLayer()
+        knobLayer1 = MultiButtonLayer()
         knobLayer1.slider = self
         self.layer.addSublayer(knobLayer1)
         
         self.setLayerFrames()
+//        print(frame,bounds)
+//        bounds = CGRectInset(bounds, -4.0, -4.0)
     }
     
     override func beginTrackingWithTouch(touch : UITouch, withEvent event:UIEvent?) -> Bool {
         previousTouchPoint = touch.locationInView(self)
+        print(previousTouchPoint)
+        
+        selectedButton = Int(previousTouchPoint.x/bounds.width*4.0)
+        print(selectedButton)
+        knobLayer1.setNeedsDisplay()
         
         // hit test the knob layers
         if CGRectContainsPoint(knobLayer1.frame, previousTouchPoint) {
@@ -87,10 +97,14 @@ class Knob: UIControl {
     
     override func continueTrackingWithTouch(touch : UITouch, withEvent event:UIEvent?) -> Bool {
         let touchPoint = touch.locationInView(self)
+        print(touchPoint)
     
         let delta = touchPoint.x-previousTouchPoint.x
-        let valueDelta = 0.004*delta*(maxValue-minValue)
+        let valueDelta = 0.002*delta*(maxValue-minValue)
         value += valueDelta
+        
+        selectedButton = Int(touchPoint.x/bounds.width*4.0)
+        print(selectedButton)
         
         previousTouchPoint = touchPoint
         

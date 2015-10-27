@@ -23,6 +23,13 @@
 		BD87177B1BD8AB4900A6A4BD /* knob2.png in Resources */ = {isa = PBXBuildFile; fileRef = BD8717781BD8AB4900A6A4BD /* knob2.png */; };
 		BD87177C1BD8AB4900A6A4BD /* knob3.png in Resources */ = {isa = PBXBuildFile; fileRef = BD8717791BD8AB4900A6A4BD /* knob3.png */; };
 		BDB1FBDE1BD9B38F001B05E8 /* Impact Label.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BDB1FBDD1BD9B38F001B05E8 /* Impact Label.ttf */; };
+		BDB75E2B1BDE7CEB00242397 /* normalnormal.png in Resources */ = {isa = PBXBuildFile; fileRef = BDB75E2A1BDE7CEB00242397 /* normalnormal.png */; };
+		BDB75E2D1BDE7D8E00242397 /* normalselected.png in Resources */ = {isa = PBXBuildFile; fileRef = BDB75E2C1BDE7D8E00242397 /* normalselected.png */; };
+		BDB75E2F1BDE7E5900242397 /* normal.png in Resources */ = {isa = PBXBuildFile; fileRef = BDB75E2E1BDE7E5900242397 /* normal.png */; };
+		BDB75E311BDE7F1C00242397 /* selected.png in Resources */ = {isa = PBXBuildFile; fileRef = BDB75E301BDE7F1C00242397 /* selected.png */; };
+		BDB75E371BDEFA0400242397 /* MultiButtonx.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB75E361BDEFA0400242397 /* MultiButtonx.swift */; };
+		BDB75E391BDF009200242397 /* MultiButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB75E381BDF009200242397 /* MultiButton.swift */; };
+		BDB75E3B1BDF00A100242397 /* MultiButtonLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB75E3A1BDF00A100242397 /* MultiButtonLayer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +52,13 @@
 		BD8717791BD8AB4900A6A4BD /* knob3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = knob3.png; sourceTree = "<group>"; };
 		BDB1FBDD1BD9B38F001B05E8 /* Impact Label.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Impact Label.ttf"; sourceTree = "<group>"; };
 		BDB1FBE71BD9BC03001B05E8 /* Impact Label Licence.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Impact Label Licence.txt"; sourceTree = "<group>"; };
+		BDB75E2A1BDE7CEB00242397 /* normalnormal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = normalnormal.png; sourceTree = "<group>"; };
+		BDB75E2C1BDE7D8E00242397 /* normalselected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = normalselected.png; sourceTree = "<group>"; };
+		BDB75E2E1BDE7E5900242397 /* normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = normal.png; sourceTree = "<group>"; };
+		BDB75E301BDE7F1C00242397 /* selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = selected.png; sourceTree = "<group>"; };
+		BDB75E361BDEFA0400242397 /* MultiButtonx.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MultiButtonx.swift; path = ../MultiButtonx.swift; sourceTree = "<group>"; };
+		BDB75E381BDF009200242397 /* MultiButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiButton.swift; sourceTree = "<group>"; };
+		BDB75E3A1BDF00A100242397 /* MultiButtonLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiButtonLayer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,12 +93,19 @@
 		BD87175C1BD724DB00A6A4BD /* MonoSynth */ = {
 			isa = PBXGroup;
 			children = (
+				BDB75E2A1BDE7CEB00242397 /* normalnormal.png */,
+				BDB75E301BDE7F1C00242397 /* selected.png */,
+				BDB75E2E1BDE7E5900242397 /* normal.png */,
+				BDB75E2C1BDE7D8E00242397 /* normalselected.png */,
 				37BE9DF91BDDE7CB00CE8751 /* signalpath.png */,
+				BDB75E361BDEFA0400242397 /* MultiButtonx.swift */,
 				BD87175D1BD724DB00A6A4BD /* AppDelegate.swift */,
 				BD87175F1BD724DB00A6A4BD /* ViewController.swift */,
 				375D36021BDC207C00C55DBE /* PianoKey.swift */,
 				37BE9DF51BDDADA600CE8751 /* SignalPathView.swift */,
 				375D36041BDC286900C55DBE /* PianoKeyLayer.swift */,
+				BDB75E381BDF009200242397 /* MultiButton.swift */,
+				BDB75E3A1BDF00A100242397 /* MultiButtonLayer.swift */,
 				BD87176F1BD881E000A6A4BD /* Knob.swift */,
 				BD8717711BD881E900A6A4BD /* KnobLayer.swift */,
 				BDB1FBDD1BD9B38F001B05E8 /* Impact Label.ttf */,
@@ -158,14 +179,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BDB75E311BDE7F1C00242397 /* selected.png in Resources */,
 				BD8717681BD724DB00A6A4BD /* LaunchScreen.storyboard in Resources */,
 				BD87177C1BD8AB4900A6A4BD /* knob3.png in Resources */,
 				BD87177A1BD8AB4900A6A4BD /* knob1.png in Resources */,
+				BDB75E2D1BDE7D8E00242397 /* normalselected.png in Resources */,
 				BD87177B1BD8AB4900A6A4BD /* knob2.png in Resources */,
 				37BE9DFA1BDDE7CB00CE8751 /* signalpath.png in Resources */,
+				BDB75E2B1BDE7CEB00242397 /* normalnormal.png in Resources */,
 				BD8717651BD724DB00A6A4BD /* Assets.xcassets in Resources */,
 				BD8717631BD724DB00A6A4BD /* Main.storyboard in Resources */,
 				BDB1FBDE1BD9B38F001B05E8 /* Impact Label.ttf in Resources */,
+				BDB75E2F1BDE7E5900242397 /* normal.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -179,7 +204,10 @@
 				375D36031BDC207C00C55DBE /* PianoKey.swift in Sources */,
 				BD8717601BD724DB00A6A4BD /* ViewController.swift in Sources */,
 				BD8717721BD881E900A6A4BD /* KnobLayer.swift in Sources */,
+				BDB75E391BDF009200242397 /* MultiButton.swift in Sources */,
+				BDB75E371BDEFA0400242397 /* MultiButtonx.swift in Sources */,
 				37BE9DF41BDC343600CE8751 /* README.md in Sources */,
+				BDB75E3B1BDF00A100242397 /* MultiButtonLayer.swift in Sources */,
 				375D36051BDC286900C55DBE /* PianoKeyLayer.swift in Sources */,
 				37BE9DF61BDDADA600CE8751 /* SignalPathView.swift in Sources */,
 				BD8717701BD881E000A6A4BD /* Knob.swift in Sources */,
