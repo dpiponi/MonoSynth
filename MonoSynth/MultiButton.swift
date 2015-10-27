@@ -58,7 +58,7 @@ class MultiButton: UIControl {
 //        knobWidth = bounds.size.height
         
 //        knobLayer1.frame = CGRectMake(0, 0, knobWidth, knobWidth)
-        knobLayer1.frame = bounds
+        knobLayer1.frame = CGRectInset(bounds, -5.0, -5.0)
         
         knobLayer1.setNeedsDisplay()
     }

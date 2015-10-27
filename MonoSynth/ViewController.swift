@@ -49,7 +49,6 @@ func sampleShader(
 //
 class ViewController: UIViewController {
 
-    @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var frequencyKnob: Knob!
     @IBOutlet weak var signalPathView: SignalPathView!
     @IBOutlet weak var waveformSelector: MultiButton!
@@ -127,6 +126,8 @@ class ViewController: UIViewController {
         button.addTarget(self, action:"keyUp:", forControlEvents: .TouchUpOutside)
 //        button.tag = octave[i]
         keys.append(button)
+        
+        togglePlay()
     }
     
     func frequencyFromNote(noteNumber: Int) -> Double {
@@ -273,14 +274,14 @@ class ViewController: UIViewController {
         setFormat()
     }
     
-    @IBAction func togglePlay(selectedButton: UIButton) {
+    func togglePlay() {
         if gen != nil {
             AudioOutputUnitStop(gen)
             AudioUnitUninitialize(gen)
             AudioComponentInstanceDispose(gen)
             gen = nil;
             
-            selectedButton.setTitle("Off", forState: UIControlState(rawValue:0))
+//            selectedButton.setTitle("Off", forState: UIControlState(rawValue:0))
         } else {
             genCreate()
             
@@ -289,14 +290,12 @@ class ViewController: UIViewController {
             
             err = AudioOutputUnitStart(gen);
             print("Start err=", err)
-            
-            selectedButton.setTitle("On", forState: UIControlState(rawValue:0))
         }
     }
     
     func stop() -> Void {
         if gen != nil {
-            togglePlay(playButton)
+            togglePlay()
         }
     }
     

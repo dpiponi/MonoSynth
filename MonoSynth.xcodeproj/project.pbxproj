@@ -22,6 +22,7 @@
 		BD87177A1BD8AB4900A6A4BD /* knob1.png in Resources */ = {isa = PBXBuildFile; fileRef = BD8717771BD8AB4900A6A4BD /* knob1.png */; };
 		BD87177B1BD8AB4900A6A4BD /* knob2.png in Resources */ = {isa = PBXBuildFile; fileRef = BD8717781BD8AB4900A6A4BD /* knob2.png */; };
 		BD87177C1BD8AB4900A6A4BD /* knob3.png in Resources */ = {isa = PBXBuildFile; fileRef = BD8717791BD8AB4900A6A4BD /* knob3.png */; };
+		BD9593B81BDFC89A00EE098F /* CGUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9593B71BDFC89A00EE098F /* CGUtils.swift */; };
 		BDB1FBDE1BD9B38F001B05E8 /* Impact Label.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BDB1FBDD1BD9B38F001B05E8 /* Impact Label.ttf */; };
 		BDB75E2B1BDE7CEB00242397 /* normalnormal.png in Resources */ = {isa = PBXBuildFile; fileRef = BDB75E2A1BDE7CEB00242397 /* normalnormal.png */; };
 		BDB75E2D1BDE7D8E00242397 /* normalselected.png in Resources */ = {isa = PBXBuildFile; fileRef = BDB75E2C1BDE7D8E00242397 /* normalselected.png */; };
@@ -50,6 +51,7 @@
 		BD8717771BD8AB4900A6A4BD /* knob1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = knob1.png; sourceTree = "<group>"; };
 		BD8717781BD8AB4900A6A4BD /* knob2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = knob2.png; sourceTree = "<group>"; };
 		BD8717791BD8AB4900A6A4BD /* knob3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = knob3.png; sourceTree = "<group>"; };
+		BD9593B71BDFC89A00EE098F /* CGUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGUtils.swift; sourceTree = "<group>"; };
 		BDB1FBDD1BD9B38F001B05E8 /* Impact Label.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Impact Label.ttf"; sourceTree = "<group>"; };
 		BDB1FBE71BD9BC03001B05E8 /* Impact Label Licence.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Impact Label Licence.txt"; sourceTree = "<group>"; };
 		BDB75E2A1BDE7CEB00242397 /* normalnormal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = normalnormal.png; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 				BDB75E3A1BDF00A100242397 /* MultiButtonLayer.swift */,
 				BD87176F1BD881E000A6A4BD /* Knob.swift */,
 				BD8717711BD881E900A6A4BD /* KnobLayer.swift */,
+				BD9593B71BDFC89A00EE098F /* CGUtils.swift */,
 				BDB1FBDD1BD9B38F001B05E8 /* Impact Label.ttf */,
 				BD8717771BD8AB4900A6A4BD /* knob1.png */,
 				BD8717781BD8AB4900A6A4BD /* knob2.png */,
@@ -204,6 +207,7 @@
 				375D36031BDC207C00C55DBE /* PianoKey.swift in Sources */,
 				BD8717601BD724DB00A6A4BD /* ViewController.swift in Sources */,
 				BD8717721BD881E900A6A4BD /* KnobLayer.swift in Sources */,
+				BD9593B81BDFC89A00EE098F /* CGUtils.swift in Sources */,
 				BDB75E391BDF009200242397 /* MultiButton.swift in Sources */,
 				BDB75E371BDEFA0400242397 /* MultiButtonx.swift in Sources */,
 				37BE9DF41BDC343600CE8751 /* README.md in Sources */,
