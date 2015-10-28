@@ -8,27 +8,38 @@
 
 #import <Foundation/Foundation.h>
 @import AudioUnit;
-OSStatus audio_render( void *inRefCon, AudioUnitRenderActionFlags *ioActionFlags, const AudioTimeStamp *inTimeStamp, UInt32 inBusNumber, UInt32 inNumberFrames, AudioBufferList *ioData ) {
-#if 0
-    let viewController = (ViewController *)inRefCon;
-    let buffer = UnsafeMutablePointer<Float>(ioData.memory.mBuffers.mData) // mBuffers[0]???
+
+#import "AudioRender.h"
+
+OSStatus audio_render(void *inRefCon,
+                      AudioUnitRenderActionFlags *ioActionFlags,
+                      const AudioTimeStamp *inTimeStamp,
+                      UInt32 inBusNumber,
+                      UInt32 inNumberFrames,
+                      AudioBufferList *ioData) {
     
-    for i in 0..<Int(inNumberFrames) {
-        buffer[i] = Float(viewController.amplitude*sin(viewController.phase))
+    struct AudioState *state = (struct AudioState *)inRefCon;
+    float *buffer = ioData->mBuffers[0].mData;
+    
+    for (int i = 0; i < inNumberFrames; ++i) {
+        buffer[i] = state->amplitude*sin(state->phase);
         
-        viewController.phase += 2.0*M_PI*viewController.actualFrequency/viewController.sampleRate
-        viewController.actualFrequency = 0.999*viewController.actualFrequency+0.001*viewController.frequency
-        var rate : Double = 0.0
-        if viewController.targetAmplitude > viewController.amplitude {
-            rate = 0.9
+        state->phase += 2.0*M_PI*state->actualFrequency/state->sampleRate;
+        state->actualFrequency = 0.999*state->actualFrequency+0.001*state->frequency;
+        
+        double rate = 0.0;
+        if (state->targetAmplitude > state->amplitude) {
+            rate = 0.9;
         } else {
-            rate = 0.9999
+            rate = 0.9999;
         }
-        viewController.amplitude = rate*viewController.amplitude+(1-rate)*viewController.targetAmplitude
-        if (viewController.phase > 2.0 * M_PI) {
-            viewController.phase -= 2.0 * M_PI
+        
+        state->amplitude = rate*state->amplitude+(1-rate)*state->targetAmplitude;
+        
+        if (state->phase > 2.0 * M_PI) {
+            state->phase -= 2.0 * M_PI;
         }
     }
-#endif
+    
     return noErr;
 }

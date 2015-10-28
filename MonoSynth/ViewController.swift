@@ -13,35 +13,35 @@ import AVFoundation
 //
 // http://www.cocoawithlove.com/2010/10/ios-tone-generator-introduction-to.html
 //
-func sampleShader(
-    inRefCon : UnsafeMutablePointer<Void>,
-    ioActionFlags : UnsafeMutablePointer<AudioUnitRenderActionFlags>,
-    inTimeStamp : UnsafePointer<AudioTimeStamp>,
-    inBusNumber : UInt32,
-    inNumberFrames : UInt32,
-    ioData : UnsafeMutablePointer<AudioBufferList>) -> OSStatus {
-        let viewController = unsafeBitCast(inRefCon, ViewController.self)
-        let buffer = UnsafeMutablePointer<Float>(ioData.memory.mBuffers.mData) // mBuffers[0]???
-        
-        for i in 0..<Int(inNumberFrames) {
-            buffer[i] = Float(viewController.amplitude*sin(viewController.phase))
-            
-            viewController.phase += 2.0*M_PI*viewController.actualFrequency/viewController.sampleRate
-            viewController.actualFrequency = 0.999*viewController.actualFrequency+0.001*viewController.frequency
-            var rate : Double = 0.0
-            if viewController.targetAmplitude > viewController.amplitude {
-                rate = 0.9
-            } else {
-                rate = 0.9999
-            }
-            viewController.amplitude = rate*viewController.amplitude+(1-rate)*viewController.targetAmplitude
-            if (viewController.phase > 2.0 * M_PI) {
-                viewController.phase -= 2.0 * M_PI
-            }
-        }
-        
-        return noErr;
-}
+//func sampleShader(
+//    inRefCon : UnsafeMutablePointer<Void>,
+//    ioActionFlags : UnsafeMutablePointer<AudioUnitRenderActionFlags>,
+//    inTimeStamp : UnsafePointer<AudioTimeStamp>,
+//    inBusNumber : UInt32,
+//    inNumberFrames : UInt32,
+//    ioData : UnsafeMutablePointer<AudioBufferList>) -> OSStatus {
+//        let viewController = unsafeBitCast(inRefCon, ViewController.self)
+//        let buffer = UnsafeMutablePointer<Float>(ioData.memory.mBuffers.mData) // mBuffers[0]???
+//        
+//        for i in 0..<Int(inNumberFrames) {
+//            buffer[i] = Float(viewController.amplitude*sin(viewController.phase))
+//            
+//            viewController.phase += 2.0*M_PI*viewController.actualFrequency/viewController.sampleRate
+//            viewController.actualFrequency = 0.999*viewController.actualFrequency+0.001*viewController.frequency
+//            var rate : Double = 0.0
+//            if viewController.targetAmplitude > viewController.amplitude {
+//                rate = 0.9
+//            } else {
+//                rate = 0.9999
+//            }
+//            viewController.amplitude = rate*viewController.amplitude+(1-rate)*viewController.targetAmplitude
+//            if (viewController.phase > 2.0 * M_PI) {
+//                viewController.phase -= 2.0 * M_PI
+//            }
+//        }
+//        
+//        return noErr;
+//}
 
 //
 // https://grokswift.com/custom-fonts/
@@ -56,19 +56,21 @@ class ViewController: UIViewController {
     var gen : AudioComponentInstance = nil
 
     var sampleRate : Double = 44100.0
+    
+    var state = AudioState()
 
     //
     // Internal state
     //
-    var actualFrequency = 440.0//
-    var phase : Double = 0.0
-    var amplitude : Double = 0.0
+//    var actualFrequency = 440.0//
+//    var phase : Double = 0.0
+//    var amplitude : Double = 0.0
     
     //
     // Controls
     //
-    var frequency : Double = 440.0
-    var targetAmplitude : Double = 0.0
+//    var frequency : Double = 440.0
+//    var targetAmplitude : Double = 0.0
     
     var keys : [UIButton] = [UIButton]()
     
@@ -91,6 +93,8 @@ class ViewController: UIViewController {
             selector: "handleInterruption:",
             name: AVAudioSessionInterruptionNotification,
             object: nil)
+        
+        init_audio_state(&state)
         
         frequencyKnob.minValue = 200
         frequencyKnob.maxValue = 2000
@@ -163,12 +167,12 @@ class ViewController: UIViewController {
 //        targetAmplitude = 1.0
         if traitCollection.forceTouchCapability == .Available {
             print("Touch pressure is \(touch!.force), maximum possible force is \(touch!.maximumPossibleForce)")
-            targetAmplitude = Double(touch!.force/touch!.maximumPossibleForce)
+            state.targetAmplitude = Double(touch!.force/touch!.maximumPossibleForce)
         } else {
-            targetAmplitude = 1.0
+            state.targetAmplitude = 1.0
         }
-        frequency = noteFromXY(touchPoint.x, y: touchPoint.y)
-        print("frequency=", frequency)
+        state.frequency = noteFromXY(touchPoint.x, y: touchPoint.y)
+        print("frequency=", state.frequency)
     }
     
     func keySlide(sender: PianoKey, event: UIEvent) -> Void{
@@ -178,16 +182,16 @@ class ViewController: UIViewController {
         let touchPoint = touch!.locationInView(sender)
         if traitCollection.forceTouchCapability == .Available {
             print("Touch pressure is \(touch!.force), maximum possible force is \(touch!.maximumPossibleForce)")
-            targetAmplitude = Double(touch!.force/touch!.maximumPossibleForce)
+            state.targetAmplitude = Double(touch!.force/touch!.maximumPossibleForce)
         } else {
-            targetAmplitude = 1.0
+            state.targetAmplitude = 1.0
         }
-        frequency = noteFromXY(touchPoint.x, y: touchPoint.y)
+        state.frequency = noteFromXY(touchPoint.x, y: touchPoint.y)
 //        print("frequency=", frequency)
     }
     
     func keyUp(sender: PianoKey) -> Void {
-        targetAmplitude = 0.0
+        state.targetAmplitude = 0.0
 //        print("Up", sender.tag)
     }
 
@@ -204,7 +208,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func knobChanged(knob: Knob) {
-        frequency = Double(knob.value)
+        state.frequency = Double(knob.value)
     }
     func getAudioComponentDescription() -> AudioComponentDescription {
         return AudioComponentDescription(
@@ -245,8 +249,8 @@ class ViewController: UIViewController {
     // http://stackoverflow.com/questions/32290485/audiotoolbox-c-function-pointers-and-swift
     //
     func setCallback() -> Void {
-//        var input = AURenderCallbackStruct(inputProc: audio_render, inputProcRefCon: UnsafeMutablePointer<Void>(unsafeAddressOf(self)))
-        var input = AURenderCallbackStruct(inputProc: sampleShader, inputProcRefCon: UnsafeMutablePointer<Void>(unsafeAddressOf(self)))
+        var input = AURenderCallbackStruct(inputProc: audio_render, inputProcRefCon: &state)
+//        var input = AURenderCallbackStruct(inputProc: sampleShader, inputProcRefCon: UnsafeMutablePointer<Void>(unsafeAddressOf(self)))
         
         let err = AudioUnitSetProperty(
             gen,

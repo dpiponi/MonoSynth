@@ -100,6 +100,7 @@
 		BD87175C1BD724DB00A6A4BD /* MonoSynth */ = {
 			isa = PBXGroup;
 			children = (
+				BD87175F1BD724DB00A6A4BD /* ViewController.swift */,
 				BD9593C51BE04AE400EE098F /* AudioRender.m */,
 				BD9593C71BE04B2E00EE098F /* AudioRender.h */,
 				BD9593BB1BE0468200EE098F /* bradley-hand-itc.png */,
@@ -109,7 +110,6 @@
 				BDB75E2C1BDE7D8E00242397 /* normalselected.png */,
 				37BE9DF91BDDE7CB00CE8751 /* signalpath.png */,
 				BD87175D1BD724DB00A6A4BD /* AppDelegate.swift */,
-				BD87175F1BD724DB00A6A4BD /* ViewController.swift */,
 				375D36021BDC207C00C55DBE /* PianoKey.swift */,
 				37BE9DF51BDDADA600CE8751 /* SignalPathView.swift */,
 				375D36041BDC286900C55DBE /* PianoKeyLayer.swift */,
