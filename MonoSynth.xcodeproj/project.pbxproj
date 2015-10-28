@@ -9,7 +9,11 @@
 /* Begin PBXBuildFile section */
 		375D36031BDC207C00C55DBE /* PianoKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375D36021BDC207C00C55DBE /* PianoKey.swift */; };
 		375D36051BDC286900C55DBE /* PianoKeyLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375D36041BDC286900C55DBE /* PianoKeyLayer.swift */; };
-		37BE9DF41BDC343600CE8751 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 37BE9DF31BDC343600CE8751 /* README.md */; };
+		378074421BE17D2700FF58A9 /* band_limited.c in Sources */ = {isa = PBXBuildFile; fileRef = 378074411BE17D2700FF58A9 /* band_limited.c */; };
+		378074451BE17D5300FF58A9 /* audio_square.c in Sources */ = {isa = PBXBuildFile; fileRef = 378074431BE17D5300FF58A9 /* audio_square.c */; };
+		378074481BE17D6E00FF58A9 /* audio_sin.c in Sources */ = {isa = PBXBuildFile; fileRef = 378074461BE17D6E00FF58A9 /* audio_sin.c */; };
+		3780744D1BE17E5F00FF58A9 /* audio_saw.c in Sources */ = {isa = PBXBuildFile; fileRef = 3780744C1BE17E5F00FF58A9 /* audio_saw.c */; };
+		378074511BE1801900FF58A9 /* moodler_lib.c in Sources */ = {isa = PBXBuildFile; fileRef = 378074501BE1801900FF58A9 /* moodler_lib.c */; };
 		37BE9DF61BDDADA600CE8751 /* SignalPathView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37BE9DF51BDDADA600CE8751 /* SignalPathView.swift */; };
 		37BE9DFA1BDDE7CB00CE8751 /* signalpath.png in Resources */ = {isa = PBXBuildFile; fileRef = 37BE9DF91BDDE7CB00CE8751 /* signalpath.png */; };
 		BD87175E1BD724DB00A6A4BD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD87175D1BD724DB00A6A4BD /* AppDelegate.swift */; };
@@ -37,6 +41,16 @@
 /* Begin PBXFileReference section */
 		375D36021BDC207C00C55DBE /* PianoKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PianoKey.swift; sourceTree = "<group>"; };
 		375D36041BDC286900C55DBE /* PianoKeyLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PianoKeyLayer.swift; sourceTree = "<group>"; };
+		378074401BE17D1700FF58A9 /* band_limited.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = band_limited.h; sourceTree = "<group>"; };
+		378074411BE17D2700FF58A9 /* band_limited.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = band_limited.c; sourceTree = "<group>"; };
+		378074431BE17D5300FF58A9 /* audio_square.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = audio_square.c; sourceTree = "<group>"; };
+		378074441BE17D5300FF58A9 /* audio_square.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = audio_square.h; sourceTree = "<group>"; };
+		378074461BE17D6E00FF58A9 /* audio_sin.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = audio_sin.c; sourceTree = "<group>"; };
+		378074471BE17D6E00FF58A9 /* audio_sin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = audio_sin.h; sourceTree = "<group>"; };
+		3780744C1BE17E5F00FF58A9 /* audio_saw.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = audio_saw.c; sourceTree = "<group>"; };
+		3780744E1BE17EE600FF58A9 /* audio_saw.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = audio_saw.h; sourceTree = "<group>"; };
+		3780744F1BE1801000FF58A9 /* moodler_lib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = moodler_lib.h; sourceTree = "<group>"; };
+		378074501BE1801900FF58A9 /* moodler_lib.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = moodler_lib.c; sourceTree = "<group>"; };
 		37BE9DF31BDC343600CE8751 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		37BE9DF51BDDADA600CE8751 /* SignalPathView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignalPathView.swift; sourceTree = "<group>"; };
 		37BE9DF91BDDE7CB00CE8751 /* signalpath.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = signalpath.png; path = ../Assets/signalpath.png; sourceTree = "<group>"; };
@@ -78,12 +92,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3780743F1BE17C9700FF58A9 /* Audio Synthesis */ = {
+			isa = PBXGroup;
+			children = (
+				BD9593C51BE04AE400EE098F /* AudioRender.m */,
+				BD9593C71BE04B2E00EE098F /* AudioRender.h */,
+				3780744F1BE1801000FF58A9 /* moodler_lib.h */,
+				378074501BE1801900FF58A9 /* moodler_lib.c */,
+				378074401BE17D1700FF58A9 /* band_limited.h */,
+				378074411BE17D2700FF58A9 /* band_limited.c */,
+				378074461BE17D6E00FF58A9 /* audio_sin.c */,
+				378074471BE17D6E00FF58A9 /* audio_sin.h */,
+				378074431BE17D5300FF58A9 /* audio_square.c */,
+				378074441BE17D5300FF58A9 /* audio_square.h */,
+				3780744E1BE17EE600FF58A9 /* audio_saw.h */,
+				3780744C1BE17E5F00FF58A9 /* audio_saw.c */,
+			);
+			name = "Audio Synthesis";
+			sourceTree = "<group>";
+		};
 		BD8717511BD724DB00A6A4BD = {
 			isa = PBXGroup;
 			children = (
 				BDB1FBE71BD9BC03001B05E8 /* Impact Label Licence.txt */,
 				37BE9DF31BDC343600CE8751 /* README.md */,
-				BD9593BD1BE0485600EE098F /* UI Elements */,
 				BD87175C1BD724DB00A6A4BD /* MonoSynth */,
 				BD87175B1BD724DB00A6A4BD /* Products */,
 			);
@@ -100,9 +132,9 @@
 		BD87175C1BD724DB00A6A4BD /* MonoSynth */ = {
 			isa = PBXGroup;
 			children = (
+				3780743F1BE17C9700FF58A9 /* Audio Synthesis */,
+				BD9593BD1BE0485600EE098F /* UI Elements */,
 				BD87175F1BD724DB00A6A4BD /* ViewController.swift */,
-				BD9593C51BE04AE400EE098F /* AudioRender.m */,
-				BD9593C71BE04B2E00EE098F /* AudioRender.h */,
 				BD9593BB1BE0468200EE098F /* bradley-hand-itc.png */,
 				BDB75E2A1BDE7CEB00242397 /* normalnormal.png */,
 				BDB75E301BDE7F1C00242397 /* selected.png */,
@@ -136,6 +168,7 @@
 				BD8717711BD881E900A6A4BD /* KnobLayer.swift */,
 			);
 			name = "UI Elements";
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -221,16 +254,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				375D36031BDC207C00C55DBE /* PianoKey.swift in Sources */,
+				378074421BE17D2700FF58A9 /* band_limited.c in Sources */,
 				BD8717601BD724DB00A6A4BD /* ViewController.swift in Sources */,
+				3780744D1BE17E5F00FF58A9 /* audio_saw.c in Sources */,
 				BD8717721BD881E900A6A4BD /* KnobLayer.swift in Sources */,
 				BD9593B81BDFC89A00EE098F /* CGUtils.swift in Sources */,
 				BDB75E391BDF009200242397 /* MultiButton.swift in Sources */,
-				37BE9DF41BDC343600CE8751 /* README.md in Sources */,
+				378074481BE17D6E00FF58A9 /* audio_sin.c in Sources */,
+				378074451BE17D5300FF58A9 /* audio_square.c in Sources */,
 				BD9593C61BE04AE400EE098F /* AudioRender.m in Sources */,
 				BDB75E3B1BDF00A100242397 /* MultiButtonLayer.swift in Sources */,
 				375D36051BDC286900C55DBE /* PianoKeyLayer.swift in Sources */,
 				37BE9DF61BDDADA600CE8751 /* SignalPathView.swift in Sources */,
 				BD8717701BD881E000A6A4BD /* Knob.swift in Sources */,
+				378074511BE1801900FF58A9 /* moodler_lib.c in Sources */,
 				BD87175E1BD724DB00A6A4BD /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

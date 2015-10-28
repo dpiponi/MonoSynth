@@ -8,7 +8,12 @@
 
 #ifndef Header_h
 #define Header_h
+
 @import AudioUnit;
+
+#include "audio_square.h"
+#include "audio_saw.h"
+#include "audio_sin.h"
 
 enum OscType {
     OSC_TYPE_SINE,
@@ -19,6 +24,11 @@ enum OscType {
 struct AudioState {
     // Globals
     double sampleRate;
+    
+    enum OscType oscType;
+    struct Saw saw_state;
+    struct Sin sin_state;
+    struct Square square_state;
     
     double actualFrequency;
     double phase;
@@ -32,6 +42,7 @@ struct AudioState {
 };
 
 void init_audio_state(struct AudioState *state) {
+    state->oscType = OSC_TYPE_SINE;
     state->sampleRate = 44100.0;
     state->phase = 0.0;
     state->actualFrequency = 0.0;

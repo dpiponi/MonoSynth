@@ -95,6 +95,10 @@ class ViewController: UIViewController {
             object: nil)
         
         init_audio_state(&state)
+        init_saw(&state.saw_state)
+        init_square(&state.square_state)
+        init_sin(&state.sin_state)
+        state.oscType = OSC_TYPE_SINE
         
         frequencyKnob.minValue = 200
         frequencyKnob.maxValue = 2000
@@ -103,17 +107,7 @@ class ViewController: UIViewController {
         frequencyKnob.value = 200
         
         knobChanged(frequencyKnob)
-        
-//        let normalImage = UIImage(named:"normal.png")
-//        let selectedImage = UIImage(named:"selected.png")
-//        let normalNormalImage = UIImage(named:"normalnormal.png")
-//        let normalSelectedImage = UIImage(named:"normalselected.png")
-//        waveformSelector.setBackgroundImage(normalImage, forState: .Normal, barMetrics: UIBarMetrics.Default)
-//        waveformSelector.setBackgroundImage(selectedImage, forState: .Selected, barMetrics: UIBarMetrics.Default)
-//        waveformSelector.setDividerImage(normalNormalImage, forLeftSegmentState: .Normal, rightSegmentState: .Normal, barMetrics: UIBarMetrics.Default)
-//        waveformSelector.setDividerImage(normalSelectedImage, forLeftSegmentState: .Normal, rightSegmentState: .Selected, barMetrics: UIBarMetrics.Default)
-//        waveformSelector.setNeedsDisplay()
-        
+                
         //
         // http://stackoverflow.com/questions/1378765/how-do-i-create-a-basic-uibutton-programmatically
         //
