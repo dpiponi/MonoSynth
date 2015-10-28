@@ -245,6 +245,7 @@ class ViewController: UIViewController {
     // http://stackoverflow.com/questions/32290485/audiotoolbox-c-function-pointers-and-swift
     //
     func setCallback() -> Void {
+//        var input = AURenderCallbackStruct(inputProc: audio_render, inputProcRefCon: UnsafeMutablePointer<Void>(unsafeAddressOf(self)))
         var input = AURenderCallbackStruct(inputProc: sampleShader, inputProcRefCon: UnsafeMutablePointer<Void>(unsafeAddressOf(self)))
         
         let err = AudioUnitSetProperty(
