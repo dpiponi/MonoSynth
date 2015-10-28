@@ -83,7 +83,7 @@ class MultiButton: UIControl {
         previousTouchPoint = touch.locationInView(self)
         print(previousTouchPoint)
         
-        selectedButton = Int(previousTouchPoint.x/bounds.width*4.0)
+        selectedButton = Int(previousTouchPoint.x/bounds.width*3.0) // numElements
         print(selectedButton)
         knobLayer1.setNeedsDisplay()
         
@@ -103,7 +103,7 @@ class MultiButton: UIControl {
         let valueDelta = 0.002*delta*(maxValue-minValue)
         value += valueDelta
         
-        selectedButton = Int(touchPoint.x/bounds.width*4.0)
+        selectedButton = Int(touchPoint.x/bounds.width*3.0) // numElements
         print(selectedButton)
         
         previousTouchPoint = touchPoint
