@@ -45,8 +45,12 @@ OSStatus audio_render(void *inRefCon,
         }
         step_exp_decay(&state->exp_decay, dt, 0.25, state->gate);
         
-        buffer[i] = state->exp_decay.amplitude*sample;
-//        if (i==0) { NSLog(@"%f",sample); }
+        double result = state->exp_decay.amplitude*sample;
+        step_ladder(&state->ladder, dt, 8.0*state->frequency, 3.5, result);
+//        printf("res=%f %f\n", result, state->ladder.y3);
+        buffer[i] = 2.0*state->ladder.result;
+//        printf("^ %f\n", buffer[i]);
+//        if (i==0) { NSLog(@"%f",result); }
 #if 0
         buffer[i] = state->amplitude*sin(state->phase);
         

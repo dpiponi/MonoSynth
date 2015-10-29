@@ -1,4 +1,4 @@
-#ifndef MOODLER_LIB_H
+#if !defined(MOODLER_LIB_H)
 #define MOODLER_LIB_H
 
 #include <math.h>
@@ -109,7 +109,7 @@ double z[3][3] = {
 #define ATTACK 1
 #define DECAY 2
 
-sample lagrange_3rd_order_4_point[4][4];
+extern sample lagrange_3rd_order_4_point[4][4];
 
 static void upsample_lagrange_3rd_order_4_point(sample input,
                                        sample *x,

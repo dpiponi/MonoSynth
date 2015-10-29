@@ -126,7 +126,7 @@ class ViewController: UIViewController {
     
     func frequencyFromNote(noteNumber: Int) -> Double {
         let middleC = 261.625565
-        return pow(2.0, Double(noteNumber)/12.0)*middleC
+        return pow(2.0, Double(noteNumber)/12.0)*middleC*0.125
     }
     
     func noteFromXY(x : CGFloat, y : CGFloat) -> Double {

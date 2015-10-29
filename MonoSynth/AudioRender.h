@@ -15,6 +15,7 @@
 #include "audio_saw.h"
 #include "audio_sin.h"
 #include "exp_decay.h"
+#include "ladder.h"
 
 enum OscType {
     OSC_TYPE_SINE = 0,
@@ -33,6 +34,7 @@ struct AudioState {
     struct Sin sin_state;
     struct Square square_state;
     struct ExpDecay exp_decay;
+    struct Ladder ladder;
     
     double actualFrequency;
     double phase;
@@ -62,6 +64,7 @@ void init_audio_state(struct AudioState *state) {
     init_sin(&state->sin_state);
     state-> oscType = OSC_TYPE_SINE;
 
+    init_ladder(&state->ladder);
 }
 
 OSStatus audio_render( void *inRefCon, AudioUnitRenderActionFlags *ioActionFlags, const AudioTimeStamp *inTimeStamp, UInt32 inBusNumber, UInt32 inNumberFrames, AudioBufferList *ioData );
