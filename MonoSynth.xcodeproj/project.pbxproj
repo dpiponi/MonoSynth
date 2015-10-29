@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		375D36031BDC207C00C55DBE /* PianoKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375D36021BDC207C00C55DBE /* PianoKey.swift */; };
 		375D36051BDC286900C55DBE /* PianoKeyLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375D36041BDC286900C55DBE /* PianoKeyLayer.swift */; };
+		37660A161BE1B9BB00AFDD0B /* exp_decay.c in Sources */ = {isa = PBXBuildFile; fileRef = 37660A141BE1B9BB00AFDD0B /* exp_decay.c */; };
 		378074421BE17D2700FF58A9 /* band_limited.c in Sources */ = {isa = PBXBuildFile; fileRef = 378074411BE17D2700FF58A9 /* band_limited.c */; };
 		378074451BE17D5300FF58A9 /* audio_square.c in Sources */ = {isa = PBXBuildFile; fileRef = 378074431BE17D5300FF58A9 /* audio_square.c */; };
 		378074481BE17D6E00FF58A9 /* audio_sin.c in Sources */ = {isa = PBXBuildFile; fileRef = 378074461BE17D6E00FF58A9 /* audio_sin.c */; };
@@ -41,6 +42,8 @@
 /* Begin PBXFileReference section */
 		375D36021BDC207C00C55DBE /* PianoKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PianoKey.swift; sourceTree = "<group>"; };
 		375D36041BDC286900C55DBE /* PianoKeyLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PianoKeyLayer.swift; sourceTree = "<group>"; };
+		37660A141BE1B9BB00AFDD0B /* exp_decay.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = exp_decay.c; sourceTree = "<group>"; };
+		37660A151BE1B9BB00AFDD0B /* exp_decay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exp_decay.h; sourceTree = "<group>"; };
 		378074401BE17D1700FF58A9 /* band_limited.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = band_limited.h; sourceTree = "<group>"; };
 		378074411BE17D2700FF58A9 /* band_limited.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = band_limited.c; sourceTree = "<group>"; };
 		378074431BE17D5300FF58A9 /* audio_square.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = audio_square.c; sourceTree = "<group>"; };
@@ -106,6 +109,8 @@
 				378074431BE17D5300FF58A9 /* audio_square.c */,
 				378074441BE17D5300FF58A9 /* audio_square.h */,
 				3780744E1BE17EE600FF58A9 /* audio_saw.h */,
+				37660A141BE1B9BB00AFDD0B /* exp_decay.c */,
+				37660A151BE1B9BB00AFDD0B /* exp_decay.h */,
 				3780744C1BE17E5F00FF58A9 /* audio_saw.c */,
 			);
 			name = "Audio Synthesis";
@@ -132,9 +137,9 @@
 		BD87175C1BD724DB00A6A4BD /* MonoSynth */ = {
 			isa = PBXGroup;
 			children = (
+				BD87175F1BD724DB00A6A4BD /* ViewController.swift */,
 				3780743F1BE17C9700FF58A9 /* Audio Synthesis */,
 				BD9593BD1BE0485600EE098F /* UI Elements */,
-				BD87175F1BD724DB00A6A4BD /* ViewController.swift */,
 				BD9593BB1BE0468200EE098F /* bradley-hand-itc.png */,
 				BDB75E2A1BDE7CEB00242397 /* normalnormal.png */,
 				BDB75E301BDE7F1C00242397 /* selected.png */,
@@ -259,6 +264,7 @@
 				3780744D1BE17E5F00FF58A9 /* audio_saw.c in Sources */,
 				BD8717721BD881E900A6A4BD /* KnobLayer.swift in Sources */,
 				BD9593B81BDFC89A00EE098F /* CGUtils.swift in Sources */,
+				37660A161BE1B9BB00AFDD0B /* exp_decay.c in Sources */,
 				BDB75E391BDF009200242397 /* MultiButton.swift in Sources */,
 				378074481BE17D6E00FF58A9 /* audio_sin.c in Sources */,
 				378074451BE17D5300FF58A9 /* audio_square.c in Sources */,

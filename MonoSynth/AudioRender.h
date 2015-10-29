@@ -14,6 +14,7 @@
 #include "audio_square.h"
 #include "audio_saw.h"
 #include "audio_sin.h"
+#include "exp_decay.h"
 
 enum OscType {
     OSC_TYPE_SINE,
@@ -25,10 +26,13 @@ struct AudioState {
     // Globals
     double sampleRate;
     
+    double gate;
+    
     enum OscType oscType;
     struct Saw saw_state;
     struct Sin sin_state;
     struct Square square_state;
+    struct ExpDecay exp_decay;
     
     double actualFrequency;
     double phase;
@@ -42,13 +46,22 @@ struct AudioState {
 };
 
 void init_audio_state(struct AudioState *state) {
+    state->gate = 0.0;
+    
     state->oscType = OSC_TYPE_SINE;
     state->sampleRate = 44100.0;
     state->phase = 0.0;
-    state->actualFrequency = 0.0;
+    state->actualFrequency = 440.0;
     state->amplitude = 0.0;
     state->frequency = 440.0f;
     state->targetAmplitude = 0.0;
+    
+    init_exp_decay(&state->exp_decay);
+    init_saw(&state->saw_state);
+    init_square(&state->square_state);
+    init_sin(&state->sin_state);
+    state-> oscType = OSC_TYPE_SINE;
+
 }
 
 OSStatus audio_render( void *inRefCon, AudioUnitRenderActionFlags *ioActionFlags, const AudioTimeStamp *inTimeStamp, UInt32 inBusNumber, UInt32 inNumberFrames, AudioBufferList *ioData );

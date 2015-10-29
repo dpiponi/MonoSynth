@@ -19,9 +19,20 @@ OSStatus audio_render(void *inRefCon,
                       AudioBufferList *ioData) {
     
     struct AudioState *state = (struct AudioState *)inRefCon;
+    const double dt = 1.0/44100.0;
     float *buffer = ioData->mBuffers[0].mData;
+    printf("gate=%f\n", state->gate);
     
     for (int i = 0; i < inNumberFrames; ++i) {
+        double sample = step_square_nosync(&state->square_state,
+                                           1.0/44100.0,
+                                           state->frequency,
+                                           0.5);
+        step_exp_decay(&state->exp_decay, dt, 0.25, state->gate);
+        
+        buffer[i] = state->exp_decay.amplitude*sample;
+//        if (i==0) { NSLog(@"%f",sample); }
+#if 0
         buffer[i] = state->amplitude*sin(state->phase);
         
         state->phase += 2.0*M_PI*state->actualFrequency/state->sampleRate;
@@ -39,6 +50,7 @@ OSStatus audio_render(void *inRefCon,
         if (state->phase > 2.0 * M_PI) {
             state->phase -= 2.0 * M_PI;
         }
+#endif
     }
     
     return noErr;

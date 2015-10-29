@@ -95,10 +95,6 @@ class ViewController: UIViewController {
             object: nil)
         
         init_audio_state(&state)
-        init_saw(&state.saw_state)
-        init_square(&state.square_state)
-        init_sin(&state.sin_state)
-        state.oscType = OSC_TYPE_SINE
         
         frequencyKnob.minValue = 200
         frequencyKnob.maxValue = 2000
@@ -161,9 +157,11 @@ class ViewController: UIViewController {
 //        targetAmplitude = 1.0
         if traitCollection.forceTouchCapability == .Available {
             print("Touch pressure is \(touch!.force), maximum possible force is \(touch!.maximumPossibleForce)")
-            state.targetAmplitude = Double(touch!.force/touch!.maximumPossibleForce)
+//            state.targetAmplitude = Double(touch!.force/touch!.maximumPossibleForce)
+            state.gate = 1.0
         } else {
-            state.targetAmplitude = 1.0
+//            state.targetAmplitude = 1.0
+            state.gate = 1.0
         }
         state.frequency = noteFromXY(touchPoint.x, y: touchPoint.y)
         print("frequency=", state.frequency)
@@ -176,17 +174,23 @@ class ViewController: UIViewController {
         let touchPoint = touch!.locationInView(sender)
         if traitCollection.forceTouchCapability == .Available {
             print("Touch pressure is \(touch!.force), maximum possible force is \(touch!.maximumPossibleForce)")
-            state.targetAmplitude = Double(touch!.force/touch!.maximumPossibleForce)
+//            state.targetAmplitude = Double(touch!.force/touch!.maximumPossibleForce)
+            state.gate = 1.0
+            print("down")
         } else {
-            state.targetAmplitude = 1.0
+//            state.targetAmplitude = 1.0
+            state.gate = 1.0
+            print("down")
         }
         state.frequency = noteFromXY(touchPoint.x, y: touchPoint.y)
 //        print("frequency=", frequency)
     }
     
     func keyUp(sender: PianoKey) -> Void {
-        state.targetAmplitude = 0.0
+//        state.targetAmplitude = 0.0
+        state.gate = 0.0;
 //        print("Up", sender.tag)
+        print("up")
     }
 
     override func didReceiveMemoryWarning() {

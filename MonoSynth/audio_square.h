@@ -16,5 +16,6 @@ struct Square {
 
 void init_square(struct Square *state);
 double step_square(struct Square *state, double dt, double frequency, double pwm, double sync);
+double step_square_nosync(struct Square *state, double dt, double frequency, double pwm);
 
 #endif
