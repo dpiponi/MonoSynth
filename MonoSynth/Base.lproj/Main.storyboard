@@ -35,6 +35,9 @@
                                                 <rect key="frame" x="16" y="27" width="229" height="41"/>
                                                 <animations/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <connections>
+                                                    <action selector="waveformSelectorChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="Ddd-0V-iTG"/>
+                                                </connections>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Waveform" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wg5-K7-Kys">
                                                 <rect key="frame" x="84" y="76" width="92" height="21"/>

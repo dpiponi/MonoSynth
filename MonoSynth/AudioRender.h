@@ -17,9 +17,9 @@
 #include "exp_decay.h"
 
 enum OscType {
-    OSC_TYPE_SINE,
-    OSC_TYPE_SQUARE,
-    OSC_TYPE_TRIANGLE
+    OSC_TYPE_SINE = 0,
+    OSC_TYPE_SQUARE = 1,
+    OSC_TYPE_SAW = 2
 };
 
 struct AudioState {

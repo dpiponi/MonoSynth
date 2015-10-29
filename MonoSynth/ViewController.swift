@@ -208,6 +208,10 @@ class ViewController: UIViewController {
     @IBAction func knobChanged(knob: Knob) {
         state.frequency = Double(knob.value)
     }
+    @IBAction func waveformSelectorChanged(sender: MultiButton) {
+        print("Button!")
+        state.oscType = OscType(UInt32(sender.selectedButton))
+    }
     func getAudioComponentDescription() -> AudioComponentDescription {
         return AudioComponentDescription(
             componentType: kAudioUnitType_Output,

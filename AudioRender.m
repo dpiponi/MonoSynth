@@ -21,13 +21,28 @@ OSStatus audio_render(void *inRefCon,
     struct AudioState *state = (struct AudioState *)inRefCon;
     const double dt = 1.0/44100.0;
     float *buffer = ioData->mBuffers[0].mData;
-    printf("gate=%f\n", state->gate);
+//    printf("gate=%f\n", state->gate);
     
     for (int i = 0; i < inNumberFrames; ++i) {
-        double sample = step_square_nosync(&state->square_state,
-                                           1.0/44100.0,
-                                           state->frequency,
-                                           0.5);
+        double sample;
+        switch (state->oscType ) {
+            case OSC_TYPE_SQUARE:
+                sample = step_square_nosync(&state->square_state,
+                                            1.0/44100.0,
+                                            state->frequency,
+                                            0.5);
+                break;
+            case OSC_TYPE_SINE:
+                sample = step_sin(&state->sin_state,
+                                            1.0/44100.0,
+                                            state->frequency, 0.0);
+                break;
+            case OSC_TYPE_SAW:
+                sample = step_saw(&state->saw_state,
+                                            1.0/44100.0,
+                                            state->frequency, 0.0);
+                break;
+        }
         step_exp_decay(&state->exp_decay, dt, 0.25, state->gate);
         
         buffer[i] = state->exp_decay.amplitude*sample;

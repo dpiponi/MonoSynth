@@ -92,6 +92,10 @@ class MultiButton: UIControl {
             knobLayer1.highlighted = true
             knobLayer1.setNeedsDisplay()
         }
+        
+        print("Sending actions")
+        sendActionsForControlEvents(.ValueChanged)
+
         return knobLayer1.highlighted
     }
     
@@ -115,6 +119,7 @@ class MultiButton: UIControl {
         CATransaction.setAnimationDuration(0.0)
         CATransaction.commit()
         
+        print("Sending actions")
         sendActionsForControlEvents(.ValueChanged)
         
         return true
