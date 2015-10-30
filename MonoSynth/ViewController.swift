@@ -22,9 +22,11 @@ class ViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var waveformSelector: MultiButton!
     @IBOutlet weak var lfo1Frequency: Knob!
+    @IBOutlet weak var lfo2Frequency: Knob!
     @IBOutlet weak var filterCutoff: Knob!
     @IBOutlet weak var filterResonance: Knob!
     @IBOutlet weak var filterCutoffLFO1Modulation: Knob!
+    @IBOutlet weak var filterCutoffLFO2Modulation: Knob!
     
     var gen : AudioComponentInstance = nil
 
@@ -47,12 +49,25 @@ class ViewController: UIViewController {
     }
     
     @IBAction func lfo1FrequencyChanged(sender: Knob) {
-        state.lfo1_frequency = Double(sender.value)
+        switch sender.tag {
+        case 0:
+            state.lfo_frequency.0 = Double(sender.value)
+        case 1:
+            state.lfo_frequency.1 = Double(sender.value)
+        default: break
+        }
     }
     
     @IBAction func filterFrequencyLFO1ModulationChanged(sender: Knob) {
-        state.lfo1_filter_cutoff_modulation = Double(sender.value)
+        switch sender.tag {
+        case 0:
+            state.lfo_filter_cutoff_modulation.0 = Double(sender.value)
+        case 1:
+            state.lfo_filter_cutoff_modulation.1 = Double(sender.value)
+        default: break;
+        }
     }
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         
