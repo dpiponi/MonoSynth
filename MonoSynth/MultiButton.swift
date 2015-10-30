@@ -9,7 +9,7 @@
 import UIKit
 import QuartzCore
 
-class MultiButton: UIControl {
+@IBDesignable class MultiButton: UIControl {
     
     var selectedButton : Int = 0
     
@@ -134,12 +134,16 @@ class MultiButton: UIControl {
         knobLayer1.setNeedsDisplay()
     }
     
-    /*
     // Only override drawRect: if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
+    #if TARGET_INTERFACE_BUILDER
     override func drawRect(rect: CGRect) {
-        // Drawing code
+        let context = UIGraphicsGetCurrentContext()
+        let myFrame = self.bounds
+        CGContextSetLineWidth(context, 10)
+        let myFrame2 = CGRectInset(myFrame, 5.0, 5.0)
+        CGContextStrokeRect(context, myFrame2)
     }
-    */
+    #endif
 
 }

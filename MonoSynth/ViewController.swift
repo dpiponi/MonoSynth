@@ -13,67 +13,46 @@ import AVFoundation
 //
 // http://www.cocoawithlove.com/2010/10/ios-tone-generator-introduction-to.html
 //
-//func sampleShader(
-//    inRefCon : UnsafeMutablePointer<Void>,
-//    ioActionFlags : UnsafeMutablePointer<AudioUnitRenderActionFlags>,
-//    inTimeStamp : UnsafePointer<AudioTimeStamp>,
-//    inBusNumber : UInt32,
-//    inNumberFrames : UInt32,
-//    ioData : UnsafeMutablePointer<AudioBufferList>) -> OSStatus {
-//        let viewController = unsafeBitCast(inRefCon, ViewController.self)
-//        let buffer = UnsafeMutablePointer<Float>(ioData.memory.mBuffers.mData) // mBuffers[0]???
-//        
-//        for i in 0..<Int(inNumberFrames) {
-//            buffer[i] = Float(viewController.amplitude*sin(viewController.phase))
-//            
-//            viewController.phase += 2.0*M_PI*viewController.actualFrequency/viewController.sampleRate
-//            viewController.actualFrequency = 0.999*viewController.actualFrequency+0.001*viewController.frequency
-//            var rate : Double = 0.0
-//            if viewController.targetAmplitude > viewController.amplitude {
-//                rate = 0.9
-//            } else {
-//                rate = 0.9999
-//            }
-//            viewController.amplitude = rate*viewController.amplitude+(1-rate)*viewController.targetAmplitude
-//            if (viewController.phase > 2.0 * M_PI) {
-//                viewController.phase -= 2.0 * M_PI
-//            }
-//        }
-//        
-//        return noErr;
-//}
-
-//
+// http://stackoverflow.com/questions/1135163/how-do-i-use-uiscrollview-in-interface-builder
 // https://grokswift.com/custom-fonts/
 // https://github.com/HeshamMegid/HMSegmentedControl/blob/master/HMSegmentedControl/HMSegmentedControl.m
 //
 class ViewController: UIViewController {
 
-    @IBOutlet weak var frequencyKnob: Knob!
-    @IBOutlet weak var signalPathView: SignalPathView!
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var waveformSelector: MultiButton!
+    @IBOutlet weak var lfo1Frequency: Knob!
+    @IBOutlet weak var filterCutoff: Knob!
+    @IBOutlet weak var filterResonance: Knob!
+    @IBOutlet weak var filterCutoffLFO1Modulation: Knob!
     
     var gen : AudioComponentInstance = nil
 
     var sampleRate : Double = 44100.0
     
     var state = AudioState()
-
-    //
-    // Internal state
-    //
-//    var actualFrequency = 440.0//
-//    var phase : Double = 0.0
-//    var amplitude : Double = 0.0
-    
-    //
-    // Controls
-    //
-//    var frequency : Double = 440.0
-//    var targetAmplitude : Double = 0.0
     
     var keys : [UIButton] = [UIButton]()
     
+    //
+    // UI handlers
+    //
+    @IBAction func filterCutoffChanged(sender: Knob) {
+        state.filter_cutoff = Double(sender.value)
+    }
+    
+    @IBAction func filterResonanceChanged(sender: Knob) {
+        state.filter_resonance = Double(sender.value)
+        print("res",state.filter_resonance)
+    }
+    
+    @IBAction func lfo1FrequencyChanged(sender: Knob) {
+        state.lfo1_frequency = Double(sender.value)
+    }
+    
+    @IBAction func filterFrequencyLFO1ModulationChanged(sender: Knob) {
+        state.lfo1_filter_cutoff_modulation = Double(sender.value)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -94,24 +73,40 @@ class ViewController: UIViewController {
             name: AVAudioSessionInterruptionNotification,
             object: nil)
         
+        //
+        // http://stackoverflow.com/a/18039176
+        //
+        self.scrollView.panGestureRecognizer.minimumNumberOfTouches = 2
+        
+        
         init_audio_state(&state)
         
-        frequencyKnob.minValue = 200
-        frequencyKnob.maxValue = 2000
-        frequencyKnob.minAngle = 3.14159/8
-        frequencyKnob.maxAngle = 2*3.14159-3.14159/8
-        frequencyKnob.value = 200
+        lfo1Frequency.minAngle = 3.14159/8
+        lfo1Frequency.maxAngle = 2*3.14159-3.14159/8
+        lfo1Frequency.value = 2.0
+
+        filterCutoff.minAngle = 3.14159/8
+        filterCutoff.maxAngle = 2*3.14159-3.14159/8
+        filterCutoff.value = 2.0
         
-        knobChanged(frequencyKnob)
+        filterResonance.minAngle = 3.14159/8
+        filterResonance.maxAngle = 2*3.14159-3.14159/8
+        filterResonance.value = 2.0
+        
+        filterCutoffLFO1Modulation.minAngle = 3.14159/8
+        filterCutoffLFO1Modulation.maxAngle = 2*3.14159-3.14159/8
+        filterCutoffLFO1Modulation.value = 2.0
+        
+        filterCutoffChanged(filterCutoff)
+        filterResonanceChanged(filterResonance)
                 
         //
         // http://stackoverflow.com/questions/1378765/how-do-i-create-a-basic-uibutton-programmatically
         //
         let button = PianoKey(type:.System)
-        button.frame = CGRectMake(16.0, 280.0, 480, 128.0)
+        button.frame = CGRectMake(16.0, 280.0, 640, 128.0)
         button.numWhiteKeys = 16
         button.backgroundColor = UIColor.blackColor()
-//        button.setTitle("Hello", forState: .Normal)
         view.addSubview(button)
         button.addTarget(self, action:"keyDown:event:", forControlEvents: .TouchDown)
         button.addTarget(self, action:"keySlide:event:", forControlEvents: .TouchDragInside)
@@ -126,7 +121,7 @@ class ViewController: UIViewController {
     
     func frequencyFromNote(noteNumber: Int) -> Double {
         let middleC = 261.625565
-        return pow(2.0, Double(noteNumber)/12.0)*middleC*0.125
+        return pow(2.0, Double(noteNumber)/12.0)*middleC*0.25
     }
     
     func noteFromXY(x : CGFloat, y : CGFloat) -> Double {
@@ -146,7 +141,8 @@ class ViewController: UIViewController {
         
         let keyNumber = Int(x/keyWidth)
         let octave : [Int] = [0, 2, 4, 5, 7, 9, 11, 12]
-        let noteNumber = octave[keyNumber]
+        let octaveNumber = keyNumber/7
+        let noteNumber = octave[keyNumber%7]+12*octaveNumber
         return frequencyFromNote(noteNumber)
     }
     
@@ -205,9 +201,6 @@ class ViewController: UIViewController {
         stop()
     }
     
-    @IBAction func knobChanged(knob: Knob) {
-        state.frequency = Double(knob.value)
-    }
     @IBAction func waveformSelectorChanged(sender: MultiButton) {
         print("Button!")
         state.oscType = OscType(UInt32(sender.selectedButton))

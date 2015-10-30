@@ -25,9 +25,7 @@
 		BD8717681BD724DB00A6A4BD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD8717661BD724DB00A6A4BD /* LaunchScreen.storyboard */; };
 		BD8717701BD881E000A6A4BD /* Knob.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD87176F1BD881E000A6A4BD /* Knob.swift */; };
 		BD8717721BD881E900A6A4BD /* KnobLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8717711BD881E900A6A4BD /* KnobLayer.swift */; };
-		BD87177A1BD8AB4900A6A4BD /* knob1.png in Resources */ = {isa = PBXBuildFile; fileRef = BD8717771BD8AB4900A6A4BD /* knob1.png */; };
-		BD87177B1BD8AB4900A6A4BD /* knob2.png in Resources */ = {isa = PBXBuildFile; fileRef = BD8717781BD8AB4900A6A4BD /* knob2.png */; };
-		BD87177C1BD8AB4900A6A4BD /* knob3.png in Resources */ = {isa = PBXBuildFile; fileRef = BD8717791BD8AB4900A6A4BD /* knob3.png */; };
+		BD8B93C51BE2D30E00C2363B /* lfo_sin.c in Sources */ = {isa = PBXBuildFile; fileRef = BD8B93C31BE2D30E00C2363B /* lfo_sin.c */; };
 		BD9593B81BDFC89A00EE098F /* CGUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9593B71BDFC89A00EE098F /* CGUtils.swift */; };
 		BD9593BC1BE0468200EE098F /* bradley-hand-itc.png in Resources */ = {isa = PBXBuildFile; fileRef = BD9593BB1BE0468200EE098F /* bradley-hand-itc.png */; };
 		BD9593C61BE04AE400EE098F /* AudioRender.m in Sources */ = {isa = PBXBuildFile; fileRef = BD9593C51BE04AE400EE098F /* AudioRender.m */; };
@@ -41,8 +39,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		375D36021BDC207C00C55DBE /* PianoKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PianoKey.swift; sourceTree = "<group>"; };
-		375D36041BDC286900C55DBE /* PianoKeyLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PianoKeyLayer.swift; sourceTree = "<group>"; };
+		375D36021BDC207C00C55DBE /* PianoKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PianoKey.swift; path = MonoSynth/PianoKey.swift; sourceTree = "<group>"; };
+		375D36041BDC286900C55DBE /* PianoKeyLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PianoKeyLayer.swift; path = MonoSynth/PianoKeyLayer.swift; sourceTree = "<group>"; };
 		37660A141BE1B9BB00AFDD0B /* exp_decay.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = exp_decay.c; sourceTree = "<group>"; };
 		37660A151BE1B9BB00AFDD0B /* exp_decay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = exp_decay.h; sourceTree = "<group>"; };
 		37660A171BE1C19700AFDD0B /* ladder.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ladder.c; sourceTree = "<group>"; };
@@ -69,9 +67,8 @@
 		BD8717691BD724DB00A6A4BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BD87176F1BD881E000A6A4BD /* Knob.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Knob.swift; path = MonoSynth/Knob.swift; sourceTree = "<group>"; };
 		BD8717711BD881E900A6A4BD /* KnobLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KnobLayer.swift; path = MonoSynth/KnobLayer.swift; sourceTree = "<group>"; };
-		BD8717771BD8AB4900A6A4BD /* knob1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = knob1.png; sourceTree = "<group>"; };
-		BD8717781BD8AB4900A6A4BD /* knob2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = knob2.png; sourceTree = "<group>"; };
-		BD8717791BD8AB4900A6A4BD /* knob3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = knob3.png; sourceTree = "<group>"; };
+		BD8B93C31BE2D30E00C2363B /* lfo_sin.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lfo_sin.c; sourceTree = "<group>"; };
+		BD8B93C41BE2D30E00C2363B /* lfo_sin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lfo_sin.h; sourceTree = "<group>"; };
 		BD9593B71BDFC89A00EE098F /* CGUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGUtils.swift; sourceTree = "<group>"; };
 		BD9593BB1BE0468200EE098F /* bradley-hand-itc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bradley-hand-itc.png"; path = "../bradley-hand-itc.png"; sourceTree = "<group>"; };
 		BD9593BE1BE048AD00EE098F /* MonoSynth-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MonoSynth-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -109,8 +106,10 @@
 				378074411BE17D2700FF58A9 /* band_limited.c */,
 				37660A171BE1C19700AFDD0B /* ladder.c */,
 				37660A191BE1C1A600AFDD0B /* ladder.h */,
-				378074461BE17D6E00FF58A9 /* audio_sin.c */,
+				BD8B93C31BE2D30E00C2363B /* lfo_sin.c */,
+				BD8B93C41BE2D30E00C2363B /* lfo_sin.h */,
 				378074471BE17D6E00FF58A9 /* audio_sin.h */,
+				378074461BE17D6E00FF58A9 /* audio_sin.c */,
 				378074431BE17D5300FF58A9 /* audio_square.c */,
 				378074441BE17D5300FF58A9 /* audio_square.h */,
 				3780744E1BE17EE600FF58A9 /* audio_saw.h */,
@@ -143,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				BD87175F1BD724DB00A6A4BD /* ViewController.swift */,
+				BD8717611BD724DB00A6A4BD /* Main.storyboard */,
 				3780743F1BE17C9700FF58A9 /* Audio Synthesis */,
 				BD9593BD1BE0485600EE098F /* UI Elements */,
 				BD9593BB1BE0468200EE098F /* bradley-hand-itc.png */,
@@ -152,15 +152,9 @@
 				BDB75E2C1BDE7D8E00242397 /* normalselected.png */,
 				37BE9DF91BDDE7CB00CE8751 /* signalpath.png */,
 				BD87175D1BD724DB00A6A4BD /* AppDelegate.swift */,
-				375D36021BDC207C00C55DBE /* PianoKey.swift */,
 				37BE9DF51BDDADA600CE8751 /* SignalPathView.swift */,
-				375D36041BDC286900C55DBE /* PianoKeyLayer.swift */,
 				BD9593B71BDFC89A00EE098F /* CGUtils.swift */,
 				BDB1FBDD1BD9B38F001B05E8 /* Impact Label.ttf */,
-				BD8717771BD8AB4900A6A4BD /* knob1.png */,
-				BD8717781BD8AB4900A6A4BD /* knob2.png */,
-				BD8717791BD8AB4900A6A4BD /* knob3.png */,
-				BD8717611BD724DB00A6A4BD /* Main.storyboard */,
 				BD8717641BD724DB00A6A4BD /* Assets.xcassets */,
 				BD8717661BD724DB00A6A4BD /* LaunchScreen.storyboard */,
 				BD8717691BD724DB00A6A4BD /* Info.plist */,
@@ -176,6 +170,8 @@
 				BDB75E3A1BDF00A100242397 /* MultiButtonLayer.swift */,
 				BD87176F1BD881E000A6A4BD /* Knob.swift */,
 				BD8717711BD881E900A6A4BD /* KnobLayer.swift */,
+				375D36021BDC207C00C55DBE /* PianoKey.swift */,
+				375D36041BDC286900C55DBE /* PianoKeyLayer.swift */,
 			);
 			name = "UI Elements";
 			path = ..;
@@ -242,10 +238,7 @@
 			files = (
 				BDB75E311BDE7F1C00242397 /* selected.png in Resources */,
 				BD8717681BD724DB00A6A4BD /* LaunchScreen.storyboard in Resources */,
-				BD87177C1BD8AB4900A6A4BD /* knob3.png in Resources */,
-				BD87177A1BD8AB4900A6A4BD /* knob1.png in Resources */,
 				BDB75E2D1BDE7D8E00242397 /* normalselected.png in Resources */,
-				BD87177B1BD8AB4900A6A4BD /* knob2.png in Resources */,
 				37BE9DFA1BDDE7CB00CE8751 /* signalpath.png in Resources */,
 				BDB75E2B1BDE7CEB00242397 /* normalnormal.png in Resources */,
 				BD8717651BD724DB00A6A4BD /* Assets.xcassets in Resources */,
@@ -267,6 +260,7 @@
 				378074421BE17D2700FF58A9 /* band_limited.c in Sources */,
 				BD8717601BD724DB00A6A4BD /* ViewController.swift in Sources */,
 				3780744D1BE17E5F00FF58A9 /* audio_saw.c in Sources */,
+				BD8B93C51BE2D30E00C2363B /* lfo_sin.c in Sources */,
 				BD8717721BD881E900A6A4BD /* KnobLayer.swift in Sources */,
 				BD9593B81BDFC89A00EE098F /* CGUtils.swift in Sources */,
 				37660A161BE1B9BB00AFDD0B /* exp_decay.c in Sources */,

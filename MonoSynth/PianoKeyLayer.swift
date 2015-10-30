@@ -31,7 +31,7 @@ class PianoKeyLayer: CALayer {
         // Black keys
 //        let blacks : [Int] = [0, 1, 3, 4, 5]
         for i in 0...numNotes {
-            if keyMask[i % 8] {
+            if keyMask[i % 7] {
                 let keyBounds = CGRect(x: 0.5*keyWidth+CGFloat(i)*keyWidth, y: 0.0, width: CGFloat(keyWidth), height: 64.0)
                 let pianoKeyFrame = CGRectInset(keyBounds, 2.0, 2.0)
                 

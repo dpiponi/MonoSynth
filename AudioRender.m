@@ -23,7 +23,13 @@ OSStatus audio_render(void *inRefCon,
     float *buffer = ioData->mBuffers[0].mData;
 //    printf("gate=%f\n", state->gate);
     
+//    printf("lforeq=%f\n", state->lfo1_frequency);
+    
     for (int i = 0; i < inNumberFrames; ++i) {
+        //
+        // LFO
+        //
+        step_lfo_sin(&state->lfo1_sin, dt, state->lfo1_frequency);
         double sample;
         switch (state->oscType ) {
             case OSC_TYPE_SQUARE:
@@ -43,33 +49,16 @@ OSStatus audio_render(void *inRefCon,
                                             state->frequency, 0.0);
                 break;
         }
-        step_exp_decay(&state->exp_decay, dt, 0.25, state->gate);
+        step_exp_decay(&state->exp_decay, dt, 1.0, state->gate);
         
         double result = state->exp_decay.amplitude*sample;
-        step_ladder(&state->ladder, dt, 8.0*state->frequency, 3.5, result);
-//        printf("res=%f %f\n", result, state->ladder.y3);
+        double shift = state->lfo1_filter_cutoff_modulation*state->lfo1_sin.result;
+        double filter_frequency = state->frequency*pow(2.0, state->filter_cutoff+shift);
+        step_ladder(&state->ladder, dt,
+                    filter_frequency,
+                    state->filter_resonance,
+                    result);
         buffer[i] = 2.0*state->ladder.result;
-//        printf("^ %f\n", buffer[i]);
-//        if (i==0) { NSLog(@"%f",result); }
-#if 0
-        buffer[i] = state->amplitude*sin(state->phase);
-        
-        state->phase += 2.0*M_PI*state->actualFrequency/state->sampleRate;
-        state->actualFrequency = 0.999*state->actualFrequency+0.001*state->frequency;
-        
-        double rate = 0.0;
-        if (state->targetAmplitude > state->amplitude) {
-            rate = 0.9;
-        } else {
-            rate = 0.9999;
-        }
-        
-        state->amplitude = rate*state->amplitude+(1-rate)*state->targetAmplitude;
-        
-        if (state->phase > 2.0 * M_PI) {
-            state->phase -= 2.0 * M_PI;
-        }
-#endif
     }
     
     return noErr;

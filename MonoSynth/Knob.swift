@@ -9,7 +9,7 @@
 import UIKit
 import QuartzCore
 
-class Knob: UIControl {
+@IBDesignable class Knob: UIControl {
     
     var value : CGFloat = 0.0 {
         didSet {
@@ -31,10 +31,10 @@ class Knob: UIControl {
     var maxAngle : CGFloat = 2*3.1415926 {
         didSet { redrawLayers() }
     }
-    var minValue : CGFloat = 0.0 {
+    @IBInspectable var minValue : CGFloat = 0.0 {
         didSet { redrawLayers() }
     }
-    var maxValue : CGFloat = 1.0 {
+    @IBInspectable var maxValue : CGFloat = 1.0 {
         didSet { redrawLayers() }
     }
     
@@ -115,12 +115,17 @@ class Knob: UIControl {
         knobLayer1.setNeedsDisplay()
     }
     
-    /*
-    // Only override drawRect: if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
+    //
+    // http://stackoverflow.com/questions/30745026/checking-if-code-is-running-in-interface-builder-in-swift
+    //
+    #if TARGET_INTERFACE_BUILDER
     override func drawRect(rect: CGRect) {
-        // Drawing code
+        let context = UIGraphicsGetCurrentContext()
+        let myFrame = self.bounds
+        CGContextSetLineWidth(context, 10)
+        let myFrame2 = CGRectInset(myFrame, 5.0, 5.0)
+        CGContextStrokeEllipseInRect(context, myFrame2)
     }
-    */
+    #endif
 
 }
