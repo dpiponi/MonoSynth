@@ -131,10 +131,6 @@ class ViewController: UIViewController {
             name: AVAudioSessionInterruptionNotification,
             object: nil)
         
-        //
-        // http://stackoverflow.com/a/18039176
-        //
-        self.scrollView.panGestureRecognizer.minimumNumberOfTouches = 2
         
         
         init_audio_state(&state)
