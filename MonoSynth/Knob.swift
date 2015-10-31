@@ -25,10 +25,10 @@ import QuartzCore
     
     var knobLayer1 : KnobLayer! = nil
     
-    var minAngle : CGFloat = 0.0 /*{
+    @IBInspectable var minAngle : CGFloat = 0.0 /*{
         didSet { redrawLayers() }
     }*/
-    var maxAngle : CGFloat = 2*3.1415926 {
+    @IBInspectable var maxAngle : CGFloat = 360.0 {
         didSet { redrawLayers() }
     }
     @IBInspectable var minValue : CGFloat = 0.0 {

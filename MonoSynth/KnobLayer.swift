@@ -9,6 +9,10 @@
 import UIKit
 import QuartzCore
 
+func radians(a: CGFloat) -> CGFloat {
+    return a*3.14159265358979323846/180.0;
+}
+
 class KnobLayer: CALayer {
     var highlighted : Bool = false
     weak var slider : Knob! = nil
@@ -75,7 +79,7 @@ class KnobLayer: CALayer {
         CGContextSetStrokeColorWithColor(context, UIColor(white: 0.0, alpha: 1.0).CGColor)
         CGContextTranslateCTM(context, rect.origin.x, rect.origin.y)
         CGContextTranslateCTM(context, rect.width/2.0,  rect.height/2.0)
-        CGContextRotateCTM(context, self.slider.angleForValue(self.slider.value))
+        CGContextRotateCTM(context, radians(self.slider.angleForValue(self.slider.value)))
         CGContextTranslateCTM(context, 0.0, 1.0*rect.width*0.22)
         let rect3 = CGRect(x: -4.0, y:-4.0, width: 8.0, height: 8.0)
         CGContextFillEllipseInRect(context, rect3)

@@ -27,6 +27,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var filterResonance: Knob!
     @IBOutlet weak var filterCutoffLFO1Modulation: Knob!
     @IBOutlet weak var filterCutoffLFO2Modulation: Knob!
+    @IBOutlet weak var filterCutoffEnv1Modulation: Knob!
     
     var gen : AudioComponentInstance = nil
 
@@ -68,6 +69,10 @@ class ViewController: UIViewController {
         }
     }
         
+    @IBAction func filterCutoffEnvModulation(sender: Knob) {
+        state.filter_cutoff_env_modulation = Double(sender.value)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -96,20 +101,20 @@ class ViewController: UIViewController {
         
         init_audio_state(&state)
         
-        lfo1Frequency.minAngle = 3.14159/8
-        lfo1Frequency.maxAngle = 2*3.14159-3.14159/8
+//        lfo1Frequency.minAngle = 3.14159/8
+//        lfo1Frequency.maxAngle = 2*3.14159-3.14159/8
         lfo1Frequency.value = 2.0
 
-        filterCutoff.minAngle = 3.14159/8
-        filterCutoff.maxAngle = 2*3.14159-3.14159/8
+//        filterCutoff.minAngle = 3.14159/8
+//        filterCutoff.maxAngle = 2*3.14159-3.14159/8
         filterCutoff.value = 2.0
         
-        filterResonance.minAngle = 3.14159/8
-        filterResonance.maxAngle = 2*3.14159-3.14159/8
+//        filterResonance.minAngle = 3.14159/8
+//        filterResonance.maxAngle = 2*3.14159-3.14159/8
         filterResonance.value = 2.0
         
-        filterCutoffLFO1Modulation.minAngle = 3.14159/8
-        filterCutoffLFO1Modulation.maxAngle = 2*3.14159-3.14159/8
+//        filterCutoffLFO1Modulation.minAngle = 3.14159/8
+//        filterCutoffLFO1Modulation.maxAngle = 2*3.14159-3.14159/8
         filterCutoffLFO1Modulation.value = 2.0
         
         filterCutoffChanged(filterCutoff)
