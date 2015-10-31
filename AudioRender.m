@@ -32,6 +32,7 @@ OSStatus audio_render(void *inRefCon,
         for (int j = 0; j < 2; ++j) {
             step_lfo_sin(&state->lfo_sin[j], dt, state->lfo_frequency[j]);
         }
+        double lfo1_result = state->lfo_sin[0].result;
         
         double sample = 0.0;
         
@@ -43,7 +44,7 @@ OSStatus audio_render(void *inRefCon,
             case OSC_TYPE_SQUARE:
                 
                 for (int i = 0; i < state->vco1_number; ++i) {
-                    double detune = state->vco1_detune+(double)i*state->vco1_spread*offset[i];
+                    double detune = state->vco1_detune+(double)i*state->vco1_spread*offset[i]+state->vco1_lfo1_modulation*lfo1_result;
                     sample += step_square_nosync(&state->square_state[i],
                                                 1.0/44100.0,
                                                 state->frequency*pow(2.0, detune),
@@ -52,7 +53,7 @@ OSStatus audio_render(void *inRefCon,
                 break;
             case OSC_TYPE_SINE:
                 for (int i = 0; i < state->vco1_number; ++i) {
-                    double detune = state->vco1_detune+(double)i*state->vco1_spread*offset[i];
+                    double detune = state->vco1_detune+(double)i*state->vco1_spread*offset[i]+state->vco1_lfo1_modulation*lfo1_result;
                     sample += step_sin(&state->sin_state[i],
                                                 1.0/44100.0,
                                                 state->frequency*pow(2.0, detune), 0.0);
@@ -60,7 +61,7 @@ OSStatus audio_render(void *inRefCon,
                 break;
             case OSC_TYPE_SAW:
                 for (int i = 0; i < state->vco1_number; ++i) {
-                    double detune = state->vco1_detune+(double)i*state->vco1_spread*offset[i];
+                    double detune = state->vco1_detune+(double)i*state->vco1_spread*offset[i]+state->vco1_lfo1_modulation*lfo1_result;
                     sample += step_saw(&state->saw_state[i],
                                                 1.0/44100.0,
                                                 state->frequency*pow(2.0, detune), 0.0);

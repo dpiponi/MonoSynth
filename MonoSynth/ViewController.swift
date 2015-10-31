@@ -34,6 +34,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var vco1Detune: Knob!
     @IBOutlet weak var vco1Number: Knob!
     @IBOutlet weak var vco1Spread: Knob!
+    @IBOutlet weak var vco1Lfo1Modulation: Knob!
     
     @IBOutlet weak var filterCutoff: Knob!
     @IBOutlet weak var filterResonance: Knob!
@@ -79,6 +80,9 @@ class ViewController: UIViewController {
             state.lfo_filter_cutoff_modulation.1 = Double(sender.value)
         default: break;
         }
+    }
+    @IBAction func vco1Lfo1ModulationChanged(sender: Knob) {
+        state.vco1_lfo1_modulation = Double(sender.value)
     }
     
     //

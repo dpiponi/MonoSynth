@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h71-wp-FMB">
-                                <rect key="frame" x="0.0" y="8" width="500" height="266"/>
+                                <rect key="frame" x="0.0" y="8" width="600" height="266"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k1y-Bz-sYa">
                                         <rect key="frame" x="1" y="49" width="92" height="43"/>
@@ -345,6 +345,13 @@
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="LFO1 Mod" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fbl-1r-Fkb">
+                                                <rect key="frame" x="333" y="102" width="92" height="23"/>
+                                                <animations/>
+                                                <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="18"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Oscillators" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aat-U4-aSZ">
                                                 <rect key="frame" x="227" y="219" width="92" height="31"/>
                                                 <animations/>
@@ -375,7 +382,7 @@
                                                 </connections>
                                             </view>
                                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fdq-9g-7H2" customClass="Knob" customModule="MonoSynth" customModuleProvider="target">
-                                                <rect key="frame" x="233" y="131" width="80" height="80"/>
+                                                <rect key="frame" x="245" y="139" width="80" height="80"/>
                                                 <animations/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <userDefinedRuntimeAttributes>
@@ -403,8 +410,30 @@
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TdF-C7-Tcx" customClass="Knob" customModule="MonoSynth" customModuleProvider="target">
+                                                <rect key="frame" x="333" y="14" width="80" height="80"/>
+                                                <animations/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="minAngle">
+                                                        <real key="value" value="22.5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="maxAngle">
+                                                        <real key="value" value="337.5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="minValue">
+                                                        <real key="value" value="0.0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
+                                                        <real key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="vco1Lfo1ModulationChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="AXa-ZD-YDt"/>
+                                                </connections>
+                                            </view>
                                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="T5h-ax-gWT" customClass="Knob" customModule="MonoSynth" customModuleProvider="target">
-                                                <rect key="frame" x="333" y="131" width="80" height="80"/>
+                                                <rect key="frame" x="333" y="139" width="80" height="80"/>
                                                 <animations/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <userDefinedRuntimeAttributes>
@@ -466,6 +495,7 @@
                         <outlet property="lfo2Frequency" destination="eqT-j3-1ME" id="iLO-0w-3lk"/>
                         <outlet property="lfo2Panel" destination="bk5-IY-U5v" id="ChU-ll-uqt"/>
                         <outlet property="vco1Detune" destination="8eR-Nc-0xp" id="DVX-Ym-Qmf"/>
+                        <outlet property="vco1Lfo1Modulation" destination="TdF-C7-Tcx" id="tyO-hG-D3K"/>
                         <outlet property="vco1Number" destination="fdq-9g-7H2" id="B1M-eB-Rd6"/>
                         <outlet property="vco1Panel" destination="aZv-NT-3mi" id="KoT-rb-0Q9"/>
                         <outlet property="vco1Spread" destination="T5h-ax-gWT" id="GfB-Ao-vcq"/>

@@ -42,6 +42,8 @@ struct AudioState {
     int vco1_number;
     double vco1_detune;
     double vco1_spread;
+    double vco1_lfo1_modulation;
+    
     struct Saw saw_state[8];
     struct Sin sin_state[8];
     struct Square square_state[8];
@@ -80,6 +82,7 @@ void init_audio_state(struct AudioState *state) {
     state->vco1_number = 1;
     state->vco1_detune = 0.0;
     state->vco1_spread = 0.0;
+    state->vco1_lfo1_modulation = 0.0;
     state->oscType = OSC_TYPE_SINE;
     for (int i = 0; i < 8; ++i) {
         init_saw(&state->saw_state[i]);
