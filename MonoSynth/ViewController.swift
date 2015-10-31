@@ -19,6 +19,11 @@ import AVFoundation
 //
 class ViewController: UIViewController {
 
+    @IBOutlet weak var vco1Panel: UIView!
+    @IBOutlet weak var lfo1Panel: UIView!
+    @IBOutlet weak var lfo2Panel: UIView!
+    @IBOutlet weak var filt1Panel: UIView!
+    
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var waveformSelector: MultiButton!
     @IBOutlet weak var lfo1Frequency: Knob!
@@ -73,8 +78,41 @@ class ViewController: UIViewController {
         state.filter_cutoff_env_modulation = Double(sender.value)
     }
     
+    @IBAction func vco1Pressed(sender: UIButton) {
+        vco1Panel.hidden = false
+        lfo1Panel.hidden = true
+        lfo2Panel.hidden = true
+        filt1Panel.hidden = true
+    }
+    
+    @IBAction func lfo1Pressed(sender: UIButton) {
+        vco1Panel.hidden = true
+        lfo1Panel.hidden = false
+        lfo2Panel.hidden = true
+        filt1Panel.hidden = true
+    }
+    
+    @IBAction func lfo2Pressed(sender: UIButton) {
+        vco1Panel.hidden = true
+        lfo1Panel.hidden = true
+        lfo2Panel.hidden = false
+        filt1Panel.hidden = true
+    }
+    
+    @IBAction func filt1Button(sender: UIButton) {
+        vco1Panel.hidden = true
+        lfo1Panel.hidden = true
+        lfo2Panel.hidden = true
+        filt1Panel.hidden = false
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        vco1Panel.hidden = false
+        lfo1Panel.hidden = true
+        lfo2Panel.hidden = true
+        filt1Panel.hidden = true
         
         let audioSession = AVAudioSession.sharedInstance()
         
