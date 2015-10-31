@@ -16,6 +16,7 @@
 		378074481BE17D6E00FF58A9 /* audio_sin.c in Sources */ = {isa = PBXBuildFile; fileRef = 378074461BE17D6E00FF58A9 /* audio_sin.c */; };
 		3780744D1BE17E5F00FF58A9 /* audio_saw.c in Sources */ = {isa = PBXBuildFile; fileRef = 3780744C1BE17E5F00FF58A9 /* audio_saw.c */; };
 		378074511BE1801900FF58A9 /* moodler_lib.c in Sources */ = {isa = PBXBuildFile; fileRef = 378074501BE1801900FF58A9 /* moodler_lib.c */; };
+		37BA1D1E1BE5797900E7F73F /* envelope.c in Sources */ = {isa = PBXBuildFile; fileRef = 37BA1D1C1BE5797900E7F73F /* envelope.c */; };
 		37BE9DF61BDDADA600CE8751 /* SignalPathView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37BE9DF51BDDADA600CE8751 /* SignalPathView.swift */; };
 		37BE9DFA1BDDE7CB00CE8751 /* signalpath.png in Resources */ = {isa = PBXBuildFile; fileRef = 37BE9DF91BDDE7CB00CE8751 /* signalpath.png */; };
 		BD87175E1BD724DB00A6A4BD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD87175D1BD724DB00A6A4BD /* AppDelegate.swift */; };
@@ -55,6 +56,8 @@
 		3780744E1BE17EE600FF58A9 /* audio_saw.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = audio_saw.h; sourceTree = "<group>"; };
 		3780744F1BE1801000FF58A9 /* moodler_lib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = moodler_lib.h; sourceTree = "<group>"; };
 		378074501BE1801900FF58A9 /* moodler_lib.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = moodler_lib.c; sourceTree = "<group>"; };
+		37BA1D1C1BE5797900E7F73F /* envelope.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = envelope.c; sourceTree = "<group>"; };
+		37BA1D1D1BE5797900E7F73F /* envelope.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = envelope.h; sourceTree = "<group>"; };
 		37BE9DF31BDC343600CE8751 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		37BE9DF51BDDADA600CE8751 /* SignalPathView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignalPathView.swift; sourceTree = "<group>"; };
 		37BE9DF91BDDE7CB00CE8751 /* signalpath.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = signalpath.png; path = ../Assets/signalpath.png; sourceTree = "<group>"; };
@@ -100,6 +103,8 @@
 			children = (
 				BD9593C51BE04AE400EE098F /* AudioRender.m */,
 				BD9593C71BE04B2E00EE098F /* AudioRender.h */,
+				37BA1D1C1BE5797900E7F73F /* envelope.c */,
+				37BA1D1D1BE5797900E7F73F /* envelope.h */,
 				3780744F1BE1801000FF58A9 /* moodler_lib.h */,
 				378074501BE1801900FF58A9 /* moodler_lib.c */,
 				378074401BE17D1700FF58A9 /* band_limited.h */,
@@ -261,6 +266,7 @@
 				BD8717601BD724DB00A6A4BD /* ViewController.swift in Sources */,
 				3780744D1BE17E5F00FF58A9 /* audio_saw.c in Sources */,
 				BD8B93C51BE2D30E00C2363B /* lfo_sin.c in Sources */,
+				37BA1D1E1BE5797900E7F73F /* envelope.c in Sources */,
 				BD8717721BD881E900A6A4BD /* KnobLayer.swift in Sources */,
 				BD9593B81BDFC89A00EE098F /* CGUtils.swift in Sources */,
 				37660A161BE1B9BB00AFDD0B /* exp_decay.c in Sources */,

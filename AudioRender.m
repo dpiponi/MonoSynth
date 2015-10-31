@@ -68,14 +68,23 @@ OSStatus audio_render(void *inRefCon,
                 }
                 break;
         }
-        step_exp_decay(&state->exp_decay, dt, 1.0, state->gate);
+//        step_exp_decay(&state->exp_decay, dt, 1.0, state->gate);
         
-        double env1 = state->exp_decay.amplitude;
+//        double env1 = state->exp_decay.amplitude;
         
-        double result = env1*sample;
+        exec_envelope(&state->env1, dt, /* delay */ 0.0,
+                                        /* attack */ 0.1,
+                                        /* hold */ 0.1,
+                                        /* decay */ 0.5,
+                                        /* sustain */ 0.5,
+                                        /* release */ 0.1,
+                                        /* retrigger */ 1.0,
+                                        state->gate);
+        
+        double result = state->env1.level*sample;
         double shift = state->lfo_filter_cutoff_modulation[0]*state->lfo_sin[0].result+
                        state->lfo_filter_cutoff_modulation[1]*state->lfo_sin[1].result+
-        state->filter_cutoff_env_modulation*env1;
+        state->filter_cutoff_env_modulation*state->env1.level;
         double filter_frequency = state->frequency*pow(2.0, state->filter_cutoff+shift);
         step_ladder(&state->ladder, dt,
                     filter_frequency,

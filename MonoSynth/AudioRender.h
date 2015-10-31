@@ -17,6 +17,7 @@
 #include "audio_sin.h"
 #include "exp_decay.h"
 #include "ladder.h"
+#include "envelope.h"
 
 enum OscType {
     OSC_TYPE_SINE = 0,
@@ -51,7 +52,7 @@ struct AudioState {
     //
     // ENV1
     //
-    struct ExpDecay exp_decay;
+    struct Envelope env1;
     
     //
     // Filter
@@ -97,7 +98,7 @@ void init_audio_state(struct AudioState *state) {
     state->frequency = 440.0f;
     state->targetAmplitude = 0.0;
     
-    init_exp_decay(&state->exp_decay);
+    init_envelope(&state->env1);
 
     init_ladder(&state->ladder);
     
