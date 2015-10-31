@@ -35,10 +35,20 @@ struct AudioState {
     double lfo_frequency[2];
     struct LFOSin lfo_sin[2];
     
+    //
+    // VCO1
+    //
     enum OscType oscType;
-    struct Saw saw_state;
-    struct Sin sin_state;
-    struct Square square_state;
+    int vco1_number;
+    double vco1_detune;
+    double vco1_spread;
+    struct Saw saw_state[8];
+    struct Sin sin_state[8];
+    struct Square square_state[8];
+    
+    //
+    // ENV1
+    //
     struct ExpDecay exp_decay;
     
     //
@@ -66,7 +76,17 @@ struct AudioState {
 void init_audio_state(struct AudioState *state) {
     state->gate = 0.0;
     
+    // VCO1
+    state->vco1_number = 1;
+    state->vco1_detune = 0.0;
+    state->vco1_spread = 0.0;
     state->oscType = OSC_TYPE_SINE;
+    for (int i = 0; i < 8; ++i) {
+        init_saw(&state->saw_state[i]);
+        init_square(&state->square_state[i]);
+        init_sin(&state->sin_state[i]);
+    }
+    
     state->sampleRate = 44100.0;
     state->phase = 0.0;
     state->actualFrequency = 440.0;
@@ -75,10 +95,6 @@ void init_audio_state(struct AudioState *state) {
     state->targetAmplitude = 0.0;
     
     init_exp_decay(&state->exp_decay);
-    init_saw(&state->saw_state);
-    init_square(&state->square_state);
-    init_sin(&state->sin_state);
-    state-> oscType = OSC_TYPE_SINE;
 
     init_ladder(&state->ladder);
     

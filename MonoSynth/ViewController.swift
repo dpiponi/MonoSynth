@@ -24,10 +24,17 @@ class ViewController: UIViewController {
     @IBOutlet weak var lfo2Panel: UIView!
     @IBOutlet weak var filt1Panel: UIView!
     
-    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var waveformSelector: MultiButton!
     @IBOutlet weak var lfo1Frequency: Knob!
     @IBOutlet weak var lfo2Frequency: Knob!
+    
+    //
+    // VCO1
+    //
+    @IBOutlet weak var vco1Detune: Knob!
+    @IBOutlet weak var vco1Number: Knob!
+    @IBOutlet weak var vco1Spread: Knob!
+    
     @IBOutlet weak var filterCutoff: Knob!
     @IBOutlet weak var filterResonance: Knob!
     @IBOutlet weak var filterCutoffLFO1Modulation: Knob!
@@ -73,7 +80,20 @@ class ViewController: UIViewController {
         default: break;
         }
     }
-        
+    
+    //
+    // VCO1
+    //
+    @IBAction func vco1DetuneChanged(sender: Knob) {
+        state.vco1_detune = Double(sender.value)
+    }
+    @IBAction func vco1NumberChanged(sender: Knob) {
+        state.vco1_number = Int32(sender.value)
+    }
+    @IBAction func vco1SpreadChanged(sender: Knob) {
+        state.vco1_spread = Double(sender.value)
+    }
+    
     @IBAction func filterCutoffEnvModulation(sender: Knob) {
         state.filter_cutoff_env_modulation = Double(sender.value)
     }
@@ -135,20 +155,12 @@ class ViewController: UIViewController {
         
         init_audio_state(&state)
         
-//        lfo1Frequency.minAngle = 3.14159/8
-//        lfo1Frequency.maxAngle = 2*3.14159-3.14159/8
         lfo1Frequency.value = 2.0
 
-//        filterCutoff.minAngle = 3.14159/8
-//        filterCutoff.maxAngle = 2*3.14159-3.14159/8
         filterCutoff.value = 2.0
         
-//        filterResonance.minAngle = 3.14159/8
-//        filterResonance.maxAngle = 2*3.14159-3.14159/8
         filterResonance.value = 2.0
         
-//        filterCutoffLFO1Modulation.minAngle = 3.14159/8
-//        filterCutoffLFO1Modulation.maxAngle = 2*3.14159-3.14159/8
         filterCutoffLFO1Modulation.value = 2.0
         
         filterCutoffChanged(filterCutoff)
