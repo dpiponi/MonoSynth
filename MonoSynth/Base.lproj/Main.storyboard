@@ -75,6 +75,31 @@
                                             <action selector="env1ButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OYV-Dh-CqP"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aU7-zd-kti">
+                                        <rect key="frame" x="0.0" y="143" width="73" height="34"/>
+                                        <animations/>
+                                        <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="24"/>
+                                        <state key="normal" title="ENV2">
+                                            <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="env1ButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4QJ-Uw-vIU"/>
+                                            <action selector="env2ButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zP3-Nw-hw3"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EUr-yE-eK2">
+                                        <rect key="frame" x="1" y="172" width="73" height="42"/>
+                                        <animations/>
+                                        <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="24"/>
+                                        <state key="normal" title="VCA">
+                                            <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="env1ButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hDa-wC-40S"/>
+                                            <action selector="env2ButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cVn-Mh-VuM"/>
+                                            <action selector="vcaPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="VHg-pU-E5F"/>
+                                        </connections>
+                                    </button>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LPa-xx-TfD">
                                         <rect key="frame" x="100" y="0.0" width="500" height="284"/>
                                         <subviews>
@@ -853,7 +878,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view tag="1" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="36u-1G-Qbt" customClass="Knob" customModule="MonoSynth" customModuleProvider="target">
-                                                <rect key="frame" x="368" y="0.0" width="80" height="80"/>
+                                                <rect key="frame" x="368" y="6" width="80" height="80"/>
                                                 <animations/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <userDefinedRuntimeAttributes>
@@ -914,18 +939,11 @@
                                         <animations/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aU7-zd-kti">
-                                        <rect key="frame" x="0.0" y="143" width="73" height="34"/>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9yN-Gr-M8W">
+                                        <rect key="frame" x="100" y="8" width="600" height="250"/>
                                         <animations/>
-                                        <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="24"/>
-                                        <state key="normal" title="ENV2">
-                                            <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="env1ButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4QJ-Uw-vIU"/>
-                                            <action selector="env2ButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zP3-Nw-hw3"/>
-                                        </connections>
-                                    </button>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
                                 </subviews>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -960,6 +978,7 @@
                         <outlet property="lfo1Panel" destination="LPa-xx-TfD" id="99Z-xM-FnS"/>
                         <outlet property="lfo2Frequency" destination="eqT-j3-1ME" id="iLO-0w-3lk"/>
                         <outlet property="lfo2Panel" destination="bk5-IY-U5v" id="ChU-ll-uqt"/>
+                        <outlet property="vcaPanel" destination="9yN-Gr-M8W" id="Gr9-Fr-90t"/>
                         <outlet property="vco1Detune" destination="8eR-Nc-0xp" id="DVX-Ym-Qmf"/>
                         <outlet property="vco1Lfo1Modulation" destination="TdF-C7-Tcx" id="tyO-hG-D3K"/>
                         <outlet property="vco1Number" destination="fdq-9g-7H2" id="B1M-eB-Rd6"/>

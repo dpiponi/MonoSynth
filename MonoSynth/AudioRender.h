@@ -50,7 +50,7 @@ struct AudioState {
     struct Square square_state[8];
     
     //
-    // ENV1
+    // Envelopes
     //
     double envDelay[2];
     double envAttack[2];
@@ -59,7 +59,7 @@ struct AudioState {
     double envSustain[2];
     double envRelease[2];
     double envRetrigger[2];
-    struct Envelope env1;
+    struct Envelope env[2];
     
     //
     // Filter
@@ -113,8 +113,9 @@ void init_audio_state(struct AudioState *state) {
         state->envSustain[i] = 0.5;
         state->envRelease[i] = 0.5;
         state->envRetrigger[i] = 1000.0;
+        
+        init_envelope(&state->env[i]);
     }
-    init_envelope(&state->env1);
 
     init_ladder(&state->ladder);
     

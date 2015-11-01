@@ -25,6 +25,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var filt1Panel: UIView!
     @IBOutlet weak var env1Panel: UIView!
     @IBOutlet weak var env2Panel: UIView!
+    @IBOutlet weak var vcaPanel: UIView!
     
     @IBOutlet weak var waveformSelector: MultiButton!
     @IBOutlet weak var lfo1Frequency: Knob!
@@ -122,6 +123,7 @@ class ViewController: UIViewController {
         filt1Panel.hidden = true
         env1Panel.hidden = true
         env2Panel.hidden = true
+        vcaPanel.hidden = true
     }
     
     @IBAction func lfo1Pressed(sender: UIButton) {
@@ -131,6 +133,7 @@ class ViewController: UIViewController {
         filt1Panel.hidden = true
         env1Panel.hidden = true
         env2Panel.hidden = true
+        vcaPanel.hidden = true
     }
     
     @IBAction func lfo2Pressed(sender: UIButton) {
@@ -140,6 +143,7 @@ class ViewController: UIViewController {
         filt1Panel.hidden = true
         env1Panel.hidden = true
         env2Panel.hidden = true
+        vcaPanel.hidden = true
     }
     
     @IBAction func filt1Button(sender: UIButton) {
@@ -149,6 +153,7 @@ class ViewController: UIViewController {
         filt1Panel.hidden = false
         env1Panel.hidden = true
         env2Panel.hidden = true
+        vcaPanel.hidden = true
     }
     
     @IBAction func env1ButtonPressed(sender: UIButton) {
@@ -158,6 +163,7 @@ class ViewController: UIViewController {
         filt1Panel.hidden = true
         env1Panel.hidden = false
         env2Panel.hidden = true
+        vcaPanel.hidden = true
     }
     
     @IBAction func env2ButtonPressed(sender: UIButton) {
@@ -167,6 +173,17 @@ class ViewController: UIViewController {
         filt1Panel.hidden = true
         env1Panel.hidden = true
         env2Panel.hidden = false
+        vcaPanel.hidden = true
+    }
+    
+    @IBAction func vcaPressed(sender: UIButton) {
+        vco1Panel.hidden = true
+        lfo1Panel.hidden = true
+        lfo2Panel.hidden = true
+        filt1Panel.hidden = true
+        env1Panel.hidden = true
+        env2Panel.hidden = true
+        vcaPanel.hidden = false
     }
     
     //
@@ -247,10 +264,13 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        vco1Panel.hidden = false
+        vco1Panel.hidden = true
         lfo1Panel.hidden = true
         lfo2Panel.hidden = true
         filt1Panel.hidden = true
+        env1Panel.hidden = true
+        env2Panel.hidden = true
+        vcaPanel.hidden = false
         
         let audioSession = AVAudioSession.sharedInstance()
         
