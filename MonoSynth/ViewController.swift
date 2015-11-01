@@ -24,6 +24,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var lfo2Panel: UIView!
     @IBOutlet weak var filt1Panel: UIView!
     @IBOutlet weak var env1Panel: UIView!
+    @IBOutlet weak var env2Panel: UIView!
     
     @IBOutlet weak var waveformSelector: MultiButton!
     @IBOutlet weak var lfo1Frequency: Knob!
@@ -120,6 +121,7 @@ class ViewController: UIViewController {
         lfo2Panel.hidden = true
         filt1Panel.hidden = true
         env1Panel.hidden = true
+        env2Panel.hidden = true
     }
     
     @IBAction func lfo1Pressed(sender: UIButton) {
@@ -128,6 +130,7 @@ class ViewController: UIViewController {
         lfo2Panel.hidden = true
         filt1Panel.hidden = true
         env1Panel.hidden = true
+        env2Panel.hidden = true
     }
     
     @IBAction func lfo2Pressed(sender: UIButton) {
@@ -136,6 +139,7 @@ class ViewController: UIViewController {
         lfo2Panel.hidden = false
         filt1Panel.hidden = true
         env1Panel.hidden = true
+        env2Panel.hidden = true
     }
     
     @IBAction func filt1Button(sender: UIButton) {
@@ -144,6 +148,7 @@ class ViewController: UIViewController {
         lfo2Panel.hidden = true
         filt1Panel.hidden = false
         env1Panel.hidden = true
+        env2Panel.hidden = true
     }
     
     @IBAction func env1ButtonPressed(sender: UIButton) {
@@ -152,6 +157,16 @@ class ViewController: UIViewController {
         lfo2Panel.hidden = true
         filt1Panel.hidden = true
         env1Panel.hidden = false
+        env2Panel.hidden = true
+    }
+    
+    @IBAction func env2ButtonPressed(sender: UIButton) {
+        vco1Panel.hidden = true
+        lfo1Panel.hidden = true
+        lfo2Panel.hidden = true
+        filt1Panel.hidden = true
+        env1Panel.hidden = true
+        env2Panel.hidden = false
     }
     
     //
@@ -162,14 +177,18 @@ class ViewController: UIViewController {
         switch sender.tag {
         case 0:
             state.envDelay.0 = Double(sender.value)
-            default:
-                break
+        case 1:
+            state.envDelay.1 = Double(sender.value)
+        default:
+            break
         }
     }
     @IBAction func envAttackChanged(sender: Knob) {
         switch sender.tag {
         case 0:
             state.envAttack.0 = Double(sender.value)
+        case 1:
+            state.envAttack.1 = Double(sender.value)
         default:
             break
         }
@@ -178,6 +197,8 @@ class ViewController: UIViewController {
         switch sender.tag {
         case 0:
             state.envHold.0 = Double(sender.value)
+        case 1:
+            state.envHold.1 = Double(sender.value)
         default:
             break
         }
@@ -186,6 +207,8 @@ class ViewController: UIViewController {
         switch sender.tag {
         case 0:
             state.envDecay.0 = Double(sender.value)
+        case 1:
+            state.envDecay.1 = Double(sender.value)
         default:
             break
         }
@@ -194,6 +217,8 @@ class ViewController: UIViewController {
         switch sender.tag {
         case 0:
             state.envSustain.0 = Double(sender.value)
+        case 1:
+            state.envSustain.1 = Double(sender.value)
         default:
             break
         }
@@ -202,6 +227,8 @@ class ViewController: UIViewController {
         switch sender.tag {
         case 0:
             state.envRelease.0 = Double(sender.value)
+        case 1:
+            state.envRelease.1 = Double(sender.value)
         default:
             break
         }
@@ -210,6 +237,8 @@ class ViewController: UIViewController {
         switch sender.tag {
         case 0:
             state.envRetrigger.0 = Double(sender.value)
+        case 1:
+            state.envRetrigger.1 = Double(sender.value)
         default:
             break
         }
