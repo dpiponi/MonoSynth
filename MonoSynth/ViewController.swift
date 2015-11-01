@@ -23,6 +23,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var lfo1Panel: UIView!
     @IBOutlet weak var lfo2Panel: UIView!
     @IBOutlet weak var filt1Panel: UIView!
+    @IBOutlet weak var env1Panel: UIView!
     
     @IBOutlet weak var waveformSelector: MultiButton!
     @IBOutlet weak var lfo1Frequency: Knob!
@@ -118,6 +119,7 @@ class ViewController: UIViewController {
         lfo1Panel.hidden = true
         lfo2Panel.hidden = true
         filt1Panel.hidden = true
+        env1Panel.hidden = true
     }
     
     @IBAction func lfo1Pressed(sender: UIButton) {
@@ -125,6 +127,7 @@ class ViewController: UIViewController {
         lfo1Panel.hidden = false
         lfo2Panel.hidden = true
         filt1Panel.hidden = true
+        env1Panel.hidden = true
     }
     
     @IBAction func lfo2Pressed(sender: UIButton) {
@@ -132,6 +135,7 @@ class ViewController: UIViewController {
         lfo1Panel.hidden = true
         lfo2Panel.hidden = false
         filt1Panel.hidden = true
+        env1Panel.hidden = true
     }
     
     @IBAction func filt1Button(sender: UIButton) {
@@ -139,6 +143,76 @@ class ViewController: UIViewController {
         lfo1Panel.hidden = true
         lfo2Panel.hidden = true
         filt1Panel.hidden = false
+        env1Panel.hidden = true
+    }
+    
+    @IBAction func env1ButtonPressed(sender: UIButton) {
+        vco1Panel.hidden = true
+        lfo1Panel.hidden = true
+        lfo2Panel.hidden = true
+        filt1Panel.hidden = true
+        env1Panel.hidden = false
+    }
+    
+    //
+    // ENV1
+    //
+    
+    @IBAction func envDelayChanged(sender: Knob) {
+        switch sender.tag {
+        case 0:
+            state.envDelay.0 = Double(sender.value)
+            default:
+                break
+        }
+    }
+    @IBAction func envAttackChanged(sender: Knob) {
+        switch sender.tag {
+        case 0:
+            state.envAttack.0 = Double(sender.value)
+        default:
+            break
+        }
+    }
+    @IBAction func envHoldChanged(sender: Knob) {
+        switch sender.tag {
+        case 0:
+            state.envHold.0 = Double(sender.value)
+        default:
+            break
+        }
+    }
+    @IBAction func envDecayChanged(sender: Knob) {
+        switch sender.tag {
+        case 0:
+            state.envDecay.0 = Double(sender.value)
+        default:
+            break
+        }
+    }
+    @IBAction func envSustainChanged(sender: Knob) {
+        switch sender.tag {
+        case 0:
+            state.envSustain.0 = Double(sender.value)
+        default:
+            break
+        }
+    }
+    @IBAction func envReleaseChanged(sender: Knob) {
+        switch sender.tag {
+        case 0:
+            state.envRelease.0 = Double(sender.value)
+        default:
+            break
+        }
+    }
+    @IBAction func envRetriggerChanged(sender: Knob) {
+        switch sender.tag {
+        case 0:
+            state.envRetrigger.0 = Double(sender.value)
+        default:
+            break
+        }
     }
     
     override func viewDidLoad() {

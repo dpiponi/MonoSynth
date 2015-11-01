@@ -72,7 +72,7 @@
                                             <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="filt1Button:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NQw-Yh-Xoc"/>
+                                            <action selector="env1ButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OYV-Dh-CqP"/>
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LPa-xx-TfD">
@@ -501,7 +501,16 @@
                                                     <userDefinedRuntimeAttribute type="number" keyPath="maxAngle">
                                                         <real key="value" value="337.5"/>
                                                     </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="minValue">
+                                                        <real key="value" value="0.0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
+                                                        <real key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="envDelayChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="YWd-md-knJ"/>
+                                                </connections>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Delay" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L7s-vo-L2S">
                                                 <rect key="frame" x="116" y="96" width="57" height="21"/>
@@ -521,7 +530,16 @@
                                                     <userDefinedRuntimeAttribute type="number" keyPath="maxAngle">
                                                         <real key="value" value="337.5"/>
                                                     </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="minValue">
+                                                        <real key="value" value="0.0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
+                                                        <real key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="envAttackChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="Od9-NG-x6O"/>
+                                                </connections>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Attack" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="idc-G6-UAe">
                                                 <rect key="frame" x="116" y="213" width="57" height="23"/>
@@ -541,7 +559,16 @@
                                                     <userDefinedRuntimeAttribute type="number" keyPath="maxAngle">
                                                         <real key="value" value="337.5"/>
                                                     </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="minValue">
+                                                        <real key="value" value="0.0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
+                                                        <real key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="envHoldChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="RsA-i0-rpg"/>
+                                                </connections>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hold" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OA2-dB-TNI">
                                                 <rect key="frame" x="204" y="96" width="57" height="23"/>
@@ -561,7 +588,16 @@
                                                     <userDefinedRuntimeAttribute type="number" keyPath="maxAngle">
                                                         <real key="value" value="337.5"/>
                                                     </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="minValue">
+                                                        <real key="value" value="0.0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
+                                                        <real key="value" value="5"/>
+                                                    </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="envDecayChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="yYJ-CY-PC1"/>
+                                                </connections>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Decay" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m1l-a9-usC">
                                                 <rect key="frame" x="213" y="213" width="48" height="23"/>
@@ -581,7 +617,16 @@
                                                     <userDefinedRuntimeAttribute type="number" keyPath="maxAngle">
                                                         <real key="value" value="337.5"/>
                                                     </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="minValue">
+                                                        <real key="value" value="0.0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
+                                                        <real key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="envSustainChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="9Mc-Rn-uBD"/>
+                                                </connections>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sustain" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cEf-Qx-FNN">
                                                 <rect key="frame" x="282" y="94" width="67" height="23"/>
@@ -601,7 +646,16 @@
                                                     <userDefinedRuntimeAttribute type="number" keyPath="maxAngle">
                                                         <real key="value" value="337.5"/>
                                                     </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="minValue">
+                                                        <real key="value" value="0.0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
+                                                        <real key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="envRetriggerChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="6BB-Rv-mg0"/>
+                                                </connections>
                                             </view>
                                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="02A-wi-Pj7" customClass="Knob" customModule="MonoSynth" customModuleProvider="target">
                                                 <rect key="frame" x="280" y="125" width="80" height="80"/>
@@ -614,7 +668,16 @@
                                                     <userDefinedRuntimeAttribute type="number" keyPath="maxAngle">
                                                         <real key="value" value="337.5"/>
                                                     </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="minValue">
+                                                        <real key="value" value="0.0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
+                                                        <real key="value" value="5"/>
+                                                    </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="envReleaseChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="Dah-A7-aaI"/>
+                                                </connections>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Release" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2go-kq-hzY">
                                                 <rect key="frame" x="291" y="213" width="58" height="23"/>
@@ -649,6 +712,7 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="2048" height="600"/>
                     <connections>
+                        <outlet property="env1Panel" destination="1MW-Iz-elu" id="yWE-yn-B36"/>
                         <outlet property="envAttack" destination="1FP-Da-aBf" id="BxB-WQ-G9R"/>
                         <outlet property="envDecay" destination="yGc-29-jJE" id="UqR-LN-b4J"/>
                         <outlet property="envDelay" destination="dzf-64-Q0u" id="TFD-MF-UZK"/>

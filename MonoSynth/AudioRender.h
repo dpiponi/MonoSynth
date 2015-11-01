@@ -52,6 +52,13 @@ struct AudioState {
     //
     // ENV1
     //
+    double envDelay[2];
+    double envAttack[2];
+    double envHold[2];
+    double envDecay[2];
+    double envSustain[2];
+    double envRelease[2];
+    double envRetrigger[2];
     struct Envelope env1;
     
     //
@@ -98,6 +105,15 @@ void init_audio_state(struct AudioState *state) {
     state->frequency = 440.0f;
     state->targetAmplitude = 0.0;
     
+    for (int i = 0; i < 2; ++i) {
+        state->envDelay[i] = 0.0;
+        state->envAttack[i] = 0.1;
+        state->envHold[i] = 0.0;;
+        state->envDecay[i] = 0.5;
+        state->envSustain[i] = 0.5;
+        state->envRelease[i] = 0.5;
+        state->envRetrigger[i] = 1000.0;
+    }
     init_envelope(&state->env1);
 
     init_ladder(&state->ladder);
@@ -110,6 +126,11 @@ void init_audio_state(struct AudioState *state) {
     state->lfo_filter_cutoff_modulation[0] = 0.0;
     state->lfo_filter_cutoff_modulation[1] = 0.0;
     state->filter_cutoff_env_modulation = 0.0;
+    
+    //
+    // ENV1
+    //
+    
 }
 
 OSStatus audio_render( void *inRefCon, AudioUnitRenderActionFlags *ioActionFlags, const AudioTimeStamp *inTimeStamp, UInt32 inBusNumber, UInt32 inNumberFrames, AudioBufferList *ioData );

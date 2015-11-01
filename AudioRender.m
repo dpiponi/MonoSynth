@@ -72,13 +72,13 @@ OSStatus audio_render(void *inRefCon,
         
 //        double env1 = state->exp_decay.amplitude;
         
-        exec_envelope(&state->env1, dt, /* delay */ 0.0,
-                                        /* attack */ 0.1,
-                                        /* hold */ 0.1,
-                                        /* decay */ 0.5,
-                                        /* sustain */ 0.5,
-                                        /* release */ 0.1,
-                                        /* retrigger */ 1.0,
+        exec_envelope(&state->env1, dt, /* delay */ state->envDelay[0],
+                                        /* attack */ state->envAttack[0],
+                                        /* hold */ state->envHold[0],
+                                        /* decay */ state->envDecay[0],
+                                        /* sustain */ state->envSustain[0],
+                                        /* release */ state->envRelease[0],
+                                        /* retrigger */ state->envRetrigger[0],
                                         state->gate);
         
         double result = state->env1.level*sample;
