@@ -42,6 +42,17 @@ class ViewController: UIViewController {
     @IBOutlet weak var filterCutoffLFO2Modulation: Knob!
     @IBOutlet weak var filterCutoffEnv1Modulation: Knob!
     
+    //
+    // ENV1
+    //
+    @IBOutlet weak var envDelay: Knob!
+    @IBOutlet weak var envAttack: Knob!
+    @IBOutlet weak var envHold: Knob!
+    @IBOutlet weak var envDecay: Knob!
+    @IBOutlet weak var envSustain: Knob!
+    @IBOutlet weak var envRelease: Knob!
+    @IBOutlet weak var envRetrigger: Knob!
+    
     var gen : AudioComponentInstance = nil
 
     var sampleRate : Double = 44100.0
