@@ -70,7 +70,7 @@ struct AudioState {
     // Filter
     //
     double lfo_filter_cutoff_modulation[2];
-    double filter_cutoff_env_modulation;
+    double filter_cutoff_env_modulation[2];
     struct Ladder ladder;
     
     double actualFrequency;
@@ -135,7 +135,8 @@ void init_audio_state(struct AudioState *state) {
     state->filter_resonance = 2.0;
     state->lfo_filter_cutoff_modulation[0] = 0.0;
     state->lfo_filter_cutoff_modulation[1] = 0.0;
-    state->filter_cutoff_env_modulation = 0.0;
+    state->filter_cutoff_env_modulation[0] = 0.0;
+    state->filter_cutoff_env_modulation[1] = 0.0;
     
     //
     // ENV1

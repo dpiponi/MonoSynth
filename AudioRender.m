@@ -90,7 +90,8 @@ OSStatus audio_render(void *inRefCon,
         }
         double shift = state->lfo_filter_cutoff_modulation[0]*state->lfo_sin[0].result+
                        state->lfo_filter_cutoff_modulation[1]*state->lfo_sin[1].result+
-        state->filter_cutoff_env_modulation*state->env[0].level; // XXX Consider env[1]
+                        state->filter_cutoff_env_modulation[0]*state->env[0].level+
+                        state->filter_cutoff_env_modulation[1]*state->env[1].level;
         double filter_frequency = state->frequency*pow(2.0, state->filter_cutoff+shift);
         step_ladder(&state->ladder, dt,
                     filter_frequency,

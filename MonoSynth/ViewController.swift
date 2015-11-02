@@ -83,6 +83,9 @@ class ViewController: UIViewController {
         print("res",state.filter_resonance)
     }
     
+    //
+    // LFO1 & LFO2
+    //
     @IBAction func lfo1FrequencyChanged(sender: Knob) {
         switch sender.tag {
         case 0:
@@ -93,6 +96,9 @@ class ViewController: UIViewController {
         }
     }
     
+    //
+    // LPF1
+    //
     @IBAction func filterFrequencyLFO1ModulationChanged(sender: Knob) {
         switch sender.tag {
         case 0:
@@ -102,13 +108,26 @@ class ViewController: UIViewController {
         default: break;
         }
     }
-    @IBAction func vco1Lfo1ModulationChanged(sender: Knob) {
-        state.vco1_lfo1_modulation = Double(sender.value)
+    
+    @IBAction func filterCutoffEnvModulation(sender: Knob) {
+        switch sender.tag {
+        case 0:
+            state.filter_cutoff_env_modulation.0 = Double(sender.value)
+        case 1:
+            state.filter_cutoff_env_modulation.1 = Double(sender.value)
+        default:
+            break
+        }
     }
+
     
     //
     // VCO1
     //
+    @IBAction func vco1Lfo1ModulationChanged(sender: Knob) {
+        state.vco1_lfo1_modulation = Double(sender.value)
+    }
+    
     @IBAction func vco1DetuneChanged(sender: Knob) {
         state.vco1_detune = Double(sender.value)
     }
@@ -119,9 +138,6 @@ class ViewController: UIViewController {
         state.vco1_spread = Double(sender.value)
     }
     
-    @IBAction func filterCutoffEnvModulation(sender: Knob) {
-        state.filter_cutoff_env_modulation = Double(sender.value)
-    }
     
     @IBAction func vco1Pressed(sender: UIButton) {
         vco1Panel.hidden = false
