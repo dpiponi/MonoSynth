@@ -57,6 +57,11 @@ class ViewController: UIViewController {
     @IBOutlet weak var envRelease: Knob!
     @IBOutlet weak var envRetrigger: Knob!
     
+    //
+    // VCA
+    //
+    @IBOutlet weak var vcaEnv2Switch: UISwitch!
+    
     var gen : AudioComponentInstance = nil
 
     var sampleRate : Double = 44100.0
@@ -272,6 +277,13 @@ class ViewController: UIViewController {
         default:
             break
         }
+    }
+    
+    //
+    // VCA
+    //
+    @IBAction func vcaEnv2(sender: UISwitch) {
+        state.vcaEnv2 = sender.on ? 1 : 0
     }
     
     override func viewDidLoad() {

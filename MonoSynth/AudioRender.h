@@ -28,6 +28,11 @@ enum OscType {
 struct AudioState {
     // Globals
     double sampleRate;
+    
+    //
+    // UI
+    //
+    int vcaEnv2;
 
     //
     // LFO1
@@ -84,7 +89,11 @@ struct AudioState {
 };
 
 void init_audio_state(struct AudioState *state) {
+    //
+    // UI
+    //
     state->gate = 0.0;
+    state->vcaEnv2 = 0;
     
     // VCO1
     state->vco1_number = 1;

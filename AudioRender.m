@@ -84,7 +84,10 @@ OSStatus audio_render(void *inRefCon,
                                               state->gate);
         }
         
-        double result = sample*state->env[0].level;//*state->env[1].level;
+        double result = sample*state->env[0].level;
+        if (state->vcaEnv2) {
+            result *= state->env[1].level;
+        }
         double shift = state->lfo_filter_cutoff_modulation[0]*state->lfo_sin[0].result+
                        state->lfo_filter_cutoff_modulation[1]*state->lfo_sin[1].result+
         state->filter_cutoff_env_modulation*state->env[0].level; // XXX Consider env[1]
