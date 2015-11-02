@@ -27,6 +27,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var env2Panel: UIView!
     @IBOutlet weak var vcaPanel: UIView!
     @IBOutlet weak var env1Graph: ADSRPlot!
+    @IBOutlet weak var env2Graph: ADSRPlot!
     
     @IBOutlet weak var waveformSelector: MultiButton!
     @IBOutlet weak var lfo1Frequency: Knob!
@@ -200,73 +201,85 @@ class ViewController: UIViewController {
         switch sender.tag {
         case 0:
             state.envDelay.0 = Double(sender.value)
+            env1Graph.delay = sender.value
+            env1Graph.setNeedsDisplay()
         case 1:
             state.envDelay.1 = Double(sender.value)
+            env2Graph.delay = sender.value
+            env2Graph.setNeedsDisplay()
         default:
             break
         }
-        env1Graph.delay = sender.value
-        env1Graph.setNeedsDisplay()
     }
     @IBAction func envAttackChanged(sender: Knob) {
         switch sender.tag {
         case 0:
             state.envAttack.0 = Double(sender.value)
+            env1Graph.attack = sender.value
+            env1Graph.setNeedsDisplay()
         case 1:
             state.envAttack.1 = Double(sender.value)
+            env2Graph.attack = sender.value
+            env2Graph.setNeedsDisplay()
         default:
             break
         }
-        env1Graph.attack = sender.value
-        env1Graph.setNeedsDisplay()
     }
     @IBAction func envHoldChanged(sender: Knob) {
         switch sender.tag {
         case 0:
             state.envHold.0 = Double(sender.value)
+            env1Graph.hold = sender.value
+            env1Graph.setNeedsDisplay()
         case 1:
             state.envHold.1 = Double(sender.value)
+            env2Graph.hold = sender.value
+            env2Graph.setNeedsDisplay()
         default:
             break
         }
-        env1Graph.hold = sender.value
-        env1Graph.setNeedsDisplay()
     }
     @IBAction func envDecayChanged(sender: Knob) {
         switch sender.tag {
         case 0:
             state.envDecay.0 = Double(sender.value)
+            env1Graph.decay = sender.value
+            env1Graph.setNeedsDisplay()
         case 1:
             state.envDecay.1 = Double(sender.value)
+            env2Graph.decay = sender.value
+            env2Graph.setNeedsDisplay()
         default:
             break
         }
-        env1Graph.decay = sender.value
-        env1Graph.setNeedsDisplay()
     }
     @IBAction func envSustainChanged(sender: Knob) {
         switch sender.tag {
         case 0:
             state.envSustain.0 = Double(sender.value)
+            env1Graph.sustain = sender.value
+            env1Graph.setNeedsDisplay()
         case 1:
             state.envSustain.1 = Double(sender.value)
+            env2Graph.sustain = sender.value
+            env2Graph.setNeedsDisplay()
         default:
             break
         }
-        env1Graph.sustain = sender.value
-        env1Graph.setNeedsDisplay()
     }
     @IBAction func envReleaseChanged(sender: Knob) {
         switch sender.tag {
         case 0:
             state.envRelease.0 = Double(sender.value)
+            env1Graph.release_ = sender.value
+            env1Graph.setNeedsDisplay()
         case 1:
             state.envRelease.1 = Double(sender.value)
+            env2Graph.release_ = sender.value
+            env2Graph.setNeedsDisplay()
         default:
             break
         }
-        env1Graph.release_ = sender.value
-        env1Graph.setNeedsDisplay()
     }
     @IBAction func envRetriggerChanged(sender: Knob) {
         switch sender.tag {

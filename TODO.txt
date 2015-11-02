@@ -1,0 +1,15 @@
+1. Get ADSR graph right
+2. Delay in ADSR graph
+4. Feed ENV2 into filter
+5. Feed LFO1 and LFO2 into VCA
+6. Feed ENV1 and ENV2 into VCO1
+7. Feed LFO2, ENV1 and ENV2 into VCO1
+8. LFO waveforms
+9. Rand for LFO1 and LFO2
+10. Noise for VCO
+11. Sequencers
+12. VCO sync
+
+Done
+----
+3. ADSR graph for ENV2
