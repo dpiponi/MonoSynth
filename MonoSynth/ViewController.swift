@@ -26,6 +26,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var env1Panel: UIView!
     @IBOutlet weak var env2Panel: UIView!
     @IBOutlet weak var vcaPanel: UIView!
+    @IBOutlet weak var env1Graph: ADSRPlot!
     
     @IBOutlet weak var waveformSelector: MultiButton!
     @IBOutlet weak var lfo1Frequency: Knob!
@@ -199,6 +200,8 @@ class ViewController: UIViewController {
         default:
             break
         }
+        env1Graph.delay = sender.value
+        env1Graph.setNeedsDisplay()
     }
     @IBAction func envAttackChanged(sender: Knob) {
         switch sender.tag {
@@ -209,6 +212,8 @@ class ViewController: UIViewController {
         default:
             break
         }
+        env1Graph.attack = sender.value
+        env1Graph.setNeedsDisplay()
     }
     @IBAction func envHoldChanged(sender: Knob) {
         switch sender.tag {
@@ -219,6 +224,8 @@ class ViewController: UIViewController {
         default:
             break
         }
+        env1Graph.hold = sender.value
+        env1Graph.setNeedsDisplay()
     }
     @IBAction func envDecayChanged(sender: Knob) {
         switch sender.tag {
@@ -229,6 +236,8 @@ class ViewController: UIViewController {
         default:
             break
         }
+        env1Graph.decay = sender.value
+        env1Graph.setNeedsDisplay()
     }
     @IBAction func envSustainChanged(sender: Knob) {
         switch sender.tag {
@@ -239,6 +248,8 @@ class ViewController: UIViewController {
         default:
             break
         }
+        env1Graph.sustain = sender.value
+        env1Graph.setNeedsDisplay()
     }
     @IBAction func envReleaseChanged(sender: Knob) {
         switch sender.tag {
@@ -249,6 +260,8 @@ class ViewController: UIViewController {
         default:
             break
         }
+        env1Graph.release_ = sender.value
+        env1Graph.setNeedsDisplay()
     }
     @IBAction func envRetriggerChanged(sender: Knob) {
         switch sender.tag {

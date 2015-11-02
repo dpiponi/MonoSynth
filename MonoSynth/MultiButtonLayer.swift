@@ -151,7 +151,6 @@ class MultiButtonLayer: CALayer {
                 CGContextEndTransparencyLayer(context)
             }
             
-            print("Calling f")
             f(context, rect, selected)
         }
     }
@@ -178,7 +177,7 @@ class MultiButtonLayer: CALayer {
 //                CGContextSetShadowWithColor(context, CGSize(width: 1.0,height: 1.0), 6.0, shadowColor)
                 
 //                CGContextBeginTransparencyLayer(context, nil)
-                print(i, self.slider.selectedButton)
+//                print(i, self.slider.selectedButton)
                 self.drawButton(context, rect:myRect, selected: self.slider.selectedButton == i, f:drawer[i])
 //                CGContextEndTransparencyLayer(context)
             }

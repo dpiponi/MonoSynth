@@ -18,6 +18,7 @@ OSStatus audio_render(void *inRefCon,
                       UInt32 inNumberFrames,
                       AudioBufferList *ioData) {
     
+    printf("Yo!\n");
     struct AudioState *state = (struct AudioState *)inRefCon;
     const double dt = 1.0/44100.0;
     float *buffer = ioData->mBuffers[0].mData;
@@ -72,7 +73,7 @@ OSStatus audio_render(void *inRefCon,
         
 //        double env1 = state->exp_decay.amplitude;
         
-        for (i = 0; i < 2; ++i) {
+        for (int i = 0; i < 2; ++i) {
             exec_envelope(&state->env[i], dt, state->envDelay[i],
                                               state->envAttack[i],
                                               state->envHold[i],
@@ -83,7 +84,7 @@ OSStatus audio_render(void *inRefCon,
                                               state->gate);
         }
         
-        double result = state->env[0].level*state->env[1].level*sample;
+        double result = sample*state->env[0].level;//*state->env[1].level;
         double shift = state->lfo_filter_cutoff_modulation[0]*state->lfo_sin[0].result+
                        state->lfo_filter_cutoff_modulation[1]*state->lfo_sin[1].result+
         state->filter_cutoff_env_modulation*state->env[0].level; // XXX Consider env[1]
@@ -92,8 +93,13 @@ OSStatus audio_render(void *inRefCon,
                     filter_frequency,
                     state->filter_resonance,
                     result);
-        buffer[i] = 2.0*state->ladder.result;
+        buffer[i] = 1.0*state->ladder.result;
     }
+//    printf(":::");
+//    for (int i = 0; i < 10; ++i) {
+//        printf("%f ", buffer[i]);
+//    }
+//    printf("\n");
     
     return noErr;
 }

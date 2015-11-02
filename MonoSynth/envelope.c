@@ -54,25 +54,30 @@ void exec_envelope(struct Envelope *env, double dt, double delay, double attack,
             }
             break;
         case DECAY:
-            if (decay > 0) {
-                env->level *= 1.0-dt/decay;
-                if (env->level <= sustain) {
-                    env->level = sustain;
-                    env->state = SUSTAIN;
-                    env->time_since_start = 0.0;
-                }
-            } else {
-                env->level = sustain;
-                env->state = SUSTAIN;
-                env->time_since_start = 0.0;
-            }
-            break;
-        case SUSTAIN:
             if (gate <= 0) {
                 env->state = RELEASE;
                 env->time_since_start = 0.0;
             }
+            if (decay > 0) {
+                env->level = (1.0-dt/decay)*env->level+dt/decay*sustain;
+//                if (env->level <= sustain) {
+//                    env->level = sustain;
+//                    env->state = SUSTAIN;
+//                    env->time_since_start = 0.0;
+//                }
+            } else {
+                env->level = sustain;
+//                env->state = SUSTAIN;
+//                env->time_since_start = 0.0;
+            }
             break;
+        case SUSTAIN:
+            // There is no sustain phase
+//            if (gate <= 0) {
+//                env->state = RELEASE;
+//                env->time_since_start = 0.0;
+//            }
+//            break;
         case RELEASE:
             if (release > 0) {
                 env->level *= 1.0-dt/release;
