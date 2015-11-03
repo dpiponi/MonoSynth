@@ -8,7 +8,25 @@
 
 import UIKit
 
-func plotExponential() -> Void {
+func plotExponential(path : UIBezierPath,
+                     plotSteps : Int, timePeriod : CGFloat, expRate : CGFloat,
+                     xOffset : CGFloat, level0 : CGFloat, level1 : CGFloat) -> Void {
+    for i in 0..<plotSteps {
+        let plotDelta = 1.0/CGFloat(plotSteps)
+
+        let t0 = CGFloat(plotDelta)*CGFloat(i)*timePeriod
+        let t1 = CGFloat(plotDelta)*CGFloat(i+1)*timePeriod
+        let c0 = CGFloat(exp(-t0/expRate))
+        let c1 = CGFloat(exp(-t1/expRate))
+        let p0 = CGPoint(x: xOffset+t0, y: c0*level0+(1.0-c0)*level1)
+        let p1 = CGPoint(x: xOffset+t1, y: c1*level0+(1.0-c1)*level1)
+        let g0 = (level0-level1)/expRate*c0
+        let g1 = (level0-level1)/expRate*c1
+        let dx = p1.x-p0.x
+        let q0 = CGPoint(x: p0.x+dx/3.0, y:p0.y+g0*dx/3.0)
+        let q1 = CGPoint(x: p1.x-dx/3.0, y:p1.y-g1*dx/3.0)
+        path.addCurveToPoint(p1, controlPoint1: q0, controlPoint2: q1)
+    }
 }
 
 class ADSRPlot: UIView {
