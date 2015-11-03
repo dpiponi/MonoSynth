@@ -18,8 +18,9 @@
 19. Animate ADSR
 20. Jump from A to R if key released
 21. Logarithmic knobs
-22. Plot ADSR with Béziers
+23. Smarter placement of Bezier control points (Good control points for exp(-x) on [0,a] should also be good for exp(-2x) on [0,a/2] but that has an obvious shortcoming.)
 
 Done
 ----
 3. ADSR graph for ENV2
+22. Plot ADSR with Béziers
