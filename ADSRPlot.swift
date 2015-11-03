@@ -8,6 +8,9 @@
 
 import UIKit
 
+func plotExponential() -> Void {
+}
+
 class ADSRPlot: UIView {
 
     var delay : CGFloat = 0.1
@@ -68,8 +71,12 @@ class ADSRPlot: UIView {
         //
         // Plot attack phase
         //
+        path.moveToPoint(CGPoint(x: delayTime, y:0.0)) // XXX get rid of all but first
         if attack == 0 {
-            CGContextMoveToPoint(context, 0.0, 1.0)
+            let p1 = CGPoint(x: delayTime, y: 1.0)
+            let q0 = CGPoint(x: delayTime, y:1.0/3.0)
+            let q1 = CGPoint(x: delayTime, y:2.0/3.0)
+            path.addCurveToPoint(p1, controlPoint1: q0, controlPoint2: q1)
         } else {
             for i in 0..<plotSteps {
 //                let t = CGFloat(0.2)*CGFloat(i+1)*attackTime
@@ -84,7 +91,6 @@ class ADSRPlot: UIView {
                 let dx = p1.x-p0.x
                 let q0 = CGPoint(x: p0.x+dx/3.0, y:p0.y+g0*dx/3.0)
                 let q1 = CGPoint(x: p1.x-dx/3.0, y:p1.y-g1*dx/3.0)
-                path.moveToPoint(p0) // XXX get rid of all but first
                 path.addCurveToPoint(p1, controlPoint1: q0, controlPoint2: q1)
 //                print(p0, q0, q1, p1)
             }
