@@ -15,6 +15,10 @@
 16. Factor out VCO
 17. Draw filter graph
 18. Oscilloscope
+19. Animate ADSR
+20. Jump from A to R if key released
+21. Logarithmic knobs
+22. Plot ADSR with Béziers
 
 Done
 ----

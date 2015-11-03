@@ -18,7 +18,6 @@ OSStatus audio_render(void *inRefCon,
                       UInt32 inNumberFrames,
                       AudioBufferList *ioData) {
     
-    printf("Yo!\n");
     struct AudioState *state = (struct AudioState *)inRefCon;
     const double dt = 1.0/44100.0;
     float *buffer = ioData->mBuffers[0].mData;

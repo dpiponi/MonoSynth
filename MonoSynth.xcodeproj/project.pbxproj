@@ -20,7 +20,6 @@
 		378074511BE1801900FF58A9 /* moodler_lib.c in Sources */ = {isa = PBXBuildFile; fileRef = 378074501BE1801900FF58A9 /* moodler_lib.c */; };
 		37BA1D1E1BE5797900E7F73F /* envelope.c in Sources */ = {isa = PBXBuildFile; fileRef = 37BA1D1C1BE5797900E7F73F /* envelope.c */; };
 		37BE9DF61BDDADA600CE8751 /* SignalPathView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37BE9DF51BDDADA600CE8751 /* SignalPathView.swift */; };
-		37BE9DFA1BDDE7CB00CE8751 /* signalpath.png in Resources */ = {isa = PBXBuildFile; fileRef = 37BE9DF91BDDE7CB00CE8751 /* signalpath.png */; };
 		BD87175E1BD724DB00A6A4BD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD87175D1BD724DB00A6A4BD /* AppDelegate.swift */; };
 		BD8717601BD724DB00A6A4BD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD87175F1BD724DB00A6A4BD /* ViewController.swift */; };
 		BD8717631BD724DB00A6A4BD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD8717611BD724DB00A6A4BD /* Main.storyboard */; };
@@ -30,13 +29,7 @@
 		BD8717721BD881E900A6A4BD /* KnobLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD8717711BD881E900A6A4BD /* KnobLayer.swift */; };
 		BD8B93C51BE2D30E00C2363B /* lfo_sin.c in Sources */ = {isa = PBXBuildFile; fileRef = BD8B93C31BE2D30E00C2363B /* lfo_sin.c */; };
 		BD9593B81BDFC89A00EE098F /* CGUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9593B71BDFC89A00EE098F /* CGUtils.swift */; };
-		BD9593BC1BE0468200EE098F /* bradley-hand-itc.png in Resources */ = {isa = PBXBuildFile; fileRef = BD9593BB1BE0468200EE098F /* bradley-hand-itc.png */; };
 		BD9593C61BE04AE400EE098F /* AudioRender.m in Sources */ = {isa = PBXBuildFile; fileRef = BD9593C51BE04AE400EE098F /* AudioRender.m */; };
-		BDB1FBDE1BD9B38F001B05E8 /* Impact Label.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BDB1FBDD1BD9B38F001B05E8 /* Impact Label.ttf */; };
-		BDB75E2B1BDE7CEB00242397 /* normalnormal.png in Resources */ = {isa = PBXBuildFile; fileRef = BDB75E2A1BDE7CEB00242397 /* normalnormal.png */; };
-		BDB75E2D1BDE7D8E00242397 /* normalselected.png in Resources */ = {isa = PBXBuildFile; fileRef = BDB75E2C1BDE7D8E00242397 /* normalselected.png */; };
-		BDB75E2F1BDE7E5900242397 /* normal.png in Resources */ = {isa = PBXBuildFile; fileRef = BDB75E2E1BDE7E5900242397 /* normal.png */; };
-		BDB75E311BDE7F1C00242397 /* selected.png in Resources */ = {isa = PBXBuildFile; fileRef = BDB75E301BDE7F1C00242397 /* selected.png */; };
 		BDB75E391BDF009200242397 /* MultiButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB75E381BDF009200242397 /* MultiButton.swift */; };
 		BDB75E3B1BDF00A100242397 /* MultiButtonLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB75E3A1BDF00A100242397 /* MultiButtonLayer.swift */; };
 /* End PBXBuildFile section */
@@ -64,7 +57,6 @@
 		37BA1D1D1BE5797900E7F73F /* envelope.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = envelope.h; sourceTree = "<group>"; };
 		37BE9DF31BDC343600CE8751 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		37BE9DF51BDDADA600CE8751 /* SignalPathView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignalPathView.swift; sourceTree = "<group>"; };
-		37BE9DF91BDDE7CB00CE8751 /* signalpath.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = signalpath.png; path = ../Assets/signalpath.png; sourceTree = "<group>"; };
 		BD87175A1BD724DB00A6A4BD /* MonoSynth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MonoSynth.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD87175D1BD724DB00A6A4BD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BD87175F1BD724DB00A6A4BD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -77,16 +69,10 @@
 		BD8B93C31BE2D30E00C2363B /* lfo_sin.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lfo_sin.c; sourceTree = "<group>"; };
 		BD8B93C41BE2D30E00C2363B /* lfo_sin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lfo_sin.h; sourceTree = "<group>"; };
 		BD9593B71BDFC89A00EE098F /* CGUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGUtils.swift; sourceTree = "<group>"; };
-		BD9593BB1BE0468200EE098F /* bradley-hand-itc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bradley-hand-itc.png"; path = "../bradley-hand-itc.png"; sourceTree = "<group>"; };
 		BD9593BE1BE048AD00EE098F /* MonoSynth-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MonoSynth-Bridging-Header.h"; sourceTree = "<group>"; };
 		BD9593C51BE04AE400EE098F /* AudioRender.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AudioRender.m; path = ../AudioRender.m; sourceTree = "<group>"; };
 		BD9593C71BE04B2E00EE098F /* AudioRender.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AudioRender.h; sourceTree = "<group>"; };
-		BDB1FBDD1BD9B38F001B05E8 /* Impact Label.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Impact Label.ttf"; sourceTree = "<group>"; };
 		BDB1FBE71BD9BC03001B05E8 /* Impact Label Licence.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Impact Label Licence.txt"; sourceTree = "<group>"; };
-		BDB75E2A1BDE7CEB00242397 /* normalnormal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = normalnormal.png; sourceTree = "<group>"; };
-		BDB75E2C1BDE7D8E00242397 /* normalselected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = normalselected.png; sourceTree = "<group>"; };
-		BDB75E2E1BDE7E5900242397 /* normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = normal.png; sourceTree = "<group>"; };
-		BDB75E301BDE7F1C00242397 /* selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = selected.png; sourceTree = "<group>"; };
 		BDB75E381BDF009200242397 /* MultiButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MultiButton.swift; path = MonoSynth/MultiButton.swift; sourceTree = "<group>"; };
 		BDB75E3A1BDF00A100242397 /* MultiButtonLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MultiButtonLayer.swift; path = MonoSynth/MultiButtonLayer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -153,22 +139,15 @@
 			children = (
 				BD87175F1BD724DB00A6A4BD /* ViewController.swift */,
 				BD8717611BD724DB00A6A4BD /* Main.storyboard */,
+				BD87175D1BD724DB00A6A4BD /* AppDelegate.swift */,
 				3780743F1BE17C9700FF58A9 /* Audio Synthesis */,
 				BD9593BD1BE0485600EE098F /* UI Elements */,
-				BD9593BB1BE0468200EE098F /* bradley-hand-itc.png */,
-				BDB75E2A1BDE7CEB00242397 /* normalnormal.png */,
-				BDB75E301BDE7F1C00242397 /* selected.png */,
-				BDB75E2E1BDE7E5900242397 /* normal.png */,
-				BDB75E2C1BDE7D8E00242397 /* normalselected.png */,
-				37BE9DF91BDDE7CB00CE8751 /* signalpath.png */,
-				BD87175D1BD724DB00A6A4BD /* AppDelegate.swift */,
 				37BE9DF51BDDADA600CE8751 /* SignalPathView.swift */,
 				BD9593B71BDFC89A00EE098F /* CGUtils.swift */,
-				BDB1FBDD1BD9B38F001B05E8 /* Impact Label.ttf */,
-				BD8717641BD724DB00A6A4BD /* Assets.xcassets */,
 				BD8717661BD724DB00A6A4BD /* LaunchScreen.storyboard */,
 				BD8717691BD724DB00A6A4BD /* Info.plist */,
 				BD9593BE1BE048AD00EE098F /* MonoSynth-Bridging-Header.h */,
+				BD8717641BD724DB00A6A4BD /* Assets.xcassets */,
 			);
 			path = MonoSynth;
 			sourceTree = "<group>";
@@ -247,17 +226,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BDB75E311BDE7F1C00242397 /* selected.png in Resources */,
 				BD8717681BD724DB00A6A4BD /* LaunchScreen.storyboard in Resources */,
-				BDB75E2D1BDE7D8E00242397 /* normalselected.png in Resources */,
-				37BE9DFA1BDDE7CB00CE8751 /* signalpath.png in Resources */,
-				BDB75E2B1BDE7CEB00242397 /* normalnormal.png in Resources */,
 				374594561BE6D761007EAB03 /* TODO.txt in Resources */,
 				BD8717651BD724DB00A6A4BD /* Assets.xcassets in Resources */,
 				BD8717631BD724DB00A6A4BD /* Main.storyboard in Resources */,
-				BDB1FBDE1BD9B38F001B05E8 /* Impact Label.ttf in Resources */,
-				BDB75E2F1BDE7E5900242397 /* normal.png in Resources */,
-				BD9593BC1BE0468200EE098F /* bradley-hand-itc.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
