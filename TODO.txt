@@ -1,6 +1,4 @@
-4. Feed ENV2 into filter
 5. Feed LFO1 and LFO2 into VCA
-6. Feed ENV1 and ENV2 into VCO1
 7. Feed LFO2, ENV1 and ENV2 into VCO1
 8. LFO waveforms
 9. Rand for LFO1 and LFO2
@@ -26,3 +24,5 @@ Done
 22. Plot ADSR with Béziers
 1. Get ADSR graph right
 2. Delay in ADSR graph
+6. Feed ENV1 and ENV2 into VCO1 (duplicate)
+4. Feed ENV2 into filter
