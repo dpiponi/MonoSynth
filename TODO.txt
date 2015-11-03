@@ -1,4 +1,3 @@
-2. Delay in ADSR graph
 4. Feed ENV2 into filter
 5. Feed LFO1 and LFO2 into VCA
 6. Feed ENV1 and ENV2 into VCO1
@@ -18,9 +17,12 @@
 20. Jump from A to R if key released
 21. Logarithmic knobs
 23. Smarter placement of Bezier control points (Good control points for exp(-x) on [0,a] should also be good for exp(-2x) on [0,a/2] but that has an obvious shortcoming.)
+24. Slider
+25. Better switch
 
 Done
 ----
 3. ADSR graph for ENV2
 22. Plot ADSR with Béziers
 1. Get ADSR graph right
+2. Delay in ADSR graph
