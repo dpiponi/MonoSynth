@@ -25,6 +25,8 @@ import QuartzCore
     
     var knobLayer1 : KnobLayer! = nil
     
+    @IBInspectable var logarithmic : Bool = false
+    
     @IBInspectable var minAngle : CGFloat = 0.0 /*{
         didSet { redrawLayers() }
     }*/
@@ -61,7 +63,19 @@ import QuartzCore
     }
 
     func angleForValue(value : CGFloat) -> CGFloat {
-        return (value-minValue)/(maxValue-minValue)*(maxAngle-minAngle)+minAngle
+        if logarithmic {
+            return (log(value)-log(minValue))/(log(maxValue)-log(minValue))*(maxAngle-minAngle)+minAngle
+        } else {
+            return (value-minValue)/(maxValue-minValue)*(maxAngle-minAngle)+minAngle
+        }
+    }
+    
+    func valueForAngle(angle : CGFloat) -> CGFloat {
+        if logarithmic {
+            return exp((angle-minAngle)/(maxAngle-minAngle)*(log(maxValue)-log(minValue))+log(minValue))
+        } else {
+           return (angle-minAngle)/(maxAngle-minAngle)*(maxValue-minValue)+minValue
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -89,8 +103,9 @@ import QuartzCore
         let touchPoint = touch.locationInView(self)
     
         let delta = touchPoint.x-previousTouchPoint.x
-        let valueDelta = 0.004*delta*(maxValue-minValue)
-        value += valueDelta
+//        let valueDelta = 0.004*delta*(maxValue-minValue)
+        value = valueForAngle(angleForValue(value)+delta)
+//        value += valueDelta
         
         previousTouchPoint = touchPoint
         
