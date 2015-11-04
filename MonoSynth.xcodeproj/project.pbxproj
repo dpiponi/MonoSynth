@@ -20,6 +20,7 @@
 		378074511BE1801900FF58A9 /* moodler_lib.c in Sources */ = {isa = PBXBuildFile; fileRef = 378074501BE1801900FF58A9 /* moodler_lib.c */; };
 		37BA1D1E1BE5797900E7F73F /* envelope.c in Sources */ = {isa = PBXBuildFile; fileRef = 37BA1D1C1BE5797900E7F73F /* envelope.c */; };
 		37BE9DF61BDDADA600CE8751 /* SignalPathView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37BE9DF51BDDADA600CE8751 /* SignalPathView.swift */; };
+		BD68B3AE1BE9CE76008671CB /* vco.c in Sources */ = {isa = PBXBuildFile; fileRef = BD68B3AC1BE9CE76008671CB /* vco.c */; };
 		BD87175E1BD724DB00A6A4BD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD87175D1BD724DB00A6A4BD /* AppDelegate.swift */; };
 		BD8717601BD724DB00A6A4BD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD87175F1BD724DB00A6A4BD /* ViewController.swift */; };
 		BD8717631BD724DB00A6A4BD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD8717611BD724DB00A6A4BD /* Main.storyboard */; };
@@ -57,6 +58,8 @@
 		37BA1D1D1BE5797900E7F73F /* envelope.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = envelope.h; sourceTree = "<group>"; };
 		37BE9DF31BDC343600CE8751 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		37BE9DF51BDDADA600CE8751 /* SignalPathView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignalPathView.swift; sourceTree = "<group>"; };
+		BD68B3AC1BE9CE76008671CB /* vco.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = vco.c; sourceTree = "<group>"; };
+		BD68B3AD1BE9CE76008671CB /* vco.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vco.h; sourceTree = "<group>"; };
 		BD87175A1BD724DB00A6A4BD /* MonoSynth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MonoSynth.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD87175D1BD724DB00A6A4BD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BD87175F1BD724DB00A6A4BD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -93,6 +96,8 @@
 			children = (
 				BD9593C51BE04AE400EE098F /* AudioRender.m */,
 				BD9593C71BE04B2E00EE098F /* AudioRender.h */,
+				BD68B3AC1BE9CE76008671CB /* vco.c */,
+				BD68B3AD1BE9CE76008671CB /* vco.h */,
 				37BA1D1C1BE5797900E7F73F /* envelope.c */,
 				37BA1D1D1BE5797900E7F73F /* envelope.h */,
 				3780744F1BE1801000FF58A9 /* moodler_lib.h */,
@@ -240,6 +245,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD68B3AE1BE9CE76008671CB /* vco.c in Sources */,
 				375D36031BDC207C00C55DBE /* PianoKey.swift in Sources */,
 				378074421BE17D2700FF58A9 /* band_limited.c in Sources */,
 				BD8717601BD724DB00A6A4BD /* ViewController.swift in Sources */,

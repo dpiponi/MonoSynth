@@ -55,6 +55,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var filterCutoffLFO1Modulation: Knob!
     @IBOutlet weak var filterCutoffLFO2Modulation: Knob!
     @IBOutlet weak var filterCutoffEnv1Modulation: Knob!
+    @IBOutlet weak var filterCutoffEnv2Modulation: Knob!
     
     //
     // ENV1
@@ -66,6 +67,17 @@ class ViewController: UIViewController {
     @IBOutlet weak var envSustain: Knob!
     @IBOutlet weak var envRelease: Knob!
     @IBOutlet weak var envRetrigger: Knob!
+    
+    //
+    // ENV2
+    //
+    @IBOutlet weak var env2Delay: Knob!
+    @IBOutlet weak var env2Attack: Knob!
+    @IBOutlet weak var env2Hold: Knob!
+    @IBOutlet weak var env2Decay: Knob!
+    @IBOutlet weak var env2Sustain: Knob!
+    @IBOutlet weak var env2Release: Knob!
+    @IBOutlet weak var env2Retrigger: Knob!
     
     //
     // VCA
@@ -113,9 +125,9 @@ class ViewController: UIViewController {
     @IBAction func filterFrequencyLFO1ModulationChanged(sender: Knob) {
         switch sender.tag {
         case 0:
-            state.lfo_filter_cutoff_modulation.0 = Double(sender.value)
+            state.filter_cutoff_lfo_modulation.0 = Double(sender.value)
         case 1:
-            state.lfo_filter_cutoff_modulation.1 = Double(sender.value)
+            state.filter_cutoff_lfo_modulation.1 = Double(sender.value)
         default: break;
         }
     }
@@ -532,6 +544,52 @@ class ViewController: UIViewController {
             ),
             
             //
+            // ENV2
+            //
+            ("env2Delay", env2Delay,
+                Field(
+                    set: {(inout a : AudioState, b) in a.envDecay.1 = b},
+                    get: {a in return a.envDecay.1}
+                )
+            ),
+            ("en21Attack", env2Attack,
+                Field(
+                    set: {(inout a : AudioState, b) in a.envAttack.1 = b},
+                    get: {a in return a.envAttack.1}
+                )
+            ),
+            ("env2Hold", env2Hold,
+                Field(
+                    set: {(inout a : AudioState, b) in a.envHold.1 = b},
+                    get: {a in return a.envHold.1}
+                )
+            ),
+            ("env2Decay", env2Decay,
+                Field(
+                    set: {(inout a : AudioState, b) in a.envDecay.1 = b},
+                    get: {a in return a.envDecay.1}
+                )
+            ),
+            ("env2Sustain", env2Sustain,
+                Field(
+                    set: {(inout a : AudioState, b) in a.envSustain.1 = b},
+                    get: {a in return a.envSustain.1}
+                )
+            ),
+            ("env2Release", env2Release,
+                Field(
+                    set: {(inout a : AudioState, b) in a.envRelease.1 = b},
+                    get: {a in return a.envRelease.1}
+                )
+            ),
+            ("env2Retrigger", env2Retrigger,
+                Field(
+                    set: {(inout a : AudioState, b) in a.envRetrigger.1 = b},
+                    get: {a in return a.envRetrigger.1}
+                )
+            ),
+
+            //
             // LFO1
             //
             ("lfo1Frequency", lfo1Frequency,
@@ -592,16 +650,29 @@ class ViewController: UIViewController {
             ),
             ("lpfLfo1Modulation", filterCutoffLFO1Modulation,
                 Field(
-                    set: {(inout a : AudioState, b) in a.filter_cutoff_env_modulation.0 = b},
+                    set: {(inout a : AudioState, b) in a.filter_cutoff_lfo_modulation.0 = b},
                     get: {a in return a.filter_cutoff_env_modulation.0}
                 )
             ),
             ("lpfLfo2Modulation", filterCutoffLFO2Modulation,
                 Field(
+                    set: {(inout a : AudioState, b) in a.filter_cutoff_lfo_modulation.1 = b},
+                    get: {a in return a.filter_cutoff_env_modulation.1}
+                )
+            ),
+            ("lpfEnv1Modulation", filterCutoffEnv1Modulation,
+                Field(
+                    set: {(inout a : AudioState, b) in a.filter_cutoff_env_modulation.0 = b},
+                    get: {a in return a.filter_cutoff_env_modulation.0}
+                )
+            ),
+            ("lpfLfo2Modulation", filterCutoffEnv2Modulation,
+                Field(
                     set: {(inout a : AudioState, b) in a.filter_cutoff_env_modulation.1 = b},
                     get: {a in return a.filter_cutoff_env_modulation.1}
                 )
             )
+
         ]
         
         return knobList!
@@ -618,16 +689,8 @@ class ViewController: UIViewController {
 
         for (name, knob, _) in knobs() {
             saveDict[name] = knob.value
-//            print("Saved \(name) as \(knob.value)")
 
         }
-        //
-        // LPF
-        //
-//        saveDict["lpfCutoff"] = filterCutoff.value
-//        saveDict["lpfResonance"] = filterResonance.value
-//        saveDict["lpfLfo1Modulation"] = filterCutoffLFO1Modulation
-//        saveDict["lpfLfo2Modulation"] = filterCutoffLFO2Modulation.value
         
         //
         // VCA

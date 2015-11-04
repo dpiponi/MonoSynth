@@ -11,6 +11,58 @@
 
 #import "AudioRender.h"
 
+void init_audio_state(struct AudioState *state) {
+    //
+    // UI
+    //
+    state->gate = 0.0;
+    state->vcaEnv2 = 0;
+    
+    // VCO1
+    state->vco1_number = 1;
+    state->vco1_detune = 0.0;
+    state->vco1_spread = 0.0;
+    state->vco1_lfo1_modulation = 0.0;
+    
+    init_vco(&state->vco1);
+    
+    state->sampleRate = 44100.0;
+    state->phase = 0.0;
+    state->actualFrequency = 440.0;
+    state->amplitude = 0.0;
+    state->frequency = 440.0f;
+    state->targetAmplitude = 0.0;
+    
+    for (int i = 0; i < 2; ++i) {
+        state->envDelay[i] = 0.0;
+        state->envAttack[i] = 0.1;
+        state->envHold[i] = 0.0;;
+        state->envDecay[i] = 0.5;
+        state->envSustain[i] = 0.5;
+        state->envRelease[i] = 0.5;
+        state->envRetrigger[i] = 1000.0;
+        
+        init_envelope(&state->env[i]);
+    }
+    
+    init_ladder(&state->ladder);
+    
+    //
+    // Filter
+    //
+    state->filter_cutoff = 1.0;
+    state->filter_resonance = 2.0;
+    state->filter_cutoff_lfo_modulation[0] = 0.0;
+    state->filter_cutoff_lfo_modulation[1] = 0.0;
+    state->filter_cutoff_env_modulation[0] = 0.0;
+    state->filter_cutoff_env_modulation[1] = 0.0;
+    
+    //
+    // ENV1
+    //
+    
+}
+
 OSStatus audio_render(void *inRefCon,
                       AudioUnitRenderActionFlags *ioActionFlags,
                       const AudioTimeStamp *inTimeStamp,
@@ -34,41 +86,16 @@ OSStatus audio_render(void *inRefCon,
         }
         double lfo1_result = state->lfo_sin[0].result;
         
-        double sample = 0.0;
+//        double sample = 0.0;
         
-        double offset[8] = { 0.0, 0.9712, -1.0123, 0.511, -0.522, 0.23, -0.227, 0.7122 };
         //
         // VCO1
         //
 //        if (i==0) printf("OSCTYPE = %d\n", state->oscType);
-        switch (state->oscType) {
-            case OSC_TYPE_SQUARE:
-                
-                for (int i = 0; i < state->vco1_number; ++i) {
-                    double detune = state->vco1_detune+(double)i*state->vco1_spread*offset[i]+state->vco1_lfo1_modulation*lfo1_result;
-                    sample += step_square_nosync(&state->square_state[i],
-                                                1.0/44100.0,
-                                                state->frequency*pow(2.0, detune),
-                                                0.5);
-                }
-                break;
-            case OSC_TYPE_SINE:
-                for (int i = 0; i < state->vco1_number; ++i) {
-                    double detune = state->vco1_detune+(double)i*state->vco1_spread*offset[i]+state->vco1_lfo1_modulation*lfo1_result;
-                    sample += step_sin(&state->sin_state[i],
-                                                1.0/44100.0,
-                                                state->frequency*pow(2.0, detune), 0.0);
-                }
-                break;
-            case OSC_TYPE_SAW:
-                for (int i = 0; i < state->vco1_number; ++i) {
-                    double detune = state->vco1_detune+(double)i*state->vco1_spread*offset[i]+state->vco1_lfo1_modulation*lfo1_result;
-                    sample += step_saw(&state->saw_state[i],
-                                                1.0/44100.0,
-                                                state->frequency*pow(2.0, detune), 0.0);
-                }
-                break;
-        }
+        exec_vco(&state->vco1, state->oscType, state->frequency,
+                 state->vco1_number,
+                 state->vco1_detune+state->vco1_lfo1_modulation*lfo1_result,
+                 state->vco1_spread);
 //        step_exp_decay(&state->exp_decay, dt, 1.0, state->gate);
         
 //        double env1 = state->exp_decay.amplitude;
@@ -85,12 +112,12 @@ OSStatus audio_render(void *inRefCon,
 //            if (i==0) printf("level[%d]=%f\n", j, state->env[j].level);
         }
         
-        double result = sample*state->env[0].level;
+        double result = state->vco1.result*state->env[0].level;
         if (state->vcaEnv2) {
             result *= state->env[1].level;
         }
-        double shift = state->lfo_filter_cutoff_modulation[0]*state->lfo_sin[0].result+
-                       state->lfo_filter_cutoff_modulation[1]*state->lfo_sin[1].result+
+        double shift = state->filter_cutoff_lfo_modulation[0]*state->lfo_sin[0].result+
+                       state->filter_cutoff_lfo_modulation[1]*state->lfo_sin[1].result+
                         state->filter_cutoff_env_modulation[0]*state->env[0].level+
                         state->filter_cutoff_env_modulation[1]*state->env[1].level;
         double filter_frequency = state->frequency*pow(2.0, state->filter_cutoff+shift);
