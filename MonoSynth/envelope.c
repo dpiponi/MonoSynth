@@ -16,9 +16,10 @@ void init_envelope(struct Envelope *env) {
     env->time_since_key_down = 0.0;
 }
 
-void exec_envelope(struct Envelope *env, double dt, double delay, double attack, double hold, double decay, double sustain, double release,
+void exec_envelope(int i, int j, struct Envelope *env, double dt, double delay, double attack, double hold, double decay, double sustain, double release,
                    double retrigger, double gate) {
-    if (gate > 0 && (env->last_gate <= 0 || env->time_since_key_down >= retrigger)) {
+    if (gate > 0 && (env->last_gate <= 0 || (retrigger>0 && env->time_since_key_down >= retrigger))) {
+        printf("Trig gate=%f last=%f\n", gate, env->last_gate);
         env->time_since_start = 0.0;
         env->state = DELAY;
         env->time_since_start = 0.0;
@@ -31,6 +32,7 @@ void exec_envelope(struct Envelope *env, double dt, double delay, double attack,
             if (env->time_since_start >= delay) {
                 env->state = ATTACK;
                 env->time_since_start = 0.0;
+                printf("to attack\n");
             }
             break;
         case ATTACK:
@@ -40,22 +42,26 @@ void exec_envelope(struct Envelope *env, double dt, double delay, double attack,
                     env->level = 1.0;
                     env->state = HOLD;
                     env->time_since_start = 0.0;
+                    printf("to HOLD! level=%f\n", env->level);
                 }
             } else {
                 env->level = 1.0;
                 env->state = HOLD;
+                printf("To HOLD, level=%f\n", env->level);
                 env->time_since_start = 0.0;
             }
             break;
         case HOLD:
             if (env->time_since_start >= hold) {
                 env->state = DECAY;
+                printf("To DECAY level = %f\n", env->level);
                 env->time_since_start = 0.0;
             }
             break;
         case DECAY:
             if (gate <= 0) {
                 env->state = RELEASE;
+                printf("To RELASE level=%f\n", env->level);
                 env->time_since_start = 0.0;
             }
             if (decay > 0) {
@@ -92,4 +98,6 @@ void exec_envelope(struct Envelope *env, double dt, double delay, double attack,
     env->time_since_start += dt;
     env->time_since_key_down += dt;
     env->last_gate = gate;
+    
+//    if (i==0) printf("inside level[%d] =%f\n", env->level, j);
 }

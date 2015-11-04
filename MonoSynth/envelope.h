@@ -32,7 +32,7 @@ struct Envelope {
 
 void init_envelope(struct Envelope *env);
 
-void exec_envelope(struct Envelope *env, double dt, double delay, double attack, double hold, double decay, double sustain, double release,
+void exec_envelope(int i, int j, struct Envelope *env, double dt, double delay, double attack, double hold, double decay, double sustain, double release,
                    double retrigger, double gate);
 
 #endif /* envelope_h */

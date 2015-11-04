@@ -72,15 +72,16 @@ OSStatus audio_render(void *inRefCon,
         
 //        double env1 = state->exp_decay.amplitude;
         
-        for (int i = 0; i < 2; ++i) {
-            exec_envelope(&state->env[i], dt, state->envDelay[i],
-                                              state->envAttack[i],
-                                              state->envHold[i],
-                                              state->envDecay[i],
-                                              state->envSustain[i],
-                                              state->envRelease[i],
-                                              state->envRetrigger[i],
+        for (int j = 0; j < 2; ++j) {
+            exec_envelope(i,j, &state->env[j], dt, state->envDelay[j],
+                                              state->envAttack[j],
+                                              state->envHold[j],
+                                              state->envDecay[j],
+                                              state->envSustain[j],
+                                              state->envRelease[j],
+                                              state->envRetrigger[j],
                                               state->gate);
+//            if (i==0) printf("level[%d]=%f\n", j, state->env[j].level);
         }
         
         double result = sample*state->env[0].level;
@@ -97,6 +98,7 @@ OSStatus audio_render(void *inRefCon,
                     state->filter_resonance,
                     result);
         buffer[i] = 1.0*state->ladder.result;
+        
     }
 //    printf(":::");
 //    for (int i = 0; i < 10; ++i) {

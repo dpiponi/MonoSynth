@@ -790,51 +790,6 @@
                                         <animations/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9yN-Gr-M8W">
-                                        <rect key="frame" x="100" y="8" width="600" height="250"/>
-                                        <subviews>
-                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nbc-H4-fPY">
-                                                <rect key="frame" x="40" y="13" width="51" height="31"/>
-                                                <animations/>
-                                                <connections>
-                                                    <action selector="vcaEnv2:" destination="BYZ-38-t0r" eventType="valueChanged" id="SyX-v6-DtL"/>
-                                                </connections>
-                                            </switch>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Envelope 2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jaF-WW-xFC">
-                                                <rect key="frame" x="103" y="17" width="84" height="23"/>
-                                                <animations/>
-                                                <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="18"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="LFO1 Mod" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UNg-ZI-Chk">
-                                                <rect key="frame" x="39" y="140" width="83" height="23"/>
-                                                <animations/>
-                                                <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="18"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zJ2-mH-cID" customClass="Knob" customModule="MonoSynth" customModuleProvider="target">
-                                                <rect key="frame" x="40" y="52" width="80" height="80"/>
-                                                <animations/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            </view>
-                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="n82-ZG-gST" customClass="Knob" customModule="MonoSynth" customModuleProvider="target">
-                                                <rect key="frame" x="128" y="48" width="80" height="80"/>
-                                                <animations/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="LFO2 Mod" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qUX-r2-OvV">
-                                                <rect key="frame" x="123" y="140" width="85" height="23"/>
-                                                <animations/>
-                                                <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="18"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                        <animations/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    </view>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dav-xg-KXq">
                                         <rect key="frame" x="100" y="8" width="600" height="250"/>
                                         <subviews>
@@ -1023,6 +978,58 @@
                                         <animations/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9yN-Gr-M8W">
+                                        <rect key="frame" x="100" y="8" width="600" height="250"/>
+                                        <subviews>
+                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nbc-H4-fPY">
+                                                <rect key="frame" x="130" y="8" width="51" height="31"/>
+                                                <animations/>
+                                                <connections>
+                                                    <action selector="vcaEnv2:" destination="BYZ-38-t0r" eventType="valueChanged" id="SyX-v6-DtL"/>
+                                                </connections>
+                                            </switch>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Envelope 2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jaF-WW-xFC">
+                                                <rect key="frame" x="193" y="12" width="84" height="23"/>
+                                                <animations/>
+                                                <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="18"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="LFO1 Mod" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UNg-ZI-Chk">
+                                                <rect key="frame" x="129" y="135" width="83" height="23"/>
+                                                <animations/>
+                                                <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="18"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="n82-ZG-gST" customClass="Knob" customModule="MonoSynth" customModuleProvider="target">
+                                                <rect key="frame" x="218" y="43" width="80" height="80"/>
+                                                <animations/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="LFO2 Mod" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qUX-r2-OvV">
+                                                <rect key="frame" x="213" y="135" width="85" height="23"/>
+                                                <animations/>
+                                                <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="18"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zJ2-mH-cID" customClass="Knob" customModule="MonoSynth" customModuleProvider="target">
+                                                <rect key="frame" x="130" y="47" width="80" height="80"/>
+                                                <animations/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="VCA" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0fW-bP-v4u">
+                                                <rect key="frame" x="8" y="0.0" width="96" height="62"/>
+                                                <animations/>
+                                                <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="36"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <animations/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
                                 </subviews>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1060,6 +1067,8 @@
                         <outlet property="lfo2Frequency" destination="eqT-j3-1ME" id="iLO-0w-3lk"/>
                         <outlet property="lfo2Panel" destination="bk5-IY-U5v" id="ChU-ll-uqt"/>
                         <outlet property="vcaEnv2Switch" destination="nbc-H4-fPY" id="xzM-Ns-u6n"/>
+                        <outlet property="vcaLfo1Modulation" destination="zJ2-mH-cID" id="gkm-g9-nPH"/>
+                        <outlet property="vcaLfo2Modulation" destination="n82-ZG-gST" id="ULK-CS-vBy"/>
                         <outlet property="vcaPanel" destination="9yN-Gr-M8W" id="Gr9-Fr-90t"/>
                         <outlet property="vco1Detune" destination="8eR-Nc-0xp" id="DVX-Ym-Qmf"/>
                         <outlet property="vco1Lfo1Modulation" destination="TdF-C7-Tcx" id="tyO-hG-D3K"/>

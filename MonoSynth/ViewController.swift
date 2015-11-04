@@ -11,6 +11,15 @@ import AudioToolbox
 import AVFoundation
 
 //
+// These lenses differ from Haskell lenses because A is mutable.
+// si fueris Rōmae...
+//
+struct Lens<A, B> {
+    let set: (inout A, B) -> Void
+    let get: A -> B
+}
+
+//
 // http://www.cocoawithlove.com/2010/10/ios-tone-generator-introduction-to.html
 //
 // http://stackoverflow.com/questions/1135163/how-do-i-use-uiscrollview-in-interface-builder
@@ -62,6 +71,8 @@ class ViewController: UIViewController {
     // VCA
     //
     @IBOutlet weak var vcaEnv2Switch: UISwitch!
+    @IBOutlet weak var vcaLfo1Modulation: Knob!
+    @IBOutlet weak var vcaLfo2Modulation: Knob!
     
     var gen : AudioComponentInstance = nil
 
@@ -347,16 +358,21 @@ class ViewController: UIViewController {
         
         init_audio_state(&state)
         
-        lfo1Frequency.value = 2.0
-
-        filterCutoff.value = 2.0
+//        lfo1Frequency.value = 2.0
+//
+//        filterCutoff.value = 2.0
+//        
+//        filterResonance.value = 2.0
+//        
+//        filterCutoffLFO1Modulation.value = 2.0
+//        
+//        filterCutoffChanged(filterCutoff)
+//        filterResonanceChanged(filterResonance)
         
-        filterResonance.value = 2.0
+        restoreState()
         
-        filterCutoffLFO1Modulation.value = 2.0
+         NSTimer.scheduledTimerWithTimeInterval(5.0, target: self, selector: "saveState", userInfo: nil, repeats: true)
         
-        filterCutoffChanged(filterCutoff)
-        filterResonanceChanged(filterResonance)
                 
         //
         // http://stackoverflow.com/questions/1378765/how-do-i-create-a-basic-uibutton-programmatically
@@ -418,7 +434,7 @@ class ViewController: UIViewController {
             state.gate = 1.0
         }
         state.frequency = noteFromXY(touchPoint.x, y: touchPoint.y)
-        print("frequency=", state.frequency)
+        print("frequency, gate=", state.frequency, state.gate)
     }
     
     func keySlide(sender: PianoKey, event: UIEvent) -> Void{
@@ -449,6 +465,235 @@ class ViewController: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    typealias Field = Lens<AudioState, Double>
+    
+//    @IBOutlet weak var envDelay: Knob!
+//    @IBOutlet weak var envAttack: Knob!
+//    @IBOutlet weak var envHold: Knob!
+//    @IBOutlet weak var envDecay: Knob!
+//    @IBOutlet weak var envSustain: Knob!
+//    @IBOutlet weak var envRelease: Knob!
+//    @IBOutlet weak var envRetrigger: Knob!
+
+    
+    var knobList : [(String, Knob, Field)]? = nil
+    
+    func knobs() -> [(String, Knob, Field)] {
+        if knobList != nil {
+            return knobList!
+        }
+        knobList = [
+            //
+            // ENV1
+            //
+            ("env1Delay", envDelay,
+                Field(
+                    set: {(inout a : AudioState, b) in a.envDecay.0 = b},
+                    get: {a in return a.envDecay.0}
+                )
+            ),
+            ("env1Attack", envAttack,
+                Field(
+                    set: {(inout a : AudioState, b) in a.envAttack.0 = b},
+                    get: {a in return a.envAttack.0}
+                )
+            ),
+            ("env1Hold", envHold,
+                Field(
+                    set: {(inout a : AudioState, b) in a.envHold.0 = b},
+                    get: {a in return a.envHold.0}
+                )
+            ),
+            ("env1Decay", envDecay,
+                Field(
+                    set: {(inout a : AudioState, b) in a.envDecay.0 = b},
+                    get: {a in return a.envDecay.0}
+                )
+            ),
+            ("env1Sustain", envSustain,
+                Field(
+                    set: {(inout a : AudioState, b) in a.envSustain.0 = b},
+                    get: {a in return a.envSustain.0}
+                )
+            ),
+            ("env1Release", envRelease,
+                Field(
+                    set: {(inout a : AudioState, b) in a.envRelease.0 = b},
+                    get: {a in return a.envRelease.0}
+                )
+            ),
+            ("env1Retrigger", envRetrigger,
+                Field(
+                    set: {(inout a : AudioState, b) in a.envRetrigger.0 = b},
+                    get: {a in return a.envRetrigger.0}
+                )
+            ),
+            
+            //
+            // LFO1
+            //
+            ("lfo1Frequency", lfo1Frequency,
+                Field(
+                    set: {(inout a : AudioState, b) in a.lfo_frequency.0 = b},
+                    get: {a in return a.lfo_frequency.0}
+                )
+            ),
+            ("lfo2Frequency", lfo2Frequency,
+                Field(
+                    set: {(inout a : AudioState, b) in a.lfo_frequency.1 = b},
+                    get: {a in return a.lfo_frequency.1}
+                )
+            ),
+            
+            //
+            // VCO1
+            //
+            ("vco1Detune", vco1Detune,
+                Field(
+                    set: {(inout a : AudioState, b) in a.vco1_detune = b},
+                    get: {a in return a.vco1_detune}
+                )
+            ),
+            ("vco1Number", vco1Number,
+                Field(
+                    set: {(inout a : AudioState, b) in a.vco1_number = Int32(b)},
+                    get: {a in return Double(a.vco1_number)}
+                )
+            ),
+            ("vco1Spread", vco1Spread,
+                Field(
+                    set: {(inout a : AudioState, b) in a.vco1_spread = b},
+                    get: {a in return a.vco1_spread}
+                )
+            ),
+            ("vco1Lfo1Modulation", vco1Lfo1Modulation,
+                Field(
+                    set: {(inout a : AudioState, b) in a.vco1_lfo1_modulation = b},
+                    get: {a in return a.vco1_lfo1_modulation}
+                )
+            ),
+            
+            //
+            // LPF
+            //
+            ("lpfCutoff", filterCutoff,
+                Field(
+                    set: {(inout a : AudioState, b) in a.filter_cutoff = b},
+                    get: {a in return a.filter_cutoff}
+                )
+            ),
+            ("lpfResonance", filterResonance,
+                Field(
+                    set: {(inout a : AudioState, b) in a.filter_resonance = b},
+                    get: {a in return a.filter_resonance}
+                )
+            ),
+            ("lpfLfo1Modulation", filterCutoffLFO1Modulation,
+                Field(
+                    set: {(inout a : AudioState, b) in a.filter_cutoff_env_modulation.0 = b},
+                    get: {a in return a.filter_cutoff_env_modulation.0}
+                )
+            ),
+            ("lpfLfo2Modulation", filterCutoffLFO2Modulation,
+                Field(
+                    set: {(inout a : AudioState, b) in a.filter_cutoff_env_modulation.1 = b},
+                    get: {a in return a.filter_cutoff_env_modulation.1}
+                )
+            )
+        ]
+        
+        return knobList!
+    }
+    
+    func saveState() {
+        let saveFile = "save.dat"
+        
+        let dir : NSString = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.AllDomainsMask, true).first!
+        
+        let savePath = dir.stringByAppendingPathComponent(saveFile)
+        
+        var saveDict = Dictionary<String, AnyObject>()
+
+        for (name, knob, _) in knobs() {
+            saveDict[name] = knob.value
+//            print("Saved \(name) as \(knob.value)")
+
+        }
+        //
+        // LPF
+        //
+//        saveDict["lpfCutoff"] = filterCutoff.value
+//        saveDict["lpfResonance"] = filterResonance.value
+//        saveDict["lpfLfo1Modulation"] = filterCutoffLFO1Modulation
+//        saveDict["lpfLfo2Modulation"] = filterCutoffLFO2Modulation.value
+        
+        //
+        // VCA
+        //
+        saveDict["vcaEnv2Switch"] = vcaEnv2Switch.on
+        saveDict["vcaLfo1Modulation"] = vcaLfo1Modulation.value
+        saveDict["vcaLfo2Modulation"] = vcaLfo2Modulation.value
+        
+        NSKeyedArchiver.archiveRootObject(saveDict, toFile: savePath)
+        
+        print("Saved")
+    }
+    
+    func restoreState() { // XXX Needs to restore graph
+        let saveFile = "save.dat"
+        
+        let dir : NSString = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.AllDomainsMask, true).first!
+        
+        let savePath = dir.stringByAppendingPathComponent(saveFile)
+        
+        if let saveDict = NSKeyedUnarchiver.unarchiveObjectWithFile(savePath) as? Dictionary<String, AnyObject> {
+            
+            for (name, knob, field) in knobs() {
+                if let value = saveDict[name] as? CGFloat {
+                    knob.value = value
+                    field.set(&state, Double(value))
+                    print("Setting \(name) to \(value)")
+                }
+            }
+            
+            //
+            // LPF
+            //
+//            if let lpfCutoffValue = saveDict["lpfCutoff"] as? CGFloat {
+//                filterCutoff.value = lpfCutoffValue
+//                state.filter_cutoff = Double(lpfCutoffValue)
+//            }
+//            if let lpfResonanceValue = saveDict["lpfResonance"] as? CGFloat {
+//                filterResonance.value = lpfResonanceValue
+//                state.filter_resonance = Double(lpfResonanceValue)
+//            }
+//            if let lpfLfo1ModulationValue = saveDict["vcaLfo1Modulation"] as? CGFloat {
+//                vcaLfo1Modulation.value = lpfLfo1ModulationValue
+//                state.filter_cutoff_env_modulation.0 = Double(lpfLfo1ModulationValue)
+//            }
+//            if let lpfLfo2ModulationValue = saveDict["vcaLfo2Modulation"] as? CGFloat {
+//                vcaLfo2Modulation.value = lpfLfo2ModulationValue
+//                state.filter_cutoff_env_modulation.1 = Double(lpfLfo2ModulationValue)
+//            }
+
+            //
+            // VCA
+            //
+            if let vcaEnv2SwitchValue = saveDict["vcaEnv2Switch"] as? Bool {
+                vcaEnv2Switch.on = vcaEnv2SwitchValue
+                state.vcaEnv2 = vcaEnv2SwitchValue ? 1 : 0
+            }
+            if let vcaLfo1ModulationValue = saveDict["vcaLfo1Modulation"] as? CGFloat {
+                vcaLfo1Modulation.value = vcaLfo1ModulationValue
+                // XXX Doesn't exist yet
+            }
+            if let vcaLfo2ModulationValue = saveDict["vcaLfo2Modulation"] as? CGFloat {
+                vcaLfo2Modulation.value = vcaLfo2ModulationValue
+                // XXX Doesn't exist yet
+            }
+        }
     }
     
     //
