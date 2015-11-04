@@ -40,6 +40,7 @@ OSStatus audio_render(void *inRefCon,
         //
         // VCO1
         //
+//        if (i==0) printf("OSCTYPE = %d\n", state->oscType);
         switch (state->oscType) {
             case OSC_TYPE_SQUARE:
                 
