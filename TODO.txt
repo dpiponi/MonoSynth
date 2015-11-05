@@ -1,4 +1,3 @@
-5. Feed LFO1 and LFO2 into VCA
 7. Feed LFO2, ENV1 and ENV2 into VCO1
 8. LFO waveforms
 9. Rand for LFO1 and LFO2
@@ -18,6 +17,7 @@
 27. Per panel reset
 28. One dispatcher for all knobs etc. using @IBInspectable knob name to index knoblist()
 29. VU Meter
+31. Factor out LFO
 
 Done
 ----
@@ -31,3 +31,4 @@ Done
 16. Factor out VCO
 21. Logarithmic knobs
 30. Detent on knobs
+5. Feed LFO1 and LFO2 into VCA

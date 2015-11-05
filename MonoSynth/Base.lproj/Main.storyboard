@@ -1012,10 +1012,13 @@
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="n82-ZG-gST" customClass="Knob" customModule="MonoSynth" customModuleProvider="target">
+                                            <view tag="1" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="n82-ZG-gST" customClass="Knob" customModule="MonoSynth" customModuleProvider="target">
                                                 <rect key="frame" x="218" y="43" width="80" height="80"/>
                                                 <animations/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <connections>
+                                                    <action selector="vcaLfoModulationChanges:" destination="BYZ-38-t0r" eventType="valueChanged" id="kCs-EC-CgH"/>
+                                                </connections>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="LFO2 Mod" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qUX-r2-OvV">
                                                 <rect key="frame" x="213" y="135" width="85" height="23"/>
@@ -1028,6 +1031,9 @@
                                                 <rect key="frame" x="130" y="47" width="80" height="80"/>
                                                 <animations/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <connections>
+                                                    <action selector="vcaLfoModulationChanges:" destination="BYZ-38-t0r" eventType="valueChanged" id="Ot2-0A-H2o"/>
+                                                </connections>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="VCA" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0fW-bP-v4u">
                                                 <rect key="frame" x="8" y="0.0" width="96" height="62"/>

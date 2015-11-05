@@ -339,6 +339,17 @@ class ViewController: UIViewController {
         state.vcaEnv2 = sender.on ? 1 : 0
     }
     
+    @IBAction func vcaLfoModulationChanges(sender: Knob) {
+        switch sender.tag {
+        case 0:
+            state.vcaLfoModulation.0 = Double(sender.value)
+        case 1:
+            state.vcaLfoModulation.1 = Double(sender.value)
+        default:
+            break
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
