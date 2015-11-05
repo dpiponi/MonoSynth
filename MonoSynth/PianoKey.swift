@@ -1,4 +1,4 @@
-//
+
 //  PianoKey.swift
 //  MonoSynth
 //
@@ -47,7 +47,7 @@ class PianoKey: UIButton {
     
     func setLayerFrames() -> Void {
 //        knobWidth = bounds.size.height
-        let keyWidth : CGFloat = bounds.size.width/CGFloat(numWhiteKeys)
+//        let keyWidth : CGFloat = bounds.size.width/CGFloat(numWhiteKeys)
 //        pianoKeyLayer.frame = CGRectMake(0, 0, CGFloat(numWhiteKeys)*keyWidth, 128.0)
         pianoKeyLayer.frame = CGRectMake(0, 0, bounds.size.width, bounds.size.height)
         

@@ -12,7 +12,7 @@
 
 void init_vco(struct VCO *state) {
 //    state->oscType = OSC_TYPE_SINE;
-    for (int i = 0; i < 8; ++i) {
+    for (int i = 0; i < MAX_NUM_OSCILLATORS; ++i) {
         init_saw(&state->saw_state[i]);
         init_square(&state->square_state[i]);
         init_sin(&state->sin_state[i]);

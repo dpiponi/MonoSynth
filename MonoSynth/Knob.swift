@@ -9,6 +9,16 @@
 import UIKit
 import QuartzCore
 
+func shrink(centre : CGFloat, amount : CGFloat, x : CGFloat) -> CGFloat {
+    if x > centre+amount {
+        return x-amount
+    } else if x < centre-amount {
+        return x+amount
+    } else {
+        return centre
+    }
+}
+
 @IBDesignable class Knob: UIControl {
     
     var value : CGFloat = 0.0 {
@@ -40,9 +50,12 @@ import QuartzCore
         didSet { redrawLayers() }
     }
     
+    @IBInspectable var detent : CGFloat = 0.0
+    
     var knobWidth : CGFloat = 200.0
     
-    var previousTouchPoint : CGPoint = CGPoint()
+    var initialTouchPoint : CGPoint = CGPoint()
+    var initialValue : CGFloat = 0.0
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -89,10 +102,11 @@ import QuartzCore
     }
     
     override func beginTrackingWithTouch(touch : UITouch, withEvent event:UIEvent?) -> Bool {
-        previousTouchPoint = touch.locationInView(self)
+        initialTouchPoint = touch.locationInView(self)
+        initialValue = value
         
         // hit test the knob layers
-        if CGRectContainsPoint(knobLayer1.frame, previousTouchPoint) {
+        if CGRectContainsPoint(knobLayer1.frame, initialTouchPoint) {
             knobLayer1.highlighted = true
             knobLayer1.setNeedsDisplay()
         }
@@ -102,12 +116,10 @@ import QuartzCore
     override func continueTrackingWithTouch(touch : UITouch, withEvent event:UIEvent?) -> Bool {
         let touchPoint = touch.locationInView(self)
     
-        let delta = touchPoint.x-previousTouchPoint.x
-//        let valueDelta = 0.004*delta*(maxValue-minValue)
-        value = valueForAngle(angleForValue(value)+delta)
-//        value += valueDelta
+        let delta = touchPoint.x-initialTouchPoint.x
+        value = valueForAngle(shrink(angleForValue(detent), amount: 10.0, x: angleForValue(initialValue)+delta))
         
-        previousTouchPoint = touchPoint
+//        previousTouchPoint = touchPoint
         
         CATransaction.begin()
         CATransaction.setDisableActions(true)

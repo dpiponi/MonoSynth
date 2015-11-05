@@ -111,30 +111,15 @@ double z[3][3] = {
 
 extern sample lagrange_3rd_order_4_point[4][4];
 
-static void upsample_lagrange_3rd_order_4_point(sample input,
+void upsample_lagrange_3rd_order_4_point(sample input,
                                        sample *x,
-                                       sample *y) {
-    x[3] = input;
-    for (int i = 0; i < 4; ++i) {
-        sample t = 0.0;
-        for (int j = 0; j < 4; ++j) {
-            t += lagrange_3rd_order_4_point[i][j]*x[j];
-        }
-        y[i] = t;
-    }
-}
+                                                sample *y);
 
 extern sample downsample_4_filter[15];
 
-static sample downsample_4(sample *y) {
-    sample t = 0.0;
-    for (int i = 0; i < 15; ++i) {
-        t += downsample_4_filter[i]*y[i+1];
-    }
-    return t;
-}
+sample downsample_4(sample *y);
 
-static double lerp(double x, double a, double b) {
+inline double lerp(double x, double a, double b) {
     return (1-x)*a+x*b;
 }
 

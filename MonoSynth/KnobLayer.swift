@@ -59,9 +59,9 @@ class KnobLayer: CALayer {
         CGContextSetInterpolationQuality(ctx, .High)
         CGContextSetLineWidth(ctx, 2.0)
         
-        let components : [CGFloat] = [0.4, 0.4, 0.4, 1.0]
-        let colorSpace = CGColorSpaceCreateDeviceRGB()
-        let shadowColor : CGColorRef = CGColorCreate(colorSpace, components)!
+//        let components : [CGFloat] = [0.4, 0.4, 0.4, 1.0]
+//        let colorSpace = CGColorSpaceCreateDeviceRGB()
+//        let shadowColor : CGColorRef = CGColorCreate(colorSpace, components)!
         savingContext(ctx) {
             CGContextSaveGState(ctx);
             

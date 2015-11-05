@@ -49,11 +49,9 @@ class ADSRPlot: UIView {
         let holdTime = hold
         let decayTime :CGFloat = 0.25
         let releaseTime = 1.0-attackTime+decayTime//release_
-        let totalTime = attackTime+decayTime+releaseTime
+//        let totalTime = attackTime+decayTime+releaseTime
         
         let context = UIGraphicsGetCurrentContext()
-        
-        let redColor = UIColor(red:1.0, green:0.0, blue:0.0, alpha:1.0)
         
         //
         // http://stackoverflow.com/a/13339008/207442

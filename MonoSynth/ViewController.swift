@@ -15,7 +15,7 @@ import AVFoundation
 // si fueris Rōmae...
 //
 struct Lens<A, B> {
-    let set: (inout A, B) -> Void
+    let set: (inout A, B) -> ()
     let get: A -> B
 }
 
@@ -38,13 +38,14 @@ class ViewController: UIViewController {
     @IBOutlet weak var env1Graph: ADSRPlot!
     @IBOutlet weak var env2Graph: ADSRPlot!
     
-    @IBOutlet weak var waveformSelector: MultiButton!
     @IBOutlet weak var lfo1Frequency: Knob!
     @IBOutlet weak var lfo2Frequency: Knob!
     
     //
     // VCO1
     //
+    @IBOutlet weak var waveformSelector: MultiButton!
+    
     @IBOutlet weak var vco1Detune: Knob!
     @IBOutlet weak var vco1Number: Knob!
     @IBOutlet weak var vco1Spread: Knob!
@@ -479,19 +480,58 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
+    typealias BoolField = Lens<AudioState, Bool>
+    var switchList : [(String, UISwitch, BoolField)]? = nil
+    func switches() -> [(String, UISwitch, BoolField)] {
+        if switchList != nil {
+            return switchList!
+        }
+        switchList = [
+            ("vcaEnv2Switch", vcaEnv2Switch,
+                BoolField(
+                    set: {(inout a : AudioState, b : Bool) in a.vcaEnv2 = b ? 1 : 0 },
+                    get: {(a : AudioState) in return a.vcaEnv2 == 0 ? false : true }
+                )
+            )
+        ]
+        
+        return switchList!
+    }
+    
+    
+    typealias IntField = Lens<AudioState, Int>
+    var multiButtonList : [(String, MultiButton, IntField)]? = nil
+    func multibuttons() -> [(String, MultiButton, IntField)] {
+        if multiButtonList != nil {
+            return multiButtonList!
+        }
+        multiButtonList = [
+            ("vco1Waveform", waveformSelector,
+                IntField(
+                    set: {(inout a : AudioState, b) in
+                        a.oscType = [OSC_TYPE_SINE, OSC_TYPE_SQUARE, OSC_TYPE_SAW][b]
+                    },
+                    get: {(a : AudioState) in
+                        switch a.oscType {
+                        case OSC_TYPE_SINE:
+                            return 0
+                        case OSC_TYPE_SQUARE:
+                            return 1
+                        case OSC_TYPE_SAW:
+                            return 2
+                        default:
+                            return 0
+                        }
+                    }
+                )
+            )
+        ]
+        
+        return multiButtonList!
+    }
+    
     typealias Field = Lens<AudioState, Double>
-    
-//    @IBOutlet weak var envDelay: Knob!
-//    @IBOutlet weak var envAttack: Knob!
-//    @IBOutlet weak var envHold: Knob!
-//    @IBOutlet weak var envDecay: Knob!
-//    @IBOutlet weak var envSustain: Knob!
-//    @IBOutlet weak var envRelease: Knob!
-//    @IBOutlet weak var envRetrigger: Knob!
-
-    
     var knobList : [(String, Knob, Field)]? = nil
-    
     func knobs() -> [(String, Knob, Field)] {
         if knobList != nil {
             return knobList!
@@ -672,7 +712,6 @@ class ViewController: UIViewController {
                     get: {a in return a.filter_cutoff_env_modulation.1}
                 )
             )
-
         ]
         
         return knobList!
@@ -689,7 +728,15 @@ class ViewController: UIViewController {
 
         for (name, knob, _) in knobs() {
             saveDict[name] = knob.value
-
+            
+        }
+        
+        for (name, multibutton, _) in multibuttons() {
+            saveDict[name] = multibutton.selectedButton
+        }
+        
+        for (name, switch_, _) in switches() {
+            saveDict[name] = switch_.on
         }
         
         //
@@ -717,6 +764,22 @@ class ViewController: UIViewController {
                 if let value = saveDict[name] as? CGFloat {
                     knob.value = value
                     field.set(&state, Double(value))
+                    print("Setting \(name) to \(value)")
+                }
+            }
+            
+            for (name, multibutton, field) in multibuttons() {
+                if let value = saveDict[name] as? Int {
+                    multibutton.selectedButton = value
+                    field.set(&state, value)
+                    print("Setting \(name) to \(value)")
+                }
+            }
+            
+            for (name, switch_, field) in switches() {
+                if let value = saveDict[name] as? Bool {
+                    switch_.on = value
+                    field.set(&state, value)
                     print("Setting \(name) to \(value)")
                 }
             }

@@ -22,9 +22,10 @@ struct AudioState {
     double sampleRate;
     
     //
-    // UI
+    // UI: VCA
     //
     int vcaEnv2;
+    double vcaLfoModulation[2];
 
     //
     // LFO1

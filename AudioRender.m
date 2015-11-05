@@ -17,6 +17,12 @@ void init_audio_state(struct AudioState *state) {
     //
     state->gate = 0.0;
     state->vcaEnv2 = 0;
+    //
+    // UI: VCA
+    //
+    for (int i = 0; i < 2; ++i) {
+        state->vcaLfoModulation[i] = 0.0;
+    }
     
     // VCO1
     state->vco1_number = 1;
@@ -112,10 +118,18 @@ OSStatus audio_render(void *inRefCon,
 //            if (i==0) printf("level[%d]=%f\n", j, state->env[j].level);
         }
         
+        //
+        // VCA
+        //
         double result = state->vco1.result*state->env[0].level;
         if (state->vcaEnv2) {
             result *= state->env[1].level;
         }
+        for (int i = 0; i < 2; ++i) {
+            double mod = 0.5*state->vcaLfoModulation[i];
+            result *= 1.0-mod+mod*state->lfo_sin[i].result;
+        }
+        
         double shift = state->filter_cutoff_lfo_modulation[0]*state->lfo_sin[0].result+
                        state->filter_cutoff_lfo_modulation[1]*state->lfo_sin[1].result+
                         state->filter_cutoff_env_modulation[0]*state->env[0].level+

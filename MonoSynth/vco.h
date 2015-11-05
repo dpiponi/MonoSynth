@@ -15,6 +15,8 @@
 #include "audio_saw.h"
 #include "audio_sin.h"
 
+#define MAX_NUM_OSCILLATORS 8
+
 enum OscType {
     OSC_TYPE_SINE = 0,
     OSC_TYPE_SQUARE = 1,
@@ -24,7 +26,7 @@ enum OscType {
 struct VCO {
     struct Saw saw_state[8];
     struct Sin sin_state[8];
-    struct Square square_state[8];
+    struct Square square_state[MAX_NUM_OSCILLATORS];
     
     double result;
 };

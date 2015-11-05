@@ -115,8 +115,8 @@ class MultiButtonLayer: CALayer {
         
         savingContext(context) {
         
-            let components : [CGFloat] = [0.4, 0.4, 0.4, 1.0]
-            let shadowColor : CGColorRef = CGColorCreate(colorSpace, components)!
+//            let components : [CGFloat] = [0.4, 0.4, 0.4, 1.0]
+//            let shadowColor : CGColorRef = CGColorCreate(colorSpace, components)!
             let components2 : [CGFloat] = [0.0, 0.0, 0.0, 1.0]
             let shadowColor2 : CGColorRef = CGColorCreate(colorSpace, components2)!
             
