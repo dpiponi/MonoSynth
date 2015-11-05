@@ -17,10 +17,10 @@
 
 #define MAX_NUM_OSCILLATORS 8
 
-enum OscType {
-    OSC_TYPE_SINE = 0,
-    OSC_TYPE_SQUARE = 1,
-    OSC_TYPE_SAW = 2
+enum VcoType {
+    VCO_TYPE_SINE = 0,
+    VCO_TYPE_SQUARE = 1,
+    VCO_TYPE_SAW = 2
 };
 
 struct VCO {
@@ -33,6 +33,6 @@ struct VCO {
 
 void init_vco(struct VCO *state);
 
-void exec_vco(struct VCO *state, enum OscType oscType, double frequency, int vco1_number, double vco1_detune, double vco1_spread);
+void exec_vco(struct VCO *state, enum VcoType vcoType, double frequency, int vco1_number, double vco1_detune, double vco1_spread);
 
 #endif /* vco_h */

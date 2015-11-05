@@ -520,15 +520,15 @@ class ViewController: UIViewController {
             ("vco1Waveform", waveformSelector,
                 IntField(
                     set: {(inout a : AudioState, b) in
-                        a.oscType = [OSC_TYPE_SINE, OSC_TYPE_SQUARE, OSC_TYPE_SAW][b]
+                        a.vcoType = [VCO_TYPE_SINE, VCO_TYPE_SQUARE, VCO_TYPE_SAW][b]
                     },
                     get: {(a : AudioState) in
-                        switch a.oscType {
-                        case OSC_TYPE_SINE:
+                        switch a.vcoType {
+                        case VCO_TYPE_SINE:
                             return 0
-                        case OSC_TYPE_SQUARE:
+                        case VCO_TYPE_SQUARE:
                             return 1
-                        case OSC_TYPE_SAW:
+                        case VCO_TYPE_SAW:
                             return 2
                         default:
                             return 0
@@ -843,8 +843,9 @@ class ViewController: UIViewController {
     
     @IBAction func waveformSelectorChanged(sender: MultiButton) {
         print("Button!")
-        state.oscType = OscType(UInt32(sender.selectedButton))
+        state.vcoType = VcoType(UInt32(sender.selectedButton))
     }
+    
     func getAudioComponentDescription() -> AudioComponentDescription {
         return AudioComponentDescription(
             componentType: kAudioUnitType_Output,

@@ -24,6 +24,13 @@ void init_audio_state(struct AudioState *state) {
         state->vcaLfoModulation[i] = 0.0;
     }
     
+    //
+    // LFO
+    //
+    for (int i = 0; i < 2; ++i) {
+        init_lfo(&state->lfo[i]);
+    }
+    
     // VCO1
     state->vco1_number = 1;
     state->vco1_detune = 0.0;
@@ -88,9 +95,8 @@ OSStatus audio_render(void *inRefCon,
         // LFOs
         //
         for (int j = 0; j < 2; ++j) {
-            step_lfo_sin(&state->lfo_sin[j], dt, state->lfo_frequency[j]);
+            exec_lfo(&state->lfo[j], dt, state->lfo_frequency[j]);
         }
-        double lfo1_result = state->lfo_sin[0].result;
         
 //        double sample = 0.0;
         
@@ -98,9 +104,9 @@ OSStatus audio_render(void *inRefCon,
         // VCO1
         //
 //        if (i==0) printf("OSCTYPE = %d\n", state->oscType);
-        exec_vco(&state->vco1, state->oscType, state->frequency,
+        exec_vco(&state->vco1, state->vcoType, state->frequency,
                  state->vco1_number,
-                 state->vco1_detune+state->vco1_lfo1_modulation*lfo1_result,
+                 state->vco1_detune+state->vco1_lfo1_modulation*state->lfo[0].result,
                  state->vco1_spread);
 //        step_exp_decay(&state->exp_decay, dt, 1.0, state->gate);
         
@@ -127,11 +133,11 @@ OSStatus audio_render(void *inRefCon,
         }
         for (int i = 0; i < 2; ++i) {
             double mod = 0.5*state->vcaLfoModulation[i];
-            result *= 1.0-mod+mod*state->lfo_sin[i].result;
+            result *= 1.0-mod+mod*state->lfo[i].result;
         }
         
-        double shift = state->filter_cutoff_lfo_modulation[0]*state->lfo_sin[0].result+
-                       state->filter_cutoff_lfo_modulation[1]*state->lfo_sin[1].result+
+        double shift = state->filter_cutoff_lfo_modulation[0]*state->lfo[0].result+
+                       state->filter_cutoff_lfo_modulation[1]*state->lfo[1].result+
                         state->filter_cutoff_env_modulation[0]*state->env[0].level+
                         state->filter_cutoff_env_modulation[1]*state->env[1].level;
         double filter_frequency = state->frequency*pow(2.0, state->filter_cutoff+shift);

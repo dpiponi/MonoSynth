@@ -13,11 +13,11 @@
 23. Smarter placement of Bezier control points (Good control points for exp(-x) on [0,a] should also be good for exp(-2x) on [0,a/2] but that has an obvious shortcoming.)
 24. Slider
 25. Better switch
-26. Sort our ADSR plot on restore
+26. Sort out ADSR plot on restore
 27. Per panel reset
 28. One dispatcher for all knobs etc. using @IBInspectable knob name to index knoblist()
 29. VU Meter
-31. Factor out LFO
+30. Sort out "icons" for multibutton
 
 Done
 ----
@@ -32,3 +32,4 @@ Done
 21. Logarithmic knobs
 30. Detent on knobs
 5. Feed LFO1 and LFO2 into VCA
+31. Factor out LFO

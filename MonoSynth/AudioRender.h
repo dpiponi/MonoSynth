@@ -11,11 +11,12 @@
 
 @import AudioUnit;
 
-#include "lfo_sin.h"
-#include "exp_decay.h"
+//#include "lfo_sin.h"
+//#include "exp_decay.h"
 #include "ladder.h"
 #include "envelope.h"
 #include "vco.h"
+#include "lfo.h"
 
 struct AudioState {
     // Globals
@@ -26,18 +27,22 @@ struct AudioState {
     //
     int vcaEnv2;
     double vcaLfoModulation[2];
+    
+    //
+    // UI: LFO
+    //
+    enum LfoType lfo_type[2];
+    double lfo_frequency[2];
 
     //
-    // LFO1
+    // LFO
     //
-    enum OscType lfo_type[2];
-    double lfo_frequency[2];
-    struct LFOSin lfo_sin[2];
+    struct LFO lfo[2];
     
     //
     // VCO1
     //
-    enum OscType oscType;
+    enum VcoType vcoType;
     int vco1_number;
     double vco1_detune;
     double vco1_spread;
