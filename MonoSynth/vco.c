@@ -22,11 +22,11 @@ void init_vco(struct VCO *state) {
 
 double offset[8] = { 0.0, 0.9712, -1.0123, 0.511, -0.522, 0.23, -0.227, 0.7122 };
 
-void exec_vco(struct VCO *state, enum OscType oscType, double frequency, int vco1_number, double vco1_detune, double vco1_spread) {
+void exec_vco(struct VCO *state, enum VcoType oscType, double frequency, int vco1_number, double vco1_detune, double vco1_spread) {
     double sample = 0.0;
 
     switch (oscType) {
-        case OSC_TYPE_SQUARE:
+        case VCO_TYPE_SQUARE:
             
             for (int i = 0; i < vco1_number; ++i) {
                 double detune = vco1_detune+(double)i*vco1_spread*offset[i];
@@ -36,7 +36,7 @@ void exec_vco(struct VCO *state, enum OscType oscType, double frequency, int vco
                                              0.5);
             }
             break;
-        case OSC_TYPE_SINE:
+        case VCO_TYPE_SINE:
             for (int i = 0; i < vco1_number; ++i) {
                 double detune = vco1_detune+(double)i*vco1_spread*offset[i];
                 sample += step_sin(&state->sin_state[i],
@@ -44,7 +44,7 @@ void exec_vco(struct VCO *state, enum OscType oscType, double frequency, int vco
                                    frequency*pow(2.0, detune), 0.0);
             }
             break;
-        case OSC_TYPE_SAW:
+        case VCO_TYPE_SAW:
             for (int i = 0; i < vco1_number; ++i) {
                 double detune = vco1_detune+(double)i*vco1_spread*offset[i];
                 sample += step_saw(&state->saw_state[i],

@@ -17,11 +17,19 @@ void init_audio_state(struct AudioState *state) {
     //
     state->gate = 0.0;
     state->vcaEnv2 = 0;
+    
     //
     // UI: VCA
     //
     for (int i = 0; i < 2; ++i) {
         state->vcaLfoModulation[i] = 0.0;
+    }
+    
+    //
+    // UI: LFO
+    //
+    for (int i = 0; i < 2; ++i) {
+        state->lfoType[i] = LFO_TYPE_SINE;
     }
     
     //
@@ -95,7 +103,7 @@ OSStatus audio_render(void *inRefCon,
         // LFOs
         //
         for (int j = 0; j < 2; ++j) {
-            exec_lfo(&state->lfo[j], dt, state->lfo_frequency[j]);
+            exec_lfo(&state->lfo[j], dt, state->lfoType[j], state->lfo_frequency[j]);
         }
         
 //        double sample = 0.0;

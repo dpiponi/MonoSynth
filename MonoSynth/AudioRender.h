@@ -31,7 +31,7 @@ struct AudioState {
     //
     // UI: LFO
     //
-    enum LfoType lfo_type[2];
+    enum LfoType lfoType[2];
     double lfo_frequency[2];
 
     //

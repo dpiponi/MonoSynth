@@ -38,8 +38,11 @@ class ViewController: UIViewController {
     @IBOutlet weak var env1Graph: ADSRPlot!
     @IBOutlet weak var env2Graph: ADSRPlot!
     
+    // LFO
     @IBOutlet weak var lfo1Frequency: Knob!
     @IBOutlet weak var lfo2Frequency: Knob!
+    @IBOutlet weak var lfo1Type: MultiButton!
+    @IBOutlet weak var lfo2Type: MultiButton!
     
     //
     // VCO1
@@ -116,6 +119,16 @@ class ViewController: UIViewController {
             state.lfo_frequency.0 = Double(sender.value)
         case 1:
             state.lfo_frequency.1 = Double(sender.value)
+        default: break
+        }
+    }
+    
+    @IBAction func lfoTypeChanged(sender: MultiButton) {
+        switch sender.tag {
+        case 0:
+            state.lfoType.0 = LfoType(UInt32(sender.selectedButton))
+        case 1:
+            state.lfoType.1 = LfoType(UInt32(sender.selectedButton))
         default: break
         }
     }
@@ -529,6 +542,25 @@ class ViewController: UIViewController {
                         case VCO_TYPE_SQUARE:
                             return 1
                         case VCO_TYPE_SAW:
+                            return 2
+                        default:
+                            return 0
+                        }
+                    }
+                )
+            ),
+            ("lfo1Waveform", lfo1Type,
+                IntField(
+                    set: {(inout a : AudioState, b) in
+                        a.lfoType.0 = [LFO_TYPE_SINE, LFO_TYPE_SQUARE, LFO_TYPE_SAW][b]
+                    },
+                    get: {(a : AudioState) in
+                        switch a.lfoType.0 {
+                        case LFO_TYPE_SINE:
+                            return 0
+                        case LFO_TYPE_SQUARE:
+                            return 1
+                        case LFO_TYPE_SAW:
                             return 2
                         default:
                             return 0

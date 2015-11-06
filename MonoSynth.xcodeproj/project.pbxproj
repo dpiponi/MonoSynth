@@ -20,6 +20,8 @@
 		378074511BE1801900FF58A9 /* moodler_lib.c in Sources */ = {isa = PBXBuildFile; fileRef = 378074501BE1801900FF58A9 /* moodler_lib.c */; };
 		37BA1D1E1BE5797900E7F73F /* envelope.c in Sources */ = {isa = PBXBuildFile; fileRef = 37BA1D1C1BE5797900E7F73F /* envelope.c */; };
 		37BE9DF61BDDADA600CE8751 /* SignalPathView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37BE9DF51BDDADA600CE8751 /* SignalPathView.swift */; };
+		BD44FA261BEC42FE00F31AF8 /* lfo_square.c in Sources */ = {isa = PBXBuildFile; fileRef = BD44FA241BEC42FE00F31AF8 /* lfo_square.c */; };
+		BD44FA2D1BEC434E00F31AF8 /* lfo_saw.c in Sources */ = {isa = PBXBuildFile; fileRef = BD44FA2B1BEC434E00F31AF8 /* lfo_saw.c */; };
 		BD4A5D1F1BEBBE4600B0AD55 /* lfo.c in Sources */ = {isa = PBXBuildFile; fileRef = BD4A5D1D1BEBBE4600B0AD55 /* lfo.c */; };
 		BD68B3AE1BE9CE76008671CB /* vco.c in Sources */ = {isa = PBXBuildFile; fileRef = BD68B3AC1BE9CE76008671CB /* vco.c */; };
 		BD87175E1BD724DB00A6A4BD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD87175D1BD724DB00A6A4BD /* AppDelegate.swift */; };
@@ -59,6 +61,10 @@
 		37BA1D1D1BE5797900E7F73F /* envelope.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = envelope.h; sourceTree = "<group>"; };
 		37BE9DF31BDC343600CE8751 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		37BE9DF51BDDADA600CE8751 /* SignalPathView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignalPathView.swift; sourceTree = "<group>"; };
+		BD44FA241BEC42FE00F31AF8 /* lfo_square.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lfo_square.c; sourceTree = "<group>"; };
+		BD44FA251BEC42FE00F31AF8 /* lfo_square.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lfo_square.h; sourceTree = "<group>"; };
+		BD44FA2B1BEC434E00F31AF8 /* lfo_saw.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lfo_saw.c; sourceTree = "<group>"; };
+		BD44FA2C1BEC434E00F31AF8 /* lfo_saw.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lfo_saw.h; sourceTree = "<group>"; };
 		BD4A5D1D1BEBBE4600B0AD55 /* lfo.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lfo.c; sourceTree = "<group>"; };
 		BD4A5D1E1BEBBE4600B0AD55 /* lfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lfo.h; sourceTree = "<group>"; };
 		BD68B3AC1BE9CE76008671CB /* vco.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = vco.c; sourceTree = "<group>"; };
@@ -99,6 +105,10 @@
 			children = (
 				BD9593C51BE04AE400EE098F /* AudioRender.m */,
 				BD9593C71BE04B2E00EE098F /* AudioRender.h */,
+				BD44FA2B1BEC434E00F31AF8 /* lfo_saw.c */,
+				BD44FA2C1BEC434E00F31AF8 /* lfo_saw.h */,
+				BD44FA241BEC42FE00F31AF8 /* lfo_square.c */,
+				BD44FA251BEC42FE00F31AF8 /* lfo_square.h */,
 				BD4A5D1D1BEBBE4600B0AD55 /* lfo.c */,
 				BD4A5D1E1BEBBE4600B0AD55 /* lfo.h */,
 				BD68B3AC1BE9CE76008671CB /* vco.c */,
@@ -256,8 +266,10 @@
 				378074421BE17D2700FF58A9 /* band_limited.c in Sources */,
 				BD8717601BD724DB00A6A4BD /* ViewController.swift in Sources */,
 				3780744D1BE17E5F00FF58A9 /* audio_saw.c in Sources */,
+				BD44FA261BEC42FE00F31AF8 /* lfo_square.c in Sources */,
 				BD8B93C51BE2D30E00C2363B /* lfo_sin.c in Sources */,
 				37BA1D1E1BE5797900E7F73F /* envelope.c in Sources */,
+				BD44FA2D1BEC434E00F31AF8 /* lfo_saw.c in Sources */,
 				BD8717721BD881E900A6A4BD /* KnobLayer.swift in Sources */,
 				BD9593B81BDFC89A00EE098F /* CGUtils.swift in Sources */,
 				37660A161BE1B9BB00AFDD0B /* exp_decay.c in Sources */,

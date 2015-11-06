@@ -12,6 +12,8 @@
 #include <stdio.h>
 
 #include "lfo_sin.h"
+#include "lfo_square.h"
+#include "lfo_saw.h"
 
 enum LfoType {
     LFO_TYPE_SINE = 0,
@@ -23,12 +25,14 @@ enum LfoType {
 
 struct LFO {
     struct LFOSin lfo_sin;
+    struct LFOSquare lfo_square;
+    struct LFOSaw lfo_saw;
     
     double result;
 };
 
 void init_lfo(struct LFO *lfo);
 
-void exec_lfo(struct LFO *lfo, double dt, double frequency);
+void exec_lfo(struct LFO *lfo, double dt, enum LfoType lfoType, double frequency);
 
 #endif /* lfo_h */

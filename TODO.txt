@@ -1,5 +1,4 @@
 7. Feed LFO2, ENV1 and ENV2 into VCO1
-8. LFO waveforms
 9. Rand for LFO1 and LFO2
 10. Noise for VCO
 11. Sequencers
@@ -33,3 +32,4 @@ Done
 30. Detent on knobs
 5. Feed LFO1 and LFO2 into VCA
 31. Factor out LFO
+8. LFO waveforms
