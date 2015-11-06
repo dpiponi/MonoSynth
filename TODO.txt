@@ -17,6 +17,7 @@
 28. One dispatcher for all knobs etc. using @IBInspectable knob name to index knoblist()
 29. VU Meter
 30. Sort out "icons" for multibutton
+31. VCO2?
 
 Done
 ----

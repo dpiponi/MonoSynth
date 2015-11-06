@@ -25,6 +25,8 @@ import QuartzCore
         }
     }
     
+    let numElements : Int = 3
+    
     var knobLayer1 : MultiButtonLayer! = nil
     
     var minAngle : CGFloat = 0.0 /*{
@@ -83,7 +85,7 @@ import QuartzCore
         previousTouchPoint = touch.locationInView(self)
         print(previousTouchPoint)
         
-        selectedButton = Int(previousTouchPoint.x/bounds.width*3.0) // numElements
+        selectedButton = Int(previousTouchPoint.x/bounds.width*CGFloat(numElements)) // numElements
         print(selectedButton)
         knobLayer1.setNeedsDisplay()
         
@@ -107,7 +109,7 @@ import QuartzCore
         let valueDelta = 0.002*delta*(maxValue-minValue)
         value += valueDelta
         
-        selectedButton = Int(touchPoint.x/bounds.width*3.0) // numElements
+        selectedButton = Int(touchPoint.x/bounds.width*CGFloat(numElements)) // numElements
         print(selectedButton)
         
         previousTouchPoint = touchPoint

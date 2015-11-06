@@ -157,7 +157,7 @@ class MultiButtonLayer: CALayer {
 
     override func drawInContext(context: CGContextRef) -> Void {
         let bounds2 = CGRectInset(bounds, 10.0, 10.0)
-        let numElements : Int = 3
+        let numElements : Int = slider.numElements
         let buttonWidth : CGFloat = bounds2.width/CGFloat(numElements)
         let buttonheight : CGFloat = bounds2.height
         let x : CGFloat = bounds2.origin.x
