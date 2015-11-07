@@ -24,6 +24,9 @@
 		BD44FA2D1BEC434E00F31AF8 /* lfo_saw.c in Sources */ = {isa = PBXBuildFile; fileRef = BD44FA2B1BEC434E00F31AF8 /* lfo_saw.c */; };
 		BD4A5D1F1BEBBE4600B0AD55 /* lfo.c in Sources */ = {isa = PBXBuildFile; fileRef = BD4A5D1D1BEBBE4600B0AD55 /* lfo.c */; };
 		BD68B3AE1BE9CE76008671CB /* vco.c in Sources */ = {isa = PBXBuildFile; fileRef = BD68B3AC1BE9CE76008671CB /* vco.c */; };
+		BD7D6C0D1BED0C9C0050C433 /* lfo_rand.c in Sources */ = {isa = PBXBuildFile; fileRef = BD7D6C0B1BED0C9C0050C433 /* lfo_rand.c */; };
+		BD7D6C0F1BED83DB0050C433 /* VUMeter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7D6C0E1BED83DB0050C433 /* VUMeter.swift */; };
+		BD7D6C111BED85A90050C433 /* VUMeterLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7D6C101BED85A90050C433 /* VUMeterLayer.swift */; };
 		BD87175E1BD724DB00A6A4BD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD87175D1BD724DB00A6A4BD /* AppDelegate.swift */; };
 		BD8717601BD724DB00A6A4BD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD87175F1BD724DB00A6A4BD /* ViewController.swift */; };
 		BD8717631BD724DB00A6A4BD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD8717611BD724DB00A6A4BD /* Main.storyboard */; };
@@ -69,6 +72,10 @@
 		BD4A5D1E1BEBBE4600B0AD55 /* lfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lfo.h; sourceTree = "<group>"; };
 		BD68B3AC1BE9CE76008671CB /* vco.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = vco.c; sourceTree = "<group>"; };
 		BD68B3AD1BE9CE76008671CB /* vco.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vco.h; sourceTree = "<group>"; };
+		BD7D6C0B1BED0C9C0050C433 /* lfo_rand.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lfo_rand.c; sourceTree = "<group>"; };
+		BD7D6C0C1BED0C9C0050C433 /* lfo_rand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lfo_rand.h; sourceTree = "<group>"; };
+		BD7D6C0E1BED83DB0050C433 /* VUMeter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VUMeter.swift; sourceTree = "<group>"; };
+		BD7D6C101BED85A90050C433 /* VUMeterLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VUMeterLayer.swift; sourceTree = "<group>"; };
 		BD87175A1BD724DB00A6A4BD /* MonoSynth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MonoSynth.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD87175D1BD724DB00A6A4BD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BD87175F1BD724DB00A6A4BD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -131,6 +138,8 @@
 				37660A141BE1B9BB00AFDD0B /* exp_decay.c */,
 				37660A151BE1B9BB00AFDD0B /* exp_decay.h */,
 				3780744C1BE17E5F00FF58A9 /* audio_saw.c */,
+				BD7D6C0B1BED0C9C0050C433 /* lfo_rand.c */,
+				BD7D6C0C1BED0C9C0050C433 /* lfo_rand.h */,
 			);
 			name = "Audio Synthesis";
 			sourceTree = "<group>";
@@ -182,6 +191,8 @@
 				BD8717711BD881E900A6A4BD /* KnobLayer.swift */,
 				375D36021BDC207C00C55DBE /* PianoKey.swift */,
 				375D36041BDC286900C55DBE /* PianoKeyLayer.swift */,
+				BD7D6C0E1BED83DB0050C433 /* VUMeter.swift */,
+				BD7D6C101BED85A90050C433 /* VUMeterLayer.swift */,
 			);
 			name = "UI Elements";
 			path = ..;
@@ -264,6 +275,7 @@
 				375D36031BDC207C00C55DBE /* PianoKey.swift in Sources */,
 				BD4A5D1F1BEBBE4600B0AD55 /* lfo.c in Sources */,
 				378074421BE17D2700FF58A9 /* band_limited.c in Sources */,
+				BD7D6C0D1BED0C9C0050C433 /* lfo_rand.c in Sources */,
 				BD8717601BD724DB00A6A4BD /* ViewController.swift in Sources */,
 				3780744D1BE17E5F00FF58A9 /* audio_saw.c in Sources */,
 				BD44FA261BEC42FE00F31AF8 /* lfo_square.c in Sources */,
@@ -273,6 +285,8 @@
 				BD8717721BD881E900A6A4BD /* KnobLayer.swift in Sources */,
 				BD9593B81BDFC89A00EE098F /* CGUtils.swift in Sources */,
 				37660A161BE1B9BB00AFDD0B /* exp_decay.c in Sources */,
+				BD7D6C111BED85A90050C433 /* VUMeterLayer.swift in Sources */,
+				BD7D6C0F1BED83DB0050C433 /* VUMeter.swift in Sources */,
 				BDB75E391BDF009200242397 /* MultiButton.swift in Sources */,
 				378074481BE17D6E00FF58A9 /* audio_sin.c in Sources */,
 				378074451BE17D5300FF58A9 /* audio_square.c in Sources */,

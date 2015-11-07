@@ -1053,6 +1053,11 @@
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YWb-aL-OUV" customClass="VUMeter" customModule="MonoSynth" customModuleProvider="target">
+                                                <rect key="frame" x="338" y="12" width="53" height="179"/>
+                                                <animations/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </view>
                                         </subviews>
                                         <animations/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1103,6 +1108,7 @@
                         <outlet property="lfo2Frequency" destination="eqT-j3-1ME" id="iLO-0w-3lk"/>
                         <outlet property="lfo2Panel" destination="bk5-IY-U5v" id="ChU-ll-uqt"/>
                         <outlet property="lfo2Type" destination="tE1-nh-IcZ" id="SyI-G7-kxg"/>
+                        <outlet property="meter" destination="YWb-aL-OUV" id="KFr-xK-fvL"/>
                         <outlet property="vcaEnv2Switch" destination="nbc-H4-fPY" id="xzM-Ns-u6n"/>
                         <outlet property="vcaLfo1Modulation" destination="zJ2-mH-cID" id="gkm-g9-nPH"/>
                         <outlet property="vcaLfo2Modulation" destination="n82-ZG-gST" id="ULK-CS-vBy"/>

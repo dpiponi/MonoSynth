@@ -90,6 +90,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var vcaLfo1Modulation: Knob!
     @IBOutlet weak var vcaLfo2Modulation: Knob!
     
+    @IBOutlet weak var meter: VUMeter!
+    
     var gen : AudioComponentInstance = nil
 
     var sampleRate : Double = 44100.0
@@ -386,12 +388,16 @@ class ViewController: UIViewController {
             } catch { print("Error2") }
         }
         
+        meter.controller = self
+        
         NSNotificationCenter.defaultCenter().addObserver(self,
             selector: "handleInterruption:",
             name: AVAudioSessionInterruptionNotification,
             object: nil)
         
-        
+        waveformSelector.icons = [.Sine, .Square, .Saw]
+        lfo1Type.icons = [.Sine, .Square, .Saw, .Rand]
+        lfo2Type.icons = [.Sine, .Square, .Saw, .Rand]
         
         init_audio_state(&state)
         
@@ -552,7 +558,7 @@ class ViewController: UIViewController {
             ("lfo1Waveform", lfo1Type,
                 IntField(
                     set: {(inout a : AudioState, b) in
-                        a.lfoType.0 = [LFO_TYPE_SINE, LFO_TYPE_SQUARE, LFO_TYPE_SAW][b]
+                        a.lfoType.0 = [LFO_TYPE_SINE, LFO_TYPE_SQUARE, LFO_TYPE_SAW, LFO_TYPE_RAND][b]
                     },
                     get: {(a : AudioState) in
                         switch a.lfoType.0 {
@@ -561,6 +567,8 @@ class ViewController: UIViewController {
                         case LFO_TYPE_SQUARE:
                             return 1
                         case LFO_TYPE_SAW:
+                            return 2
+                        case LFO_TYPE_RAND:
                             return 2
                         default:
                             return 0

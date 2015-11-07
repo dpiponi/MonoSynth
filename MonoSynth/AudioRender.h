@@ -50,6 +50,8 @@ struct AudioState {
 
     struct VCO vco1;
     
+    double peak;
+    
     //
     // Envelopes
     //

@@ -82,6 +82,7 @@ void init_audio_state(struct AudioState *state) {
     // ENV1
     //
     
+    state->peak = 0.0;
 }
 
 OSStatus audio_render(void *inRefCon,
@@ -155,6 +156,11 @@ OSStatus audio_render(void *inRefCon,
                     result);
         buffer[i] = 1.0*state->ladder.result;
         
+        double abs_sample = fabs(buffer[i]);
+        state->peak *= 0.99999;
+        if (abs_sample > state->peak) {
+            state->peak = abs_sample;
+        }
     }
 //    printf(":::");
 //    for (int i = 0; i < 10; ++i) {

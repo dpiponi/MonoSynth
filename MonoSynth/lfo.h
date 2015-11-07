@@ -14,6 +14,7 @@
 #include "lfo_sin.h"
 #include "lfo_square.h"
 #include "lfo_saw.h"
+#include "lfo_rand.h"
 
 enum LfoType {
     LFO_TYPE_SINE = 0,
@@ -27,6 +28,7 @@ struct LFO {
     struct LFOSin lfo_sin;
     struct LFOSquare lfo_square;
     struct LFOSaw lfo_saw;
+    struct LFORand lfo_rand;
     
     double result;
 };

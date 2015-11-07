@@ -95,12 +95,45 @@ func sawLegend(context: CGContext, rect: CGRect, selected: Bool) -> Void {
     }
 }
 
+func randLegend(context: CGContext, rect: CGRect, selected: Bool) -> Void {
+    let size = rect.height
+    let xcenter = rect.origin.x+0.5*rect.width
+    let ycenter = rect.origin.y+0.5*rect.height
+    
+    savingContext(context) {
+        CGContextSetShadowWithColor(context, CGSize(width: 0.0,height: 0.0), 0.0, nil)
+        if selected {
+            CGContextSetStrokeColorWithColor(context, UIColor.redColor().CGColor)
+        } else {
+            CGContextSetStrokeColorWithColor(context, UIColor(red: 1.0, green: 0.6, blue: 0.6, alpha: 1.0).CGColor)
+        }
+        CGContextTranslateCTM(context, xcenter, ycenter)
+        CGContextScaleCTM(context, size, -size)
+        
+        CGContextSetLineWidth(context, 2.0/size)
+        CGContextBeginPath(context)
+        CGContextMoveToPoint(context, -0.5,0.0)
+        CGContextAddLineToPoint(context, -0.5,-0.25)
+        CGContextAddLineToPoint(context, -0.25,-0.25)
+        CGContextAddLineToPoint(context, -0.25,-0.125)
+        CGContextAddLineToPoint(context, -0.0,-0.125)
+        CGContextAddLineToPoint(context, -0.0,-0.25)
+        CGContextAddLineToPoint(context, 0.25,-0.25)
+        CGContextAddLineToPoint(context, 0.25,0.125)
+        CGContextAddLineToPoint(context, 0.50,0.125)
+        CGContextAddLineToPoint(context, 0.50,-0.0)
+        
+        CGContextStrokePath(context)
+        
+        print("RAND!!!!!!!!!!!!!!")
+    }
+}
 
 class MultiButtonLayer: CALayer {
     var highlighted : Bool = false
     weak var slider : MultiButton! = nil
     
-    func drawButton(context: CGContext, rect: CGRect, selected: Bool, f: (CGContext, CGRect, Bool)->Void) {
+    func drawButton(context: CGContext, rect: CGRect, selected: Bool, f: MultiIcon) {
         let colorSpace = CGColorSpaceCreateDeviceRGB()
         let locations: [CGFloat] = [ 0.0, 0.4, 0.5, 1.0 ]
         
@@ -151,35 +184,36 @@ class MultiButtonLayer: CALayer {
                 CGContextEndTransparencyLayer(context)
             }
             
-            f(context, rect, selected)
+            switch f {
+            case .Sine:
+                sinLegend(context, rect: rect, selected: selected)
+            case .Square:
+                squareLegend(context, rect: rect, selected: selected)
+            case .Saw:
+                sawLegend(context, rect: rect, selected: selected)
+            case .Rand:
+                randLegend(context, rect: rect, selected: selected)
+            }
         }
     }
 
     override func drawInContext(context: CGContextRef) -> Void {
         let bounds2 = CGRectInset(bounds, 10.0, 10.0)
-        let numElements : Int = slider.numElements
+        let numElements : Int = slider.icons.count
         let buttonWidth : CGFloat = bounds2.width/CGFloat(numElements)
         let buttonheight : CGFloat = bounds2.height
         let x : CGFloat = bounds2.origin.x
         let y : CGFloat = bounds2.origin.y
-        let drawer : [(CGContext, CGRect, Bool) -> Void] = [
-            sinLegend,
-            squareLegend,
-            sawLegend
-        ]
+//        let drawer : [(CGContext, CGRect, Bool) -> Void] = [
+//            sinLegend,
+//            squareLegend,
+//            sawLegend
+//        ]
         for i in 0..<numElements {
             let myRect = CGRect(x:x+CGFloat(i)*buttonWidth, y:y, width:buttonWidth, height:buttonheight)
             
             savingContext(context) {
-//                let colorSpace = CGColorSpaceCreateDeviceRGB()
-//                let components : [CGFloat] = [0.4, 0.4, 0.4, 1.0]
-//                let shadowColor : CGColorRef = CGColorCreate(colorSpace, components)!
-//                CGContextSetShadowWithColor(context, CGSize(width: 1.0,height: 1.0), 6.0, shadowColor)
-                
-//                CGContextBeginTransparencyLayer(context, nil)
-//                print(i, self.slider.selectedButton)
-                self.drawButton(context, rect:myRect, selected: self.slider.selectedButton == i, f:drawer[i])
-//                CGContextEndTransparencyLayer(context)
+                self.drawButton(context, rect:myRect, selected: self.slider.selectedButton == i, f:self.slider.icons[i])
             }
         }
         

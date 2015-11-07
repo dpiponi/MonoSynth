@@ -1,5 +1,4 @@
 7. Feed LFO2, ENV1 and ENV2 into VCO1
-9. Rand for LFO1 and LFO2
 10. Noise for VCO
 11. Sequencers
 12. VCO sync
@@ -15,9 +14,14 @@
 26. Sort out ADSR plot on restore
 27. Per panel reset
 28. One dispatcher for all knobs etc. using @IBInspectable knob name to index knoblist()
-29. VU Meter
-30. Sort out "icons" for multibutton
 31. VCO2?
+32. Echo
+33. Reverb
+34. Phaser
+35. Chorus
+36. Delegates for panels?
+37. VCO2?
+38. More filters
 
 Done
 ----
@@ -34,3 +38,6 @@ Done
 5. Feed LFO1 and LFO2 into VCA
 31. Factor out LFO
 8. LFO waveforms
+9. Rand for LFO1 and LFO2
+30. Sort out "icons" for multibutton
+29. VU Meter

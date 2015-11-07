@@ -10,6 +10,9 @@
 
 void init_lfo(struct LFO *lfo) {
     init_lfo_sin(&lfo->lfo_sin);
+    init_lfo_square(&lfo->lfo_square);
+    init_lfo_saw(&lfo->lfo_saw);
+    init_lfo_rand(&lfo->lfo_rand);
 }
 
 void exec_lfo(struct LFO *lfo, double dt, enum LfoType lfoType, double frequency) {
@@ -25,6 +28,10 @@ void exec_lfo(struct LFO *lfo, double dt, enum LfoType lfoType, double frequency
         case LFO_TYPE_SAW:
             exec_lfo_saw(&lfo->lfo_saw, dt, frequency);
             lfo->result = lfo->lfo_saw.result;
+            break;
+        case LFO_TYPE_RAND:
+            exec_lfo_rand(&lfo->lfo_rand, dt, frequency);
+            lfo->result = lfo->lfo_rand.result;
             break;
         default:
             break;

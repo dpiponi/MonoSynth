@@ -9,6 +9,13 @@
 import UIKit
 import QuartzCore
 
+enum MultiIcon {
+    case Sine
+    case Square
+    case Saw
+    case Rand
+}
+
 @IBDesignable class MultiButton: UIControl {
     
     var selectedButton : Int = 0
@@ -25,7 +32,8 @@ import QuartzCore
         }
     }
     
-    let numElements : Int = 3
+//    var numElements : Int = 0
+    var icons : [MultiIcon] = []
     
     var knobLayer1 : MultiButtonLayer! = nil
     
@@ -57,9 +65,6 @@ import QuartzCore
     }
     
     func setLayerFrames() -> Void {
-//        knobWidth = bounds.size.height
-        
-//        knobLayer1.frame = CGRectMake(0, 0, knobWidth, knobWidth)
         knobLayer1.frame = CGRectInset(bounds, -5.0, -5.0)
         
         knobLayer1.setNeedsDisplay()
@@ -77,15 +82,13 @@ import QuartzCore
         self.layer.addSublayer(knobLayer1)
         
         self.setLayerFrames()
-//        print(frame,bounds)
-//        bounds = CGRectInset(bounds, -4.0, -4.0)
     }
     
     override func beginTrackingWithTouch(touch : UITouch, withEvent event:UIEvent?) -> Bool {
         previousTouchPoint = touch.locationInView(self)
         print(previousTouchPoint)
         
-        selectedButton = Int(previousTouchPoint.x/bounds.width*CGFloat(numElements)) // numElements
+        selectedButton = Int(previousTouchPoint.x/bounds.width*CGFloat(icons.count)) // numElements
         print(selectedButton)
         knobLayer1.setNeedsDisplay()
         
@@ -109,7 +112,7 @@ import QuartzCore
         let valueDelta = 0.002*delta*(maxValue-minValue)
         value += valueDelta
         
-        selectedButton = Int(touchPoint.x/bounds.width*CGFloat(numElements)) // numElements
+        selectedButton = Int(touchPoint.x/bounds.width*CGFloat(icons.count)) // numElements
         print(selectedButton)
         
         previousTouchPoint = touchPoint
