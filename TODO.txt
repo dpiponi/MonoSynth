@@ -1,7 +1,6 @@
 7. Feed LFO2, ENV1 and ENV2 into VCO1
 10. Noise for VCO
 11. Sequencers
-12. VCO sync
 14. Collections of controls?
 15. Estimate better dynamic range
 17. Draw filter graph
@@ -41,3 +40,4 @@ Done
 9. Rand for LFO1 and LFO2
 30. Sort out "icons" for multibutton
 29. VU Meter
+12. VCO sync

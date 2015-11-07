@@ -47,6 +47,7 @@ struct AudioState {
     double vco1_detune;
     double vco1_spread;
     double vco1_lfo1_modulation;
+    double vco1SyncRatio;
 
     struct VCO vco1;
     

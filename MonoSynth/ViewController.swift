@@ -53,7 +53,11 @@ class ViewController: UIViewController {
     @IBOutlet weak var vco1Number: Knob!
     @IBOutlet weak var vco1Spread: Knob!
     @IBOutlet weak var vco1Lfo1Modulation: Knob!
+    @IBOutlet weak var vco1SyncRatio: Knob!
     
+    //
+    // LPF
+    //
     @IBOutlet weak var filterCutoff: Knob!
     @IBOutlet weak var filterResonance: Knob!
     @IBOutlet weak var filterCutoffLFO1Modulation: Knob!
@@ -176,7 +180,10 @@ class ViewController: UIViewController {
     @IBAction func vco1SpreadChanged(sender: Knob) {
         state.vco1_spread = Double(sender.value)
     }
-    
+    @IBAction func vco1SyncRatioChanged(sender: Knob) {
+        state.vco1SyncRatio = Double(sender.value)
+        print("sync=", state.vco1SyncRatio)
+    }
     
     @IBAction func vco1Pressed(sender: UIButton) {
         vco1Panel.hidden = false
@@ -188,6 +195,10 @@ class ViewController: UIViewController {
         vcaPanel.hidden = true
     }
     
+    
+    //
+    // LFO
+    //
     @IBAction func lfo1Pressed(sender: UIButton) {
         vco1Panel.hidden = true
         lfo1Panel.hidden = false
@@ -721,6 +732,12 @@ class ViewController: UIViewController {
                 Field(
                     set: {(inout a : AudioState, b) in a.vco1_lfo1_modulation = b},
                     get: {a in return a.vco1_lfo1_modulation}
+                )
+            ),
+            ("vco1SyncRatio", vco1SyncRatio,
+                Field(
+                    set: {(inout a : AudioState, b) in a.vco1SyncRatio = b},
+                    get: {a in return a.vco1SyncRatio}
                 )
             ),
             

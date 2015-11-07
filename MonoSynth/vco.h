@@ -15,6 +15,8 @@
 #include "audio_saw.h"
 #include "audio_sin.h"
 
+#include "lfo_pulse.h"
+
 #define MAX_NUM_OSCILLATORS 8
 
 enum VcoType {
@@ -24,6 +26,8 @@ enum VcoType {
 };
 
 struct VCO {
+    struct LFOPulse sync[8];
+    
     struct Saw saw_state[8];
     struct Sin sin_state[8];
     struct Square square_state[MAX_NUM_OSCILLATORS];
@@ -33,6 +37,6 @@ struct VCO {
 
 void init_vco(struct VCO *state);
 
-void exec_vco(struct VCO *state, enum VcoType vcoType, double frequency, int vco1_number, double vco1_detune, double vco1_spread);
+void exec_vco(struct VCO *state, enum VcoType vcoType, double dt, double frequency, int vco1_number, double vco1_detune, double vco1_spread, double sync_ratio);
 
 #endif /* vco_h */

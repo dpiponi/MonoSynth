@@ -95,9 +95,6 @@ OSStatus audio_render(void *inRefCon,
     struct AudioState *state = (struct AudioState *)inRefCon;
     const double dt = 1.0/44100.0;
     float *buffer = ioData->mBuffers[0].mData;
-//    printf("gate=%f\n", state->gate);
-    
-//    printf("lforeq=%f\n", state->lfo1_frequency);
     
     for (int i = 0; i < inNumberFrames; ++i) {
         //
@@ -107,19 +104,10 @@ OSStatus audio_render(void *inRefCon,
             exec_lfo(&state->lfo[j], dt, state->lfoType[j], state->lfo_frequency[j]);
         }
         
-//        double sample = 0.0;
-        
-        //
-        // VCO1
-        //
-//        if (i==0) printf("OSCTYPE = %d\n", state->oscType);
-        exec_vco(&state->vco1, state->vcoType, state->frequency,
+        exec_vco(&state->vco1, state->vcoType, dt, state->frequency,
                  state->vco1_number,
                  state->vco1_detune+state->vco1_lfo1_modulation*state->lfo[0].result,
-                 state->vco1_spread);
-//        step_exp_decay(&state->exp_decay, dt, 1.0, state->gate);
-        
-//        double env1 = state->exp_decay.amplitude;
+                 state->vco1_spread, state->vco1SyncRatio);
         
         for (int j = 0; j < 2; ++j) {
             exec_envelope(i,j, &state->env[j], dt, state->envDelay[j],

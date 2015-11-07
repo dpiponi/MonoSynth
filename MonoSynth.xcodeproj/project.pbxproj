@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		37117C1B1BEE81A2005278AF /* lfo_pulse.c in Sources */ = {isa = PBXBuildFile; fileRef = 37117C191BEE81A2005278AF /* lfo_pulse.c */; };
 		374594541BE6D33E007EAB03 /* ADSRPlot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374594531BE6D33E007EAB03 /* ADSRPlot.swift */; };
 		374594561BE6D761007EAB03 /* TODO.txt in Resources */ = {isa = PBXBuildFile; fileRef = 374594551BE6D761007EAB03 /* TODO.txt */; };
 		375D36031BDC207C00C55DBE /* PianoKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375D36021BDC207C00C55DBE /* PianoKey.swift */; };
@@ -42,6 +43,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		37117C191BEE81A2005278AF /* lfo_pulse.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lfo_pulse.c; sourceTree = "<group>"; };
+		37117C1A1BEE81A2005278AF /* lfo_pulse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lfo_pulse.h; sourceTree = "<group>"; };
 		374594531BE6D33E007EAB03 /* ADSRPlot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ADSRPlot.swift; sourceTree = "<group>"; };
 		374594551BE6D761007EAB03 /* TODO.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TODO.txt; sourceTree = "<group>"; };
 		375D36021BDC207C00C55DBE /* PianoKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PianoKey.swift; path = MonoSynth/PianoKey.swift; sourceTree = "<group>"; };
@@ -112,14 +115,20 @@
 			children = (
 				BD9593C51BE04AE400EE098F /* AudioRender.m */,
 				BD9593C71BE04B2E00EE098F /* AudioRender.h */,
+				378074461BE17D6E00FF58A9 /* audio_sin.c */,
+				378074431BE17D5300FF58A9 /* audio_square.c */,
+				378074441BE17D5300FF58A9 /* audio_square.h */,
+				3780744E1BE17EE600FF58A9 /* audio_saw.h */,
+				BD4A5D1D1BEBBE4600B0AD55 /* lfo.c */,
+				BD4A5D1E1BEBBE4600B0AD55 /* lfo.h */,
 				BD44FA2B1BEC434E00F31AF8 /* lfo_saw.c */,
 				BD44FA2C1BEC434E00F31AF8 /* lfo_saw.h */,
 				BD44FA241BEC42FE00F31AF8 /* lfo_square.c */,
 				BD44FA251BEC42FE00F31AF8 /* lfo_square.h */,
-				BD4A5D1D1BEBBE4600B0AD55 /* lfo.c */,
-				BD4A5D1E1BEBBE4600B0AD55 /* lfo.h */,
-				BD68B3AC1BE9CE76008671CB /* vco.c */,
-				BD68B3AD1BE9CE76008671CB /* vco.h */,
+				BD8B93C31BE2D30E00C2363B /* lfo_sin.c */,
+				BD8B93C41BE2D30E00C2363B /* lfo_sin.h */,
+				37117C191BEE81A2005278AF /* lfo_pulse.c */,
+				37117C1A1BEE81A2005278AF /* lfo_pulse.h */,
 				37BA1D1C1BE5797900E7F73F /* envelope.c */,
 				37BA1D1D1BE5797900E7F73F /* envelope.h */,
 				3780744F1BE1801000FF58A9 /* moodler_lib.h */,
@@ -128,18 +137,14 @@
 				378074411BE17D2700FF58A9 /* band_limited.c */,
 				37660A171BE1C19700AFDD0B /* ladder.c */,
 				37660A191BE1C1A600AFDD0B /* ladder.h */,
-				BD8B93C31BE2D30E00C2363B /* lfo_sin.c */,
-				BD8B93C41BE2D30E00C2363B /* lfo_sin.h */,
 				378074471BE17D6E00FF58A9 /* audio_sin.h */,
-				378074461BE17D6E00FF58A9 /* audio_sin.c */,
-				378074431BE17D5300FF58A9 /* audio_square.c */,
-				378074441BE17D5300FF58A9 /* audio_square.h */,
-				3780744E1BE17EE600FF58A9 /* audio_saw.h */,
 				37660A141BE1B9BB00AFDD0B /* exp_decay.c */,
 				37660A151BE1B9BB00AFDD0B /* exp_decay.h */,
 				3780744C1BE17E5F00FF58A9 /* audio_saw.c */,
 				BD7D6C0B1BED0C9C0050C433 /* lfo_rand.c */,
 				BD7D6C0C1BED0C9C0050C433 /* lfo_rand.h */,
+				BD68B3AC1BE9CE76008671CB /* vco.c */,
+				BD68B3AD1BE9CE76008671CB /* vco.h */,
 			);
 			name = "Audio Synthesis";
 			sourceTree = "<group>";
@@ -296,6 +301,7 @@
 				374594541BE6D33E007EAB03 /* ADSRPlot.swift in Sources */,
 				37660A181BE1C19700AFDD0B /* ladder.c in Sources */,
 				37BE9DF61BDDADA600CE8751 /* SignalPathView.swift in Sources */,
+				37117C1B1BEE81A2005278AF /* lfo_pulse.c in Sources */,
 				BD8717701BD881E000A6A4BD /* Knob.swift in Sources */,
 				378074511BE1801900FF58A9 /* moodler_lib.c in Sources */,
 				BD87175E1BD724DB00A6A4BD /* AppDelegate.swift in Sources */,
