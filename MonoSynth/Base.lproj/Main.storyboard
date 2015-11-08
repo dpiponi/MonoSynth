@@ -566,7 +566,7 @@
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
-                                                        <real key="value" value="4"/>
+                                                        <real key="value" value="6"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="minValue">
                                                         <real key="value" value="0.0"/>
@@ -803,7 +803,7 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bk5-IY-U5v">
-                                        <rect key="frame" x="99.5" y="8" width="600" height="250"/>
+                                        <rect key="frame" x="100" y="8" width="600" height="250"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="LFO2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="39G-eo-QI3">
                                                 <rect key="frame" x="0.0" y="0.0" width="96" height="62"/>
