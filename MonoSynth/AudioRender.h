@@ -85,6 +85,11 @@ struct AudioState {
     
     double filter_cutoff; // octaves relative to keyboard frequency
     double filter_resonance;
+    
+    bool osc_waiting;
+    int osc_pos;
+    double *osc_data;
+    double osc_previous ;
 };
 
 void init_audio_state(struct AudioState *state);

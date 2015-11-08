@@ -17,7 +17,7 @@ class VUMeterLayer: CALayer {
         
         let meterFrame = CGRectInset(bounds, 2.0, 2.0)
         
-        print("p=",peak)
+//        print("p=",peak)
         
         let colorSpace = CGColorSpaceCreateDeviceRGB()
         
@@ -37,12 +37,8 @@ class VUMeterLayer: CALayer {
         let rect = CGRect(origin: meterFrame.origin,
                           size: CGSize(width: meterFrame.width,
                                        height: meterFrame.height*CGFloat(peak/2.0)))
-//        CATransaction.begin()
-//        CATransaction.setDisableActions(true)
         savingContext(ctx) {
             
-//            CGContextSetFillColorWithColor(ctx, UIColor(red: 0.2, green: 0.8, blue: 0.5, alpha: 1.0).CGColor)
-//            CGContextFillRect(ctx, rect)
             CGContextAddRect(ctx, rect)
             CGContextClip(ctx)
 
@@ -50,7 +46,6 @@ class VUMeterLayer: CALayer {
             let endPoint = CGPoint(x: meterFrame.width/2.0, y: meterFrame.height)
             CGContextDrawLinearGradient(ctx, gradient, startPoint, endPoint, CGGradientDrawingOptions(rawValue: 0))
         }
-//        CATransaction.commit()
         
     }
 }

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		37117C1B1BEE81A2005278AF /* lfo_pulse.c in Sources */ = {isa = PBXBuildFile; fileRef = 37117C191BEE81A2005278AF /* lfo_pulse.c */; };
+		37117C201BEF181F005278AF /* Scope.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37117C1F1BEF181F005278AF /* Scope.swift */; };
+		37117C221BEF184B005278AF /* ScopeLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37117C211BEF184B005278AF /* ScopeLayer.swift */; };
 		374594541BE6D33E007EAB03 /* ADSRPlot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374594531BE6D33E007EAB03 /* ADSRPlot.swift */; };
 		374594561BE6D761007EAB03 /* TODO.txt in Resources */ = {isa = PBXBuildFile; fileRef = 374594551BE6D761007EAB03 /* TODO.txt */; };
 		375D36031BDC207C00C55DBE /* PianoKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375D36021BDC207C00C55DBE /* PianoKey.swift */; };
@@ -45,6 +47,8 @@
 /* Begin PBXFileReference section */
 		37117C191BEE81A2005278AF /* lfo_pulse.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lfo_pulse.c; sourceTree = "<group>"; };
 		37117C1A1BEE81A2005278AF /* lfo_pulse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lfo_pulse.h; sourceTree = "<group>"; };
+		37117C1F1BEF181F005278AF /* Scope.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scope.swift; sourceTree = "<group>"; };
+		37117C211BEF184B005278AF /* ScopeLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScopeLayer.swift; sourceTree = "<group>"; };
 		374594531BE6D33E007EAB03 /* ADSRPlot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ADSRPlot.swift; sourceTree = "<group>"; };
 		374594551BE6D761007EAB03 /* TODO.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TODO.txt; sourceTree = "<group>"; };
 		375D36021BDC207C00C55DBE /* PianoKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PianoKey.swift; path = MonoSynth/PianoKey.swift; sourceTree = "<group>"; };
@@ -152,8 +156,8 @@
 		BD8717511BD724DB00A6A4BD = {
 			isa = PBXGroup;
 			children = (
-				BDB1FBE71BD9BC03001B05E8 /* Impact Label Licence.txt */,
 				37BE9DF31BDC343600CE8751 /* README.md */,
+				BDB1FBE71BD9BC03001B05E8 /* Impact Label Licence.txt */,
 				374594551BE6D761007EAB03 /* TODO.txt */,
 				BD87175C1BD724DB00A6A4BD /* MonoSynth */,
 				BD87175B1BD724DB00A6A4BD /* Products */,
@@ -196,6 +200,8 @@
 				BD8717711BD881E900A6A4BD /* KnobLayer.swift */,
 				375D36021BDC207C00C55DBE /* PianoKey.swift */,
 				375D36041BDC286900C55DBE /* PianoKeyLayer.swift */,
+				37117C1F1BEF181F005278AF /* Scope.swift */,
+				37117C211BEF184B005278AF /* ScopeLayer.swift */,
 				BD7D6C0E1BED83DB0050C433 /* VUMeter.swift */,
 				BD7D6C101BED85A90050C433 /* VUMeterLayer.swift */,
 			);
@@ -280,6 +286,7 @@
 				375D36031BDC207C00C55DBE /* PianoKey.swift in Sources */,
 				BD4A5D1F1BEBBE4600B0AD55 /* lfo.c in Sources */,
 				378074421BE17D2700FF58A9 /* band_limited.c in Sources */,
+				37117C201BEF181F005278AF /* Scope.swift in Sources */,
 				BD7D6C0D1BED0C9C0050C433 /* lfo_rand.c in Sources */,
 				BD8717601BD724DB00A6A4BD /* ViewController.swift in Sources */,
 				3780744D1BE17E5F00FF58A9 /* audio_saw.c in Sources */,
@@ -304,6 +311,7 @@
 				37117C1B1BEE81A2005278AF /* lfo_pulse.c in Sources */,
 				BD8717701BD881E000A6A4BD /* Knob.swift in Sources */,
 				378074511BE1801900FF58A9 /* moodler_lib.c in Sources */,
+				37117C221BEF184B005278AF /* ScopeLayer.swift in Sources */,
 				BD87175E1BD724DB00A6A4BD /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

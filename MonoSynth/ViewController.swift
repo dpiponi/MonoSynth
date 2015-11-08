@@ -95,6 +95,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var vcaLfo2Modulation: Knob!
     
     @IBOutlet weak var meter: VUMeter!
+    @IBOutlet weak var scope: Scope!
     
     var gen : AudioComponentInstance = nil
 
@@ -400,6 +401,7 @@ class ViewController: UIViewController {
         }
         
         meter.controller = self
+        scope.controller = self
         
         NSNotificationCenter.defaultCenter().addObserver(self,
             selector: "handleInterruption:",

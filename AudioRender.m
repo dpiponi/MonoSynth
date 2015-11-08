@@ -11,6 +11,8 @@
 
 #import "AudioRender.h"
 
+#define OSC_BUFSIZE 1024
+
 void init_audio_state(struct AudioState *state) {
     //
     // UI
@@ -83,6 +85,14 @@ void init_audio_state(struct AudioState *state) {
     //
     
     state->peak = 0.0;
+    
+    //
+    // OSC
+    //
+    state->osc_waiting = true;
+    state->osc_pos = 0.0;
+    state->osc_data = malloc(OSC_BUFSIZE*sizeof(double));
+    state->osc_previous = 0.0;
 }
 
 OSStatus audio_render(void *inRefCon,
@@ -144,17 +154,35 @@ OSStatus audio_render(void *inRefCon,
                     result);
         buffer[i] = 1.0*state->ladder.result;
         
+        //
+        // VU Meter
+        //
         double abs_sample = fabs(buffer[i]);
         state->peak *= 0.99999;
         if (abs_sample > state->peak) {
             state->peak = abs_sample;
         }
+        
+        //
+        // Oscilloscope
+        //
+        if (state->osc_waiting && state->osc_previous <= 0.0 && buffer[i] > 0.0) {
+            //
+            // Trigger on rise
+            //
+            state->osc_waiting = false;
+        }
+        if (!state->osc_waiting) {
+            state->osc_data[state->osc_pos++] = buffer[i];
+            if (state->osc_pos >= OSC_BUFSIZE) {
+                state->osc_pos = 0;
+                state->osc_waiting = true;
+            }
+        }
+            
+        state->osc_previous = buffer[i];
     }
-//    printf(":::");
-//    for (int i = 0; i < 10; ++i) {
-//        printf("%f ", buffer[i]);
-//    }
-//    printf("\n");
+    
     
     return noErr;
 }

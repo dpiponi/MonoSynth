@@ -10,28 +10,7 @@ import UIKit
 
 class VUMeter: UIView {
 
-    /*
-    // Only override drawRect: if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func drawRect(rect: CGRect) {
-        // Drawing code
-    }
-    */
-
-    //
-    // frame: where render will happen in parent
-    // bounds: region you can draw in, based at (0, 0)
-    //
     var meterLayer : VUMeterLayer! = nil
-    
-//    var peak : Double = 0.0 {
-//        didSet {
-//            if meterLayer != nil {
-//                meterLayer.peak = peak
-//                print("peak set to =", peak)
-//            }
-//        }
-//    }
     
     var controller : ViewController! = nil
     
