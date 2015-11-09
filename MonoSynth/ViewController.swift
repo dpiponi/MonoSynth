@@ -92,6 +92,7 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
     //
     @IBOutlet weak var vcaEnv2Switch: UISwitch!
     @IBOutlet weak var vcaLfo1Modulation: Knob!
+    @IBOutlet weak var vcaModulationSource: UILabel!
     @IBOutlet weak var vcaLfo2Modulation: Knob!
     
     @IBOutlet weak var meter: VUMeter!
@@ -366,15 +367,11 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
         state.vcaEnv2 = sender.on ? 1 : 0
     }
     
-    @IBAction func vcaLfoModulationChanges(sender: Knob) {
-        switch sender.tag {
-        case 0:
-            state.vcaLfoModulation.0 = Double(sender.value)
-        case 1:
-            state.vcaLfoModulation.1 = Double(sender.value)
-        default:
-            break
-        }
+    @IBAction func vcaModulationChanged(sender: Knob) {
+        state.vca_modulation = Double(sender.value)
+    }
+    @IBAction func vcaLevelChanged(sender: Knob) {
+        state.vca_level = Double(sender.value)
     }
     
     func doReset() -> Void {
@@ -415,12 +412,29 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
                     preferredStyle: .ActionSheet)
                 
                 for (title, action, style) in [
-                    ("LFO1", self.doReset, UIAlertActionStyle.Default),
-                    ("LFO2", self.doReverse, .Default),
-                    ("ENV1", self.doReset, UIAlertActionStyle.Default),
-                    ("ENV2", self.doReverse, .Default),
-                    ("X1", self.doReverse, .Default),
-                    ("Y1", self.doReverse, .Default),
+                    ("LFO1", {
+                        () -> Void in
+                        self.vcaModulationSource.text = "LFO1"
+                        self.state.vca_modulation_source = SOURCE_LFO1
+                        
+                        }, UIAlertActionStyle.Default),
+                    ("LFO2", {
+                        () -> Void in
+                        self.vcaModulationSource.text = "LFO2"
+                        self.state.vca_modulation_source = SOURCE_LFO2
+                        
+                        }, .Default),
+                    ("ENV1", {
+                        () -> Void in
+                        self.vcaModulationSource.text = "ENV1"
+                        self.state.vca_modulation_source = SOURCE_ENV1
+                        
+                        }, UIAlertActionStyle.Default),
+                    ("ENV2", {
+                        () -> Void in
+                        self.vcaModulationSource.text = "ENV2"
+                        self.state.vca_modulation_source = SOURCE_ENV2
+                        }, .Default),
                     ("Cancel", {() -> Void in  }, .Cancel)] {
                         let resetAction = UIAlertAction(title: title, style: style) {
                             (_) in
@@ -859,7 +873,23 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
                     set: {(inout a : AudioState, b) in a.filter_cutoff_env_modulation.1 = b},
                     get: {a in return a.filter_cutoff_env_modulation.1}
                 )
-            )
+            ),
+            
+            //
+            // VCA
+            //
+            ("vcaModulation", vcaLfo1Modulation,
+                Field(
+                    set: {(inout a : AudioState, b) in a.vca_modulation = b},
+                    get: {a in return a.vca_modulation}
+                )
+            ),
+            ("vcaModulation", vcaLfo2Modulation,
+                Field(
+                    set: {(inout a : AudioState, b) in a.vca_level = b},
+                    get: {a in return a.vca_modulation}
+                )
+            ),
         ]
         
         return knobList!
@@ -891,8 +921,9 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
         // VCA
         //
         saveDict["vcaEnv2Switch"] = vcaEnv2Switch.on
-        saveDict["vcaLfo1Modulation"] = vcaLfo1Modulation.value
-        saveDict["vcaLfo2Modulation"] = vcaLfo2Modulation.value
+        saveDict["vcaModulationSource"] = Int(state.vca_modulation_source.rawValue)
+//        saveDict["vcaLfo1Modulation"] = vcaLfo1Modulation.value
+//        saveDict["vcaLfo2Modulation"] = vcaLfo2Modulation.value
         
         NSKeyedArchiver.archiveRootObject(saveDict, toFile: savePath)
         
@@ -959,14 +990,29 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
                 vcaEnv2Switch.on = vcaEnv2SwitchValue
                 state.vcaEnv2 = vcaEnv2SwitchValue ? 1 : 0
             }
-            if let vcaLfo1ModulationValue = saveDict["vcaLfo1Modulation"] as? CGFloat {
-                vcaLfo1Modulation.value = vcaLfo1ModulationValue
-                // XXX Doesn't exist yet
+            if let vcaModulationSourceValue = saveDict["vcaModulationSource"] as? Int {
+                state.vca_modulation_source = Source(rawValue: UInt32(vcaModulationSourceValue))
+                switch state.vca_modulation_source {
+                case SOURCE_LFO1:
+                    self.vcaModulationSource.text = "LFO1"
+                case SOURCE_LFO2:
+                    self.vcaModulationSource.text = "LFO2"
+                case SOURCE_ENV1:
+                    self.vcaModulationSource.text = "ENV1"
+                case SOURCE_ENV2:
+                    self.vcaModulationSource.text = "ENV2"
+                default: break
+                }
             }
-            if let vcaLfo2ModulationValue = saveDict["vcaLfo2Modulation"] as? CGFloat {
-                vcaLfo2Modulation.value = vcaLfo2ModulationValue
-                // XXX Doesn't exist yet
-            }
+            
+//            if let vcaLfo1ModulationValue = saveDict["vcaLfo1Modulation"] as? CGFloat {
+//                vcaLfo1Modulation.value = vcaLfo1ModulationValue
+//                // XXX Doesn't exist yet
+//            }
+//            if let vcaLfo2ModulationValue = saveDict["vcaLfo2Modulation"] as? CGFloat {
+//                vcaLfo2Modulation.value = vcaLfo2ModulationValue
+//                // XXX Doesn't exist yet
+//            }
         }
     }
     

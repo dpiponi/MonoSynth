@@ -23,9 +23,12 @@ void init_audio_state(struct AudioState *state) {
     //
     // UI: VCA
     //
-    for (int i = 0; i < 2; ++i) {
-        state->vcaLfoModulation[i] = 0.0;
-    }
+    state->vca_modulation = 0.0;
+    state->vca_modulation_source = SOURCE_LFO1;
+    state->vca_level = 1.0;
+//    for (int i = 0; i < 2; ++i) {
+//        state->vcaLfoModulation[i] = 0.0;
+//    }
     
     //
     // UI: LFO
@@ -138,10 +141,33 @@ OSStatus audio_render(void *inRefCon,
         if (state->vcaEnv2) {
             result *= state->env[1].level;
         }
-        for (int i = 0; i < 2; ++i) {
-            double mod = 0.5*state->vcaLfoModulation[i];
-            result *= 1.0-mod+mod*state->lfo[i].result;
+        
+        //
+        // Modulation by source
+        //
+        double modulation;
+        switch (state->vca_modulation_source) {
+            case SOURCE_LFO1:
+                modulation = state->lfo[0].result;
+                break;
+            case SOURCE_LFO2:
+                modulation = state->lfo[1].result;
+                break;
+            case SOURCE_ENV1:
+                modulation = state->env[0].level;
+                break;
+            case SOURCE_ENV2:
+                modulation = state->env[1].level;
+                break;
         }
+        
+//        double mod = 0.5*state->vca_modulation;
+        result *= state->vca_level+state->vca_modulation_source;
+        
+//        for (int i = 0; i < 2; ++i) {
+//            double mod = 0.5*state->vcaLfoModulation[i];
+//            result *= 1.0-mod+mod*state->lfo[i].result;
+//        }
         
         double shift = state->filter_cutoff_lfo_modulation[0]*state->lfo[0].result+
                        state->filter_cutoff_lfo_modulation[1]*state->lfo[1].result+

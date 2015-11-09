@@ -18,6 +18,13 @@
 #include "vco.h"
 #include "lfo.h"
 
+enum Source {
+    SOURCE_LFO1,
+    SOURCE_LFO2,
+    SOURCE_ENV1,
+    SOURCE_ENV2
+};
+
 struct AudioState {
     // Globals
     double sampleRate;
@@ -26,7 +33,10 @@ struct AudioState {
     // UI: VCA
     //
     int vcaEnv2;
-    double vcaLfoModulation[2];
+    
+    double vca_level;
+    enum Source vca_modulation_source;
+    double vca_modulation;
     
     //
     // UI: LFO

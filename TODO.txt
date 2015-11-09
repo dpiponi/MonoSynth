@@ -21,6 +21,7 @@
 37. VCO2?
 38. More filters
 39. Subsample accurate sync
+40. Save/restore vca modulation source
 
 Done
 ----
