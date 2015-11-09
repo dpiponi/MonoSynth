@@ -1075,8 +1075,10 @@
                                                 <rect key="frame" x="130" y="47" width="80" height="80"/>
                                                 <animations/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <gestureRecognizers/>
                                                 <connections>
                                                     <action selector="vcaLfoModulationChanges:" destination="BYZ-38-t0r" eventType="valueChanged" id="Ot2-0A-H2o"/>
+                                                    <outletCollection property="gestureRecognizers" destination="rLk-Sg-f7b" appends="YES" id="DdJ-y2-8s1"/>
                                                 </connections>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="VCA" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0fW-bP-v4u">
@@ -1099,6 +1101,7 @@
                                         </subviews>
                                         <animations/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <gestureRecognizers/>
                                     </view>
                                 </subviews>
                                 <animations/>
@@ -1162,6 +1165,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="1" id="rLk-Sg-f7b">
+                    <connections>
+                        <action selector="test123:" destination="BYZ-38-t0r" id="p9V-I8-MWT"/>
+                    </connections>
+                </pongPressGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="317" y="390"/>
         </scene>

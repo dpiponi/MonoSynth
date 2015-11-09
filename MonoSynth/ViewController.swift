@@ -26,7 +26,7 @@ struct Lens<A, B> {
 // https://grokswift.com/custom-fonts/
 // https://github.com/HeshamMegid/HMSegmentedControl/blob/master/HMSegmentedControl/HMSegmentedControl.m
 //
-class ViewController: UIViewController {
+class ViewController: UIViewController { // , UIPopoverPresentationController {
 
     @IBOutlet weak var vco1Panel: UIView!
     @IBOutlet weak var lfo1Panel: UIView!
@@ -375,6 +375,84 @@ class ViewController: UIViewController {
         default:
             break
         }
+    }
+    
+    func doReset() -> Void {
+        print("reset")
+    }
+    
+    func doReverse() -> Void {
+        print("reverse")
+    }
+    
+//    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController, traitCollection: UITraitCollection ) -> UIModalPresentationStyle{
+//    // This method is called in iOS 8.3 or later regardless of trait collection, in which case use the original presentation style (UIModalPresentationNone signals no adaptation)
+//    return UIModalPresentationStyle.None;
+//    }
+    
+    @IBAction func test123(sender: UILongPressGestureRecognizer) {
+        print("test123", sender, sender.view)
+        print(sender.state)
+        switch sender.state {
+        case .Began:
+            print("Began")
+            
+            
+//            let ac = UIAlertController(title: "Hello!", message: "This is a test.", preferredStyle: .ActionSheet)
+//            
+//            let popover = ac.popoverPresentationController
+//            popover?.sourceView = sender.view
+//            popover?.sourceRect = (sender.view?.bounds)!
+//            
+//            presentViewController(ac, animated: true, completion: nil)
+
+            let window = UIApplication.sharedApplication().keyWindow
+            if window?.rootViewController?.presentedViewController == nil {
+
+
+                let alertController = UIAlertController(title: "Deck Options",
+                    message: "What do you want to do?",
+                    preferredStyle: .ActionSheet)
+                
+                for (title, action, style) in [
+                    ("LFO1", self.doReset, UIAlertActionStyle.Default),
+                    ("LFO2", self.doReverse, .Default),
+                    ("ENV1", self.doReset, UIAlertActionStyle.Default),
+                    ("ENV2", self.doReverse, .Default),
+                    ("X1", self.doReverse, .Default),
+                    ("Y1", self.doReverse, .Default),
+                    ("Cancel", {() -> Void in  }, .Cancel)] {
+                        let resetAction = UIAlertAction(title: title, style: style) {
+                            (_) in
+                            action()
+                        }
+                        alertController.addAction(resetAction)
+                        
+                }
+                
+                let popover = alertController.popoverPresentationController
+                if (popover != nil) {
+                    popover!.delegate = self
+                    popover!.sourceView = sender.view
+                    popover!.sourceRect = sender.view!.bounds
+                    popover!.permittedArrowDirections = .Any
+                }
+                
+                // Slight behaviour difference on iPad
+    //            if let controller = alertController.popoverPresentationController {
+    //                controller.barButtonItem = sender
+    //            }
+                
+                window?.rootViewController?.presentViewController(alertController, animated: true, completion: nil)
+            }
+            
+            
+        case .Ended:
+            print("Ended")
+        default:
+            print("...")
+        }
+        
     }
     
     override func viewDidLoad() {
@@ -998,6 +1076,24 @@ class ViewController: UIViewController {
             togglePlay()
         }
     }
+    
+}
+
+extension ViewController : UIPopoverPresentationControllerDelegate {
+    
+    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+//        // try swapping these; it works
+//        if traitCollection.horizontalSizeClass == .Compact {
+//            return .FullScreen
+//            // return .None
+//        }
+        print("NONE!!!!!!!!!!!!!!!!!!!!!!!!!")
+        return .None
+    }
+    
+//    func popoverPresentationControllerDidDismissPopover(popoverPresentationController: UIPopoverPresentationController) {
+//        NSUserDefaults.standardUserDefaults().setInteger(self.oldChoice, forKey: "choice")
+//    }
     
 }
 

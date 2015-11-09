@@ -4,7 +4,6 @@
 14. Collections of controls?
 15. Estimate better dynamic range
 17. Draw filter graph
-18. Oscilloscope
 19. Animate ADSR
 20. Jump from A to R if key released
 23. Smarter placement of Bezier control points (Good control points for exp(-x) on [0,a] should also be good for exp(-2x) on [0,a/2] but that has an obvious shortcoming.)
@@ -42,3 +41,4 @@ Done
 30. Sort out "icons" for multibutton
 29. VU Meter
 12. VCO sync
+18. Oscilloscope
