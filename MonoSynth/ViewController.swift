@@ -19,6 +19,15 @@ struct Lens<A, B> {
     let get: A -> B
 }
 
+class KnobSpecification {
+    let name: String;
+    var uiKnob: Knob!
+    
+    init(name: String) {
+        self.name = name
+    }
+}
+
 //
 // http://www.cocoawithlove.com/2010/10/ios-tone-generator-introduction-to.html
 //
@@ -27,7 +36,11 @@ struct Lens<A, B> {
 // https://github.com/HeshamMegid/HMSegmentedControl/blob/master/HMSegmentedControl/HMSegmentedControl.m
 //
 class ViewController: UIViewController { // , UIPopoverPresentationController {
+    
+    var knobSpecifications : [KnobSpecification]!
 
+    @IBOutlet var knobs: [Knob]!
+    
     @IBOutlet weak var vco1Panel: UIView!
     @IBOutlet weak var lfo1Panel: UIView!
     @IBOutlet weak var lfo2Panel: UIView!
@@ -39,8 +52,8 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
     @IBOutlet weak var env2Graph: ADSRPlot!
     
     // LFO
-    @IBOutlet weak var lfo1Frequency: Knob!
-    @IBOutlet weak var lfo2Frequency: Knob!
+//    @IBOutlet weak var lfo1Frequency: Knob!
+//    @IBOutlet weak var lfo2Frequency: Knob!
     @IBOutlet weak var lfo1Type: MultiButton!
     @IBOutlet weak var lfo2Type: MultiButton!
     
@@ -483,6 +496,17 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print("count=",knobs.count)
+    
+        knobSpecifications
+            = [
+                KnobSpecification(name: "lfo1Frequency"),
+                KnobSpecification(name: "lfo2Frequency")
+        ];
+        for i in 0..<knobs.count {
+            knobSpecifications[knobs[i].tag].uiKnob = knobs[i]
+        }
+        
         vco1Panel.hidden = true
         lfo1Panel.hidden = true
         lfo2Panel.hidden = true
@@ -699,7 +723,7 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
     
     typealias Field = Lens<AudioState, Double>
     var knobList : [(String, Knob, Field)]? = nil
-    func knobs() -> [(String, Knob, Field)] {
+    func knobDescriptions() -> [(String, Knob, Field)] {
         if knobList != nil {
             return knobList!
         }
@@ -799,13 +823,13 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
             //
             // LFO1
             //
-            ("lfo1Frequency", lfo1Frequency,
+            ("lfo1Frequency", knobSpecifications[0].uiKnob,
                 Field(
                     set: {(inout a : AudioState, b) in a.lfo_frequency.0 = b},
                     get: {a in return a.lfo_frequency.0}
                 )
             ),
-            ("lfo2Frequency", lfo2Frequency,
+            ("lfo2Frequency", knobSpecifications[0].uiKnob,
                 Field(
                     set: {(inout a : AudioState, b) in a.lfo_frequency.1 = b},
                     get: {a in return a.lfo_frequency.1}
@@ -915,7 +939,7 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
         
         var saveDict = Dictionary<String, AnyObject>()
 
-        for (name, knob, _) in knobs() {
+        for (name, knob, _) in knobDescriptions() {
             saveDict[name] = knob.value
             
         }
@@ -965,7 +989,7 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
         
         if let saveDict = NSKeyedUnarchiver.unarchiveObjectWithFile(savePath) as? Dictionary<String, AnyObject> {
             
-            for (name, knob, field) in knobs() {
+            for (name, knob, field) in knobDescriptions() {
                 if let value = saveDict[name] as? CGFloat {
                     knob.value = value
                     field.set(&state, Double(value))

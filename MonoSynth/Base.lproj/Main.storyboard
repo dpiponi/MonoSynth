@@ -1115,10 +1115,8 @@
                         <outlet property="filterCutoffModulation" destination="jvs-VF-asL" id="E2W-L8-kYX"/>
                         <outlet property="filterResonance" destination="YMn-gm-T1b" id="ROT-7o-MmW"/>
                         <outlet property="filterResonanceModulation" destination="eEo-va-kfT" id="g6D-yA-jvj"/>
-                        <outlet property="lfo1Frequency" destination="QTG-zB-OZS" id="axI-nN-2o4"/>
                         <outlet property="lfo1Panel" destination="LPa-xx-TfD" id="99Z-xM-FnS"/>
                         <outlet property="lfo1Type" destination="G0g-WW-Aqg" id="Xle-Bi-sx1"/>
-                        <outlet property="lfo2Frequency" destination="eqT-j3-1ME" id="iLO-0w-3lk"/>
                         <outlet property="lfo2Panel" destination="bk5-IY-U5v" id="ChU-ll-uqt"/>
                         <outlet property="lfo2Type" destination="tE1-nh-IcZ" id="SyI-G7-kxg"/>
                         <outlet property="meter" destination="YWb-aL-OUV" id="KFr-xK-fvL"/>
@@ -1135,6 +1133,8 @@
                         <outlet property="vco1Spread" destination="T5h-ax-gWT" id="GfB-Ao-vcq"/>
                         <outlet property="vco1SyncRatio" destination="VVn-h1-BR0" id="gR2-ve-9Q9"/>
                         <outlet property="waveformSelector" destination="mmz-UZ-Yms" id="mCh-fs-sGu"/>
+                        <outletCollection property="knobs" destination="QTG-zB-OZS" collectionClass="NSMutableArray" id="kgS-nI-Qrc"/>
+                        <outletCollection property="knobs" destination="eqT-j3-1ME" collectionClass="NSMutableArray" id="yiB-vm-vCA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
