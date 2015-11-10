@@ -19,10 +19,10 @@
 #include "lfo.h"
 
 enum Source {
-    SOURCE_LFO1,
-    SOURCE_LFO2,
-    SOURCE_ENV1,
-    SOURCE_ENV2
+    SOURCE_LFO1 = 0,
+    SOURCE_LFO2 = 1,
+    SOURCE_ENV1 = 2,
+    SOURCE_ENV2 = 3
 };
 
 struct AudioState {
@@ -78,8 +78,10 @@ struct AudioState {
     //
     // Filter
     //
-    double filter_cutoff_lfo_modulation[2];
-    double filter_cutoff_env_modulation[2];
+    enum Source filter_cutoff_modulation_source;
+    enum Source filter_resonance_modulation_source;
+    double filter_cutoff_modulation;
+    double filter_resonance_modulation;
     struct Ladder ladder;
     
     double actualFrequency;

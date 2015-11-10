@@ -78,10 +78,10 @@ void init_audio_state(struct AudioState *state) {
     //
     state->filter_cutoff = 1.0;
     state->filter_resonance = 2.0;
-    state->filter_cutoff_lfo_modulation[0] = 0.0;
-    state->filter_cutoff_lfo_modulation[1] = 0.0;
-    state->filter_cutoff_env_modulation[0] = 0.0;
-    state->filter_cutoff_env_modulation[1] = 0.0;
+    state->filter_cutoff_modulation = 0.0;
+    state->filter_resonance_modulation = 0.0;
+    state->filter_cutoff_modulation_source = SOURCE_LFO1;
+    state->filter_resonance_modulation_source = SOURCE_LFO1;
     
     //
     // ENV1
@@ -108,6 +108,7 @@ OSStatus audio_render(void *inRefCon,
     struct AudioState *state = (struct AudioState *)inRefCon;
     const double dt = 1.0/44100.0;
     float *buffer = ioData->mBuffers[0].mData;
+    double source[4];
     
     for (int i = 0; i < inNumberFrames; ++i) {
         //
@@ -116,11 +117,8 @@ OSStatus audio_render(void *inRefCon,
         for (int j = 0; j < 2; ++j) {
             exec_lfo(&state->lfo[j], dt, state->lfoType[j], state->lfo_frequency[j]);
         }
-        
-        exec_vco(&state->vco1, state->vcoType, dt, state->frequency,
-                 state->vco1_number,
-                 state->vco1_detune+state->vco1_lfo1_modulation*state->lfo[0].result,
-                 state->vco1_spread, state->vco1SyncRatio);
+        source[SOURCE_LFO1] = state->lfo[0].result;
+        source[SOURCE_LFO2] = state->lfo[1].result;
         
         for (int j = 0; j < 2; ++j) {
             exec_envelope(i,j, &state->env[j], dt, state->envDelay[j],
@@ -133,7 +131,14 @@ OSStatus audio_render(void *inRefCon,
                                               state->gate);
 //            if (i==0) printf("level[%d]=%f\n", j, state->env[j].level);
         }
+        source[SOURCE_ENV1] = state->env[0].level;
+        source[SOURCE_ENV2] = state->env[1].level;
         
+        exec_vco(&state->vco1, state->vcoType, dt, state->frequency,
+                 state->vco1_number,
+                 state->vco1_detune+state->vco1_lfo1_modulation*state->lfo[0].result,
+                 state->vco1_spread, state->vco1SyncRatio);
+
         //
         // VCA
         //
@@ -145,38 +150,36 @@ OSStatus audio_render(void *inRefCon,
         //
         // Modulation by source
         //
-        double modulation;
-        switch (state->vca_modulation_source) {
-            case SOURCE_LFO1:
-                modulation = state->lfo[0].result;
-                break;
-            case SOURCE_LFO2:
-                modulation = state->lfo[1].result;
-                break;
-            case SOURCE_ENV1:
-                modulation = state->env[0].level;
-                break;
-            case SOURCE_ENV2:
-                modulation = state->env[1].level;
-                break;
-        }
+        double modulation = source[state->vca_modulation_source];
+//        switch (state->vca_modulation_source) {
+//            case SOURCE_LFO1:
+//                modulation = state->lfo[0].result;
+//                break;
+//            case SOURCE_LFO2:
+//                modulation = state->lfo[1].result;
+//                break;
+//            case SOURCE_ENV1:
+//                modulation = state->env[0].level;
+//                break;
+//            case SOURCE_ENV2:
+//                modulation = state->env[1].level;
+//                break;
+//        }
         
 //        double mod = 0.5*state->vca_modulation;
-        result *= state->vca_level+state->vca_modulation_source;
+        result *= state->vca_level+state->vca_modulation*modulation;
         
 //        for (int i = 0; i < 2; ++i) {
 //            double mod = 0.5*state->vcaLfoModulation[i];
 //            result *= 1.0-mod+mod*state->lfo[i].result;
 //        }
         
-        double shift = state->filter_cutoff_lfo_modulation[0]*state->lfo[0].result+
-                       state->filter_cutoff_lfo_modulation[1]*state->lfo[1].result+
-                        state->filter_cutoff_env_modulation[0]*state->env[0].level+
-                        state->filter_cutoff_env_modulation[1]*state->env[1].level;
+        double shift = state->filter_cutoff_modulation*source[state->filter_cutoff_modulation_source];
         double filter_frequency = state->frequency*pow(2.0, state->filter_cutoff+shift);
+        double filter_resonance = state->filter_resonance+state->filter_resonance_modulation*source[state->filter_resonance_modulation_source];
         step_ladder(&state->ladder, dt,
                     filter_frequency,
-                    state->filter_resonance,
+                    filter_resonance,
                     result);
         buffer[i] = 1.0*state->ladder.result;
         

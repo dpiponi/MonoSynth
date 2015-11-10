@@ -59,11 +59,9 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
     // LPF
     //
     @IBOutlet weak var filterCutoff: Knob!
+    @IBOutlet weak var filterCutoffModulation: Knob!
     @IBOutlet weak var filterResonance: Knob!
-    @IBOutlet weak var filterCutoffLFO1Modulation: Knob!
-    @IBOutlet weak var filterCutoffLFO2Modulation: Knob!
-    @IBOutlet weak var filterCutoffEnv1Modulation: Knob!
-    @IBOutlet weak var filterCutoffEnv2Modulation: Knob!
+    @IBOutlet weak var filterResonanceModulation: Knob!
     
     //
     // ENV1
@@ -109,14 +107,14 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
     //
     // UI handlers
     //
-    @IBAction func filterCutoffChanged(sender: Knob) {
-        state.filter_cutoff = Double(sender.value)
-    }
-    
-    @IBAction func filterResonanceChanged(sender: Knob) {
-        state.filter_resonance = Double(sender.value)
-        print("res",state.filter_resonance)
-    }
+//    @IBAction func filterCutoffChanged(sender: Knob) {
+//        state.filter_cutoff = Double(sender.value)
+//    }
+//    
+//    @IBAction func filterResonanceChanged(sender: Knob) {
+//        state.filter_resonance = Double(sender.value)
+//        print("res",state.filter_resonance)
+//    }
     
     //
     // LFO1 & LFO2
@@ -144,26 +142,39 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
     //
     // LPF1
     //
-    @IBAction func filterFrequencyLFO1ModulationChanged(sender: Knob) {
-        switch sender.tag {
-        case 0:
-            state.filter_cutoff_lfo_modulation.0 = Double(sender.value)
-        case 1:
-            state.filter_cutoff_lfo_modulation.1 = Double(sender.value)
-        default: break;
-        }
+    @IBAction func filterCutoffModulationChanged(sender: Knob) {
+        state.filter_cutoff_modulation = Double(sender.value)
+    }
+    @IBAction func filterCutoffChanged(sender: Knob) {
+        state.filter_cutoff = Double(sender.value)
+    }
+    @IBAction func filterResonanceModulationChanged(sender: Knob) {
+        state.filter_resonance_modulation = Double(sender.value)
+    }
+    @IBAction func filterResonanceChanged(sender: Knob) {
+        state.filter_resonance = Double(sender.value)
     }
     
-    @IBAction func filterCutoffEnvModulation(sender: Knob) {
-        switch sender.tag {
-        case 0:
-            state.filter_cutoff_env_modulation.0 = Double(sender.value)
-        case 1:
-            state.filter_cutoff_env_modulation.1 = Double(sender.value)
-        default:
-            break
-        }
-    }
+//    @IBAction func filterFrequencyLFO1ModulationChanged(sender: Knob) {
+//        switch sender.tag {
+//        case 0:
+//            state.filter_cutoff_lfo_modulation.0 = Double(sender.value)
+//        case 1:
+//            state.filter_cutoff_lfo_modulation.1 = Double(sender.value)
+//        default: break;
+//        }
+//    }
+//    
+//    @IBAction func filterCutoffEnvModulation(sender: Knob) {
+//        switch sender.tag {
+//        case 0:
+//            state.filter_cutoff_env_modulation.0 = Double(sender.value)
+//        case 1:
+//            state.filter_cutoff_env_modulation.1 = Double(sender.value)
+//        default:
+//            break
+//        }
+//    }
 
     
     //
@@ -387,8 +398,8 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
 //    return UIModalPresentationStyle.None;
 //    }
     
-    @IBAction func test123(sender: UILongPressGestureRecognizer) {
-        print("test123", sender, sender.view)
+    @IBAction func vcaModulationSourceChanged(sender: UILongPressGestureRecognizer) {
+        print("test123", sender, "view=",sender.view)
         print(sender.state)
         switch sender.state {
         case .Began:
@@ -850,30 +861,30 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
                     get: {a in return a.filter_resonance}
                 )
             ),
-            ("lpfLfo1Modulation", filterCutoffLFO1Modulation,
+            ("lpfCutoffModulation", filterCutoffModulation,
                 Field(
-                    set: {(inout a : AudioState, b) in a.filter_cutoff_lfo_modulation.0 = b},
-                    get: {a in return a.filter_cutoff_env_modulation.0}
+                    set: {(inout a : AudioState, b) in a.filter_cutoff_modulation = b},
+                    get: {a in return a.filter_cutoff_modulation}
                 )
             ),
-            ("lpfLfo2Modulation", filterCutoffLFO2Modulation,
+            ("lpfResonanceModulation", filterResonanceModulation,
                 Field(
-                    set: {(inout a : AudioState, b) in a.filter_cutoff_lfo_modulation.1 = b},
-                    get: {a in return a.filter_cutoff_env_modulation.1}
+                    set: {(inout a : AudioState, b) in a.filter_resonance_modulation = b},
+                    get: {a in return a.filter_resonance_modulation}
                 )
             ),
-            ("lpfEnv1Modulation", filterCutoffEnv1Modulation,
-                Field(
-                    set: {(inout a : AudioState, b) in a.filter_cutoff_env_modulation.0 = b},
-                    get: {a in return a.filter_cutoff_env_modulation.0}
-                )
-            ),
-            ("lpfLfo2Modulation", filterCutoffEnv2Modulation,
-                Field(
-                    set: {(inout a : AudioState, b) in a.filter_cutoff_env_modulation.1 = b},
-                    get: {a in return a.filter_cutoff_env_modulation.1}
-                )
-            ),
+//            ("lpfEnv1Modulation", filterCutoffEnv1Modulation,
+//                Field(
+//                    set: {(inout a : AudioState, b) in a.filter_cutoff_env_modulation.0 = b},
+//                    get: {a in return a.filter_cutoff_env_modulation.0}
+//                )
+//            ),
+//            ("lpfLfo2Modulation", filterCutoffEnv2Modulation,
+//                Field(
+//                    set: {(inout a : AudioState, b) in a.filter_cutoff_env_modulation.1 = b},
+//                    get: {a in return a.filter_cutoff_env_modulation.1}
+//                )
+//            ),
             
             //
             // VCA
@@ -930,6 +941,21 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
         print("Saved")
     }
     
+    func sourceName(source: Source) -> String {
+        switch source {
+        case SOURCE_LFO1:
+            return "LFO1"
+        case SOURCE_LFO2:
+            return "LFO2"
+        case SOURCE_ENV1:
+            return "ENV1"
+        case SOURCE_ENV2:
+            return "ENV2"
+        default:
+            return "<ERROR>"
+        }
+    }
+    
     func restoreState() { // XXX Needs to restore graph
         let saveFile = "save.dat"
         
@@ -964,26 +990,6 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
             }
             
             //
-            // LPF
-            //
-//            if let lpfCutoffValue = saveDict["lpfCutoff"] as? CGFloat {
-//                filterCutoff.value = lpfCutoffValue
-//                state.filter_cutoff = Double(lpfCutoffValue)
-//            }
-//            if let lpfResonanceValue = saveDict["lpfResonance"] as? CGFloat {
-//                filterResonance.value = lpfResonanceValue
-//                state.filter_resonance = Double(lpfResonanceValue)
-//            }
-//            if let lpfLfo1ModulationValue = saveDict["vcaLfo1Modulation"] as? CGFloat {
-//                vcaLfo1Modulation.value = lpfLfo1ModulationValue
-//                state.filter_cutoff_env_modulation.0 = Double(lpfLfo1ModulationValue)
-//            }
-//            if let lpfLfo2ModulationValue = saveDict["vcaLfo2Modulation"] as? CGFloat {
-//                vcaLfo2Modulation.value = lpfLfo2ModulationValue
-//                state.filter_cutoff_env_modulation.1 = Double(lpfLfo2ModulationValue)
-//            }
-
-            //
             // VCA
             //
             if let vcaEnv2SwitchValue = saveDict["vcaEnv2Switch"] as? Bool {
@@ -992,27 +998,8 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
             }
             if let vcaModulationSourceValue = saveDict["vcaModulationSource"] as? Int {
                 state.vca_modulation_source = Source(rawValue: UInt32(vcaModulationSourceValue))
-                switch state.vca_modulation_source {
-                case SOURCE_LFO1:
-                    self.vcaModulationSource.text = "LFO1"
-                case SOURCE_LFO2:
-                    self.vcaModulationSource.text = "LFO2"
-                case SOURCE_ENV1:
-                    self.vcaModulationSource.text = "ENV1"
-                case SOURCE_ENV2:
-                    self.vcaModulationSource.text = "ENV2"
-                default: break
-                }
+                self.vcaModulationSource.text = sourceName(state.vca_modulation_source)
             }
-            
-//            if let vcaLfo1ModulationValue = saveDict["vcaLfo1Modulation"] as? CGFloat {
-//                vcaLfo1Modulation.value = vcaLfo1ModulationValue
-//                // XXX Doesn't exist yet
-//            }
-//            if let vcaLfo2ModulationValue = saveDict["vcaLfo2Modulation"] as? CGFloat {
-//                vcaLfo2Modulation.value = vcaLfo2ModulationValue
-//                // XXX Doesn't exist yet
-//            }
         }
     }
     
