@@ -966,6 +966,8 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
         //
         saveDict["vcaEnv2Switch"] = vcaEnv2Switch.on
         saveDict["vcaModulationSource"] = Int(state.uiState.vca_modulation_source.rawValue)
+        saveDict["lpfCutoffModulationSource"] = Int(state.uiState.filter_cutoff_modulation_source.rawValue)
+        saveDict["lpfResonanceModulationSource"] = Int(state.uiState.filter_resonance_modulation_source.rawValue)
 //        saveDict["vcaLfo1Modulation"] = vcaLfo1Modulation.value
 //        saveDict["vcaLfo2Modulation"] = vcaLfo2Modulation.value
         
@@ -1032,6 +1034,14 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
             if let vcaModulationSourceValue = saveDict["vcaModulationSource"] as? Int {
                 state.uiState.vca_modulation_source = Source(rawValue: UInt32(vcaModulationSourceValue))
                 self.vcaModulationSource.text = sourceName(state.uiState.vca_modulation_source)
+            }
+            if let lpfCutoffModulationSourceValue = saveDict["lpfCutoffModulationSource"] as? Int {
+                state.uiState.filter_cutoff_modulation_source = Source(rawValue: UInt32(lpfCutoffModulationSourceValue))
+                self.lpfFrequencyModulationSource.text = sourceName(state.uiState.filter_cutoff_modulation_source)
+            }
+            if let lpfResonanceModulationSourceValue = saveDict["lpfResonanceModulationSource"] as? Int {
+                state.uiState.filter_resonance_modulation_source = Source(rawValue: UInt32(lpfResonanceModulationSourceValue))
+                self.lpfResonanceModulationSource.text = sourceName(state.uiState.filter_resonance_modulation_source)
             }
         }
     }
