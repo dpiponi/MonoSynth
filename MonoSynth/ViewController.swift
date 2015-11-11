@@ -20,12 +20,16 @@ struct Lens<A, B> {
 }
 
 class KnobSpecification {
-    let name: String;
+//    let name: String;
     var uiKnob: Knob!
-    
-    init(name: String) {
-        self.name = name
+
+    init(knob: Knob) {
+        uiKnob = knob
     }
+    
+//    init(name: String) {
+//        self.name = name
+//    }
 }
 
 //
@@ -37,7 +41,8 @@ class KnobSpecification {
 //
 class ViewController: UIViewController { // , UIPopoverPresentationController {
     
-    var knobSpecifications : [KnobSpecification]!
+    
+    var knobSpecifications : [String: KnobSpecification] = [:]
 
     @IBOutlet var knobs: [Knob]!
     
@@ -519,13 +524,14 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
         
         print("count=",knobs.count)
     
-        knobSpecifications
-            = [
-                KnobSpecification(name: "lfo1Frequency"),
-                KnobSpecification(name: "lfo2Frequency")
-        ];
+//        knobSpecifications
+//            = [
+//                KnobSpecification(name: "lfo1Frequency"),
+//                KnobSpecification(name: "lfo2Frequency")
+//        ];
         for i in 0..<knobs.count {
-            knobSpecifications[knobs[i].tag].uiKnob = knobs[i]
+            print("Installing knob", knobs[i].id)
+            knobSpecifications[knobs[i].id] = KnobSpecification(knob: knobs[i])
         }
         
         vco1Panel.hidden = true
@@ -844,13 +850,13 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
             //
             // LFO1
             //
-            ("lfo1Frequency", knobSpecifications[0].uiKnob,
+            ("lfo1Frequency", knobSpecifications["lfo1Frequency"]!.uiKnob,
                 Field(
                     set: {(inout a : AudioState, b) in a.uiState.lfo_frequency.0 = b},
                     get: {a in return a.uiState.lfo_frequency.0}
                 )
             ),
-            ("lfo2Frequency", knobSpecifications[1].uiKnob,
+            ("lfo2Frequency", knobSpecifications["lfo2Frequency"]!.uiKnob,
                 Field(
                     set: {(inout a : AudioState, b) in a.uiState.lfo_frequency.1 = b},
                     get: {a in return a.uiState.lfo_frequency.1}

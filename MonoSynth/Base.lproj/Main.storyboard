@@ -604,6 +604,7 @@
                                                     <userDefinedRuntimeAttribute type="number" keyPath="maxAngle">
                                                         <real key="value" value="337.5"/>
                                                     </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="id" value="lfo1Frequency"/>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="lfo1FrequencyChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="Ecf-oQ-Bg6"/>
@@ -655,6 +656,7 @@
                                                     <userDefinedRuntimeAttribute type="number" keyPath="maxAngle">
                                                         <real key="value" value="337.5"/>
                                                     </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="id" value="lfo2Frequency"/>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="lfo1FrequencyChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="QMD-tP-kuy"/>
