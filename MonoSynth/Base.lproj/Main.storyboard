@@ -1049,6 +1049,7 @@
                                                 <rect key="frame" x="114" y="118" width="80" height="80"/>
                                                 <animations/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <gestureRecognizers/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="minValue">
                                                         <real key="value" value="-1"/>
@@ -1065,6 +1066,7 @@
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="filterResonanceModulationChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="Vsc-Jz-Chs"/>
+                                                    <outletCollection property="gestureRecognizers" destination="4mn-Ww-dXw" appends="YES" id="NPD-d1-nA6"/>
                                                 </connections>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="LFO1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4XA-of-szv">
@@ -1149,6 +1151,11 @@
                 <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="6BS-jY-ezW" userLabel="LPF Cutoff Gesture">
                     <connections>
                         <action selector="lpfCutoffSourceChanged:" destination="BYZ-38-t0r" id="yhM-xF-HUc"/>
+                    </connections>
+                </pongPressGestureRecognizer>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="4mn-Ww-dXw" userLabel="LPF Resonance Gesture">
+                    <connections>
+                        <action selector="lpfResonanceSourceChanged:" destination="BYZ-38-t0r" id="PLZ-HM-rhm"/>
                     </connections>
                 </pongPressGestureRecognizer>
             </objects>

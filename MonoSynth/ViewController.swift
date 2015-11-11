@@ -484,163 +484,34 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
         }
     }
     
+    @IBAction func lpfResonanceSourceChanged(sender: UILongPressGestureRecognizer) {
+        let lens = Lens<AudioState, Source>(
+            set: {(inout a : AudioState, b : Source) in
+                a.uiState.filter_resonance_modulation_source = b },
+            get: {(a : AudioState) in
+                return a.uiState.filter_resonance_modulation_source }
+        )
+        sourceChanged(sender, label: self.lpfResonanceModulationSource, field: lens)
+    }
     
     @IBAction func lpfCutoffSourceChanged(sender: UILongPressGestureRecognizer) {
-        func setter(inout a : AudioState, b : Source) -> () { a.uiState.filter_cutoff_modulation_source = b }
         let lens = Lens<AudioState, Source>(
-                set: setter,
+                set: {(inout a : AudioState, b : Source) in
+                    a.uiState.filter_cutoff_modulation_source = b },
                 get: {(a : AudioState) in
                     return a.uiState.filter_cutoff_modulation_source }
             )
-//        let setter : (inout Audiostate, Source) -> () = {(inout a : AudioState, b : Source) in
-//            a.uiState.filter_cutoff_modulation_source = b }
         sourceChanged(sender, label: self.lpfFrequencyModulationSource, field: lens)
-        return;
-
-        print("test234", sender, "view=",sender.view)
-        print(sender.state)
-        switch sender.state {
-        case .Began:
-            print("Began")
-            
-            
-            let window = UIApplication.sharedApplication().keyWindow
-            if window?.rootViewController?.presentedViewController == nil {
-                
-                
-                let alertController = UIAlertController(title: "LPF Frequency Modulation",
-                    message: "Choose Source",
-                    preferredStyle: .ActionSheet)
-                
-                for (title, action, style) in [
-                    ("LFO1", {
-                        () -> Void in
-                        self.lpfFrequencyModulationSource.text = "LFO1"
-                        self.state.uiState.filter_cutoff_modulation_source = SOURCE_LFO1
-                        
-                        }, UIAlertActionStyle.Default),
-                    ("LFO2", {
-                        () -> Void in
-                        self.lpfFrequencyModulationSource.text = "LFO2"
-                        self.state.uiState.filter_cutoff_modulation_source = SOURCE_LFO2
-                        
-                        }, .Default),
-                    ("ENV1", {
-                        () -> Void in
-                        self.lpfFrequencyModulationSource.text = "ENV1"
-                        self.state.uiState.filter_cutoff_modulation_source = SOURCE_ENV1
-                        
-                        }, UIAlertActionStyle.Default),
-                    ("ENV2", {
-                        () -> Void in
-                        self.lpfFrequencyModulationSource.text = "ENV2"
-                        self.state.uiState.filter_cutoff_modulation_source = SOURCE_ENV2
-                        }, .Default),
-                    ("Cancel", {() -> Void in  }, .Cancel)] {
-                        let resetAction = UIAlertAction(title: title, style: style) {
-                            (_) in
-                            action()
-                        }
-                        alertController.addAction(resetAction)
-                        
-                }
-                
-                let popover = alertController.popoverPresentationController
-                if (popover != nil) {
-                    popover!.delegate = self
-                    popover!.sourceView = sender.view
-                    popover!.sourceRect = sender.view!.bounds
-                    popover!.permittedArrowDirections = .Any
-                }
-                
-                // Slight behaviour difference on iPad
-                //            if let controller = alertController.popoverPresentationController {
-                //                controller.barButtonItem = sender
-                //            }
-                
-                window?.rootViewController?.presentViewController(alertController, animated: true, completion: nil)
-            }
-            
-            
-        case .Ended:
-            print("Ended")
-        default:
-            print("...")
-        }
     }
+    
     @IBAction func vcaModulationSourceChanged(sender: UILongPressGestureRecognizer) {
-        print("test123", sender, "view=",sender.view)
-        print(sender.state)
-        switch sender.state {
-        case .Began:
-            print("Began")
-            
-            
-
-            let window = UIApplication.sharedApplication().keyWindow
-            if window?.rootViewController?.presentedViewController == nil {
-
-
-                let alertController = UIAlertController(title: "VCA Level Modulation",
-                    message: "Choose source",
-                    preferredStyle: .ActionSheet)
-                
-                for (title, action, style) in [
-                    ("LFO1", {
-                        () -> Void in
-                        self.vcaModulationSource.text = "LFO1"
-                        self.state.uiState.vca_modulation_source = SOURCE_LFO1
-                        
-                        }, UIAlertActionStyle.Default),
-                    ("LFO2", {
-                        () -> Void in
-                        self.vcaModulationSource.text = "LFO2"
-                        self.state.uiState.vca_modulation_source = SOURCE_LFO2
-                        
-                        }, .Default),
-                    ("ENV1", {
-                        () -> Void in
-                        self.vcaModulationSource.text = "ENV1"
-                        self.state.uiState.vca_modulation_source = SOURCE_ENV1
-                        
-                        }, UIAlertActionStyle.Default),
-                    ("ENV2", {
-                        () -> Void in
-                        self.vcaModulationSource.text = "ENV2"
-                        self.state.uiState.vca_modulation_source = SOURCE_ENV2
-                        }, .Default),
-                    ("Cancel", {() -> Void in  }, .Cancel)] {
-                        let resetAction = UIAlertAction(title: title, style: style) {
-                            (_) in
-                            action()
-                        }
-                        alertController.addAction(resetAction)
-                        
-                }
-                
-                let popover = alertController.popoverPresentationController
-                if (popover != nil) {
-                    popover!.delegate = self
-                    popover!.sourceView = sender.view
-                    popover!.sourceRect = sender.view!.bounds
-                    popover!.permittedArrowDirections = .Any
-                }
-                
-                // Slight behaviour difference on iPad
-    //            if let controller = alertController.popoverPresentationController {
-    //                controller.barButtonItem = sender
-    //            }
-                
-                window?.rootViewController?.presentViewController(alertController, animated: true, completion: nil)
-            }
-            
-            
-        case .Ended:
-            print("Ended")
-        default:
-            print("...")
-        }
-        
+        let lens = Lens<AudioState, Source>(
+            set: {(inout a : AudioState, b : Source) in
+                a.uiState.vca_modulation_source = b },
+            get: {(a : AudioState) in
+                return a.uiState.vca_modulation_source }
+        )
+        sourceChanged(sender, label: self.vcaModulationSource, field: lens)
     }
     
     override func viewDidLoad() {
