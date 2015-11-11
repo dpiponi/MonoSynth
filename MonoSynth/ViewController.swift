@@ -415,7 +415,7 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
     
     func sourceChanged(sender: UILongPressGestureRecognizer,
                                  label: UILabel,
-                                 lens: Lens<AudioState, Double>) {
+                                 field: Lens<AudioState, Source>) {
         print("change", sender, "view=",sender.view)
         print(sender.state)
         switch sender.state {
@@ -434,25 +434,22 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
                     ("LFO1", {
                         () -> Void in
                         label.text = "LFO1"
-                        self.state.uiState.filter_cutoff_modulation_source = SOURCE_LFO1
-                        
+                        field.set(&self.state, SOURCE_LFO1)
                         }, UIAlertActionStyle.Default),
                     ("LFO2", {
                         () -> Void in
                         label.text = "LFO2"
-                        self.state.uiState.filter_cutoff_modulation_source = SOURCE_LFO2
-                        
+                        field.set(&self.state, SOURCE_LFO2)
                         }, .Default),
                     ("ENV1", {
                         () -> Void in
                         label.text = "ENV1"
-                        self.state.uiState.filter_cutoff_modulation_source = SOURCE_ENV1
-                        
+                        field.set(&self.state, SOURCE_ENV1)
                         }, UIAlertActionStyle.Default),
                     ("ENV2", {
                         () -> Void in
                         label.text = "ENV2"
-                        self.state.uiState.filter_cutoff_modulation_source = SOURCE_ENV2
+                        field.set(&self.state, SOURCE_ENV2)
                         }, .Default),
                     ("Cancel", {() -> Void in  }, .Cancel)] {
                         let resetAction = UIAlertAction(title: title, style: style) {
@@ -489,6 +486,17 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
     
     
     @IBAction func lpfCutoffSourceChanged(sender: UILongPressGestureRecognizer) {
+        func setter(inout a : AudioState, b : Source) -> () { a.uiState.filter_cutoff_modulation_source = b }
+        let lens = Lens<AudioState, Source>(
+                set: setter,
+                get: {(a : AudioState) in
+                    return a.uiState.filter_cutoff_modulation_source }
+            )
+//        let setter : (inout Audiostate, Source) -> () = {(inout a : AudioState, b : Source) in
+//            a.uiState.filter_cutoff_modulation_source = b }
+        sourceChanged(sender, label: self.lpfFrequencyModulationSource, field: lens)
+        return;
+
         print("test234", sender, "view=",sender.view)
         print(sender.state)
         switch sender.state {
@@ -1039,18 +1047,6 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
                     get: {a in return a.uiState.filter_resonance_modulation}
                 )
             ),
-//            ("lpfEnv1Modulation", filterCutoffEnv1Modulation,
-//                Field(
-//                    set: {(inout a : AudioState, b) in a.filter_cutoff_env_modulation.0 = b},
-//                    get: {a in return a.filter_cutoff_env_modulation.0}
-//                )
-//            ),
-//            ("lpfLfo2Modulation", filterCutoffEnv2Modulation,
-//                Field(
-//                    set: {(inout a : AudioState, b) in a.filter_cutoff_env_modulation.1 = b},
-//                    get: {a in return a.filter_cutoff_env_modulation.1}
-//                )
-//            ),
             
             //
             // VCA

@@ -39,11 +39,6 @@ void init_ui_state(struct UiState *state) {
         state->lfoType[i] = LFO_TYPE_SINE;
     }
     
-//    state->phase = 0.0;
-//    state->actualFrequency = 440.0;
-//    state->amplitude = 0.0;
-//    state->targetAmplitude = 0.0;
-    
     for (int i = 0; i < 2; ++i) {
         state->envDelay[i] = 0.0;
         state->envAttack[i] = 0.1;
