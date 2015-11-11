@@ -928,7 +928,7 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
                     get: {a in return a.uiState.vca_modulation}
                 )
             ),
-            ("vcaModulation", vcaLfo2Modulation,
+            ("vcaLevel", vcaLfo2Modulation,
                 Field(
                     set: {(inout a : AudioState, b) in a.uiState.vca_level = b},
                     get: {a in return a.uiState.vca_modulation}

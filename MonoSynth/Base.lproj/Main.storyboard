@@ -127,6 +127,7 @@
                                                     <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
                                                         <real key="value" value="1"/>
                                                     </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="id" value="env1Delay"/>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="envDelayChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="YWd-md-knJ"/>
@@ -157,6 +158,7 @@
                                                         <real key="value" value="1"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="logarithmic" value="YES"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="id" value="env1Attack"/>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="envAttackChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="Od9-NG-x6O"/>
@@ -186,6 +188,7 @@
                                                     <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
                                                         <real key="value" value="1"/>
                                                     </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="id" value="env1Hold"/>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="envHoldChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="RsA-i0-rpg"/>
@@ -216,6 +219,7 @@
                                                         <real key="value" value="5"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="logarithmic" value="YES"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="id" value="env1Decay"/>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="envDecayChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="yYJ-CY-PC1"/>
@@ -245,6 +249,7 @@
                                                     <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
                                                         <real key="value" value="1"/>
                                                     </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="id" value="env1Sustain"/>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="envSustainChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="9Mc-Rn-uBD"/>
@@ -274,6 +279,7 @@
                                                     <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
                                                         <real key="value" value="10"/>
                                                     </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="id" value="env1Retrigger"/>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="envRetriggerChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="6BB-Rv-mg0"/>
@@ -352,6 +358,7 @@
                                                     <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
                                                         <real key="value" value="1"/>
                                                     </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="id" value="env2Decay"/>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="envDelayChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="lpq-HV-b09"/>
@@ -382,6 +389,7 @@
                                                         <real key="value" value="1"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="logarithmic" value="YES"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="id" value="env2Attack"/>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="envAttackChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="hOT-hw-Jnt"/>
@@ -411,6 +419,7 @@
                                                     <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
                                                         <real key="value" value="1"/>
                                                     </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="id" value="env2Hold"/>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="envHoldChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="NKE-jN-2ha"/>
@@ -441,6 +450,7 @@
                                                         <real key="value" value="5"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="logarithmic" value="YES"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="id" value="env2Decay"/>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="envDecayChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="FQG-YW-LOk"/>
@@ -470,6 +480,7 @@
                                                     <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
                                                         <real key="value" value="1"/>
                                                     </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="id" value="env2Sustain"/>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="envSustainChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="erf-dD-tzc"/>
@@ -499,6 +510,7 @@
                                                     <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
                                                         <real key="value" value="10"/>
                                                     </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="id" value="env2Retrigger"/>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="envRetriggerChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="91r-Q5-uuT"/>
@@ -722,6 +734,7 @@
                                                     <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
                                                         <real key="value" value="0.10000000000000001"/>
                                                     </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="id" value="vco1Detune"/>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="vco1DetuneChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="UXI-M4-QLa"/>
@@ -744,6 +757,7 @@
                                                     <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
                                                         <real key="value" value="8"/>
                                                     </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="id" value="vco1Number"/>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="vco1NumberChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="5ri-yf-ey1"/>
@@ -773,6 +787,7 @@
                                                     <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
                                                         <real key="value" value="1"/>
                                                     </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="id" value="vco1Lfo1Modulation"/>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="vco1Lfo1ModulationChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="AXa-ZD-YDt"/>
@@ -796,6 +811,7 @@
                                                         <real key="value" value="0.10000000000000001"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="logarithmic" value="YES"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="id" value="vco1Spread"/>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="vco1SpreadChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="kzR-DI-hc8"/>
@@ -822,6 +838,7 @@
                                                     <userDefinedRuntimeAttribute type="number" keyPath="detent">
                                                         <real key="value" value="1"/>
                                                     </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="id" value="vco1SyncRatio"/>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="vco1SyncRatioChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="CpJ-iE-qBu"/>
@@ -829,6 +846,146 @@
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sync" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Du5-N7-pAV">
                                                 <rect key="frame" x="440" y="102" width="55" height="23"/>
+                                                <animations/>
+                                                <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="18"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <animations/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dav-xg-KXq">
+                                        <rect key="frame" x="100" y="8" width="600" height="250"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Cutoff" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Svk-kn-VTy">
+                                                <rect key="frame" x="216" y="90" width="52" height="25"/>
+                                                <animations/>
+                                                <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="18"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="z8g-HA-GiV" customClass="Knob" customModule="MonoSynth" customModuleProvider="target">
+                                                <rect key="frame" x="204" y="7" width="80" height="80"/>
+                                                <animations/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
+                                                        <real key="value" value="6"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="minValue">
+                                                        <real key="value" value="0.0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="minAngle">
+                                                        <real key="value" value="22.5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="maxAngle">
+                                                        <real key="value" value="337.5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="id" value="lpfCutoff"/>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="filterCutoffChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="7n5-nS-cXN"/>
+                                                </connections>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="LPF" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kVw-J8-Syq">
+                                                <rect key="frame" x="0.0" y="0.0" width="96" height="62"/>
+                                                <animations/>
+                                                <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="36"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YMn-gm-T1b" customClass="Knob" customModule="MonoSynth" customModuleProvider="target">
+                                                <rect key="frame" x="206" y="118" width="80" height="80"/>
+                                                <animations/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
+                                                        <real key="value" value="3.9900000000000002"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="minValue">
+                                                        <real key="value" value="0.0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="minAngle">
+                                                        <real key="value" value="22.5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="maxAngle">
+                                                        <real key="value" value="337.5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="id" value="lpfResonance"/>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="filterResonanceChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="2Q6-3Z-gNy"/>
+                                                </connections>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Resonance" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JGk-le-1jF">
+                                                <rect key="frame" x="204" y="200" width="85" height="25"/>
+                                                <animations/>
+                                                <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="18"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jvs-VF-asL" customClass="Knob" customModule="MonoSynth" customModuleProvider="target">
+                                                <rect key="frame" x="116" y="8" width="80" height="80"/>
+                                                <animations/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
+                                                        <real key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="minValue">
+                                                        <real key="value" value="-1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="minAngle">
+                                                        <real key="value" value="22.5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="maxAngle">
+                                                        <real key="value" value="337.5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="detent">
+                                                        <real key="value" value="0.0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="id" value="lpfCutoffModulation"/>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="filterCutoffModulationChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="ZEF-xB-RLM"/>
+                                                    <outletCollection property="gestureRecognizers" destination="6BS-jY-ezW" appends="YES" id="392-dr-ert"/>
+                                                </connections>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="LFO1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QHY-wJ-APc">
+                                                <rect key="frame" x="113" y="90" width="83" height="25"/>
+                                                <animations/>
+                                                <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="18"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view tag="1" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eEo-va-kfT" customClass="Knob" customModule="MonoSynth" customModuleProvider="target">
+                                                <rect key="frame" x="114" y="118" width="80" height="80"/>
+                                                <animations/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <gestureRecognizers/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="minValue">
+                                                        <real key="value" value="-1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
+                                                        <real key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="minAngle">
+                                                        <real key="value" value="22.5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="maxAngle">
+                                                        <real key="value" value="337.5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="id" value="lpfResonanceModulation"/>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="filterResonanceModulationChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="Vsc-Jz-Chs"/>
+                                                    <outletCollection property="gestureRecognizers" destination="4mn-Ww-dXw" appends="YES" id="NPD-d1-nA6"/>
+                                                </connections>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="LFO1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4XA-of-szv">
+                                                <rect key="frame" x="114" y="200" width="85" height="25"/>
                                                 <animations/>
                                                 <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="18"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -890,6 +1047,7 @@
                                                     <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
                                                         <real key="value" value="1"/>
                                                     </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="id" value="vcaModulation"/>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="vcaModulationChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="IaJ-8H-5sP"/>
@@ -934,6 +1092,7 @@
                                                     <userDefinedRuntimeAttribute type="number" keyPath="detent">
                                                         <real key="value" value="1"/>
                                                     </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="id" value="vcaLevel"/>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="vcaLevelChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="NJs-Fo-E10"/>
@@ -943,142 +1102,6 @@
                                         <animations/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <gestureRecognizers/>
-                                    </view>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dav-xg-KXq">
-                                        <rect key="frame" x="100" y="8" width="600" height="250"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Cutoff" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Svk-kn-VTy">
-                                                <rect key="frame" x="216" y="90" width="52" height="25"/>
-                                                <animations/>
-                                                <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="18"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="z8g-HA-GiV" customClass="Knob" customModule="MonoSynth" customModuleProvider="target">
-                                                <rect key="frame" x="204" y="7" width="80" height="80"/>
-                                                <animations/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
-                                                        <real key="value" value="6"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="minValue">
-                                                        <real key="value" value="0.0"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="minAngle">
-                                                        <real key="value" value="22.5"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="maxAngle">
-                                                        <real key="value" value="337.5"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <action selector="filterCutoffChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="7n5-nS-cXN"/>
-                                                </connections>
-                                            </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="LPF" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kVw-J8-Syq">
-                                                <rect key="frame" x="0.0" y="0.0" width="96" height="62"/>
-                                                <animations/>
-                                                <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="36"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YMn-gm-T1b" customClass="Knob" customModule="MonoSynth" customModuleProvider="target">
-                                                <rect key="frame" x="206" y="118" width="80" height="80"/>
-                                                <animations/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
-                                                        <real key="value" value="3.9900000000000002"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="minValue">
-                                                        <real key="value" value="0.0"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="minAngle">
-                                                        <real key="value" value="22.5"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="maxAngle">
-                                                        <real key="value" value="337.5"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <action selector="filterResonanceChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="2Q6-3Z-gNy"/>
-                                                </connections>
-                                            </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Resonance" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JGk-le-1jF">
-                                                <rect key="frame" x="204" y="200" width="85" height="25"/>
-                                                <animations/>
-                                                <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="18"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jvs-VF-asL" customClass="Knob" customModule="MonoSynth" customModuleProvider="target">
-                                                <rect key="frame" x="116" y="8" width="80" height="80"/>
-                                                <animations/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
-                                                        <real key="value" value="1"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="minValue">
-                                                        <real key="value" value="-1"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="minAngle">
-                                                        <real key="value" value="22.5"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="maxAngle">
-                                                        <real key="value" value="337.5"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="detent">
-                                                        <real key="value" value="0.0"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <action selector="filterCutoffModulationChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="ZEF-xB-RLM"/>
-                                                    <outletCollection property="gestureRecognizers" destination="6BS-jY-ezW" appends="YES" id="392-dr-ert"/>
-                                                </connections>
-                                            </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="LFO1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QHY-wJ-APc">
-                                                <rect key="frame" x="113" y="90" width="83" height="25"/>
-                                                <animations/>
-                                                <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="18"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <view tag="1" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eEo-va-kfT" customClass="Knob" customModule="MonoSynth" customModuleProvider="target">
-                                                <rect key="frame" x="114" y="118" width="80" height="80"/>
-                                                <animations/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <gestureRecognizers/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="minValue">
-                                                        <real key="value" value="-1"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
-                                                        <real key="value" value="1"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="minAngle">
-                                                        <real key="value" value="22.5"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="maxAngle">
-                                                        <real key="value" value="337.5"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <action selector="filterResonanceModulationChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="Vsc-Jz-Chs"/>
-                                                    <outletCollection property="gestureRecognizers" destination="4mn-Ww-dXw" appends="YES" id="NPD-d1-nA6"/>
-                                                </connections>
-                                            </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="LFO1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4XA-of-szv">
-                                                <rect key="frame" x="114" y="200" width="85" height="25"/>
-                                                <animations/>
-                                                <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="18"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                        <animations/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
                                 </subviews>
                                 <animations/>

@@ -35,6 +35,8 @@ func shrink(centre : CGFloat, amount : CGFloat, x : CGFloat) -> CGFloat {
     
     var knobLayer1 : KnobLayer! = nil
     
+    @IBInspectable var id : String = ""
+    
     @IBInspectable var logarithmic : Bool = false
     
     @IBInspectable var minAngle : CGFloat = 0.0 /*{
