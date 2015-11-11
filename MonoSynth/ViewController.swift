@@ -137,9 +137,9 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
     @IBAction func lfo1FrequencyChanged(sender: Knob) {
         switch sender.tag {
         case 0:
-            state.lfo_frequency.0 = Double(sender.value)
+            state.uiState.lfo_frequency.0 = Double(sender.value)
         case 1:
-            state.lfo_frequency.1 = Double(sender.value)
+            state.uiState.lfo_frequency.1 = Double(sender.value)
         default: break
         }
     }
@@ -147,9 +147,9 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
     @IBAction func lfoTypeChanged(sender: MultiButton) {
         switch sender.tag {
         case 0:
-            state.lfoType.0 = LfoType(UInt32(sender.selectedButton))
+            state.uiState.lfoType.0 = LfoType(UInt32(sender.selectedButton))
         case 1:
-            state.lfoType.1 = LfoType(UInt32(sender.selectedButton))
+            state.uiState.lfoType.1 = LfoType(UInt32(sender.selectedButton))
         default: break
         }
     }
@@ -158,16 +158,16 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
     // LPF1
     //
     @IBAction func filterCutoffModulationChanged(sender: Knob) {
-        state.filter_cutoff_modulation = Double(sender.value)
+        state.uiState.filter_cutoff_modulation = Double(sender.value)
     }
     @IBAction func filterCutoffChanged(sender: Knob) {
-        state.filter_cutoff = Double(sender.value)
+        state.uiState.filter_cutoff = Double(sender.value)
     }
     @IBAction func filterResonanceModulationChanged(sender: Knob) {
-        state.filter_resonance_modulation = Double(sender.value)
+        state.uiState.filter_resonance_modulation = Double(sender.value)
     }
     @IBAction func filterResonanceChanged(sender: Knob) {
-        state.filter_resonance = Double(sender.value)
+        state.uiState.filter_resonance = Double(sender.value)
     }
     
 //    @IBAction func filterFrequencyLFO1ModulationChanged(sender: Knob) {
@@ -196,21 +196,21 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
     // VCO1
     //
     @IBAction func vco1Lfo1ModulationChanged(sender: Knob) {
-        state.vco1_lfo1_modulation = Double(sender.value)
+        state.uiState.vco1_lfo1_modulation = Double(sender.value)
     }
     
     @IBAction func vco1DetuneChanged(sender: Knob) {
-        state.vco1_detune = Double(sender.value)
+        state.uiState.vco1_detune = Double(sender.value)
     }
     @IBAction func vco1NumberChanged(sender: Knob) {
-        state.vco1_number = Int32(sender.value)
+        state.uiState.vco1_number = Int32(sender.value)
     }
     @IBAction func vco1SpreadChanged(sender: Knob) {
-        state.vco1_spread = Double(sender.value)
+        state.uiState.vco1_spread = Double(sender.value)
     }
     @IBAction func vco1SyncRatioChanged(sender: Knob) {
-        state.vco1SyncRatio = Double(sender.value)
-        print("sync=", state.vco1SyncRatio)
+        state.uiState.vco1SyncRatio = Double(sender.value)
+        print("sync=", state.uiState.vco1SyncRatio)
     }
     
     @IBAction func vco1Pressed(sender: UIButton) {
@@ -294,11 +294,11 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
     @IBAction func envDelayChanged(sender: Knob) {
         switch sender.tag {
         case 0:
-            state.envDelay.0 = Double(sender.value)
+            state.uiState.envDelay.0 = Double(sender.value)
             env1Graph.delay = sender.value
             env1Graph.setNeedsDisplay()
         case 1:
-            state.envDelay.1 = Double(sender.value)
+            state.uiState.envDelay.1 = Double(sender.value)
             env2Graph.delay = sender.value
             env2Graph.setNeedsDisplay()
         default:
@@ -308,11 +308,11 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
     @IBAction func envAttackChanged(sender: Knob) {
         switch sender.tag {
         case 0:
-            state.envAttack.0 = Double(sender.value)
+            state.uiState.envAttack.0 = Double(sender.value)
             env1Graph.attack = sender.value
             env1Graph.setNeedsDisplay()
         case 1:
-            state.envAttack.1 = Double(sender.value)
+            state.uiState.envAttack.1 = Double(sender.value)
             env2Graph.attack = sender.value
             env2Graph.setNeedsDisplay()
         default:
@@ -322,11 +322,11 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
     @IBAction func envHoldChanged(sender: Knob) {
         switch sender.tag {
         case 0:
-            state.envHold.0 = Double(sender.value)
+            state.uiState.envHold.0 = Double(sender.value)
             env1Graph.hold = sender.value
             env1Graph.setNeedsDisplay()
         case 1:
-            state.envHold.1 = Double(sender.value)
+            state.uiState.envHold.1 = Double(sender.value)
             env2Graph.hold = sender.value
             env2Graph.setNeedsDisplay()
         default:
@@ -336,11 +336,11 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
     @IBAction func envDecayChanged(sender: Knob) {
         switch sender.tag {
         case 0:
-            state.envDecay.0 = Double(sender.value)
+            state.uiState.envDecay.0 = Double(sender.value)
             env1Graph.decay = sender.value
             env1Graph.setNeedsDisplay()
         case 1:
-            state.envDecay.1 = Double(sender.value)
+            state.uiState.envDecay.1 = Double(sender.value)
             env2Graph.decay = sender.value
             env2Graph.setNeedsDisplay()
         default:
@@ -350,11 +350,11 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
     @IBAction func envSustainChanged(sender: Knob) {
         switch sender.tag {
         case 0:
-            state.envSustain.0 = Double(sender.value)
+            state.uiState.envSustain.0 = Double(sender.value)
             env1Graph.sustain = sender.value
             env1Graph.setNeedsDisplay()
         case 1:
-            state.envSustain.1 = Double(sender.value)
+            state.uiState.envSustain.1 = Double(sender.value)
             env2Graph.sustain = sender.value
             env2Graph.setNeedsDisplay()
         default:
@@ -364,11 +364,11 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
     @IBAction func envReleaseChanged(sender: Knob) {
         switch sender.tag {
         case 0:
-            state.envRelease.0 = Double(sender.value)
+            state.uiState.envRelease.0 = Double(sender.value)
             env1Graph.release_ = sender.value
             env1Graph.setNeedsDisplay()
         case 1:
-            state.envRelease.1 = Double(sender.value)
+            state.uiState.envRelease.1 = Double(sender.value)
             env2Graph.release_ = sender.value
             env2Graph.setNeedsDisplay()
         default:
@@ -378,9 +378,9 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
     @IBAction func envRetriggerChanged(sender: Knob) {
         switch sender.tag {
         case 0:
-            state.envRetrigger.0 = Double(sender.value)
+            state.uiState.envRetrigger.0 = Double(sender.value)
         case 1:
-            state.envRetrigger.1 = Double(sender.value)
+            state.uiState.envRetrigger.1 = Double(sender.value)
         default:
             break
         }
@@ -390,14 +390,14 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
     // VCA
     //
     @IBAction func vcaEnv2(sender: UISwitch) {
-        state.vcaEnv2 = sender.on ? 1 : 0
+        state.uiState.vcaEnv2 = sender.on ? 1 : 0
     }
     
     @IBAction func vcaModulationChanged(sender: Knob) {
-        state.vca_modulation = Double(sender.value)
+        state.uiState.vca_modulation = Double(sender.value)
     }
     @IBAction func vcaLevelChanged(sender: Knob) {
-        state.vca_level = Double(sender.value)
+        state.uiState.vca_level = Double(sender.value)
     }
     
     func doReset() -> Void {
@@ -412,6 +412,81 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
 //    // This method is called in iOS 8.3 or later regardless of trait collection, in which case use the original presentation style (UIModalPresentationNone signals no adaptation)
 //    return UIModalPresentationStyle.None;
 //    }
+    
+    func sourceChanged(sender: UILongPressGestureRecognizer,
+                                 label: UILabel,
+                                 lens: Lens<AudioState, Double>) {
+        print("change", sender, "view=",sender.view)
+        print(sender.state)
+        switch sender.state {
+        case .Began:
+            print("Began")
+            
+            
+            let window = UIApplication.sharedApplication().keyWindow
+            if window?.rootViewController?.presentedViewController == nil {
+                
+                let alertController = UIAlertController(title: "LPF Frequency Modulation",
+                    message: "Choose Source",
+                    preferredStyle: .ActionSheet)
+                
+                for (title, action, style) in [
+                    ("LFO1", {
+                        () -> Void in
+                        label.text = "LFO1"
+                        self.state.uiState.filter_cutoff_modulation_source = SOURCE_LFO1
+                        
+                        }, UIAlertActionStyle.Default),
+                    ("LFO2", {
+                        () -> Void in
+                        label.text = "LFO2"
+                        self.state.uiState.filter_cutoff_modulation_source = SOURCE_LFO2
+                        
+                        }, .Default),
+                    ("ENV1", {
+                        () -> Void in
+                        label.text = "ENV1"
+                        self.state.uiState.filter_cutoff_modulation_source = SOURCE_ENV1
+                        
+                        }, UIAlertActionStyle.Default),
+                    ("ENV2", {
+                        () -> Void in
+                        label.text = "ENV2"
+                        self.state.uiState.filter_cutoff_modulation_source = SOURCE_ENV2
+                        }, .Default),
+                    ("Cancel", {() -> Void in  }, .Cancel)] {
+                        let resetAction = UIAlertAction(title: title, style: style) {
+                            (_) in
+                            action()
+                        }
+                        alertController.addAction(resetAction)
+                        
+                }
+                
+                let popover = alertController.popoverPresentationController
+                if (popover != nil) {
+                    popover!.delegate = self
+                    popover!.sourceView = sender.view
+                    popover!.sourceRect = sender.view!.bounds
+                    popover!.permittedArrowDirections = .Any
+                }
+                
+                // Slight behaviour difference on iPad
+                //            if let controller = alertController.popoverPresentationController {
+                //                controller.barButtonItem = sender
+                //            }
+                
+                window?.rootViewController?.presentViewController(alertController, animated: true, completion: nil)
+            }
+            
+            
+        case .Ended:
+            print("Ended")
+        default:
+            print("...")
+        }
+    }
+    
     
     @IBAction func lpfCutoffSourceChanged(sender: UILongPressGestureRecognizer) {
         print("test234", sender, "view=",sender.view)
@@ -433,25 +508,25 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
                     ("LFO1", {
                         () -> Void in
                         self.lpfFrequencyModulationSource.text = "LFO1"
-                        self.state.filter_cutoff_modulation_source = SOURCE_LFO1
+                        self.state.uiState.filter_cutoff_modulation_source = SOURCE_LFO1
                         
                         }, UIAlertActionStyle.Default),
                     ("LFO2", {
                         () -> Void in
                         self.lpfFrequencyModulationSource.text = "LFO2"
-                        self.state.filter_cutoff_modulation_source = SOURCE_LFO2
+                        self.state.uiState.filter_cutoff_modulation_source = SOURCE_LFO2
                         
                         }, .Default),
                     ("ENV1", {
                         () -> Void in
                         self.lpfFrequencyModulationSource.text = "ENV1"
-                        self.state.filter_cutoff_modulation_source = SOURCE_ENV1
+                        self.state.uiState.filter_cutoff_modulation_source = SOURCE_ENV1
                         
                         }, UIAlertActionStyle.Default),
                     ("ENV2", {
                         () -> Void in
                         self.lpfFrequencyModulationSource.text = "ENV2"
-                        self.state.filter_cutoff_modulation_source = SOURCE_ENV2
+                        self.state.uiState.filter_cutoff_modulation_source = SOURCE_ENV2
                         }, .Default),
                     ("Cancel", {() -> Void in  }, .Cancel)] {
                         let resetAction = UIAlertAction(title: title, style: style) {
@@ -506,25 +581,25 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
                     ("LFO1", {
                         () -> Void in
                         self.vcaModulationSource.text = "LFO1"
-                        self.state.vca_modulation_source = SOURCE_LFO1
+                        self.state.uiState.vca_modulation_source = SOURCE_LFO1
                         
                         }, UIAlertActionStyle.Default),
                     ("LFO2", {
                         () -> Void in
                         self.vcaModulationSource.text = "LFO2"
-                        self.state.vca_modulation_source = SOURCE_LFO2
+                        self.state.uiState.vca_modulation_source = SOURCE_LFO2
                         
                         }, .Default),
                     ("ENV1", {
                         () -> Void in
                         self.vcaModulationSource.text = "ENV1"
-                        self.state.vca_modulation_source = SOURCE_ENV1
+                        self.state.uiState.vca_modulation_source = SOURCE_ENV1
                         
                         }, UIAlertActionStyle.Default),
                     ("ENV2", {
                         () -> Void in
                         self.vcaModulationSource.text = "ENV2"
-                        self.state.vca_modulation_source = SOURCE_ENV2
+                        self.state.uiState.vca_modulation_source = SOURCE_ENV2
                         }, .Default),
                     ("Cancel", {() -> Void in  }, .Cancel)] {
                         let resetAction = UIAlertAction(title: title, style: style) {
@@ -678,13 +753,13 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
         if traitCollection.forceTouchCapability == .Available {
             print("Touch pressure is \(touch!.force), maximum possible force is \(touch!.maximumPossibleForce)")
 //            state.targetAmplitude = Double(touch!.force/touch!.maximumPossibleForce)
-            state.gate = 1.0
+            state.uiState.gate = 1.0
         } else {
 //            state.targetAmplitude = 1.0
-            state.gate = 1.0
+            state.uiState.gate = 1.0
         }
-        state.frequency = noteFromXY(touchPoint.x, y: touchPoint.y)
-        print("frequency, gate=", state.frequency, state.gate)
+        state.uiState.frequency = noteFromXY(touchPoint.x, y: touchPoint.y)
+        print("frequency, gate=", state.uiState.frequency, state.uiState.gate)
     }
     
     func keySlide(sender: PianoKey, event: UIEvent) -> Void{
@@ -695,20 +770,20 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
         if traitCollection.forceTouchCapability == .Available {
             print("Touch pressure is \(touch!.force), maximum possible force is \(touch!.maximumPossibleForce)")
 //            state.targetAmplitude = Double(touch!.force/touch!.maximumPossibleForce)
-            state.gate = 1.0
+            state.uiState.gate = 1.0
             print("down")
         } else {
 //            state.targetAmplitude = 1.0
-            state.gate = 1.0
+            state.uiState.gate = 1.0
             print("down")
         }
-        state.frequency = noteFromXY(touchPoint.x, y: touchPoint.y)
+        state.uiState.frequency = noteFromXY(touchPoint.x, y: touchPoint.y)
 //        print("frequency=", frequency)
     }
     
     func keyUp(sender: PianoKey) -> Void {
 //        state.targetAmplitude = 0.0
-        state.gate = 0.0;
+        state.uiState.gate = 0.0;
 //        print("Up", sender.tag)
         print("up")
     }
@@ -726,8 +801,8 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
         switchList = [
             ("vcaEnv2Switch", vcaEnv2Switch,
                 BoolField(
-                    set: {(inout a : AudioState, b : Bool) in a.vcaEnv2 = b ? 1 : 0 },
-                    get: {(a : AudioState) in return a.vcaEnv2 == 0 ? false : true }
+                    set: {(inout a : AudioState, b : Bool) in a.uiState.vcaEnv2 = b ? 1 : 0 },
+                    get: {(a : AudioState) in return a.uiState.vcaEnv2 == 0 ? false : true }
                 )
             )
         ]
@@ -746,10 +821,10 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
             ("vco1Waveform", waveformSelector,
                 IntField(
                     set: {(inout a : AudioState, b) in
-                        a.vcoType = [VCO_TYPE_SINE, VCO_TYPE_SQUARE, VCO_TYPE_SAW][b]
+                        a.uiState.vcoType = [VCO_TYPE_SINE, VCO_TYPE_SQUARE, VCO_TYPE_SAW][b]
                     },
                     get: {(a : AudioState) in
-                        switch a.vcoType {
+                        switch a.uiState.vcoType {
                         case VCO_TYPE_SINE:
                             return 0
                         case VCO_TYPE_SQUARE:
@@ -765,10 +840,10 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
             ("lfo1Waveform", lfo1Type,
                 IntField(
                     set: {(inout a : AudioState, b) in
-                        a.lfoType.0 = [LFO_TYPE_SINE, LFO_TYPE_SQUARE, LFO_TYPE_SAW, LFO_TYPE_RAND][b]
+                        a.uiState.lfoType.0 = [LFO_TYPE_SINE, LFO_TYPE_SQUARE, LFO_TYPE_SAW, LFO_TYPE_RAND][b]
                     },
                     get: {(a : AudioState) in
-                        switch a.lfoType.0 {
+                        switch a.uiState.lfoType.0 {
                         case LFO_TYPE_SINE:
                             return 0
                         case LFO_TYPE_SQUARE:
@@ -800,44 +875,44 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
             //
             ("env1Delay", envDelay,
                 Field(
-                    set: {(inout a : AudioState, b) in a.envDecay.0 = b},
-                    get: {a in return a.envDecay.0}
+                    set: {(inout a : AudioState, b) in a.uiState.envDecay.0 = b},
+                    get: {a in return a.uiState.envDecay.0}
                 )
             ),
             ("env1Attack", envAttack,
                 Field(
-                    set: {(inout a : AudioState, b) in a.envAttack.0 = b},
-                    get: {a in return a.envAttack.0}
+                    set: {(inout a : AudioState, b) in a.uiState.envAttack.0 = b},
+                    get: {a in return a.uiState.envAttack.0}
                 )
             ),
             ("env1Hold", envHold,
                 Field(
-                    set: {(inout a : AudioState, b) in a.envHold.0 = b},
-                    get: {a in return a.envHold.0}
+                    set: {(inout a : AudioState, b) in a.uiState.envHold.0 = b},
+                    get: {a in return a.uiState.envHold.0}
                 )
             ),
             ("env1Decay", envDecay,
                 Field(
-                    set: {(inout a : AudioState, b) in a.envDecay.0 = b},
-                    get: {a in return a.envDecay.0}
+                    set: {(inout a : AudioState, b) in a.uiState.envDecay.0 = b},
+                    get: {a in return a.uiState.envDecay.0}
                 )
             ),
             ("env1Sustain", envSustain,
                 Field(
-                    set: {(inout a : AudioState, b) in a.envSustain.0 = b},
-                    get: {a in return a.envSustain.0}
+                    set: {(inout a : AudioState, b) in a.uiState.envSustain.0 = b},
+                    get: {a in return a.uiState.envSustain.0}
                 )
             ),
             ("env1Release", envRelease,
                 Field(
-                    set: {(inout a : AudioState, b) in a.envRelease.0 = b},
-                    get: {a in return a.envRelease.0}
+                    set: {(inout a : AudioState, b) in a.uiState.envRelease.0 = b},
+                    get: {a in return a.uiState.envRelease.0}
                 )
             ),
             ("env1Retrigger", envRetrigger,
                 Field(
-                    set: {(inout a : AudioState, b) in a.envRetrigger.0 = b},
-                    get: {a in return a.envRetrigger.0}
+                    set: {(inout a : AudioState, b) in a.uiState.envRetrigger.0 = b},
+                    get: {a in return a.uiState.envRetrigger.0}
                 )
             ),
             
@@ -846,44 +921,44 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
             //
             ("env2Delay", env2Delay,
                 Field(
-                    set: {(inout a : AudioState, b) in a.envDecay.1 = b},
-                    get: {a in return a.envDecay.1}
+                    set: {(inout a : AudioState, b) in a.uiState.envDecay.1 = b},
+                    get: {a in return a.uiState.envDecay.1}
                 )
             ),
             ("en21Attack", env2Attack,
                 Field(
-                    set: {(inout a : AudioState, b) in a.envAttack.1 = b},
-                    get: {a in return a.envAttack.1}
+                    set: {(inout a : AudioState, b) in a.uiState.envAttack.1 = b},
+                    get: {a in return a.uiState.envAttack.1}
                 )
             ),
             ("env2Hold", env2Hold,
                 Field(
-                    set: {(inout a : AudioState, b) in a.envHold.1 = b},
-                    get: {a in return a.envHold.1}
+                    set: {(inout a : AudioState, b) in a.uiState.envHold.1 = b},
+                    get: {a in return a.uiState.envHold.1}
                 )
             ),
             ("env2Decay", env2Decay,
                 Field(
-                    set: {(inout a : AudioState, b) in a.envDecay.1 = b},
-                    get: {a in return a.envDecay.1}
+                    set: {(inout a : AudioState, b) in a.uiState.envDecay.1 = b},
+                    get: {a in return a.uiState.envDecay.1}
                 )
             ),
             ("env2Sustain", env2Sustain,
                 Field(
-                    set: {(inout a : AudioState, b) in a.envSustain.1 = b},
-                    get: {a in return a.envSustain.1}
+                    set: {(inout a : AudioState, b) in a.uiState.envSustain.1 = b},
+                    get: {a in return a.uiState.envSustain.1}
                 )
             ),
             ("env2Release", env2Release,
                 Field(
-                    set: {(inout a : AudioState, b) in a.envRelease.1 = b},
-                    get: {a in return a.envRelease.1}
+                    set: {(inout a : AudioState, b) in a.uiState.envRelease.1 = b},
+                    get: {a in return a.uiState.envRelease.1}
                 )
             ),
             ("env2Retrigger", env2Retrigger,
                 Field(
-                    set: {(inout a : AudioState, b) in a.envRetrigger.1 = b},
-                    get: {a in return a.envRetrigger.1}
+                    set: {(inout a : AudioState, b) in a.uiState.envRetrigger.1 = b},
+                    get: {a in return a.uiState.envRetrigger.1}
                 )
             ),
 
@@ -892,14 +967,14 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
             //
             ("lfo1Frequency", knobSpecifications[0].uiKnob,
                 Field(
-                    set: {(inout a : AudioState, b) in a.lfo_frequency.0 = b},
-                    get: {a in return a.lfo_frequency.0}
+                    set: {(inout a : AudioState, b) in a.uiState.lfo_frequency.0 = b},
+                    get: {a in return a.uiState.lfo_frequency.0}
                 )
             ),
             ("lfo2Frequency", knobSpecifications[1].uiKnob,
                 Field(
-                    set: {(inout a : AudioState, b) in a.lfo_frequency.1 = b},
-                    get: {a in return a.lfo_frequency.1}
+                    set: {(inout a : AudioState, b) in a.uiState.lfo_frequency.1 = b},
+                    get: {a in return a.uiState.lfo_frequency.1}
                 )
             ),
             
@@ -908,32 +983,32 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
             //
             ("vco1Detune", vco1Detune,
                 Field(
-                    set: {(inout a : AudioState, b) in a.vco1_detune = b},
-                    get: {a in return a.vco1_detune}
+                    set: {(inout a : AudioState, b) in a.uiState.vco1_detune = b},
+                    get: {a in return a.uiState.vco1_detune}
                 )
             ),
             ("vco1Number", vco1Number,
                 Field(
-                    set: {(inout a : AudioState, b) in a.vco1_number = Int32(b)},
-                    get: {a in return Double(a.vco1_number)}
+                    set: {(inout a : AudioState, b) in a.uiState.vco1_number = Int32(b)},
+                    get: {a in return Double(a.uiState.vco1_number)}
                 )
             ),
             ("vco1Spread", vco1Spread,
                 Field(
-                    set: {(inout a : AudioState, b) in a.vco1_spread = b},
-                    get: {a in return a.vco1_spread}
+                    set: {(inout a : AudioState, b) in a.uiState.vco1_spread = b},
+                    get: {a in return a.uiState.vco1_spread}
                 )
             ),
             ("vco1Lfo1Modulation", vco1Lfo1Modulation,
                 Field(
-                    set: {(inout a : AudioState, b) in a.vco1_lfo1_modulation = b},
-                    get: {a in return a.vco1_lfo1_modulation}
+                    set: {(inout a : AudioState, b) in a.uiState.vco1_lfo1_modulation = b},
+                    get: {a in return a.uiState.vco1_lfo1_modulation}
                 )
             ),
             ("vco1SyncRatio", vco1SyncRatio,
                 Field(
-                    set: {(inout a : AudioState, b) in a.vco1SyncRatio = b},
-                    get: {a in return a.vco1SyncRatio}
+                    set: {(inout a : AudioState, b) in a.uiState.vco1SyncRatio = b},
+                    get: {a in return a.uiState.vco1SyncRatio}
                 )
             ),
             
@@ -942,26 +1017,26 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
             //
             ("lpfCutoff", filterCutoff,
                 Field(
-                    set: {(inout a : AudioState, b) in a.filter_cutoff = b},
-                    get: {a in return a.filter_cutoff}
+                    set: {(inout a : AudioState, b) in a.uiState.filter_cutoff = b},
+                    get: {a in return a.uiState.filter_cutoff}
                 )
             ),
             ("lpfResonance", filterResonance,
                 Field(
-                    set: {(inout a : AudioState, b) in a.filter_resonance = b},
-                    get: {a in return a.filter_resonance}
+                    set: {(inout a : AudioState, b) in a.uiState.filter_resonance = b},
+                    get: {a in return a.uiState.filter_resonance}
                 )
             ),
             ("lpfCutoffModulation", filterCutoffModulation,
                 Field(
-                    set: {(inout a : AudioState, b) in a.filter_cutoff_modulation = b},
-                    get: {a in return a.filter_cutoff_modulation}
+                    set: {(inout a : AudioState, b) in a.uiState.filter_cutoff_modulation = b},
+                    get: {a in return a.uiState.filter_cutoff_modulation}
                 )
             ),
             ("lpfResonanceModulation", filterResonanceModulation,
                 Field(
-                    set: {(inout a : AudioState, b) in a.filter_resonance_modulation = b},
-                    get: {a in return a.filter_resonance_modulation}
+                    set: {(inout a : AudioState, b) in a.uiState.filter_resonance_modulation = b},
+                    get: {a in return a.uiState.filter_resonance_modulation}
                 )
             ),
 //            ("lpfEnv1Modulation", filterCutoffEnv1Modulation,
@@ -982,14 +1057,14 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
             //
             ("vcaModulation", vcaLfo1Modulation,
                 Field(
-                    set: {(inout a : AudioState, b) in a.vca_modulation = b},
-                    get: {a in return a.vca_modulation}
+                    set: {(inout a : AudioState, b) in a.uiState.vca_modulation = b},
+                    get: {a in return a.uiState.vca_modulation}
                 )
             ),
             ("vcaModulation", vcaLfo2Modulation,
                 Field(
-                    set: {(inout a : AudioState, b) in a.vca_level = b},
-                    get: {a in return a.vca_modulation}
+                    set: {(inout a : AudioState, b) in a.uiState.vca_level = b},
+                    get: {a in return a.uiState.vca_modulation}
                 )
             ),
         ]
@@ -1023,7 +1098,7 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
         // VCA
         //
         saveDict["vcaEnv2Switch"] = vcaEnv2Switch.on
-        saveDict["vcaModulationSource"] = Int(state.vca_modulation_source.rawValue)
+        saveDict["vcaModulationSource"] = Int(state.uiState.vca_modulation_source.rawValue)
 //        saveDict["vcaLfo1Modulation"] = vcaLfo1Modulation.value
 //        saveDict["vcaLfo2Modulation"] = vcaLfo2Modulation.value
         
@@ -1085,11 +1160,11 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
             //
             if let vcaEnv2SwitchValue = saveDict["vcaEnv2Switch"] as? Bool {
                 vcaEnv2Switch.on = vcaEnv2SwitchValue
-                state.vcaEnv2 = vcaEnv2SwitchValue ? 1 : 0
+                state.uiState.vcaEnv2 = vcaEnv2SwitchValue ? 1 : 0
             }
             if let vcaModulationSourceValue = saveDict["vcaModulationSource"] as? Int {
-                state.vca_modulation_source = Source(rawValue: UInt32(vcaModulationSourceValue))
-                self.vcaModulationSource.text = sourceName(state.vca_modulation_source)
+                state.uiState.vca_modulation_source = Source(rawValue: UInt32(vcaModulationSourceValue))
+                self.vcaModulationSource.text = sourceName(state.uiState.vca_modulation_source)
             }
         }
     }
@@ -1104,7 +1179,7 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
     
     @IBAction func waveformSelectorChanged(sender: MultiButton) {
         print("Button!")
-        state.vcoType = VcoType(UInt32(sender.selectedButton))
+        state.uiState.vcoType = VcoType(UInt32(sender.selectedButton))
     }
     
     func getAudioComponentDescription() -> AudioComponentDescription {

@@ -25,46 +25,17 @@ enum Source {
     SOURCE_ENV2 = 3
 };
 
-struct AudioState {
-    // Globals
-    double sampleRate;
-    
+struct UiState {
     //
-    // UI: VCA
+    // Keyboard
     //
-    int vcaEnv2;
-    
-    double vca_level;
-    enum Source vca_modulation_source;
-    double vca_modulation;
-    
-    //
-    // UI: LFO
-    //
-    enum LfoType lfoType[2];
-    double lfo_frequency[2];
+    double frequency;
+    double gate;
+    double targetAmplitude; // XXX <- into a low pass filter
 
-    //
-    // LFO
-    //
-    struct LFO lfo[2];
     
     //
-    // VCO1
-    //
-    enum VcoType vcoType;
-    int vco1_number;
-    double vco1_detune;
-    double vco1_spread;
-    double vco1_lfo1_modulation;
-    double vco1SyncRatio;
-
-    struct VCO vco1;
-    
-    double peak;
-    
-    //
-    // Envelopes
+    // ENV1 & ENV 2
     //
     double envDelay[2];
     double envAttack[2];
@@ -73,35 +44,71 @@ struct AudioState {
     double envSustain[2];
     double envRelease[2];
     double envRetrigger[2];
+    
+    //
+    // LFO1 & LFO2
+    //
+    double lfo_frequency[2];
+    enum LfoType lfoType[2];
+
+    //
+    // VCO
+    //
+    double vco1_detune;
+    int vco1_number;
+    double vco1_spread;
+    enum VcoType vcoType;
+    double vco1_lfo1_modulation;
+    double vco1SyncRatio;
+    
+    //
+    // LPF
+    //
+    double filter_cutoff; // octaves relative to keyboard frequency
+    double filter_resonance;
+    enum Source filter_cutoff_modulation_source;
+    enum Source filter_resonance_modulation_source;
+    double filter_cutoff_modulation;
+    double filter_resonance_modulation;    
+    
+    //
+    // VCA
+    //
+    int vcaEnv2;
+    
+    double vca_level;
+    enum Source vca_modulation_source;
+    double vca_modulation;
+};
+
+struct AudioState {
+    // Globals
+    double sampleRate;
+    
+    // VU meter
+    double peak;
+    
+    // Oscilloscope
+    bool osc_waiting;
+    int osc_pos;
+    double *osc_data;
+    double osc_previous ;
+    
+    struct UiState uiState;
+    struct LFO lfo[2];
+    struct VCO vco1;
     struct Envelope env[2];
     
     //
     // Filter
     //
-    enum Source filter_cutoff_modulation_source;
-    enum Source filter_resonance_modulation_source;
-    double filter_cutoff_modulation;
-    double filter_resonance_modulation;
     struct Ladder ladder;
     
     double actualFrequency;
     double phase;
     double amplitude;
     
-    //
-    // Controls
-    //
-    double frequency;
-    double gate;
-    double targetAmplitude;
     
-    double filter_cutoff; // octaves relative to keyboard frequency
-    double filter_resonance;
-    
-    bool osc_waiting;
-    int osc_pos;
-    double *osc_data;
-    double osc_previous ;
 };
 
 void init_audio_state(struct AudioState *state);
