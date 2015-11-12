@@ -579,9 +579,15 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
         }
         
         // Works! But set up correctly
-        let lpr = UILongPressGestureRecognizer(target: self, action: "lpfResonanceSourceChanged:")
-        lpr.minimumPressDuration = 1.0
-        idToKnob["env1Delay"]?.addGestureRecognizer(lpr)
+        for (knobId, callbackName) in [
+            ("lpfCutoffModulation", "lpfResonanceCutoffChanged:"),
+            ("lpfResonanceModulation", "lpfResonanceSourceChanged:"),
+            ("vcaModulation", "vcaModulationSourceChanged:")
+            ] {
+            let lpr = UILongPressGestureRecognizer(target: self, action: Selector(callbackName))
+            lpr.minimumPressDuration = 1.0
+            idToKnob[knobId]!.addGestureRecognizer(lpr)
+        }
         
         vco1Panel.hidden = true
         lfo1Panel.hidden = true

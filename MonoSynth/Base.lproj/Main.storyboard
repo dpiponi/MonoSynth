@@ -953,7 +953,6 @@
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="knobChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="Skh-O8-ryp"/>
-                                                    <outletCollection property="gestureRecognizers" destination="6BS-jY-ezW" appends="YES" id="392-dr-ert"/>
                                                 </connections>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="LFO1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QHY-wJ-APc">
@@ -985,7 +984,6 @@
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="knobChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="glQ-76-FJi"/>
-                                                    <outletCollection property="gestureRecognizers" destination="4mn-Ww-dXw" appends="YES" id="NPD-d1-nA6"/>
                                                 </connections>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="LFO1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4XA-of-szv">
@@ -1055,7 +1053,6 @@
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="knobChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="J4n-UB-bTz"/>
-                                                    <outletCollection property="gestureRecognizers" destination="rLk-Sg-f7b" appends="YES" id="DdJ-y2-8s1"/>
                                                 </connections>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="VCA" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0fW-bP-v4u">
@@ -1170,21 +1167,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="1" id="rLk-Sg-f7b" userLabel="VCA Level Gesture">
-                    <connections>
-                        <action selector="vcaModulationSourceChanged:" destination="BYZ-38-t0r" id="zuw-jL-W9O"/>
-                    </connections>
-                </pongPressGestureRecognizer>
-                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="6BS-jY-ezW" userLabel="LPF Cutoff Gesture">
-                    <connections>
-                        <action selector="lpfCutoffSourceChanged:" destination="BYZ-38-t0r" id="yhM-xF-HUc"/>
-                    </connections>
-                </pongPressGestureRecognizer>
-                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="4mn-Ww-dXw" userLabel="LPF Resonance Gesture">
-                    <connections>
-                        <action selector="lpfResonanceSourceChanged:" destination="BYZ-38-t0r" id="PLZ-HM-rhm"/>
-                    </connections>
-                </pongPressGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="317" y="390"/>
         </scene>
