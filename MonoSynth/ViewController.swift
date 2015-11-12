@@ -24,18 +24,15 @@ struct Bound<B> {
     let get: () -> B
 }
 
-//class KnobSpecification {
-////    let name: String;
-//    var uiKnob: Knob!
-//
-//    init(knob: Knob) {
-//        uiKnob = knob
-//    }
-//    
-////    init(name: String) {
-////        self.name = name
-////    }
-//}
+class Wrapper<A,B> {
+    var g : (A) -> B
+    func call(a : A) -> B {
+        return g(a)
+    }
+    init(f : A -> B) {
+        g = f
+    }
+}
 
 //
 // http://www.cocoawithlove.com/2010/10/ios-tone-generator-introduction-to.html
@@ -64,8 +61,6 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
     @IBOutlet weak var env2Graph: ADSRPlot!
     
     // LFO
-//    @IBOutlet weak var lfo1Frequency: Knob!
-//    @IBOutlet weak var lfo2Frequency: Knob!
     @IBOutlet weak var lfo1Type: MultiButton!
     @IBOutlet weak var lfo2Type: MultiButton!
     
@@ -121,79 +116,6 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
             panels[i].hidden = !(sender.tag == panels[i].tag)
         }
     }
-    
-//    @IBAction func vco1Pressed(sender: UIButton) {
-//        vco1Panel.hidden = false
-//        lfo1Panel.hidden = true
-//        lfo2Panel.hidden = true
-//        filt1Panel.hidden = true
-//        env1Panel.hidden = true
-//        env2Panel.hidden = true
-//        vcaPanel.hidden = true
-//    }
-//    
-//    //
-//    // LFO
-//    //
-//    @IBAction func lfo1Pressed(sender: UIButton) {
-//        vco1Panel.hidden = true
-//        lfo1Panel.hidden = false
-//        lfo2Panel.hidden = true
-//        filt1Panel.hidden = true
-//        env1Panel.hidden = true
-//        env2Panel.hidden = true
-//        vcaPanel.hidden = true
-//    }
-//    
-//    @IBAction func lfo2Pressed(sender: UIButton) {
-//        vco1Panel.hidden = true
-//        lfo1Panel.hidden = true
-//        lfo2Panel.hidden = false
-//        filt1Panel.hidden = true
-//        env1Panel.hidden = true
-//        env2Panel.hidden = true
-//        vcaPanel.hidden = true
-//    }
-//    
-//    @IBAction func filt1Button(sender: UIButton) {
-//        vco1Panel.hidden = true
-//        lfo1Panel.hidden = true
-//        lfo2Panel.hidden = true
-//        filt1Panel.hidden = false
-//        env1Panel.hidden = true
-//        env2Panel.hidden = true
-//        vcaPanel.hidden = true
-//    }
-//    
-//    @IBAction func env1ButtonPressed(sender: UIButton) {
-//        vco1Panel.hidden = true
-//        lfo1Panel.hidden = true
-//        lfo2Panel.hidden = true
-//        filt1Panel.hidden = true
-//        env1Panel.hidden = false
-//        env2Panel.hidden = true
-//        vcaPanel.hidden = true
-//    }
-//    
-//    @IBAction func env2ButtonPressed(sender: UIButton) {
-//        vco1Panel.hidden = true
-//        lfo1Panel.hidden = true
-//        lfo2Panel.hidden = true
-//        filt1Panel.hidden = true
-//        env1Panel.hidden = true
-//        env2Panel.hidden = false
-//        vcaPanel.hidden = true
-//    }
-//    
-//    @IBAction func vcaPressed(sender: UIButton) {
-//        vco1Panel.hidden = true
-//        lfo1Panel.hidden = true
-//        lfo2Panel.hidden = true
-//        filt1Panel.hidden = true
-//        env1Panel.hidden = true
-//        env2Panel.hidden = true
-//        vcaPanel.hidden = false
-//    }
     
     //
     // ENV1
@@ -269,11 +191,6 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
                     popover!.permittedArrowDirections = .Any
                 }
                 
-                // Slight behaviour difference on iPad
-                //            if let controller = alertController.popoverPresentationController {
-                //                controller.barButtonItem = sender
-                //            }
-                
                 window?.rootViewController?.presentViewController(alertController, animated: true, completion: nil)
             }
             
@@ -286,13 +203,40 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
     }
     
     @IBAction func lpfResonanceSourceChanged(sender: UILongPressGestureRecognizer) {
-        let lens = Bound<Source>(
-            set: {(b : Source) in
-                self.state.uiState.filter_resonance_modulation_source = b },
-            get: {() in
-                return self.state.uiState.filter_resonance_modulation_source }
-        )
-        sourceChanged(sender, label: self.lpfResonanceModulationSource, field: lens)
+        
+        let actions = [
+            "lpfResonanceModulation": (
+                self.lpfResonanceModulationSource,
+                Bound<Source>(
+                    set: {(b : Source) in
+                        self.state.uiState.filter_resonance_modulation_source = b },
+                    get: { return self.state.uiState.filter_resonance_modulation_source }
+                )),
+            "lpfCutoffModulation": (
+                self.lpfFrequencyModulationSource,
+                Bound<Source>(
+                    set: {(b : Source) in
+                        self.state.uiState.filter_cutoff_modulation_source = b },
+                    get: { return self.state.uiState.filter_cutoff_modulation_source }
+                )),
+            "vcaModulation": (
+                self.vcaModulationSource,
+                Bound<Source>(
+                    set: {(b : Source) in
+                        self.state.uiState.vca_modulation_source = b },
+                    get: { return self.state.uiState.vca_modulation_source }
+                ))
+        ]
+        let (label, lens) = actions[(sender.view as! Knob).id]!
+        sourceChanged(sender, label: label, field: lens)
+        
+//        let lens = Bound<Source>(
+//            set: {(b : Source) in
+//                self.state.uiState.filter_resonance_modulation_source = b },
+//            get: {() in
+//                return self.state.uiState.filter_resonance_modulation_source }
+//        )
+//        sourceChanged(sender, label: self.lpfResonanceModulationSource, field: lens)
     }
     
     @IBAction func lpfCutoffSourceChanged(sender: UILongPressGestureRecognizer) {
@@ -592,24 +536,19 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
             idToKnob[knobs[i].id] = knobs[i]
         }
         
+        class Fred { }
+        
         // Works! But set up correctly
         for (knobId, callbackName) in [
-            ("lpfCutoffModulation", "lpfResonanceCutoffChanged:"),
+            ("lpfCutoffModulation", "lpfCutoffSourceChanged:"),
             ("lpfResonanceModulation", "lpfResonanceSourceChanged:"),
             ("vcaModulation", "vcaModulationSourceChanged:")
             ] {
-            let lpr = UILongPressGestureRecognizer(target: self, action: Selector(callbackName))
-            lpr.minimumPressDuration = 1.0
-            idToKnob[knobId]!.addGestureRecognizer(lpr)
+                let lpr = UILongPressGestureRecognizer(target: self, action: Selector(callbackName))
+                lpr.minimumPressDuration = 1.0
+                idToKnob[knobId]!.addGestureRecognizer(lpr)
         }
         
-//        vco1Panel.hidden = true
-//        lfo1Panel.hidden = true
-//        lfo2Panel.hidden = true
-//        filt1Panel.hidden = true
-//        env1Panel.hidden = true
-//        env2Panel.hidden = true
-//        vcaPanel.hidden = false
         for i in 0..<panels.count {
             panels[i].hidden = true
         }
@@ -643,8 +582,7 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
         
         restoreState()
         
-         NSTimer.scheduledTimerWithTimeInterval(5.0, target: self, selector: "saveState", userInfo: nil, repeats: true)
-        
+        NSTimer.scheduledTimerWithTimeInterval(5.0, target: self, selector: "saveState", userInfo: nil, repeats: true)
                 
         //
         // http://stackoverflow.com/questions/1378765/how-do-i-create-a-basic-uibutton-programmatically
