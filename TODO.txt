@@ -19,6 +19,7 @@
 38. More filters
 39. Subsample accurate sync
 41. In knob description, set some knobs as having a modulation source
+42. Unfiltered sawtooth doesn't look right in oscilloscope'
 
 Done
 ----

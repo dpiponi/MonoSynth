@@ -58,7 +58,8 @@ struct UiState {
     int vco1_number;
     double vco1_spread;
     enum VcoType vcoType;
-    double vco1_lfo1_modulation;
+    double vco1_detune_modulation;
+    enum Source vco1_detune_modulation_source;
     double vco1SyncRatio;
     
     //

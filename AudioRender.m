@@ -53,7 +53,8 @@ void init_ui_state(struct UiState *state) {
     state->vco1_number = 1;
     state->vco1_detune = 0.0;
     state->vco1_spread = 0.0;
-    state->vco1_lfo1_modulation = 0.0;
+    state->vco1_detune_modulation = 0.0;
+    state->vco1_detune_modulation_source = SOURCE_LFO1;
     
     //
     // LPF
@@ -142,7 +143,7 @@ OSStatus audio_render(void *inRefCon,
         
         exec_vco(&state->vco1, state->uiState.vcoType, dt, state->uiState.frequency,
                  state->uiState.vco1_number,
-                 state->uiState.vco1_detune+state->uiState.vco1_lfo1_modulation*state->lfo[0].result,
+                 state->uiState.vco1_detune+state->uiState.vco1_detune_modulation*source[state->uiState.vco1_detune_modulation_source],
                  state->uiState.vco1_spread, state->uiState.vco1SyncRatio);
 
         //

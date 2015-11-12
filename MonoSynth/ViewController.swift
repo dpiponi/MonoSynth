@@ -50,13 +50,13 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
     
     @IBOutlet var panels: [UIView]!
     
-    @IBOutlet weak var vco1Panel: UIView!
-    @IBOutlet weak var lfo1Panel: UIView!
-    @IBOutlet weak var lfo2Panel: UIView!
-    @IBOutlet weak var filt1Panel: UIView!
-    @IBOutlet weak var env1Panel: UIView!
-    @IBOutlet weak var env2Panel: UIView!
-    @IBOutlet weak var vcaPanel: UIView!
+//    @IBOutlet weak var vco1Panel: UIView!
+//    @IBOutlet weak var lfo1Panel: UIView!
+//    @IBOutlet weak var lfo2Panel: UIView!
+//    @IBOutlet weak var filt1Panel: UIView!
+//    @IBOutlet weak var env1Panel: UIView!
+//    @IBOutlet weak var env2Panel: UIView!
+//    @IBOutlet weak var vcaPanel: UIView!
     @IBOutlet weak var env1Graph: ADSRPlot!
     @IBOutlet weak var env2Graph: ADSRPlot!
     
@@ -68,6 +68,7 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
     // VCO1
     //
     @IBOutlet weak var waveformSelector: MultiButton!
+    @IBOutlet weak var vco1DetuneModulationSource: UILabel!
     
     //
     // LPF
@@ -225,39 +226,39 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
                     set: {(b : Source) in
                         self.state.uiState.vca_modulation_source = b },
                     get: { return self.state.uiState.vca_modulation_source }
+                )),
+            "vco1DetuneModulation": (
+                self.vco1DetuneModulationSource,
+                Bound<Source>(
+                    set: {(b : Source) in
+                        self.state.uiState.vco1_detune_modulation_source = b },
+                    get: { return self.state.uiState.vco1_detune_modulation_source }
                 ))
         ]
         let (label, lens) = actions[(sender.view as! Knob).id]!
         sourceChanged(sender, label: label, field: lens)
         
+    }
+    
+//    @IBAction func lpfCutoffSourceChanged(sender: UILongPressGestureRecognizer) {
+//        let lens = Bound<Source>(
+//                set: {(b : Source) in
+//                    self.state.uiState.filter_cutoff_modulation_source = b },
+//                get: {() in
+//                    return self.state.uiState.filter_cutoff_modulation_source }
+//            )
+//        sourceChanged(sender, label: self.lpfFrequencyModulationSource, field: lens)
+//    }
+//    
+//    @IBAction func vcaModulationSourceChanged(sender: UILongPressGestureRecognizer) {
 //        let lens = Bound<Source>(
 //            set: {(b : Source) in
-//                self.state.uiState.filter_resonance_modulation_source = b },
+//                self.state.uiState.vca_modulation_source = b },
 //            get: {() in
-//                return self.state.uiState.filter_resonance_modulation_source }
+//                return self.state.uiState.vca_modulation_source }
 //        )
-//        sourceChanged(sender, label: self.lpfResonanceModulationSource, field: lens)
-    }
-    
-    @IBAction func lpfCutoffSourceChanged(sender: UILongPressGestureRecognizer) {
-        let lens = Bound<Source>(
-                set: {(b : Source) in
-                    self.state.uiState.filter_cutoff_modulation_source = b },
-                get: {() in
-                    return self.state.uiState.filter_cutoff_modulation_source }
-            )
-        sourceChanged(sender, label: self.lpfFrequencyModulationSource, field: lens)
-    }
-    
-    @IBAction func vcaModulationSourceChanged(sender: UILongPressGestureRecognizer) {
-        let lens = Bound<Source>(
-            set: {(b : Source) in
-                self.state.uiState.vca_modulation_source = b },
-            get: {() in
-                return self.state.uiState.vca_modulation_source }
-        )
-        sourceChanged(sender, label: self.vcaModulationSource, field: lens)
-    }
+//        sourceChanged(sender, label: self.vcaModulationSource, field: lens)
+//    }
     
     @IBAction func knobChanged(sender: Knob) {
         knobDescriptions()[sender.id]!.1.set(Double(sender.value))
@@ -456,10 +457,10 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
                     get: {return self.state.uiState.vco1_spread}
                 )
             ),
-            "vco1Lfo1Modulation": (
+            "vco1DetuneModulation": (
                 Field(
-                    set: {b in self.state.uiState.vco1_lfo1_modulation = b},
-                    get: {return self.state.uiState.vco1_lfo1_modulation}
+                    set: {b in self.state.uiState.vco1_detune_modulation = b},
+                    get: {return self.state.uiState.vco1_detune_modulation}
                 )
             ),
             "vco1SyncRatio": (
@@ -540,9 +541,10 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
         
         // Works! But set up correctly
         for (knobId, callbackName) in [
-            ("lpfCutoffModulation", "lpfCutoffSourceChanged:"),
+            ("lpfCutoffModulation", "lpfResonanceSourceChanged:"),
             ("lpfResonanceModulation", "lpfResonanceSourceChanged:"),
-            ("vcaModulation", "vcaModulationSourceChanged:")
+            ("vcaModulation", "lpfResonanceSourceChanged:"),
+            ("vco1DetuneModulation", "lpfResonanceSourceChanged:")
             ] {
                 let lpr = UILongPressGestureRecognizer(target: self, action: Selector(callbackName))
                 lpr.minimumPressDuration = 1.0
@@ -812,6 +814,8 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
                     knob.value = value
                     field.set(Double(value))
                     print("Setting \(name) to \(value)")
+                } else {
+                    print("Didn't find", name)
                 }
             }
             
