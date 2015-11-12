@@ -20,7 +20,51 @@
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h71-wp-FMB">
                                 <rect key="frame" x="0.0" y="8" width="700" height="266"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k1y-Bz-sYa">
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AHe-XR-0cy">
+                                        <rect key="frame" x="-0.5" y="116" width="73" height="34"/>
+                                        <animations/>
+                                        <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="24"/>
+                                        <state key="normal" title="ENV1">
+                                            <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="panelSelectorPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rH4-eN-9ob"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aU7-zd-kti">
+                                        <rect key="frame" x="-0.5" y="143" width="73" height="34"/>
+                                        <animations/>
+                                        <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="24"/>
+                                        <state key="normal" title="ENV2">
+                                            <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="panelSelectorPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sGV-C2-CGi"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vv7-ht-dgi">
+                                        <rect key="frame" x="-0.5" y="-8" width="92" height="37"/>
+                                        <animations/>
+                                        <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="24"/>
+                                        <state key="normal" title="LFO1">
+                                            <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="panelSelectorPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="VCL-vR-WDy"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6hb-ck-eC2">
+                                        <rect key="frame" x="-0.5" y="25" width="92" height="35"/>
+                                        <animations/>
+                                        <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="24"/>
+                                        <state key="normal" title="LFO2">
+                                            <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="panelSelectorPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HT2-5s-0E8"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="4" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k1y-Bz-sYa">
                                         <rect key="frame" x="1" y="49" width="92" height="43"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="24"/>
@@ -28,32 +72,10 @@
                                             <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="vco1Pressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1S8-Q4-Otd"/>
+                                            <action selector="panelSelectorPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="z9V-LS-jLA"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vv7-ht-dgi">
-                                        <rect key="frame" x="0.0" y="-8" width="92" height="37"/>
-                                        <animations/>
-                                        <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="24"/>
-                                        <state key="normal" title="LFO1">
-                                            <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="lfo1Pressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lE5-gE-hw3"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6hb-ck-eC2">
-                                        <rect key="frame" x="0.0" y="25" width="92" height="35"/>
-                                        <animations/>
-                                        <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="24"/>
-                                        <state key="normal" title="LFO2">
-                                            <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="lfo2Pressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1Df-gV-mGb"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tud-r6-Xvc">
+                                    <button opaque="NO" tag="5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tud-r6-Xvc">
                                         <rect key="frame" x="-3" y="86" width="95" height="42"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="24"/>
@@ -61,33 +83,10 @@
                                             <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="filt1Button:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5bt-E7-Wav"/>
+                                            <action selector="panelSelectorPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ved-Ob-jzL"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AHe-XR-0cy">
-                                        <rect key="frame" x="0.0" y="116" width="73" height="34"/>
-                                        <animations/>
-                                        <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="24"/>
-                                        <state key="normal" title="ENV1">
-                                            <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="env1ButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OYV-Dh-CqP"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aU7-zd-kti">
-                                        <rect key="frame" x="0.0" y="143" width="73" height="34"/>
-                                        <animations/>
-                                        <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="24"/>
-                                        <state key="normal" title="ENV2">
-                                            <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="env1ButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4QJ-Uw-vIU"/>
-                                            <action selector="env2ButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zP3-Nw-hw3"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EUr-yE-eK2">
+                                    <button opaque="NO" tag="6" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EUr-yE-eK2">
                                         <rect key="frame" x="1" y="172" width="73" height="42"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="24"/>
@@ -95,9 +94,7 @@
                                             <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="env1ButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hDa-wC-40S"/>
-                                            <action selector="env2ButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cVn-Mh-VuM"/>
-                                            <action selector="vcaPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="VHg-pU-E5F"/>
+                                            <action selector="panelSelectorPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Gec-z6-cm8"/>
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1MW-Iz-elu">
@@ -332,7 +329,7 @@
                                         <animations/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mEa-sv-xRM">
+                                    <view tag="1" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mEa-sv-xRM">
                                         <rect key="frame" x="100" y="8" width="600" height="250"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ENV2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PW6-qB-Pj7">
@@ -564,7 +561,7 @@
                                         <animations/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LPa-xx-TfD">
+                                    <view tag="2" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LPa-xx-TfD">
                                         <rect key="frame" x="100" y="0.0" width="600" height="250"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="LFO1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v6q-Kc-1GM">
@@ -623,7 +620,7 @@
                                         <animations/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bk5-IY-U5v">
+                                    <view tag="3" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bk5-IY-U5v">
                                         <rect key="frame" x="100" y="8" width="600" height="250"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="LFO2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="39G-eo-QI3">
@@ -675,7 +672,7 @@
                                         <animations/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aZv-NT-3mi">
+                                    <view tag="4" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aZv-NT-3mi">
                                         <rect key="frame" x="100" y="8" width="600" height="250"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mmz-UZ-Yms" customClass="MultiButton" customModule="MonoSynth" customModuleProvider="target">
@@ -859,7 +856,7 @@
                                         <animations/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dav-xg-KXq">
+                                    <view tag="5" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dav-xg-KXq">
                                         <rect key="frame" x="100" y="8" width="600" height="250"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Cutoff" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Svk-kn-VTy">
@@ -997,7 +994,7 @@
                                         <animations/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9yN-Gr-M8W">
+                                    <view tag="6" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9yN-Gr-M8W">
                                         <rect key="frame" x="100" y="8" width="600" height="250"/>
                                         <subviews>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nbc-H4-fPY">
@@ -1164,6 +1161,13 @@
                         <outletCollection property="knobs" destination="eEo-va-kfT" collectionClass="NSMutableArray" id="eVo-18-TmO"/>
                         <outletCollection property="knobs" destination="zJ2-mH-cID" collectionClass="NSMutableArray" id="XmJ-Lx-uEq"/>
                         <outletCollection property="knobs" destination="n82-ZG-gST" collectionClass="NSMutableArray" id="OhN-YR-JRK"/>
+                        <outletCollection property="panels" destination="1MW-Iz-elu" collectionClass="NSMutableArray" id="wQx-XZ-H7j"/>
+                        <outletCollection property="panels" destination="mEa-sv-xRM" collectionClass="NSMutableArray" id="2nm-ux-Axg"/>
+                        <outletCollection property="panels" destination="LPa-xx-TfD" collectionClass="NSMutableArray" id="5Uq-Zu-agR"/>
+                        <outletCollection property="panels" destination="bk5-IY-U5v" collectionClass="NSMutableArray" id="ueP-jf-b8P"/>
+                        <outletCollection property="panels" destination="aZv-NT-3mi" collectionClass="NSMutableArray" id="8Uu-PV-1Q4"/>
+                        <outletCollection property="panels" destination="dav-xg-KXq" collectionClass="NSMutableArray" id="EA2-4l-ubc"/>
+                        <outletCollection property="panels" destination="9yN-Gr-M8W" collectionClass="NSMutableArray" id="z6Z-FC-yob"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

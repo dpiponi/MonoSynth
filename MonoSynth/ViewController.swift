@@ -51,6 +51,8 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
 
     @IBOutlet var knobs: [Knob]!
     
+    @IBOutlet var panels: [UIView]!
+    
     @IBOutlet weak var vco1Panel: UIView!
     @IBOutlet weak var lfo1Panel: UIView!
     @IBOutlet weak var lfo2Panel: UIView!
@@ -103,6 +105,7 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
     
     var keys : [UIButton] = [UIButton]()
     
+
     @IBAction func lfoTypeChanged(sender: MultiButton) {
         switch sender.tag {
         case 0:
@@ -113,78 +116,84 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
         }
     }
     
-    @IBAction func vco1Pressed(sender: UIButton) {
-        vco1Panel.hidden = false
-        lfo1Panel.hidden = true
-        lfo2Panel.hidden = true
-        filt1Panel.hidden = true
-        env1Panel.hidden = true
-        env2Panel.hidden = true
-        vcaPanel.hidden = true
+    @IBAction func panelSelectorPressed(sender: UIButton) {
+        for i in 0..<panels.count {
+            panels[i].hidden = !(sender.tag == panels[i].tag)
+        }
     }
     
-    //
-    // LFO
-    //
-    @IBAction func lfo1Pressed(sender: UIButton) {
-        vco1Panel.hidden = true
-        lfo1Panel.hidden = false
-        lfo2Panel.hidden = true
-        filt1Panel.hidden = true
-        env1Panel.hidden = true
-        env2Panel.hidden = true
-        vcaPanel.hidden = true
-    }
-    
-    @IBAction func lfo2Pressed(sender: UIButton) {
-        vco1Panel.hidden = true
-        lfo1Panel.hidden = true
-        lfo2Panel.hidden = false
-        filt1Panel.hidden = true
-        env1Panel.hidden = true
-        env2Panel.hidden = true
-        vcaPanel.hidden = true
-    }
-    
-    @IBAction func filt1Button(sender: UIButton) {
-        vco1Panel.hidden = true
-        lfo1Panel.hidden = true
-        lfo2Panel.hidden = true
-        filt1Panel.hidden = false
-        env1Panel.hidden = true
-        env2Panel.hidden = true
-        vcaPanel.hidden = true
-    }
-    
-    @IBAction func env1ButtonPressed(sender: UIButton) {
-        vco1Panel.hidden = true
-        lfo1Panel.hidden = true
-        lfo2Panel.hidden = true
-        filt1Panel.hidden = true
-        env1Panel.hidden = false
-        env2Panel.hidden = true
-        vcaPanel.hidden = true
-    }
-    
-    @IBAction func env2ButtonPressed(sender: UIButton) {
-        vco1Panel.hidden = true
-        lfo1Panel.hidden = true
-        lfo2Panel.hidden = true
-        filt1Panel.hidden = true
-        env1Panel.hidden = true
-        env2Panel.hidden = false
-        vcaPanel.hidden = true
-    }
-    
-    @IBAction func vcaPressed(sender: UIButton) {
-        vco1Panel.hidden = true
-        lfo1Panel.hidden = true
-        lfo2Panel.hidden = true
-        filt1Panel.hidden = true
-        env1Panel.hidden = true
-        env2Panel.hidden = true
-        vcaPanel.hidden = false
-    }
+//    @IBAction func vco1Pressed(sender: UIButton) {
+//        vco1Panel.hidden = false
+//        lfo1Panel.hidden = true
+//        lfo2Panel.hidden = true
+//        filt1Panel.hidden = true
+//        env1Panel.hidden = true
+//        env2Panel.hidden = true
+//        vcaPanel.hidden = true
+//    }
+//    
+//    //
+//    // LFO
+//    //
+//    @IBAction func lfo1Pressed(sender: UIButton) {
+//        vco1Panel.hidden = true
+//        lfo1Panel.hidden = false
+//        lfo2Panel.hidden = true
+//        filt1Panel.hidden = true
+//        env1Panel.hidden = true
+//        env2Panel.hidden = true
+//        vcaPanel.hidden = true
+//    }
+//    
+//    @IBAction func lfo2Pressed(sender: UIButton) {
+//        vco1Panel.hidden = true
+//        lfo1Panel.hidden = true
+//        lfo2Panel.hidden = false
+//        filt1Panel.hidden = true
+//        env1Panel.hidden = true
+//        env2Panel.hidden = true
+//        vcaPanel.hidden = true
+//    }
+//    
+//    @IBAction func filt1Button(sender: UIButton) {
+//        vco1Panel.hidden = true
+//        lfo1Panel.hidden = true
+//        lfo2Panel.hidden = true
+//        filt1Panel.hidden = false
+//        env1Panel.hidden = true
+//        env2Panel.hidden = true
+//        vcaPanel.hidden = true
+//    }
+//    
+//    @IBAction func env1ButtonPressed(sender: UIButton) {
+//        vco1Panel.hidden = true
+//        lfo1Panel.hidden = true
+//        lfo2Panel.hidden = true
+//        filt1Panel.hidden = true
+//        env1Panel.hidden = false
+//        env2Panel.hidden = true
+//        vcaPanel.hidden = true
+//    }
+//    
+//    @IBAction func env2ButtonPressed(sender: UIButton) {
+//        vco1Panel.hidden = true
+//        lfo1Panel.hidden = true
+//        lfo2Panel.hidden = true
+//        filt1Panel.hidden = true
+//        env1Panel.hidden = true
+//        env2Panel.hidden = false
+//        vcaPanel.hidden = true
+//    }
+//    
+//    @IBAction func vcaPressed(sender: UIButton) {
+//        vco1Panel.hidden = true
+//        lfo1Panel.hidden = true
+//        lfo2Panel.hidden = true
+//        filt1Panel.hidden = true
+//        env1Panel.hidden = true
+//        env2Panel.hidden = true
+//        vcaPanel.hidden = false
+//    }
     
     //
     // ENV1
@@ -571,6 +580,11 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let panelsCopy = panels
+        for i in 0..<panelsCopy.count {
+            panels[panelsCopy[i].tag] = panelsCopy[i]
+        }
+        
         print("count=",knobs.count)
     
         for i in 0..<knobs.count {
@@ -589,13 +603,17 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
             idToKnob[knobId]!.addGestureRecognizer(lpr)
         }
         
-        vco1Panel.hidden = true
-        lfo1Panel.hidden = true
-        lfo2Panel.hidden = true
-        filt1Panel.hidden = true
-        env1Panel.hidden = true
-        env2Panel.hidden = true
-        vcaPanel.hidden = false
+//        vco1Panel.hidden = true
+//        lfo1Panel.hidden = true
+//        lfo2Panel.hidden = true
+//        filt1Panel.hidden = true
+//        env1Panel.hidden = true
+//        env2Panel.hidden = true
+//        vcaPanel.hidden = false
+        for i in 0..<panels.count {
+            panels[i].hidden = true
+        }
+        panels[6].hidden = false
         
         let audioSession = AVAudioSession.sharedInstance()
         
