@@ -19,18 +19,23 @@ struct Lens<A, B> {
     let get: A -> B
 }
 
-class KnobSpecification {
-//    let name: String;
-    var uiKnob: Knob!
-
-    init(knob: Knob) {
-        uiKnob = knob
-    }
-    
-//    init(name: String) {
-//        self.name = name
-//    }
+struct Bound<B> {
+    let set: B -> ()
+    let get: () -> B
 }
+
+//class KnobSpecification {
+////    let name: String;
+//    var uiKnob: Knob!
+//
+//    init(knob: Knob) {
+//        uiKnob = knob
+//    }
+//    
+////    init(name: String) {
+////        self.name = name
+////    }
+//}
 
 //
 // http://www.cocoawithlove.com/2010/10/ios-tone-generator-introduction-to.html
@@ -42,7 +47,7 @@ class KnobSpecification {
 class ViewController: UIViewController { // , UIPopoverPresentationController {
     
     
-    var knobSpecifications : [String: KnobSpecification] = [:]
+    var idToKnob: [String: Knob] = [:]
 
     @IBOutlet var knobs: [Knob]!
     
@@ -67,51 +72,51 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
     //
     @IBOutlet weak var waveformSelector: MultiButton!
     
-    @IBOutlet weak var vco1Detune: Knob!
-    @IBOutlet weak var vco1Number: Knob!
-    @IBOutlet weak var vco1Spread: Knob!
-    @IBOutlet weak var vco1Lfo1Modulation: Knob!
-    @IBOutlet weak var vco1SyncRatio: Knob!
+//    @IBOutlet weak var vco1Detune: Knob!
+//    @IBOutlet weak var vco1Number: Knob!
+//    @IBOutlet weak var vco1Spread: Knob!
+//    @IBOutlet weak var vco1Lfo1Modulation: Knob!
+//    @IBOutlet weak var vco1SyncRatio: Knob!
     
     //
     // LPF
     //
-    @IBOutlet weak var filterCutoff: Knob!
-    @IBOutlet weak var filterCutoffModulation: Knob!
+//    @IBOutlet weak var filterCutoff: Knob!
+//    @IBOutlet weak var filterCutoffModulation: Knob!
     @IBOutlet weak var lpfFrequencyModulationSource: UILabel!
-    @IBOutlet weak var filterResonance: Knob!
-    @IBOutlet weak var filterResonanceModulation: Knob!
+//    @IBOutlet weak var filterResonance: Knob!
+//    @IBOutlet weak var filterResonanceModulation: Knob!
     @IBOutlet weak var lpfResonanceModulationSource: UILabel!
     
     //
     // ENV1
     //
-    @IBOutlet weak var envDelay: Knob!
-    @IBOutlet weak var envAttack: Knob!
-    @IBOutlet weak var envHold: Knob!
-    @IBOutlet weak var envDecay: Knob!
-    @IBOutlet weak var envSustain: Knob!
-    @IBOutlet weak var envRelease: Knob!
-    @IBOutlet weak var envRetrigger: Knob!
+//    @IBOutlet weak var envDelay: Knob!
+//    @IBOutlet weak var envAttack: Knob!
+//    @IBOutlet weak var envHold: Knob!
+//    @IBOutlet weak var envDecay: Knob!
+//    @IBOutlet weak var envSustain: Knob!
+//    @IBOutlet weak var envRelease: Knob!
+//    @IBOutlet weak var envRetrigger: Knob!
     
     //
     // ENV2
     //
-    @IBOutlet weak var env2Delay: Knob!
-    @IBOutlet weak var env2Attack: Knob!
-    @IBOutlet weak var env2Hold: Knob!
-    @IBOutlet weak var env2Decay: Knob!
-    @IBOutlet weak var env2Sustain: Knob!
-    @IBOutlet weak var env2Release: Knob!
-    @IBOutlet weak var env2Retrigger: Knob!
+//    @IBOutlet weak var env2Delay: Knob!
+//    @IBOutlet weak var env2Attack: Knob!
+//    @IBOutlet weak var env2Hold: Knob!
+//    @IBOutlet weak var env2Decay: Knob!
+//    @IBOutlet weak var env2Sustain: Knob!
+//    @IBOutlet weak var env2Release: Knob!
+//    @IBOutlet weak var env2Retrigger: Knob!
     
     //
     // VCA
     //
     @IBOutlet weak var vcaEnv2Switch: UISwitch!
-    @IBOutlet weak var vcaLfo1Modulation: Knob!
+//    @IBOutlet weak var vcaLfo1Modulation: Knob!
     @IBOutlet weak var vcaModulationSource: UILabel!
-    @IBOutlet weak var vcaLfo2Modulation: Knob!
+//    @IBOutlet weak var vcaLfo2Modulation: Knob!
     
     @IBOutlet weak var meter: VUMeter!
     @IBOutlet weak var scope: Scope!
@@ -125,29 +130,17 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
     var keys : [UIButton] = [UIButton]()
     
     //
-    // UI handlers
-    //
-//    @IBAction func filterCutoffChanged(sender: Knob) {
-//        state.filter_cutoff = Double(sender.value)
-//    }
-//    
-//    @IBAction func filterResonanceChanged(sender: Knob) {
-//        state.filter_resonance = Double(sender.value)
-//        print("res",state.filter_resonance)
-//    }
-    
-    //
     // LFO1 & LFO2
     //
-    @IBAction func lfo1FrequencyChanged(sender: Knob) {
-        switch sender.tag {
-        case 0:
-            state.uiState.lfo_frequency.0 = Double(sender.value)
-        case 1:
-            state.uiState.lfo_frequency.1 = Double(sender.value)
-        default: break
-        }
-    }
+//    @IBAction func lfo1FrequencyChanged(sender: Knob) {
+//        switch sender.tag {
+//        case 0:
+//            state.uiState.lfo_frequency.0 = Double(sender.value)
+//        case 1:
+//            state.uiState.lfo_frequency.1 = Double(sender.value)
+//        default: break
+//        }
+//    }
     
     @IBAction func lfoTypeChanged(sender: MultiButton) {
         switch sender.tag {
@@ -162,18 +155,18 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
     //
     // LPF1
     //
-    @IBAction func filterCutoffModulationChanged(sender: Knob) {
-        state.uiState.filter_cutoff_modulation = Double(sender.value)
-    }
-    @IBAction func filterCutoffChanged(sender: Knob) {
-        state.uiState.filter_cutoff = Double(sender.value)
-    }
-    @IBAction func filterResonanceModulationChanged(sender: Knob) {
-        state.uiState.filter_resonance_modulation = Double(sender.value)
-    }
-    @IBAction func filterResonanceChanged(sender: Knob) {
-        state.uiState.filter_resonance = Double(sender.value)
-    }
+//    @IBAction func filterCutoffModulationChanged(sender: Knob) {
+//        state.uiState.filter_cutoff_modulation = Double(sender.value)
+//    }
+//    @IBAction func filterCutoffChanged(sender: Knob) {
+//        state.uiState.filter_cutoff = Double(sender.value)
+//    }
+//    @IBAction func filterResonanceModulationChanged(sender: Knob) {
+//        state.uiState.filter_resonance_modulation = Double(sender.value)
+//    }
+//    @IBAction func filterResonanceChanged(sender: Knob) {
+//        state.uiState.filter_resonance = Double(sender.value)
+//    }
     
 //    @IBAction func filterFrequencyLFO1ModulationChanged(sender: Knob) {
 //        switch sender.tag {
@@ -200,23 +193,23 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
     //
     // VCO1
     //
-    @IBAction func vco1Lfo1ModulationChanged(sender: Knob) {
-        state.uiState.vco1_lfo1_modulation = Double(sender.value)
-    }
-    
-    @IBAction func vco1DetuneChanged(sender: Knob) {
-        state.uiState.vco1_detune = Double(sender.value)
-    }
-    @IBAction func vco1NumberChanged(sender: Knob) {
-        state.uiState.vco1_number = Int32(sender.value)
-    }
-    @IBAction func vco1SpreadChanged(sender: Knob) {
-        state.uiState.vco1_spread = Double(sender.value)
-    }
-    @IBAction func vco1SyncRatioChanged(sender: Knob) {
-        state.uiState.vco1SyncRatio = Double(sender.value)
-        print("sync=", state.uiState.vco1SyncRatio)
-    }
+//    @IBAction func vco1Lfo1ModulationChanged(sender: Knob) {
+//        state.uiState.vco1_lfo1_modulation = Double(sender.value)
+//    }
+//    
+//    @IBAction func vco1DetuneChanged(sender: Knob) {
+//        state.uiState.vco1_detune = Double(sender.value)
+//    }
+//    @IBAction func vco1NumberChanged(sender: Knob) {
+//        state.uiState.vco1_number = Int32(sender.value)
+//    }
+//    @IBAction func vco1SpreadChanged(sender: Knob) {
+//        state.uiState.vco1_spread = Double(sender.value)
+//    }
+//    @IBAction func vco1SyncRatioChanged(sender: Knob) {
+//        state.uiState.vco1SyncRatio = Double(sender.value)
+//        print("sync=", state.uiState.vco1SyncRatio)
+//    }
     
     @IBAction func vco1Pressed(sender: UIButton) {
         vco1Panel.hidden = false
@@ -296,100 +289,100 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
     // ENV1
     //
     
-    @IBAction func envDelayChanged(sender: Knob) {
-        switch sender.tag {
-        case 0:
-            state.uiState.envDelay.0 = Double(sender.value)
-            env1Graph.delay = sender.value
-            env1Graph.setNeedsDisplay()
-        case 1:
-            state.uiState.envDelay.1 = Double(sender.value)
-            env2Graph.delay = sender.value
-            env2Graph.setNeedsDisplay()
-        default:
-            break
-        }
-    }
-    @IBAction func envAttackChanged(sender: Knob) {
-        switch sender.tag {
-        case 0:
-            state.uiState.envAttack.0 = Double(sender.value)
-            env1Graph.attack = sender.value
-            env1Graph.setNeedsDisplay()
-        case 1:
-            state.uiState.envAttack.1 = Double(sender.value)
-            env2Graph.attack = sender.value
-            env2Graph.setNeedsDisplay()
-        default:
-            break
-        }
-    }
-    @IBAction func envHoldChanged(sender: Knob) {
-        switch sender.tag {
-        case 0:
-            state.uiState.envHold.0 = Double(sender.value)
-            env1Graph.hold = sender.value
-            env1Graph.setNeedsDisplay()
-        case 1:
-            state.uiState.envHold.1 = Double(sender.value)
-            env2Graph.hold = sender.value
-            env2Graph.setNeedsDisplay()
-        default:
-            break
-        }
-    }
-    @IBAction func envDecayChanged(sender: Knob) {
-        switch sender.tag {
-        case 0:
-            state.uiState.envDecay.0 = Double(sender.value)
-            env1Graph.decay = sender.value
-            env1Graph.setNeedsDisplay()
-        case 1:
-            state.uiState.envDecay.1 = Double(sender.value)
-            env2Graph.decay = sender.value
-            env2Graph.setNeedsDisplay()
-        default:
-            break
-        }
-    }
-    @IBAction func envSustainChanged(sender: Knob) {
-        switch sender.tag {
-        case 0:
-            state.uiState.envSustain.0 = Double(sender.value)
-            env1Graph.sustain = sender.value
-            env1Graph.setNeedsDisplay()
-        case 1:
-            state.uiState.envSustain.1 = Double(sender.value)
-            env2Graph.sustain = sender.value
-            env2Graph.setNeedsDisplay()
-        default:
-            break
-        }
-    }
-    @IBAction func envReleaseChanged(sender: Knob) {
-        switch sender.tag {
-        case 0:
-            state.uiState.envRelease.0 = Double(sender.value)
-            env1Graph.release_ = sender.value
-            env1Graph.setNeedsDisplay()
-        case 1:
-            state.uiState.envRelease.1 = Double(sender.value)
-            env2Graph.release_ = sender.value
-            env2Graph.setNeedsDisplay()
-        default:
-            break
-        }
-    }
-    @IBAction func envRetriggerChanged(sender: Knob) {
-        switch sender.tag {
-        case 0:
-            state.uiState.envRetrigger.0 = Double(sender.value)
-        case 1:
-            state.uiState.envRetrigger.1 = Double(sender.value)
-        default:
-            break
-        }
-    }
+//    @IBAction func envDelayChanged(sender: Knob) {
+//        switch sender.tag {
+//        case 0:
+//            state.uiState.envDelay.0 = Double(sender.value)
+//            env1Graph.delay = sender.value
+//            env1Graph.setNeedsDisplay()
+//        case 1:
+//            state.uiState.envDelay.1 = Double(sender.value)
+//            env2Graph.delay = sender.value
+//            env2Graph.setNeedsDisplay()
+//        default:
+//            break
+//        }
+//    }
+//    @IBAction func envAttackChanged(sender: Knob) {
+//        switch sender.tag {
+//        case 0:
+//            state.uiState.envAttack.0 = Double(sender.value)
+//            env1Graph.attack = sender.value
+//            env1Graph.setNeedsDisplay()
+//        case 1:
+//            state.uiState.envAttack.1 = Double(sender.value)
+//            env2Graph.attack = sender.value
+//            env2Graph.setNeedsDisplay()
+//        default:
+//            break
+//        }
+//    }
+//    @IBAction func envHoldChanged(sender: Knob) {
+//        switch sender.tag {
+//        case 0:
+//            state.uiState.envHold.0 = Double(sender.value)
+//            env1Graph.hold = sender.value
+//            env1Graph.setNeedsDisplay()
+//        case 1:
+//            state.uiState.envHold.1 = Double(sender.value)
+//            env2Graph.hold = sender.value
+//            env2Graph.setNeedsDisplay()
+//        default:
+//            break
+//        }
+//    }
+//    @IBAction func envDecayChanged(sender: Knob) {
+//        switch sender.tag {
+//        case 0:
+//            state.uiState.envDecay.0 = Double(sender.value)
+//            env1Graph.decay = sender.value
+//            env1Graph.setNeedsDisplay()
+//        case 1:
+//            state.uiState.envDecay.1 = Double(sender.value)
+//            env2Graph.decay = sender.value
+//            env2Graph.setNeedsDisplay()
+//        default:
+//            break
+//        }
+//    }
+//    @IBAction func envSustainChanged(sender: Knob) {
+//        switch sender.tag {
+//        case 0:
+//            state.uiState.envSustain.0 = Double(sender.value)
+//            env1Graph.sustain = sender.value
+//            env1Graph.setNeedsDisplay()
+//        case 1:
+//            state.uiState.envSustain.1 = Double(sender.value)
+//            env2Graph.sustain = sender.value
+//            env2Graph.setNeedsDisplay()
+//        default:
+//            break
+//        }
+//    }
+//    @IBAction func envReleaseChanged(sender: Knob) {
+//        switch sender.tag {
+//        case 0:
+//            state.uiState.envRelease.0 = Double(sender.value)
+//            env1Graph.release_ = sender.value
+//            env1Graph.setNeedsDisplay()
+//        case 1:
+//            state.uiState.envRelease.1 = Double(sender.value)
+//            env2Graph.release_ = sender.value
+//            env2Graph.setNeedsDisplay()
+//        default:
+//            break
+//        }
+//    }
+//    @IBAction func envRetriggerChanged(sender: Knob) {
+//        switch sender.tag {
+//        case 0:
+//            state.uiState.envRetrigger.0 = Double(sender.value)
+//        case 1:
+//            state.uiState.envRetrigger.1 = Double(sender.value)
+//        default:
+//            break
+//        }
+//    }
     
     //
     // VCA
@@ -398,12 +391,12 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
         state.uiState.vcaEnv2 = sender.on ? 1 : 0
     }
     
-    @IBAction func vcaModulationChanged(sender: Knob) {
-        state.uiState.vca_modulation = Double(sender.value)
-    }
-    @IBAction func vcaLevelChanged(sender: Knob) {
-        state.uiState.vca_level = Double(sender.value)
-    }
+//    @IBAction func vcaModulationChanged(sender: Knob) {
+//        state.uiState.vca_modulation = Double(sender.value)
+//    }
+//    @IBAction func vcaLevelChanged(sender: Knob) {
+//        state.uiState.vca_level = Double(sender.value)
+//    }
     
     func doReset() -> Void {
         print("reset")
@@ -420,7 +413,7 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
     
     func sourceChanged(sender: UILongPressGestureRecognizer,
                                  label: UILabel,
-                                 field: Lens<AudioState, Source>) {
+                                 field: Bound<Source>) {
         print("change", sender, "view=",sender.view)
         print(sender.state)
         switch sender.state {
@@ -439,22 +432,22 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
                     ("LFO1", {
                         () -> Void in
                         label.text = "LFO1"
-                        field.set(&self.state, SOURCE_LFO1)
+                        field.set(SOURCE_LFO1)
                         }, UIAlertActionStyle.Default),
                     ("LFO2", {
                         () -> Void in
                         label.text = "LFO2"
-                        field.set(&self.state, SOURCE_LFO2)
+                        field.set(SOURCE_LFO2)
                         }, .Default),
                     ("ENV1", {
                         () -> Void in
                         label.text = "ENV1"
-                        field.set(&self.state, SOURCE_ENV1)
+                        field.set(SOURCE_ENV1)
                         }, UIAlertActionStyle.Default),
                     ("ENV2", {
                         () -> Void in
                         label.text = "ENV2"
-                        field.set(&self.state, SOURCE_ENV2)
+                        field.set(SOURCE_ENV2)
                         }, .Default),
                     ("Cancel", {() -> Void in  }, .Cancel)] {
                         let resetAction = UIAlertAction(title: title, style: style) {
@@ -490,49 +483,340 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
     }
     
     @IBAction func lpfResonanceSourceChanged(sender: UILongPressGestureRecognizer) {
-        let lens = Lens<AudioState, Source>(
-            set: {(inout a : AudioState, b : Source) in
-                a.uiState.filter_resonance_modulation_source = b },
-            get: {(a : AudioState) in
-                return a.uiState.filter_resonance_modulation_source }
+        let lens = Bound<Source>(
+            set: {(b : Source) in
+                self.state.uiState.filter_resonance_modulation_source = b },
+            get: {() in
+                return self.state.uiState.filter_resonance_modulation_source }
         )
         sourceChanged(sender, label: self.lpfResonanceModulationSource, field: lens)
     }
     
     @IBAction func lpfCutoffSourceChanged(sender: UILongPressGestureRecognizer) {
-        let lens = Lens<AudioState, Source>(
-                set: {(inout a : AudioState, b : Source) in
-                    a.uiState.filter_cutoff_modulation_source = b },
-                get: {(a : AudioState) in
-                    return a.uiState.filter_cutoff_modulation_source }
+        let lens = Bound<Source>(
+                set: {(b : Source) in
+                    self.state.uiState.filter_cutoff_modulation_source = b },
+                get: {() in
+                    return self.state.uiState.filter_cutoff_modulation_source }
             )
         sourceChanged(sender, label: self.lpfFrequencyModulationSource, field: lens)
     }
     
     @IBAction func vcaModulationSourceChanged(sender: UILongPressGestureRecognizer) {
-        let lens = Lens<AudioState, Source>(
-            set: {(inout a : AudioState, b : Source) in
-                a.uiState.vca_modulation_source = b },
-            get: {(a : AudioState) in
-                return a.uiState.vca_modulation_source }
+        let lens = Bound<Source>(
+            set: {(b : Source) in
+                self.state.uiState.vca_modulation_source = b },
+            get: {() in
+                return self.state.uiState.vca_modulation_source }
         )
         sourceChanged(sender, label: self.vcaModulationSource, field: lens)
     }
     
+    @IBAction func knobChanged(sender: Knob) {
+//        if ["lfo1Frequency",
+//            "lfo2Frequency",
+//            "env1Delay",
+//            "env1Attack",
+//            "env1Hold",
+//            "env1Decay",
+//            "env1Sustain",
+//            "env1Release",
+//            "env1Retrigger",
+//            "env2Delay",
+//            "env2Attack",
+//            "env2Hold",
+//            "env2Decay",
+//            "env2Sustain",
+//            "env2Release",
+//            "env2Retrigger",
+//            "vco1Detune",
+//            "vco1Number",
+//            "vco1Spread",
+//            "vco1SyncRatio",
+//            "vco1Lfo1Modulation",
+//            "lpfCutoff",
+//            "lpfResonance",
+//            "lpfCutoffModulation",
+//            "lpfResonanceModulation",
+//            "vcaModulation",
+//            "vcaLevel"
+//           ].contains(sender.id) {
+            knobDescriptions()[sender.id]!.1.set(Double(sender.value))
+            print("Setting", sender.id)
+//        }
+    }
+    
+    typealias Field = Bound<Double>
+    var knobList : [String: (Knob, Field)] = [:]
+    func knobDescriptions() -> [String: (Knob, Field)] {
+        if knobList.count != 0 {
+            return knobList
+        }
+        let knobList2 = [
+            //
+            // ENV1
+            //
+            "env1Delay": (
+                Field(
+                    set: {b in
+                        self.state.uiState.envDecay.0 = b
+                        self.env1Graph.delay = CGFloat(b)
+                        self.env1Graph.setNeedsDisplay()
+                    },
+                    get: {return self.state.uiState.envDecay.0}
+                )
+            ),
+            "env1Attack": (
+                Field(
+                    set: {b in
+                        self.state.uiState.envAttack.0 = b
+                        self.env1Graph.attack = CGFloat(b)
+                        self.env1Graph.setNeedsDisplay()
+                    },
+                    get: {return self.state.uiState.envAttack.0}
+                )
+            ),
+            "env1Hold": (
+                Field(
+                    set: {b in
+                        self.state.uiState.envHold.0 = b
+                        self.env1Graph.hold = CGFloat(b)
+                        self.env1Graph.setNeedsDisplay()
+                    },
+                    get: {return self.state.uiState.envHold.0}
+                )
+            ),
+            "env1Decay": (
+                Field(
+                    set: {b in
+                        self.state.uiState.envDecay.0 = b
+                        self.env1Graph.decay = CGFloat(b)
+                        self.env1Graph.setNeedsDisplay()
+                    },
+                    get: {return self.state.uiState.envDecay.0}
+                )
+            ),
+            "env1Sustain": (
+                Field(
+                    set: {b in
+                        self.state.uiState.envSustain.0 = b
+                        self.env1Graph.sustain = CGFloat(b)
+                        self.env1Graph.setNeedsDisplay()
+                    },
+                    get: {return self.state.uiState.envSustain.0}
+                )
+            ),
+            "env1Release": (
+                Field(
+                    set: {b in
+                        self.state.uiState.envRelease.0 = b
+                        self.env1Graph.release_ = CGFloat(b)
+                        self.env1Graph.setNeedsDisplay()
+                    },
+                    get: {a in return self.state.uiState.envRelease.0}
+                )
+            ),
+            "env1Retrigger": (
+                Field(
+                    set: {b in
+                        self.state.uiState.envRetrigger.0 = b
+                        self.env1Graph.retrigger = CGFloat(b)
+                        self.env1Graph.setNeedsDisplay()
+                    },
+                    get: {return self.state.uiState.envRetrigger.0}
+                )
+            ),
+            
+            //
+            // ENV2
+            //
+            "env2Delay": (
+                Field(
+                    set: {b in
+                        self.state.uiState.envDecay.1 = b
+                        self.env2Graph.delay = CGFloat(b)
+                        self.env2Graph.setNeedsDisplay()
+                    },
+                    get: {return self.state.uiState.envDecay.1}
+                )
+            ),
+            "env2Attack": (
+                Field(
+                    set: {b in
+                        self.state.uiState.envAttack.1 = b
+                        self.env2Graph.attack = CGFloat(b)
+                        self.env2Graph.setNeedsDisplay()
+                    },
+                    get: {return self.state.uiState.envAttack.1}
+                )
+            ),
+            "env2Hold": (
+                Field(
+                    set: {b in
+                        self.state.uiState.envHold.1 = b
+                        self.env2Graph.hold = CGFloat(b)
+                        self.env2Graph.setNeedsDisplay()
+                    },
+                    get: {return self.state.uiState.envHold.1}
+                )
+            ),
+            "env2Decay": (
+                Field(
+                    set: {b in
+                        self.state.uiState.envDecay.1 = b
+                        self.env2Graph.decay = CGFloat(b)
+                        self.env2Graph.setNeedsDisplay()
+                    },
+                    get: {return self.state.uiState.envDecay.1}
+                )
+            ),
+            "env2Sustain": (
+                Field(
+                    set: {b in
+                        self.state.uiState.envSustain.1 = b
+                        self.env2Graph.sustain = CGFloat(b)
+                        self.env2Graph.setNeedsDisplay()
+                    },
+                    get: {return self.state.uiState.envSustain.1}
+                )
+            ),
+            "env2Release": (
+                Field(
+                    set: {b in
+                        self.state.uiState.envRelease.1 = b
+                        self.env2Graph.release_ = CGFloat(b)
+                        self.env2Graph.setNeedsDisplay()
+                    },
+                    get: {a in return self.state.uiState.envRelease.1}
+                )
+            ),
+            "env2Retrigger": (
+                Field(
+                    set: {b in
+                        self.state.uiState.envRetrigger.1 = b
+                        self.env2Graph.retrigger = CGFloat(b)
+                        self.env2Graph.setNeedsDisplay()
+                    },
+                    get: {return self.state.uiState.envRetrigger.1}
+                )
+            ),
+            
+            //
+            // LFO1
+            //
+            "lfo1Frequency": (
+                Field(
+                    set: {b in self.state.uiState.lfo_frequency.0 = b},
+                    get: {return self.state.uiState.lfo_frequency.0}
+                )
+            ),
+            "lfo2Frequency": (
+                Field(
+                    set: {b in self.state.uiState.lfo_frequency.1 = b},
+                    get: {return self.state.uiState.lfo_frequency.1}
+                )
+            ),
+            
+            //
+            // VCO1
+            //
+            "vco1Detune": (
+                Field(
+                    set: {b in self.state.uiState.vco1_detune = b},
+                    get: {return self.state.uiState.vco1_detune}
+                )
+            ),
+            "vco1Number": (
+                Field(
+                    set: {b in self.state.uiState.vco1_number = Int32(b)},
+                    get: {return Double(self.state.uiState.vco1_number)}
+                )
+            ),
+            "vco1Spread": (
+                Field(
+                    set: {b in self.state.uiState.vco1_spread = b},
+                    get: {return self.state.uiState.vco1_spread}
+                )
+            ),
+            "vco1Lfo1Modulation": (
+                Field(
+                    set: {b in self.state.uiState.vco1_lfo1_modulation = b},
+                    get: {return self.state.uiState.vco1_lfo1_modulation}
+                )
+            ),
+            "vco1SyncRatio": (
+                Field(
+                    set: {b in self.state.uiState.vco1SyncRatio = b},
+                    get: {return self.state.uiState.vco1SyncRatio}
+                )
+            ),
+            
+            //
+            // LPF
+            //
+            "lpfCutoff": (
+                Field(
+                    set: {b in self.state.uiState.filter_cutoff = b},
+                    get: {return self.state.uiState.filter_cutoff}
+                )
+            ),
+            "lpfResonance": (
+                Field(
+                    set: {b in self.state.uiState.filter_resonance = b},
+                    get: {return self.state.uiState.filter_resonance}
+                )
+            ),
+            "lpfCutoffModulation": (
+                Field(
+                    set: {b in self.state.uiState.filter_cutoff_modulation = b},
+                    get: {return self.state.uiState.filter_cutoff_modulation}
+                )
+            ),
+            "lpfResonanceModulation": (
+                Field(
+                    set: {b in self.state.uiState.filter_resonance_modulation = b},
+                    get: {return self.state.uiState.filter_resonance_modulation}
+                )
+            ),
+            
+            //
+            // VCA
+            //
+            "vcaModulation": (
+                Field(
+                    set: {b in self.state.uiState.vca_modulation = b},
+                    get: {return self.state.uiState.vca_modulation}
+                )
+            ),
+            "vcaLevel": (
+                Field(
+                    set: {b in self.state.uiState.vca_level = b},
+                    get: {return self.state.uiState.vca_modulation}
+                )
+            )
+        ]
+        
+        for (name, field) in knobList2 {
+            print("name=", name)
+            knobList[name] = (idToKnob[name]!, field)
+        }
+        return knobList
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         print("count=",knobs.count)
     
-//        knobSpecifications
-//            = [
-//                KnobSpecification(name: "lfo1Frequency"),
-//                KnobSpecification(name: "lfo2Frequency")
-//        ];
         for i in 0..<knobs.count {
             print("Installing knob", knobs[i].id)
-            knobSpecifications[knobs[i].id] = KnobSpecification(knob: knobs[i])
+            idToKnob[knobs[i].id] = knobs[i]
         }
+        
+        // Works! But set up correctly
+        let lpr = UILongPressGestureRecognizer(target: self, action: "lpfResonanceSourceChanged:")
+        lpr.minimumPressDuration = 1.0
+        idToKnob["env1Delay"]?.addGestureRecognizer(lpr)
         
         vco1Panel.hidden = true
         lfo1Panel.hidden = true
@@ -568,17 +852,6 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
         
         init_audio_state(&state)
         
-//        lfo1Frequency.value = 2.0
-//
-//        filterCutoff.value = 2.0
-//        
-//        filterResonance.value = 2.0
-//        
-//        filterCutoffLFO1Modulation.value = 2.0
-//        
-//        filterCutoffChanged(filterCutoff)
-//        filterResonanceChanged(filterResonance)
-        
         restoreState()
         
          NSTimer.scheduledTimerWithTimeInterval(5.0, target: self, selector: "saveState", userInfo: nil, repeats: true)
@@ -594,10 +867,8 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
         view.addSubview(button)
         button.addTarget(self, action:"keyDown:event:", forControlEvents: .TouchDown)
         button.addTarget(self, action:"keySlide:event:", forControlEvents: .TouchDragInside)
-//        button.addTarget(self, action:"keyDown:event:", forControlEvents: .TouchDragOutside)
         button.addTarget(self, action:"keyUp:", forControlEvents: .TouchUpInside)
         button.addTarget(self, action:"keyUp:", forControlEvents: .TouchUpOutside)
-//        button.tag = octave[i]
         keys.append(button)
         
         togglePlay()
@@ -748,203 +1019,6 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
         return multiButtonList!
     }
     
-    typealias Field = Lens<AudioState, Double>
-    var knobList : [(String, Knob, Field)]? = nil
-    func knobDescriptions() -> [(String, Knob, Field)] {
-        if knobList != nil {
-            return knobList!
-        }
-        knobList = [
-            //
-            // ENV1
-            //
-            ("env1Delay", envDelay,
-                Field(
-                    set: {(inout a : AudioState, b) in a.uiState.envDecay.0 = b},
-                    get: {a in return a.uiState.envDecay.0}
-                )
-            ),
-            ("env1Attack", envAttack,
-                Field(
-                    set: {(inout a : AudioState, b) in a.uiState.envAttack.0 = b},
-                    get: {a in return a.uiState.envAttack.0}
-                )
-            ),
-            ("env1Hold", envHold,
-                Field(
-                    set: {(inout a : AudioState, b) in a.uiState.envHold.0 = b},
-                    get: {a in return a.uiState.envHold.0}
-                )
-            ),
-            ("env1Decay", envDecay,
-                Field(
-                    set: {(inout a : AudioState, b) in a.uiState.envDecay.0 = b},
-                    get: {a in return a.uiState.envDecay.0}
-                )
-            ),
-            ("env1Sustain", envSustain,
-                Field(
-                    set: {(inout a : AudioState, b) in a.uiState.envSustain.0 = b},
-                    get: {a in return a.uiState.envSustain.0}
-                )
-            ),
-            ("env1Release", envRelease,
-                Field(
-                    set: {(inout a : AudioState, b) in a.uiState.envRelease.0 = b},
-                    get: {a in return a.uiState.envRelease.0}
-                )
-            ),
-            ("env1Retrigger", envRetrigger,
-                Field(
-                    set: {(inout a : AudioState, b) in a.uiState.envRetrigger.0 = b},
-                    get: {a in return a.uiState.envRetrigger.0}
-                )
-            ),
-            
-            //
-            // ENV2
-            //
-            ("env2Delay", env2Delay,
-                Field(
-                    set: {(inout a : AudioState, b) in a.uiState.envDecay.1 = b},
-                    get: {a in return a.uiState.envDecay.1}
-                )
-            ),
-            ("en21Attack", env2Attack,
-                Field(
-                    set: {(inout a : AudioState, b) in a.uiState.envAttack.1 = b},
-                    get: {a in return a.uiState.envAttack.1}
-                )
-            ),
-            ("env2Hold", env2Hold,
-                Field(
-                    set: {(inout a : AudioState, b) in a.uiState.envHold.1 = b},
-                    get: {a in return a.uiState.envHold.1}
-                )
-            ),
-            ("env2Decay", env2Decay,
-                Field(
-                    set: {(inout a : AudioState, b) in a.uiState.envDecay.1 = b},
-                    get: {a in return a.uiState.envDecay.1}
-                )
-            ),
-            ("env2Sustain", env2Sustain,
-                Field(
-                    set: {(inout a : AudioState, b) in a.uiState.envSustain.1 = b},
-                    get: {a in return a.uiState.envSustain.1}
-                )
-            ),
-            ("env2Release", env2Release,
-                Field(
-                    set: {(inout a : AudioState, b) in a.uiState.envRelease.1 = b},
-                    get: {a in return a.uiState.envRelease.1}
-                )
-            ),
-            ("env2Retrigger", env2Retrigger,
-                Field(
-                    set: {(inout a : AudioState, b) in a.uiState.envRetrigger.1 = b},
-                    get: {a in return a.uiState.envRetrigger.1}
-                )
-            ),
-
-            //
-            // LFO1
-            //
-            ("lfo1Frequency", knobSpecifications["lfo1Frequency"]!.uiKnob,
-                Field(
-                    set: {(inout a : AudioState, b) in a.uiState.lfo_frequency.0 = b},
-                    get: {a in return a.uiState.lfo_frequency.0}
-                )
-            ),
-            ("lfo2Frequency", knobSpecifications["lfo2Frequency"]!.uiKnob,
-                Field(
-                    set: {(inout a : AudioState, b) in a.uiState.lfo_frequency.1 = b},
-                    get: {a in return a.uiState.lfo_frequency.1}
-                )
-            ),
-            
-            //
-            // VCO1
-            //
-            ("vco1Detune", vco1Detune,
-                Field(
-                    set: {(inout a : AudioState, b) in a.uiState.vco1_detune = b},
-                    get: {a in return a.uiState.vco1_detune}
-                )
-            ),
-            ("vco1Number", vco1Number,
-                Field(
-                    set: {(inout a : AudioState, b) in a.uiState.vco1_number = Int32(b)},
-                    get: {a in return Double(a.uiState.vco1_number)}
-                )
-            ),
-            ("vco1Spread", vco1Spread,
-                Field(
-                    set: {(inout a : AudioState, b) in a.uiState.vco1_spread = b},
-                    get: {a in return a.uiState.vco1_spread}
-                )
-            ),
-            ("vco1Lfo1Modulation", vco1Lfo1Modulation,
-                Field(
-                    set: {(inout a : AudioState, b) in a.uiState.vco1_lfo1_modulation = b},
-                    get: {a in return a.uiState.vco1_lfo1_modulation}
-                )
-            ),
-            ("vco1SyncRatio", vco1SyncRatio,
-                Field(
-                    set: {(inout a : AudioState, b) in a.uiState.vco1SyncRatio = b},
-                    get: {a in return a.uiState.vco1SyncRatio}
-                )
-            ),
-            
-            //
-            // LPF
-            //
-            ("lpfCutoff", filterCutoff,
-                Field(
-                    set: {(inout a : AudioState, b) in a.uiState.filter_cutoff = b},
-                    get: {a in return a.uiState.filter_cutoff}
-                )
-            ),
-            ("lpfResonance", filterResonance,
-                Field(
-                    set: {(inout a : AudioState, b) in a.uiState.filter_resonance = b},
-                    get: {a in return a.uiState.filter_resonance}
-                )
-            ),
-            ("lpfCutoffModulation", filterCutoffModulation,
-                Field(
-                    set: {(inout a : AudioState, b) in a.uiState.filter_cutoff_modulation = b},
-                    get: {a in return a.uiState.filter_cutoff_modulation}
-                )
-            ),
-            ("lpfResonanceModulation", filterResonanceModulation,
-                Field(
-                    set: {(inout a : AudioState, b) in a.uiState.filter_resonance_modulation = b},
-                    get: {a in return a.uiState.filter_resonance_modulation}
-                )
-            ),
-            
-            //
-            // VCA
-            //
-            ("vcaModulation", vcaLfo1Modulation,
-                Field(
-                    set: {(inout a : AudioState, b) in a.uiState.vca_modulation = b},
-                    get: {a in return a.uiState.vca_modulation}
-                )
-            ),
-            ("vcaLevel", vcaLfo2Modulation,
-                Field(
-                    set: {(inout a : AudioState, b) in a.uiState.vca_level = b},
-                    get: {a in return a.uiState.vca_modulation}
-                )
-            ),
-        ]
-        
-        return knobList!
-    }
-    
     func saveState() {
         let saveFile = "save.dat"
         
@@ -954,7 +1028,7 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
         
         var saveDict = Dictionary<String, AnyObject>()
 
-        for (name, knob, _) in knobDescriptions() {
+        for (name, (knob, _)) in knobDescriptions() {
             saveDict[name] = knob.value
             
         }
@@ -1006,10 +1080,10 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
         
         if let saveDict = NSKeyedUnarchiver.unarchiveObjectWithFile(savePath) as? Dictionary<String, AnyObject> {
             
-            for (name, knob, field) in knobDescriptions() {
+            for (name, (knob, field)) in knobDescriptions() {
                 if let value = saveDict[name] as? CGFloat {
                     knob.value = value
-                    field.set(&state, Double(value))
+                    field.set(Double(value))
                     print("Setting \(name) to \(value)")
                 }
             }

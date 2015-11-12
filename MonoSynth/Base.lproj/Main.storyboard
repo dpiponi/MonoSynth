@@ -130,7 +130,7 @@
                                                     <userDefinedRuntimeAttribute type="string" keyPath="id" value="env1Delay"/>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <action selector="envDelayChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="YWd-md-knJ"/>
+                                                    <action selector="knobChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="6JD-Wu-fmf"/>
                                                 </connections>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Delay" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L7s-vo-L2S">
@@ -161,7 +161,7 @@
                                                     <userDefinedRuntimeAttribute type="string" keyPath="id" value="env1Attack"/>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <action selector="envAttackChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="Od9-NG-x6O"/>
+                                                    <action selector="knobChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="YQX-hU-A11"/>
                                                 </connections>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Attack" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="idc-G6-UAe">
@@ -191,7 +191,7 @@
                                                     <userDefinedRuntimeAttribute type="string" keyPath="id" value="env1Hold"/>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <action selector="envHoldChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="RsA-i0-rpg"/>
+                                                    <action selector="knobChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="wOl-Gb-zba"/>
                                                 </connections>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hold" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OA2-dB-TNI">
@@ -222,7 +222,7 @@
                                                     <userDefinedRuntimeAttribute type="string" keyPath="id" value="env1Decay"/>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <action selector="envDecayChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="yYJ-CY-PC1"/>
+                                                    <action selector="knobChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="HO8-ZR-I6Q"/>
                                                 </connections>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Decay" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m1l-a9-usC">
@@ -252,7 +252,7 @@
                                                     <userDefinedRuntimeAttribute type="string" keyPath="id" value="env1Sustain"/>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <action selector="envSustainChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="9Mc-Rn-uBD"/>
+                                                    <action selector="knobChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="IND-Uk-Bcr"/>
                                                 </connections>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sustain" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cEf-Qx-FNN">
@@ -282,7 +282,7 @@
                                                     <userDefinedRuntimeAttribute type="string" keyPath="id" value="env1Retrigger"/>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <action selector="envRetriggerChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="6BB-Rv-mg0"/>
+                                                    <action selector="knobChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="P5C-jr-bAb"/>
                                                 </connections>
                                             </view>
                                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="02A-wi-Pj7" customClass="Knob" customModule="MonoSynth" customModuleProvider="target">
@@ -303,9 +303,10 @@
                                                         <real key="value" value="5"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="logarithmic" value="YES"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="id" value="env1Release"/>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <action selector="envReleaseChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="Dah-A7-aaI"/>
+                                                    <action selector="knobChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="taI-fH-Npx"/>
                                                 </connections>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Release" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2go-kq-hzY">
@@ -358,10 +359,10 @@
                                                     <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
                                                         <real key="value" value="1"/>
                                                     </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="id" value="env2Decay"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="id" value="env2Delay"/>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <action selector="envDelayChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="lpq-HV-b09"/>
+                                                    <action selector="knobChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="1oc-s2-FE7"/>
                                                 </connections>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Delay" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CgX-Oz-Dj1">
@@ -392,7 +393,7 @@
                                                     <userDefinedRuntimeAttribute type="string" keyPath="id" value="env2Attack"/>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <action selector="envAttackChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="hOT-hw-Jnt"/>
+                                                    <action selector="knobChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="HHs-aY-q4M"/>
                                                 </connections>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Attack" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jA5-cZ-1nz">
@@ -422,7 +423,7 @@
                                                     <userDefinedRuntimeAttribute type="string" keyPath="id" value="env2Hold"/>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <action selector="envHoldChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="NKE-jN-2ha"/>
+                                                    <action selector="knobChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="0cl-nM-bKQ"/>
                                                 </connections>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hold" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fdS-0R-udr">
@@ -453,7 +454,7 @@
                                                     <userDefinedRuntimeAttribute type="string" keyPath="id" value="env2Decay"/>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <action selector="envDecayChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="FQG-YW-LOk"/>
+                                                    <action selector="knobChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="R9u-hl-W8E"/>
                                                 </connections>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Decay" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J4v-Q8-2kX">
@@ -483,7 +484,7 @@
                                                     <userDefinedRuntimeAttribute type="string" keyPath="id" value="env2Sustain"/>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <action selector="envSustainChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="erf-dD-tzc"/>
+                                                    <action selector="knobChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="wB0-uv-3Ac"/>
                                                 </connections>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sustain" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XPE-hO-l0L">
@@ -513,7 +514,7 @@
                                                     <userDefinedRuntimeAttribute type="string" keyPath="id" value="env2Retrigger"/>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <action selector="envRetriggerChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="91r-Q5-uuT"/>
+                                                    <action selector="knobChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="nzk-lB-JgT"/>
                                                 </connections>
                                             </view>
                                             <view tag="1" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="i07-Li-Y6I" customClass="Knob" customModule="MonoSynth" customModuleProvider="target">
@@ -534,9 +535,10 @@
                                                         <real key="value" value="5"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="logarithmic" value="YES"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="id" value="env2Release"/>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <action selector="envReleaseChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="b6f-PI-0ug"/>
+                                                    <action selector="knobChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="RAv-li-z3R"/>
                                                 </connections>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Release" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f3c-NF-38b">
@@ -607,7 +609,7 @@
                                                     <userDefinedRuntimeAttribute type="string" keyPath="id" value="lfo1Frequency"/>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <action selector="lfo1FrequencyChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="Ecf-oQ-Bg6"/>
+                                                    <action selector="knobChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="jy3-dJ-gFA"/>
                                                 </connections>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Frequency" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Coa-8r-iuB">
@@ -659,7 +661,7 @@
                                                     <userDefinedRuntimeAttribute type="string" keyPath="id" value="lfo2Frequency"/>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <action selector="lfo1FrequencyChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="QMD-tP-kuy"/>
+                                                    <action selector="knobChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="cDC-jp-ZBY"/>
                                                 </connections>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Frequency" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QiE-uF-mn5">
@@ -739,7 +741,7 @@
                                                     <userDefinedRuntimeAttribute type="string" keyPath="id" value="vco1Detune"/>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <action selector="vco1DetuneChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="UXI-M4-QLa"/>
+                                                    <action selector="knobChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="2qb-Ig-3B3"/>
                                                 </connections>
                                             </view>
                                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fdq-9g-7H2" customClass="Knob" customModule="MonoSynth" customModuleProvider="target">
@@ -762,7 +764,7 @@
                                                     <userDefinedRuntimeAttribute type="string" keyPath="id" value="vco1Number"/>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <action selector="vco1NumberChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="5ri-yf-ey1"/>
+                                                    <action selector="knobChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="gXq-Me-ff2"/>
                                                 </connections>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Spread" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PrK-oz-83P">
@@ -792,7 +794,7 @@
                                                     <userDefinedRuntimeAttribute type="string" keyPath="id" value="vco1Lfo1Modulation"/>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <action selector="vco1Lfo1ModulationChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="AXa-ZD-YDt"/>
+                                                    <action selector="knobChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="bUk-P3-Vd3"/>
                                                 </connections>
                                             </view>
                                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="T5h-ax-gWT" customClass="Knob" customModule="MonoSynth" customModuleProvider="target">
@@ -816,7 +818,7 @@
                                                     <userDefinedRuntimeAttribute type="string" keyPath="id" value="vco1Spread"/>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <action selector="vco1SpreadChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="kzR-DI-hc8"/>
+                                                    <action selector="knobChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="3af-e6-OT8"/>
                                                 </connections>
                                             </view>
                                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VVn-h1-BR0" customClass="Knob" customModule="MonoSynth" customModuleProvider="target">
@@ -843,7 +845,7 @@
                                                     <userDefinedRuntimeAttribute type="string" keyPath="id" value="vco1SyncRatio"/>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <action selector="vco1SyncRatioChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="CpJ-iE-qBu"/>
+                                                    <action selector="knobChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="hXo-Bv-lTp"/>
                                                 </connections>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sync" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Du5-N7-pAV">
@@ -887,7 +889,7 @@
                                                     <userDefinedRuntimeAttribute type="string" keyPath="id" value="lpfCutoff"/>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <action selector="filterCutoffChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="7n5-nS-cXN"/>
+                                                    <action selector="knobChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="abL-nd-C9N"/>
                                                 </connections>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="LPF" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kVw-J8-Syq">
@@ -917,7 +919,7 @@
                                                     <userDefinedRuntimeAttribute type="string" keyPath="id" value="lpfResonance"/>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <action selector="filterResonanceChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="2Q6-3Z-gNy"/>
+                                                    <action selector="knobChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="Beh-pP-yr1"/>
                                                 </connections>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Resonance" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JGk-le-1jF">
@@ -950,7 +952,7 @@
                                                     <userDefinedRuntimeAttribute type="string" keyPath="id" value="lpfCutoffModulation"/>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <action selector="filterCutoffModulationChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="ZEF-xB-RLM"/>
+                                                    <action selector="knobChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="Skh-O8-ryp"/>
                                                     <outletCollection property="gestureRecognizers" destination="6BS-jY-ezW" appends="YES" id="392-dr-ert"/>
                                                 </connections>
                                             </view>
@@ -982,7 +984,7 @@
                                                     <userDefinedRuntimeAttribute type="string" keyPath="id" value="lpfResonanceModulation"/>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <action selector="filterResonanceModulationChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="Vsc-Jz-Chs"/>
+                                                    <action selector="knobChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="glQ-76-FJi"/>
                                                     <outletCollection property="gestureRecognizers" destination="4mn-Ww-dXw" appends="YES" id="NPD-d1-nA6"/>
                                                 </connections>
                                             </view>
@@ -1052,7 +1054,7 @@
                                                     <userDefinedRuntimeAttribute type="string" keyPath="id" value="vcaModulation"/>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <action selector="vcaModulationChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="IaJ-8H-5sP"/>
+                                                    <action selector="knobChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="J4n-UB-bTz"/>
                                                     <outletCollection property="gestureRecognizers" destination="rLk-Sg-f7b" appends="YES" id="DdJ-y2-8s1"/>
                                                 </connections>
                                             </view>
@@ -1097,7 +1099,7 @@
                                                     <userDefinedRuntimeAttribute type="string" keyPath="id" value="vcaLevel"/>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <action selector="vcaLevelChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="NJs-Fo-E10"/>
+                                                    <action selector="knobChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="kls-7q-dEV"/>
                                                 </connections>
                                             </view>
                                         </subviews>
@@ -1122,27 +1124,9 @@
                     <connections>
                         <outlet property="env1Graph" destination="NUx-4r-X36" id="hHp-pN-joV"/>
                         <outlet property="env1Panel" destination="1MW-Iz-elu" id="yWE-yn-B36"/>
-                        <outlet property="env2Attack" destination="tKG-HZ-fUE" id="mRg-ht-qcp"/>
-                        <outlet property="env2Decay" destination="u5a-Ry-odg" id="8ih-gy-fj5"/>
-                        <outlet property="env2Delay" destination="2nM-gF-HK2" id="JZc-Sk-9ZS"/>
                         <outlet property="env2Graph" destination="bMQ-FZ-LFD" id="c04-kD-g1r"/>
-                        <outlet property="env2Hold" destination="Pcj-1p-cWQ" id="axY-wW-I4u"/>
                         <outlet property="env2Panel" destination="mEa-sv-xRM" id="MTd-Rk-Xbm"/>
-                        <outlet property="env2Release" destination="i07-Li-Y6I" id="rbI-bs-N1J"/>
-                        <outlet property="env2Retrigger" destination="36u-1G-Qbt" id="z2r-lt-am8"/>
-                        <outlet property="env2Sustain" destination="OZh-Rh-wbD" id="j2C-ZM-bOm"/>
-                        <outlet property="envAttack" destination="1FP-Da-aBf" id="BxB-WQ-G9R"/>
-                        <outlet property="envDecay" destination="yGc-29-jJE" id="UqR-LN-b4J"/>
-                        <outlet property="envDelay" destination="dzf-64-Q0u" id="TFD-MF-UZK"/>
-                        <outlet property="envHold" destination="eRE-3v-Rg2" id="g0B-4H-EIZ"/>
-                        <outlet property="envRelease" destination="02A-wi-Pj7" id="yyM-FU-vhC"/>
-                        <outlet property="envRetrigger" destination="B9j-uV-FHM" id="q2h-Dx-7lm"/>
-                        <outlet property="envSustain" destination="WLh-qu-4uT" id="Mvj-Ks-YSR"/>
                         <outlet property="filt1Panel" destination="dav-xg-KXq" id="SMX-nX-RA8"/>
-                        <outlet property="filterCutoff" destination="z8g-HA-GiV" id="px1-Kb-tGd"/>
-                        <outlet property="filterCutoffModulation" destination="jvs-VF-asL" id="E2W-L8-kYX"/>
-                        <outlet property="filterResonance" destination="YMn-gm-T1b" id="ROT-7o-MmW"/>
-                        <outlet property="filterResonanceModulation" destination="eEo-va-kfT" id="g6D-yA-jvj"/>
                         <outlet property="lfo1Panel" destination="LPa-xx-TfD" id="99Z-xM-FnS"/>
                         <outlet property="lfo1Type" destination="G0g-WW-Aqg" id="Xle-Bi-sx1"/>
                         <outlet property="lfo2Panel" destination="bk5-IY-U5v" id="ChU-ll-uqt"/>
@@ -1152,19 +1136,37 @@
                         <outlet property="meter" destination="YWb-aL-OUV" id="KFr-xK-fvL"/>
                         <outlet property="scope" destination="4oB-Kn-edS" id="lLE-AG-5Ke"/>
                         <outlet property="vcaEnv2Switch" destination="nbc-H4-fPY" id="xzM-Ns-u6n"/>
-                        <outlet property="vcaLfo1Modulation" destination="zJ2-mH-cID" id="gkm-g9-nPH"/>
-                        <outlet property="vcaLfo2Modulation" destination="n82-ZG-gST" id="ULK-CS-vBy"/>
                         <outlet property="vcaModulationSource" destination="UNg-ZI-Chk" id="sp8-MU-iMj"/>
                         <outlet property="vcaPanel" destination="9yN-Gr-M8W" id="Gr9-Fr-90t"/>
-                        <outlet property="vco1Detune" destination="8eR-Nc-0xp" id="DVX-Ym-Qmf"/>
-                        <outlet property="vco1Lfo1Modulation" destination="TdF-C7-Tcx" id="tyO-hG-D3K"/>
-                        <outlet property="vco1Number" destination="fdq-9g-7H2" id="B1M-eB-Rd6"/>
                         <outlet property="vco1Panel" destination="aZv-NT-3mi" id="KoT-rb-0Q9"/>
-                        <outlet property="vco1Spread" destination="T5h-ax-gWT" id="GfB-Ao-vcq"/>
-                        <outlet property="vco1SyncRatio" destination="VVn-h1-BR0" id="gR2-ve-9Q9"/>
                         <outlet property="waveformSelector" destination="mmz-UZ-Yms" id="mCh-fs-sGu"/>
                         <outletCollection property="knobs" destination="QTG-zB-OZS" collectionClass="NSMutableArray" id="kgS-nI-Qrc"/>
                         <outletCollection property="knobs" destination="eqT-j3-1ME" collectionClass="NSMutableArray" id="yiB-vm-vCA"/>
+                        <outletCollection property="knobs" destination="dzf-64-Q0u" collectionClass="NSMutableArray" id="efv-QY-bTN"/>
+                        <outletCollection property="knobs" destination="1FP-Da-aBf" collectionClass="NSMutableArray" id="j9U-j1-l9g"/>
+                        <outletCollection property="knobs" destination="eRE-3v-Rg2" collectionClass="NSMutableArray" id="TrO-xa-d5w"/>
+                        <outletCollection property="knobs" destination="yGc-29-jJE" collectionClass="NSMutableArray" id="9Uj-rZ-cEG"/>
+                        <outletCollection property="knobs" destination="WLh-qu-4uT" collectionClass="NSMutableArray" id="CYs-wn-Ebj"/>
+                        <outletCollection property="knobs" destination="B9j-uV-FHM" collectionClass="NSMutableArray" id="0dI-aW-iZ7"/>
+                        <outletCollection property="knobs" destination="02A-wi-Pj7" collectionClass="NSMutableArray" id="D2k-z4-1Hh"/>
+                        <outletCollection property="knobs" destination="2nM-gF-HK2" collectionClass="NSMutableArray" id="mYM-Q9-22A"/>
+                        <outletCollection property="knobs" destination="tKG-HZ-fUE" collectionClass="NSMutableArray" id="Ayw-Q7-6qN"/>
+                        <outletCollection property="knobs" destination="Pcj-1p-cWQ" collectionClass="NSMutableArray" id="ppj-x7-u5Z"/>
+                        <outletCollection property="knobs" destination="u5a-Ry-odg" collectionClass="NSMutableArray" id="okS-u3-0OF"/>
+                        <outletCollection property="knobs" destination="OZh-Rh-wbD" collectionClass="NSMutableArray" id="hkc-qZ-ldg"/>
+                        <outletCollection property="knobs" destination="36u-1G-Qbt" collectionClass="NSMutableArray" id="bdt-PB-ww0"/>
+                        <outletCollection property="knobs" destination="i07-Li-Y6I" collectionClass="NSMutableArray" id="gfo-mx-yW6"/>
+                        <outletCollection property="knobs" destination="8eR-Nc-0xp" collectionClass="NSMutableArray" id="YxX-pD-8cN"/>
+                        <outletCollection property="knobs" destination="fdq-9g-7H2" collectionClass="NSMutableArray" id="BUD-Rt-jLy"/>
+                        <outletCollection property="knobs" destination="TdF-C7-Tcx" collectionClass="NSMutableArray" id="sHv-SL-pVR"/>
+                        <outletCollection property="knobs" destination="T5h-ax-gWT" collectionClass="NSMutableArray" id="XL4-0j-pOh"/>
+                        <outletCollection property="knobs" destination="VVn-h1-BR0" collectionClass="NSMutableArray" id="8t4-E8-ifI"/>
+                        <outletCollection property="knobs" destination="z8g-HA-GiV" collectionClass="NSMutableArray" id="p4R-pQ-yQQ"/>
+                        <outletCollection property="knobs" destination="YMn-gm-T1b" collectionClass="NSMutableArray" id="Jiv-Zj-UyG"/>
+                        <outletCollection property="knobs" destination="jvs-VF-asL" collectionClass="NSMutableArray" id="gAL-k6-B6X"/>
+                        <outletCollection property="knobs" destination="eEo-va-kfT" collectionClass="NSMutableArray" id="eVo-18-TmO"/>
+                        <outletCollection property="knobs" destination="zJ2-mH-cID" collectionClass="NSMutableArray" id="XmJ-Lx-uEq"/>
+                        <outletCollection property="knobs" destination="n82-ZG-gST" collectionClass="NSMutableArray" id="OhN-YR-JRK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

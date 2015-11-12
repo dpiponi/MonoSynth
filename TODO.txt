@@ -1,7 +1,6 @@
 7. Feed LFO2, ENV1 and ENV2 into VCO1
 10. Noise for VCO
 11. Sequencers
-14. Collections of controls?
 15. Estimate better dynamic range
 17. Draw filter graph
 19. Animate ADSR
@@ -9,9 +8,7 @@
 23. Smarter placement of Bezier control points (Good control points for exp(-x) on [0,a] should also be good for exp(-2x) on [0,a/2] but that has an obvious shortcoming.)
 24. Slider
 25. Better switch
-26. Sort out ADSR plot on restore
 27. Per panel reset
-28. One dispatcher for all knobs etc. using @IBInspectable knob name to index knoblist()
 31. VCO2?
 32. Echo
 33. Reverb
@@ -21,7 +18,7 @@
 37. VCO2?
 38. More filters
 39. Subsample accurate sync
-40. Save/restore vca modulation source
+41. In knob description, set some knobs as having a modulation source
 
 Done
 ----
@@ -43,3 +40,7 @@ Done
 29. VU Meter
 12. VCO sync
 18. Oscilloscope
+14. Collections of controls?
+26. Sort out ADSR plot on restore
+40. Save/restore vca modulation source
+28. One dispatcher for all knobs etc. using @IBInspectable knob name to index knoblist()
