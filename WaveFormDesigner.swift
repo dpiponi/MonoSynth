@@ -10,13 +10,16 @@ import UIKit
 
 class WaveFormDesigner: UIControl {
 
-    var n : Int
     var x : [Double] = [0.0, 0.25, 0.5, 0.75]
     var y : [Double] = [0.0, 0.0, 0.25, 0.75]
+    
     
     var waveFormLayer : WaveFormDesignerLayer! = nil
     
     var initialTouchPoint : CGPoint = CGPoint()
+    var selectedPoint : Int = -1
+    var initialX : Double = 0.0
+    var initialY : Double = 0.0
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -44,42 +47,72 @@ class WaveFormDesigner: UIControl {
         self.setLayerFrames()
     }
     
-//    override func beginTrackingWithTouch(touch : UITouch, withEvent event:UIEvent?) -> Bool {
-//        initialTouchPoint = touch.locationInView(self)
-//        initialValue = value
-//        
-//        // hit test the knob layers
-//        if CGRectContainsPoint(knobLayer1.frame, initialTouchPoint) {
-//            knobLayer1.highlighted = true
-//            knobLayer1.setNeedsDisplay()
-//        }
-//        return knobLayer1.highlighted
-//    }
-//    
-//    override func continueTrackingWithTouch(touch : UITouch, withEvent event:UIEvent?) -> Bool {
-//        let touchPoint = touch.locationInView(self)
-//        
-//        let delta = touchPoint.x-initialTouchPoint.x
-//        value = valueForAngle(shrink(angleForValue(detent), amount: 20.0, x: angleForValue(initialValue)+delta))
-//        
-//        //        previousTouchPoint = touchPoint
-//        
-//        CATransaction.begin()
-//        CATransaction.setDisableActions(true)
-//        
-//        setLayerFrames()
-//        CATransaction.setAnimationDuration(0.0)
-//        CATransaction.commit()
-//        
-//        sendActionsForControlEvents(.ValueChanged)
-//        
-//        return true
-//    }
-//    
-//    override func endTrackingWithTouch(touch : UITouch?, withEvent event: UIEvent?) -> Void {
-//        knobLayer1.highlighted = false
-//        knobLayer1.setNeedsDisplay()
-//    }
+    func close(x: CGFloat, y: CGFloat) -> Bool {
+        return x > y-10 && x < y+10
+    }
+    
+    func close(a: CGPoint, b: CGPoint) -> Bool {
+        return close(a.x, y: b.x) && close(a.y, y: b.y)
+    }
+    
+    override func beginTrackingWithTouch(touch : UITouch, withEvent event:UIEvent?) -> Bool {
+        initialTouchPoint = touch.locationInView(self)
+        print("initial=", initialTouchPoint)
+        selectedPoint = -1
+        for i in 0..<x.count {
+            if close(
+                initialTouchPoint,
+                b: CGPoint(
+                    x: bounds.width*CGFloat(x[i]),
+                    y: bounds.height*CGFloat(0.5-0.5*y[i]))) {
+                selectedPoint = i
+                initialX = x[i]
+                initialY = y[i]
+                print("Selected", i)
+                break;
+            }
+        }
+        
+        return selectedPoint >= 0
+    }
+
+    func clamp(x: Double, a: Double, b: Double) -> Double {
+        if x < a {
+            return a
+        }
+        if x > b {
+            return b
+        }
+        return x
+    }
+    
+    override func continueTrackingWithTouch(touch : UITouch, withEvent event:UIEvent?) -> Bool {
+        let touchPoint = touch.locationInView(self)
+        
+        let deltaX = touchPoint.x-initialTouchPoint.x
+        let deltaY = touchPoint.y-initialTouchPoint.y
+        
+        x[selectedPoint] = clamp(initialX+Double(deltaX/bounds.width), a: 0.0, b: 1.0)
+        y[selectedPoint] = clamp(initialY-2.0*Double(deltaY/bounds.height), a: -1.0, b: 1.0)
+        
+        //        previousTouchPoint = touchPoint
+        
+        CATransaction.begin()
+        CATransaction.setDisableActions(true)
+        
+        setLayerFrames()
+        CATransaction.setAnimationDuration(0.0)
+        CATransaction.commit()
+        
+        sendActionsForControlEvents(.ValueChanged)
+        
+        return true
+    }
+
+    override func endTrackingWithTouch(touch : UITouch?, withEvent event: UIEvent?) -> Void {
+        waveFormLayer.setNeedsDisplay()
+        selectedPoint = -1
+    }
     
     func redrawLayers() -> Void {
         waveFormLayer.setNeedsDisplay()

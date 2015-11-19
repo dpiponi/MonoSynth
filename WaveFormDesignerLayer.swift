@@ -14,14 +14,19 @@ class WaveFormDesignerLayer: CALayer {
     
     override func drawInContext(ctx: CGContextRef) -> Void {
         
-    savingContext(ctx) {
-        let n = self.waveFormDesigner.x.count
-        CGContextMoveToPoint(ctx, CGFloat(self.waveFormDesigner.x[0]), CGFloat(self.waveFormDesigner.y[0]))
-            
-        for i in 1..<n {
-            CGContextAddLineToPoint(ctx, CGFloat(self.waveFormDesigner.x[i])*self.bounds.width, CGFloat(self.waveFormDesigner.y[i])*self.bounds.height);
-        }
-        CGContextStrokePath(ctx)
+        savingContext(ctx) {
+            let n = self.waveFormDesigner.x.count
+            CGContextMoveToPoint(ctx,
+                CGFloat(self.waveFormDesigner.x[0]),
+                CGFloat(0.5-0.5*self.waveFormDesigner.y[0]))
+                
+            for i in 1..<n {
+                CGContextAddLineToPoint(ctx,
+                    CGFloat(self.waveFormDesigner.x[i])*self.bounds.width,
+                    CGFloat(0.5-0.5*self.waveFormDesigner.y[i])*self.bounds.height
+                );
+            }
+            CGContextStrokePath(ctx)
         }
     }
 }
