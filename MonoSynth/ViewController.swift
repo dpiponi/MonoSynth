@@ -50,13 +50,6 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
     
     @IBOutlet var panels: [UIView]!
     
-//    @IBOutlet weak var vco1Panel: UIView!
-//    @IBOutlet weak var lfo1Panel: UIView!
-//    @IBOutlet weak var lfo2Panel: UIView!
-//    @IBOutlet weak var filt1Panel: UIView!
-//    @IBOutlet weak var env1Panel: UIView!
-//    @IBOutlet weak var env2Panel: UIView!
-//    @IBOutlet weak var vcaPanel: UIView!
     @IBOutlet weak var env1Graph: ADSRPlot!
     @IBOutlet weak var env2Graph: ADSRPlot!
     
@@ -70,6 +63,11 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
     @IBOutlet weak var waveformSelector: MultiButton!
     @IBOutlet weak var vco1DetuneModulationSource: UILabel!
     
+    //
+    // VCO2
+    //
+    @IBOutlet weak var vco2WaveformSelector: MultiButton!
+    @IBOutlet weak var vco2DetuneModulationSource: UILabel!
     //
     // LPF
     //
@@ -231,8 +229,15 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
                 self.vco1DetuneModulationSource,
                 Bound<Source>(
                     set: {(b : Source) in
-                        self.state.uiState.vco1_detune_modulation_source = b },
-                    get: { return self.state.uiState.vco1_detune_modulation_source }
+                        self.state.uiState.vco_detune_modulation_source.0 = b },
+                    get: { return self.state.uiState.vco_detune_modulation_source.0 }
+                )),
+            "vco2DetuneModulation": (
+                self.vco2DetuneModulationSource,
+                Bound<Source>(
+                    set: {(b : Source) in
+                        self.state.uiState.vco_detune_modulation_source.1 = b },
+                    get: { return self.state.uiState.vco_detune_modulation_source.1 }
                 ))
         ]
         let (label, lens) = actions[(sender.view as! Knob).id]!
@@ -439,34 +444,81 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
             //
             // VCO1
             //
+            "vco1Level": (
+                Field(
+                    set: {b in self.state.uiState.vco_level.0 = b},
+                    get: {return self.state.uiState.vco_level.0}
+                )
+            ),
             "vco1Detune": (
                 Field(
-                    set: {b in self.state.uiState.vco1_detune = b},
-                    get: {return self.state.uiState.vco1_detune}
+                    set: {b in self.state.uiState.vco_detune.0 = b},
+                    get: {return self.state.uiState.vco_detune.0}
                 )
             ),
             "vco1Number": (
                 Field(
-                    set: {b in self.state.uiState.vco1_number = Int32(b)},
-                    get: {return Double(self.state.uiState.vco1_number)}
+                    set: {b in self.state.uiState.vco_number.0 = Int32(b)},
+                    get: {return Double(self.state.uiState.vco_number.0)}
                 )
             ),
             "vco1Spread": (
                 Field(
-                    set: {b in self.state.uiState.vco1_spread = b},
-                    get: {return self.state.uiState.vco1_spread}
+                    set: {b in self.state.uiState.vco_spread.0 = b},
+                    get: {return self.state.uiState.vco_spread.0}
                 )
             ),
             "vco1DetuneModulation": (
                 Field(
-                    set: {b in self.state.uiState.vco1_detune_modulation = b},
-                    get: {return self.state.uiState.vco1_detune_modulation}
+                    set: {b in self.state.uiState.vco_detune_modulation.0 = b},
+                    get: {return self.state.uiState.vco_detune_modulation.0}
                 )
             ),
             "vco1SyncRatio": (
                 Field(
-                    set: {b in self.state.uiState.vco1SyncRatio = b},
-                    get: {return self.state.uiState.vco1SyncRatio}
+                    set: {b in self.state.uiState.vco_sync_ratio.0 = b},
+                    get: {return self.state.uiState.vco_sync_ratio.0}
+                )
+            ),
+            
+            //
+            // VCO2
+            //
+            "vco2Level": (
+                Field(
+                    set: {b in self.state.uiState.vco_level.1 = b},
+                    get: {return self.state.uiState.vco_level.1}
+                )
+            ),
+            "vco2Detune": (
+                Field(
+                    set: {b in self.state.uiState.vco_detune.1 = floor(12.0*b)/12.0
+                        print("self.state.uiState.vco_detune.1=",self.state.uiState.vco_detune.1)},
+                    get: {return self.state.uiState.vco_detune.1}
+                )
+            ),
+            "vco2Number": (
+                Field(
+                    set: {b in self.state.uiState.vco_number.1 = Int32(b)},
+                    get: {return Double(self.state.uiState.vco_number.1)}
+                )
+            ),
+            "vco2Spread": (
+                Field(
+                    set: {b in self.state.uiState.vco_spread.1 = b},
+                    get: {return self.state.uiState.vco_spread.1}
+                )
+            ),
+            "vco2DetuneModulation": (
+                Field(
+                    set: {b in self.state.uiState.vco_detune_modulation.1 = b},
+                    get: {return self.state.uiState.vco_detune_modulation.1}
+                )
+            ),
+            "vco2SyncRatio": (
+                Field(
+                    set: {b in self.state.uiState.vco_sync_ratio.1 = b},
+                    get: {return self.state.uiState.vco_sync_ratio.1}
                 )
             ),
             
@@ -544,7 +596,8 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
             ("lpfCutoffModulation", "lpfResonanceSourceChanged:"),
             ("lpfResonanceModulation", "lpfResonanceSourceChanged:"),
             ("vcaModulation", "lpfResonanceSourceChanged:"),
-            ("vco1DetuneModulation", "lpfResonanceSourceChanged:")
+            ("vco1DetuneModulation", "lpfResonanceSourceChanged:"),
+            ("vco2DetuneModulation", "lpfResonanceSourceChanged:")
             ] {
                 let lpr = UILongPressGestureRecognizer(target: self, action: Selector(callbackName))
                 lpr.minimumPressDuration = 1.0
@@ -554,7 +607,7 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
         for i in 0..<panels.count {
             panels[i].hidden = true
         }
-        panels[6].hidden = false
+        panels.last!.hidden = false
         
         let audioSession = AVAudioSession.sharedInstance()
         
@@ -577,6 +630,7 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
             object: nil)
         
         waveformSelector.icons = [.Sine, .Square, .Saw]
+        vco2WaveformSelector.icons = [.Sine, .Square, .Saw]
         lfo1Type.icons = [.Sine, .Square, .Saw, .Rand]
         lfo2Type.icons = [.Sine, .Square, .Saw, .Rand]
         
@@ -618,7 +672,7 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
                 if keyMask[blackKeyNumber] {
                     let octave : [Int] = [0, 2, 4, 5, 7, 9, 11, 12]
                     let noteNumber = octave[blackKeyNumber]+1
-                    return frequencyFromNote(noteNumber)
+                    return frequencyFromNote(noteNumber)*2
                 }
             }
         }
@@ -627,7 +681,7 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
         let octave : [Int] = [0, 2, 4, 5, 7, 9, 11, 12]
         let octaveNumber = keyNumber/7
         let noteNumber = octave[keyNumber%7]+12*octaveNumber
-        return frequencyFromNote(noteNumber)
+        return frequencyFromNote(noteNumber)*2
     }
     
     func keyDown(sender: PianoKey, event: UIEvent) -> Void{
@@ -703,13 +757,32 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
             return multiButtonList!
         }
         multiButtonList = [
-            ("vco1Waveform", waveformSelector,
+            ("vco1Waveform", waveformSelector, // XXX change to vco1WaveformSelector
                 IntField(
                     set: {(inout a : AudioState, b) in
-                        a.uiState.vcoType = [VCO_TYPE_SINE, VCO_TYPE_SQUARE, VCO_TYPE_SAW][b]
+                        a.uiState.vco_type.0 = [VCO_TYPE_SINE, VCO_TYPE_SQUARE, VCO_TYPE_SAW][b]
                     },
                     get: {(a : AudioState) in
-                        switch a.uiState.vcoType {
+                        switch a.uiState.vco_type.0 {
+                        case VCO_TYPE_SINE:
+                            return 0
+                        case VCO_TYPE_SQUARE:
+                            return 1
+                        case VCO_TYPE_SAW:
+                            return 2
+                        default:
+                            return 0
+                        }
+                    }
+                )
+            ),
+            ("vco2Waveform", vco2WaveformSelector,
+                IntField(
+                    set: {(inout a : AudioState, b) in
+                        a.uiState.vco_type.1 = [VCO_TYPE_SINE, VCO_TYPE_SQUARE, VCO_TYPE_SAW][b]
+                    },
+                    get: {(a : AudioState) in
+                        switch a.uiState.vco_type.1 {
                         case VCO_TYPE_SINE:
                             return 0
                         case VCO_TYPE_SQUARE:
@@ -729,6 +802,27 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
                     },
                     get: {(a : AudioState) in
                         switch a.uiState.lfoType.0 {
+                        case LFO_TYPE_SINE:
+                            return 0
+                        case LFO_TYPE_SQUARE:
+                            return 1
+                        case LFO_TYPE_SAW:
+                            return 2
+                        case LFO_TYPE_RAND:
+                            return 2
+                        default:
+                            return 0
+                        }
+                    }
+                )
+            ),
+            ("lfo2Waveform", lfo2Type,
+                IntField(
+                    set: {(inout a : AudioState, b) in
+                        a.uiState.lfoType.1 = [LFO_TYPE_SINE, LFO_TYPE_SQUARE, LFO_TYPE_SAW, LFO_TYPE_RAND][b]
+                    },
+                    get: {(a : AudioState) in
+                        switch a.uiState.lfoType.1 {
                         case LFO_TYPE_SINE:
                             return 0
                         case LFO_TYPE_SQUARE:
@@ -866,8 +960,16 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
     }
     
     @IBAction func waveformSelectorChanged(sender: MultiButton) {
-        print("Button!")
-        state.uiState.vcoType = VcoType(UInt32(sender.selectedButton))
+        // XXX Check which selector changed
+        print("multiButton!", sender.tag)
+        switch sender.tag {
+        case 0:
+            state.uiState.vco_type.0 = VcoType(UInt32(sender.selectedButton))
+        case 1:
+            state.uiState.vco_type.1 = VcoType(UInt32(sender.selectedButton))
+        default:
+            print("Impossible!!!")
+        }
     }
     
     func getAudioComponentDescription() -> AudioComponentDescription {

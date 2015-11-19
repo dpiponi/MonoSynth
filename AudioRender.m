@@ -10,6 +10,7 @@
 @import AudioUnit;
 
 #import "AudioRender.h"
+#import "moodler_lib.h"
 
 #define OSC_BUFSIZE 1024
 
@@ -50,11 +51,14 @@ void init_ui_state(struct UiState *state) {
     }
     
     
-    state->vco1_number = 1;
-    state->vco1_detune = 0.0;
-    state->vco1_spread = 0.0;
-    state->vco1_detune_modulation = 0.0;
-    state->vco1_detune_modulation_source = SOURCE_LFO1;
+    for (int i = 0; i < 2; ++i) {
+        state->vco_level[i] = 1.0;
+        state->vco_number[i] = 1;
+        state->vco_detune[i] = 0.0;
+        state->vco_spread[i] = 0.0;
+        state->vco_detune_modulation[i] = 0.0;
+        state->vco_detune_modulation_source[i] = SOURCE_LFO1;
+    }
     
     //
     // LPF
@@ -79,9 +83,11 @@ void init_audio_state(struct AudioState *state) {
         init_lfo(&state->lfo[i]);
     }
     
-    // VCO1
+    // VCO1 & VCO2
     
-    init_vco(&state->vco1);
+    for (int i = 0; i < 2; ++i) {
+        init_vco(&state->vco[i]);
+    }
     
     for (int i = 0; i < 2; ++i) {
         init_envelope(&state->env[i]);
@@ -141,15 +147,21 @@ OSStatus audio_render(void *inRefCon,
         source[SOURCE_ENV1] = state->env[0].level;
         source[SOURCE_ENV2] = state->env[1].level;
         
-        exec_vco(&state->vco1, state->uiState.vcoType, dt, state->uiState.frequency,
-                 state->uiState.vco1_number,
-                 state->uiState.vco1_detune+state->uiState.vco1_detune_modulation*source[state->uiState.vco1_detune_modulation_source],
-                 state->uiState.vco1_spread, state->uiState.vco1SyncRatio);
+        for (int i = 0; i < 2; ++i) {
+            exec_vco(&state->vco[i], state->uiState.vco_type[i], dt, state->uiState.frequency,
+                     state->uiState.vco_number[i],
+                     state->uiState.vco_detune[i]+state->uiState.vco_detune_modulation[i]*source[state->uiState.vco_detune_modulation_source[i]],
+                     state->uiState.vco_spread[i], state->uiState.vco_sync_ratio[i]);
+        }
 
         //
         // VCA
         //
-        double result = state->vco1.result*state->env[0].level;
+//        if (i==0) {
+//            printf("%f %f\n", state->uiState.vco_level[0], state->uiState.vco_level[1]);
+//        }
+        double result = (state->vco[0].result*state->uiState.vco_level[0]+
+                         state->vco[1].result*state->uiState.vco_level[1])*state->env[0].level;
         if (state->uiState.vcaEnv2) {
             result *= state->env[1].level;
         }
@@ -160,6 +172,9 @@ OSStatus audio_render(void *inRefCon,
         double modulation = source[state->uiState.vca_modulation_source];
         result *= state->uiState.vca_level+state->uiState.vca_modulation*modulation;
         
+        //
+        // LPF
+        //
         double shift = state->uiState.filter_cutoff_modulation*source[state->uiState.filter_cutoff_modulation_source];
         double filter_frequency = state->uiState.frequency*pow(2.0, state->uiState.filter_cutoff+shift);
         double filter_resonance = state->uiState.filter_resonance+state->uiState.filter_resonance_modulation*source[state->uiState.filter_resonance_modulation_source];
@@ -167,7 +182,10 @@ OSStatus audio_render(void *inRefCon,
                     filter_frequency,
                     filter_resonance,
                     result);
-        buffer[i] = 1.0*state->ladder.result;
+//        double final = result;// XXX 1.0*state->ladder.result;
+        double final = 1.0*state->ladder.result;
+        final = clamp_double(-1.0, 1.0, final);
+        buffer[i] = final;// XXX 1.0*state->ladder.result;
         
         //
         // VU Meter

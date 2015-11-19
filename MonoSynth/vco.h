@@ -14,6 +14,7 @@
 #include "audio_square.h"
 #include "audio_saw.h"
 #include "audio_sin.h"
+#include "wave_form.h"
 
 #include "lfo_pulse.h"
 
@@ -31,6 +32,7 @@ struct VCO {
     struct Saw saw_state[8];
     struct Sin sin_state[8];
     struct Square square_state[MAX_NUM_OSCILLATORS];
+    struct Wave wave_state[8];
     
     double result;
 };

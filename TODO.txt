@@ -1,4 +1,3 @@
-7. Feed LFO2, ENV1 and ENV2 into VCO1
 10. Noise for VCO
 11. Sequencers
 15. Estimate better dynamic range
@@ -9,17 +8,17 @@
 24. Slider
 25. Better switch
 27. Per panel reset
-31. VCO2?
 32. Echo
 33. Reverb
 34. Phaser
 35. Chorus
 36. Delegates for panels?
-37. VCO2?
 38. More filters
 39. Subsample accurate sync
 41. In knob description, set some knobs as having a modulation source
-42. Unfiltered sawtooth doesn't look right in oscilloscope'
+42. Unfiltered sawtooth doesn't look right in oscilloscope
+43. Level control/mix for VCO1/2
+44. Semitone accurate detune
 
 Done
 ----
@@ -45,3 +44,5 @@ Done
 26. Sort out ADSR plot on restore
 40. Save/restore vca modulation source
 28. One dispatcher for all knobs etc. using @IBInspectable knob name to index knoblist()
+7. Feed LFO2, ENV1 and ENV2 into VCO1
+31. VCO2?

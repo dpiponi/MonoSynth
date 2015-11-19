@@ -19,6 +19,9 @@ double step_saw(struct Saw *state, double dt, double frequency,
         sync_pending = 1;
         if (sync_time == 0) {
             add_sample(&state->limited, -1);
+        } else {
+            add_sample(&state->limited,
+                       -1+(state->this_sample-state->last_fall_time)*state->gradient);
         }
     } else {
         add_sample(&state->limited,
@@ -29,10 +32,9 @@ double step_saw(struct Saw *state, double dt, double frequency,
             state->this_sample+sync_time <= state->next_fall_time) {
             
             sync_pending = 0;
-            double value_at_sync =
-                -1+(state->this_sample+sync_time-state->last_fall_time)*state->gradient;
-            add_discontinuity0(&state->limited, sync_time,
-                               -(value_at_sync+1));
+            double value_at_sync = -1+(state->this_sample+sync_time-state->last_fall_time)*state->gradient;
+//            printf("disc=%f\n", -(value_at_sync+1));
+            add_discontinuity0(&state->limited, sync_time, -(value_at_sync+1));
             state->last_fall_time = state->this_sample+sync_time;
             state->next_fall_time = state->last_fall_time+period_in_samples;
         }
@@ -41,6 +43,7 @@ double step_saw(struct Saw *state, double dt, double frequency,
         }
         add_discontinuity0(&state->limited,
                            state->next_fall_time-state->this_sample, -2);
+//        printf("discont %f\n", state->next_fall_time-state->this_sample);
         state->last_fall_time = state->next_fall_time;
         state->next_fall_time += period_in_samples;
     }

@@ -21,7 +21,7 @@
                                 <rect key="frame" x="0.0" y="8" width="700" height="266"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AHe-XR-0cy">
-                                        <rect key="frame" x="-0.5" y="116" width="73" height="34"/>
+                                        <rect key="frame" x="-0.5" y="145" width="73" height="34"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="24"/>
                                         <state key="normal" title="ENV1">
@@ -32,7 +32,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aU7-zd-kti">
-                                        <rect key="frame" x="-0.5" y="143" width="73" height="34"/>
+                                        <rect key="frame" x="0.0" y="172" width="73" height="34"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="24"/>
                                         <state key="normal" title="ENV2">
@@ -43,7 +43,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vv7-ht-dgi">
-                                        <rect key="frame" x="-0.5" y="-8" width="92" height="37"/>
+                                        <rect key="frame" x="0.0" y="-8" width="92" height="37"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="24"/>
                                         <state key="normal" title="LFO1">
@@ -75,8 +75,19 @@
                                             <action selector="panelSelectorPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="z9V-LS-jLA"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" tag="5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tud-r6-Xvc">
-                                        <rect key="frame" x="-3" y="86" width="95" height="42"/>
+                                    <button opaque="NO" tag="5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B9u-ct-rAX">
+                                        <rect key="frame" x="0.0" y="81" width="92" height="43"/>
+                                        <animations/>
+                                        <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="24"/>
+                                        <state key="normal" title="VCO2">
+                                            <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="panelSelectorPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZGt-3h-gqD"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="6" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tud-r6-Xvc">
+                                        <rect key="frame" x="-3" y="115" width="95" height="42"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="24"/>
                                         <state key="normal" title="LPF">
@@ -86,8 +97,8 @@
                                             <action selector="panelSelectorPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ved-Ob-jzL"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" tag="6" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EUr-yE-eK2">
-                                        <rect key="frame" x="1" y="172" width="73" height="42"/>
+                                    <button opaque="NO" tag="7" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EUr-yE-eK2">
+                                        <rect key="frame" x="1" y="201" width="73" height="42"/>
                                         <animations/>
                                         <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="24"/>
                                         <state key="normal" title="VCA">
@@ -95,6 +106,17 @@
                                         </state>
                                         <connections>
                                             <action selector="panelSelectorPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Gec-z6-cm8"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="8" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tk1-YX-wvr">
+                                        <rect key="frame" x="1" y="229" width="73" height="42"/>
+                                        <animations/>
+                                        <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="24"/>
+                                        <state key="normal" title="Scope">
+                                            <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="panelSelectorPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="B7X-w2-O9T"/>
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1MW-Iz-elu" userLabel="ENV1 Panel">
@@ -672,7 +694,7 @@
                                         <animations/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
-                                    <view tag="5" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dav-xg-KXq" userLabel="LPF Panel">
+                                    <view tag="6" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dav-xg-KXq" userLabel="LPF Panel">
                                         <rect key="frame" x="100" y="8" width="600" height="250"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Cutoff" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Svk-kn-VTy">
@@ -810,7 +832,7 @@
                                         <animations/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
-                                    <view tag="6" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9yN-Gr-M8W" userLabel="VCA Panel">
+                                    <view tag="7" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9yN-Gr-M8W" userLabel="VCA Panel">
                                         <rect key="frame" x="100" y="8" width="600" height="250"/>
                                         <subviews>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nbc-H4-fPY">
@@ -880,11 +902,6 @@
                                                 <animations/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </view>
-                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4oB-Kn-edS" customClass="Scope" customModule="MonoSynth" customModuleProvider="target">
-                                                <rect key="frame" x="399" y="22" width="179" height="201"/>
-                                                <animations/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            </view>
                                             <view tag="1" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="n82-ZG-gST" customClass="Knob" customModule="MonoSynth" customModuleProvider="target">
                                                 <rect key="frame" x="218" y="47" width="80" height="80"/>
                                                 <animations/>
@@ -917,10 +934,231 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <gestureRecognizers/>
                                     </view>
+                                    <view tag="5" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IXF-uB-cVD" userLabel="VCO2 Panel">
+                                        <rect key="frame" x="100" y="8" width="600" height="250"/>
+                                        <subviews>
+                                            <view tag="1" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qia-NF-mH3" userLabel="VCO2 Waveform Selector" customClass="MultiButton" customModule="MonoSynth" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="48" width="229" height="41"/>
+                                                <animations/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <connections>
+                                                    <action selector="waveformSelectorChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="bqJ-hu-d50"/>
+                                                </connections>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Waveform" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cl5-Vh-Xbc">
+                                                <rect key="frame" x="0.0" y="97" width="92" height="21"/>
+                                                <animations/>
+                                                <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="18"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="VCO2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VNO-iu-3ix" userLabel="VCO2">
+                                                <rect key="frame" x="0.0" y="0.0" width="96" height="62"/>
+                                                <animations/>
+                                                <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="36"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Detune" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fAg-TY-I5s">
+                                                <rect key="frame" x="327" y="97" width="92" height="23"/>
+                                                <animations/>
+                                                <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="18"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="LFO1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h3A-I0-ein" userLabel="VCO2 Detune Modulation">
+                                                <rect key="frame" x="240" y="96" width="92" height="23"/>
+                                                <animations/>
+                                                <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="18"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Oscillators" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pAd-VP-BcT">
+                                                <rect key="frame" x="234" y="219" width="92" height="31"/>
+                                                <animations/>
+                                                <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="18"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0oK-in-5qu" userLabel="Number" customClass="Knob" customModule="MonoSynth" customModuleProvider="target">
+                                                <rect key="frame" x="240" y="139" width="80" height="80"/>
+                                                <animations/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="minAngle">
+                                                        <real key="value" value="22.699999999999999"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="maxAngle">
+                                                        <real key="value" value="337.5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="minValue">
+                                                        <real key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
+                                                        <real key="value" value="8"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="id" value="vco2Number"/>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="knobChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="wqj-DW-M6T"/>
+                                                </connections>
+                                            </view>
+                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Yn-xF-R6p" userLabel="Detune Modulation" customClass="Knob" customModule="MonoSynth" customModuleProvider="target">
+                                                <rect key="frame" x="245" y="8" width="80" height="80"/>
+                                                <animations/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="minAngle">
+                                                        <real key="value" value="22.5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="maxAngle">
+                                                        <real key="value" value="337.5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="minValue">
+                                                        <real key="value" value="0.0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
+                                                        <real key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="id" value="vco2DetuneModulation"/>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="knobChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="Ctf-Ka-TXp"/>
+                                                </connections>
+                                            </view>
+                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DRj-6q-hQx" userLabel="Detune" customClass="Knob" customModule="MonoSynth" customModuleProvider="target">
+                                                <rect key="frame" x="333" y="8" width="80" height="80"/>
+                                                <animations/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="minAngle">
+                                                        <real key="value" value="22.5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="maxAngle">
+                                                        <real key="value" value="337.5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="minValue">
+                                                        <real key="value" value="-1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
+                                                        <real key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="id" value="vco2Detune"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="detent">
+                                                        <real key="value" value="0.0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="knobChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="kjX-cV-R6L"/>
+                                                </connections>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Spread" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OfW-se-d9E">
+                                                <rect key="frame" x="327" y="219" width="92" height="31"/>
+                                                <animations/>
+                                                <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="18"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ykx-fI-5nX" userLabel="Spread" customClass="Knob" customModule="MonoSynth" customModuleProvider="target">
+                                                <rect key="frame" x="333" y="139" width="80" height="80"/>
+                                                <animations/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="minAngle">
+                                                        <real key="value" value="22.699999999999999"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="maxAngle">
+                                                        <real key="value" value="337.5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="minValue">
+                                                        <real key="value" value="1.0000000000000001e-05"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
+                                                        <real key="value" value="0.10000000000000001"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="logarithmic" value="YES"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="id" value="vco2Spread"/>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="knobChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="eEA-OJ-w9d"/>
+                                                </connections>
+                                            </view>
+                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="flu-DH-Zua" userLabel="Sync" customClass="Knob" customModule="MonoSynth" customModuleProvider="target">
+                                                <rect key="frame" x="506" y="9" width="80" height="80"/>
+                                                <animations/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="minAngle">
+                                                        <real key="value" value="22.5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="maxAngle">
+                                                        <real key="value" value="337.5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="minValue">
+                                                        <real key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
+                                                        <real key="value" value="4"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="logarithmic" value="YES"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="detent">
+                                                        <real key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="id" value="vco2SyncRatio"/>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="knobChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="Qr5-fz-Xf2"/>
+                                                </connections>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sync" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XHs-6L-Kbs">
+                                                <rect key="frame" x="519" y="95" width="55" height="23"/>
+                                                <animations/>
+                                                <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="18"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KB0-xG-G8D" userLabel="Level" customClass="Knob" customModule="MonoSynth" customModuleProvider="target">
+                                                <rect key="frame" x="149" y="139" width="80" height="80"/>
+                                                <animations/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="minAngle">
+                                                        <real key="value" value="22.5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="maxAngle">
+                                                        <real key="value" value="337.5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="minValue">
+                                                        <real key="value" value="0.0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
+                                                        <real key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="logarithmic" value="NO"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="detent">
+                                                        <real key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="id" value="vco2Level"/>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="knobChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="faw-go-bUI"/>
+                                                </connections>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Level" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K4t-Y0-adD">
+                                                <rect key="frame" x="143" y="219" width="92" height="31"/>
+                                                <animations/>
+                                                <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="18"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <animations/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
                                     <view tag="4" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aZv-NT-3mi" userLabel="VCO1 Panel">
                                         <rect key="frame" x="100" y="8" width="600" height="250"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mmz-UZ-Yms" customClass="MultiButton" customModule="MonoSynth" customModuleProvider="target">
+                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mmz-UZ-Yms" userLabel="VCO1 Waveform Selector" customClass="MultiButton" customModule="MonoSynth" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="48" width="229" height="41"/>
                                                 <animations/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -949,7 +1187,7 @@
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="LFO1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fbl-1r-Fkb">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="LFO1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fbl-1r-Fkb" userLabel="VCO1 Detune Modulation Source">
                                                 <rect key="frame" x="240" y="96" width="92" height="23"/>
                                                 <animations/>
                                                 <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="18"/>
@@ -1021,12 +1259,15 @@
                                                         <real key="value" value="337.5"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="minValue">
-                                                        <real key="value" value="-0.10000000000000001"/>
+                                                        <real key="value" value="-1"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
-                                                        <real key="value" value="0.10000000000000001"/>
+                                                        <real key="value" value="1"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="id" value="vco1Detune"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="detent">
+                                                        <real key="value" value="0.0"/>
+                                                    </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="knobChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="2qb-Ig-3B3"/>
@@ -1097,6 +1338,59 @@
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Level" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UmF-ev-b8S">
+                                                <rect key="frame" x="140" y="219" width="92" height="31"/>
+                                                <animations/>
+                                                <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="18"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kc4-BS-T1O" userLabel="Level" customClass="Knob" customModule="MonoSynth" customModuleProvider="target">
+                                                <rect key="frame" x="146" y="139" width="80" height="80"/>
+                                                <animations/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="minAngle">
+                                                        <real key="value" value="22.5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="maxAngle">
+                                                        <real key="value" value="337.5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="minValue">
+                                                        <real key="value" value="0.0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
+                                                        <real key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="logarithmic" value="NO"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="detent">
+                                                        <real key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="id" value="vco1Level"/>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="knobChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="eRj-Kk-Ajm"/>
+                                                </connections>
+                                            </view>
+                                        </subviews>
+                                        <animations/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view tag="8" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v8M-h9-BBl" userLabel="Scope">
+                                        <rect key="frame" x="100" y="8" width="600" height="250"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" tag="8" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Scope" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jG6-N3-Ytx">
+                                                <rect key="frame" x="8" y="8" width="96" height="62"/>
+                                                <animations/>
+                                                <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="36"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4oB-Kn-edS" customClass="Scope" customModule="MonoSynth" customModuleProvider="target">
+                                                <rect key="frame" x="100" y="25" width="500" height="201"/>
+                                                <animations/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </view>
                                         </subviews>
                                         <animations/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1127,6 +1421,8 @@
                         <outlet property="vcaEnv2Switch" destination="nbc-H4-fPY" id="xzM-Ns-u6n"/>
                         <outlet property="vcaModulationSource" destination="UNg-ZI-Chk" id="sp8-MU-iMj"/>
                         <outlet property="vco1DetuneModulationSource" destination="fbl-1r-Fkb" id="gYM-lX-rgz"/>
+                        <outlet property="vco2DetuneModulationSource" destination="h3A-I0-ein" id="7aT-N3-Cmg"/>
+                        <outlet property="vco2WaveformSelector" destination="qia-NF-mH3" id="mxD-bF-lYT"/>
                         <outlet property="waveformSelector" destination="mmz-UZ-Yms" id="mCh-fs-sGu"/>
                         <outletCollection property="knobs" destination="QTG-zB-OZS" collectionClass="NSMutableArray" id="kgS-nI-Qrc"/>
                         <outletCollection property="knobs" destination="eqT-j3-1ME" collectionClass="NSMutableArray" id="yiB-vm-vCA"/>
@@ -1162,6 +1458,15 @@
                         <outletCollection property="knobs" destination="8eR-Nc-0xp" collectionClass="NSMutableArray" id="YxX-pD-8cN"/>
                         <outletCollection property="knobs" destination="T5h-ax-gWT" collectionClass="NSMutableArray" id="XL4-0j-pOh"/>
                         <outletCollection property="knobs" destination="fdq-9g-7H2" collectionClass="NSMutableArray" id="BUD-Rt-jLy"/>
+                        <outletCollection property="knobs" destination="0oK-in-5qu" collectionClass="NSMutableArray" id="bQ9-Vt-bSm"/>
+                        <outletCollection property="knobs" destination="3Yn-xF-R6p" collectionClass="NSMutableArray" id="ohr-JS-YrE"/>
+                        <outletCollection property="knobs" destination="DRj-6q-hQx" collectionClass="NSMutableArray" id="cdv-Uj-6T7"/>
+                        <outletCollection property="knobs" destination="Ykx-fI-5nX" collectionClass="NSMutableArray" id="lzs-Zu-1N0"/>
+                        <outletCollection property="knobs" destination="flu-DH-Zua" collectionClass="NSMutableArray" id="4qH-yr-jjV"/>
+                        <outletCollection property="panels" destination="IXF-uB-cVD" collectionClass="NSMutableArray" id="uS9-nJ-Hls"/>
+                        <outletCollection property="knobs" destination="KB0-xG-G8D" collectionClass="NSMutableArray" id="tIn-Wn-vEk"/>
+                        <outletCollection property="knobs" destination="Kc4-BS-T1O" collectionClass="NSMutableArray" id="qhv-Ya-buf"/>
+                        <outletCollection property="panels" destination="v8M-h9-BBl" collectionClass="NSMutableArray" id="dwJ-Rm-Pfc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

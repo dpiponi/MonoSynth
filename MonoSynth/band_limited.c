@@ -1,3 +1,6 @@
+#include <assert.h>
+#include <math.h>
+
 #include "band_limited.h"
 
 static double lerp(double x, double a, double b) {
@@ -64,7 +67,7 @@ double ctable0[258] = {
     0.04307081654151098,0.03145314190332963,0.012555468212990738,
     -0.01170343104417874,
     -0.038230523457539765,-0.06298856050142634,-0.08136311485364604,
-    -0.08863011083520009,
+    -0.08863011083520009, /* Wilbrahim-Gibbs */
     -0.08047274618370814,-0.05348809570525845,-0.005622398871785595,
     0.06351954918089421,
     0.15253198706771084,0.2582548403144582,0.37600934708522654,
@@ -4904,9 +4907,11 @@ double cwtable1[16][258] =
   0.000020817761750574315,8.049802783518669e-6,
   1.4089185093200845e-6,0.,0.}};
 
-/* If offset == 0 then has value -0.5 at discontinuity */
+/* If offset == 0 then has value -0.5x at discontinuity */
+/* Does this mean that at discontinuity you should do right value? */
 void add_discontinuity0(struct BandLimited *limited,
                         double offset, double x) {
+    assert(0.0 <= offset && offset < 1.0);
     double table_offset = 128+8*((-15)-offset);
     int ioffset = (int)table_offset;
     double foffset = table_offset-ioffset;
@@ -4914,14 +4919,25 @@ void add_discontinuity0(struct BandLimited *limited,
     for (int i = -15; i <= 16; ++i) {
         double tab0 = ctable0[ioffset];
         double tab1 = ctable0[ioffset+1];
+        // In range (128, 129) ~ -0.5
         if (ioffset == 128) {
             tab0 = -0.5;
         }
+        // In range (127, 128) ~ 0.5
         if (ioffset+1 == 128) {
             tab1 = 0.5;
         }
-        limited->data[(limited->ptr+i) & 63] +=
-            x*lerp(foffset, tab0, tab1);
+        double old = limited->data[(limited->ptr+i) & 63];
+        double neww = old+x*lerp(foffset, tab0, tab1);
+        if (limited->count > 40000 && i > 0 && (neww < -0.5 || neww > 0.5)) { // XXX
+//            assert(0);
+        }
+        limited->data[(limited->ptr+i) & 63] = neww;
+//        assert(fabs(new-0.6912035449)>0.00000001);
+        if (fabs(neww-(-0.58507641323213522))<0.00000001) {
+//            assert(0);
+            printf("x\n");
+        }
         ioffset += 8;
     }
 }

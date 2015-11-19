@@ -27,6 +27,7 @@
 		BD44FA2D1BEC434E00F31AF8 /* lfo_saw.c in Sources */ = {isa = PBXBuildFile; fileRef = BD44FA2B1BEC434E00F31AF8 /* lfo_saw.c */; };
 		BD4A5D1F1BEBBE4600B0AD55 /* lfo.c in Sources */ = {isa = PBXBuildFile; fileRef = BD4A5D1D1BEBBE4600B0AD55 /* lfo.c */; };
 		BD68B3AE1BE9CE76008671CB /* vco.c in Sources */ = {isa = PBXBuildFile; fileRef = BD68B3AC1BE9CE76008671CB /* vco.c */; };
+		BD7296F11BFB89B60016491E /* wave_form.c in Sources */ = {isa = PBXBuildFile; fileRef = BD7296EF1BFB89B60016491E /* wave_form.c */; };
 		BD7D6C0D1BED0C9C0050C433 /* lfo_rand.c in Sources */ = {isa = PBXBuildFile; fileRef = BD7D6C0B1BED0C9C0050C433 /* lfo_rand.c */; };
 		BD7D6C0F1BED83DB0050C433 /* VUMeter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7D6C0E1BED83DB0050C433 /* VUMeter.swift */; };
 		BD7D6C111BED85A90050C433 /* VUMeterLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7D6C101BED85A90050C433 /* VUMeterLayer.swift */; };
@@ -79,6 +80,8 @@
 		BD4A5D1E1BEBBE4600B0AD55 /* lfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lfo.h; sourceTree = "<group>"; };
 		BD68B3AC1BE9CE76008671CB /* vco.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = vco.c; sourceTree = "<group>"; };
 		BD68B3AD1BE9CE76008671CB /* vco.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vco.h; sourceTree = "<group>"; };
+		BD7296EF1BFB89B60016491E /* wave_form.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = wave_form.c; path = ../wave_form.c; sourceTree = "<group>"; };
+		BD7296F01BFB89B60016491E /* wave_form.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = wave_form.h; path = ../wave_form.h; sourceTree = "<group>"; };
 		BD7D6C0B1BED0C9C0050C433 /* lfo_rand.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lfo_rand.c; sourceTree = "<group>"; };
 		BD7D6C0C1BED0C9C0050C433 /* lfo_rand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lfo_rand.h; sourceTree = "<group>"; };
 		BD7D6C0E1BED83DB0050C433 /* VUMeter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VUMeter.swift; sourceTree = "<group>"; };
@@ -120,9 +123,14 @@
 				BD9593C51BE04AE400EE098F /* AudioRender.m */,
 				BD9593C71BE04B2E00EE098F /* AudioRender.h */,
 				378074461BE17D6E00FF58A9 /* audio_sin.c */,
+				378074401BE17D1700FF58A9 /* band_limited.h */,
+				378074411BE17D2700FF58A9 /* band_limited.c */,
+				BD7296EF1BFB89B60016491E /* wave_form.c */,
+				BD7296F01BFB89B60016491E /* wave_form.h */,
 				378074431BE17D5300FF58A9 /* audio_square.c */,
 				378074441BE17D5300FF58A9 /* audio_square.h */,
 				3780744E1BE17EE600FF58A9 /* audio_saw.h */,
+				3780744C1BE17E5F00FF58A9 /* audio_saw.c */,
 				BD4A5D1D1BEBBE4600B0AD55 /* lfo.c */,
 				BD4A5D1E1BEBBE4600B0AD55 /* lfo.h */,
 				BD44FA2B1BEC434E00F31AF8 /* lfo_saw.c */,
@@ -137,14 +145,11 @@
 				37BA1D1D1BE5797900E7F73F /* envelope.h */,
 				3780744F1BE1801000FF58A9 /* moodler_lib.h */,
 				378074501BE1801900FF58A9 /* moodler_lib.c */,
-				378074401BE17D1700FF58A9 /* band_limited.h */,
-				378074411BE17D2700FF58A9 /* band_limited.c */,
 				37660A171BE1C19700AFDD0B /* ladder.c */,
 				37660A191BE1C1A600AFDD0B /* ladder.h */,
 				378074471BE17D6E00FF58A9 /* audio_sin.h */,
 				37660A141BE1B9BB00AFDD0B /* exp_decay.c */,
 				37660A151BE1B9BB00AFDD0B /* exp_decay.h */,
-				3780744C1BE17E5F00FF58A9 /* audio_saw.c */,
 				BD7D6C0B1BED0C9C0050C433 /* lfo_rand.c */,
 				BD7D6C0C1BED0C9C0050C433 /* lfo_rand.h */,
 				BD68B3AC1BE9CE76008671CB /* vco.c */,
@@ -284,6 +289,7 @@
 			files = (
 				BD68B3AE1BE9CE76008671CB /* vco.c in Sources */,
 				375D36031BDC207C00C55DBE /* PianoKey.swift in Sources */,
+				BD7296F11BFB89B60016491E /* wave_form.c in Sources */,
 				BD4A5D1F1BEBBE4600B0AD55 /* lfo.c in Sources */,
 				378074421BE17D2700FF58A9 /* band_limited.c in Sources */,
 				37117C201BEF181F005278AF /* Scope.swift in Sources */,

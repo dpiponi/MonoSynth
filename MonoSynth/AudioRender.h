@@ -52,15 +52,16 @@ struct UiState {
     enum LfoType lfoType[2];
 
     //
-    // VCO
+    // VCO1 & VCO2
     //
-    double vco1_detune;
-    int vco1_number;
-    double vco1_spread;
-    enum VcoType vcoType;
-    double vco1_detune_modulation;
-    enum Source vco1_detune_modulation_source;
-    double vco1SyncRatio;
+    double vco_level[2];
+    double vco_detune[2];
+    int vco_number[2];
+    double vco_spread[2];
+    enum VcoType vco_type[2];
+    double vco_detune_modulation[2];
+    enum Source vco_detune_modulation_source[2];
+    double vco_sync_ratio[2];
     
     //
     // LPF
@@ -97,7 +98,7 @@ struct AudioState {
     
     struct UiState uiState;
     struct LFO lfo[2];
-    struct VCO vco1;
+    struct VCO vco[2];
     struct Envelope env[2];
     
     //

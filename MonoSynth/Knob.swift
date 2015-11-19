@@ -119,7 +119,7 @@ func shrink(centre : CGFloat, amount : CGFloat, x : CGFloat) -> CGFloat {
         let touchPoint = touch.locationInView(self)
     
         let delta = touchPoint.x-initialTouchPoint.x
-        value = valueForAngle(shrink(angleForValue(detent), amount: 10.0, x: angleForValue(initialValue)+delta))
+        value = valueForAngle(shrink(angleForValue(detent), amount: 20.0, x: angleForValue(initialValue)+delta))
         
 //        previousTouchPoint = touchPoint
         

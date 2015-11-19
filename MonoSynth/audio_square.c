@@ -52,7 +52,7 @@ double step_square(struct Square *state, double dt, double frequency,
     double result = get_sample(&state->limited);
     ++state->this_sample;
     state->last_sync = sync;
-    
+//    printf("result=%f\n", result);
     return result;
 }
 
