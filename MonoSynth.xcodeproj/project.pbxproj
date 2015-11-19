@@ -41,6 +41,8 @@
 		BD8B93C51BE2D30E00C2363B /* lfo_sin.c in Sources */ = {isa = PBXBuildFile; fileRef = BD8B93C31BE2D30E00C2363B /* lfo_sin.c */; };
 		BD9593B81BDFC89A00EE098F /* CGUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9593B71BDFC89A00EE098F /* CGUtils.swift */; };
 		BD9593C61BE04AE400EE098F /* AudioRender.m in Sources */ = {isa = PBXBuildFile; fileRef = BD9593C51BE04AE400EE098F /* AudioRender.m */; };
+		BD98E8331BFE2A2D00C283D3 /* WaveFormDesigner.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD98E8321BFE2A2D00C283D3 /* WaveFormDesigner.swift */; };
+		BD98E8351BFE2A4D00C283D3 /* WaveFormDesignerLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD98E8341BFE2A4D00C283D3 /* WaveFormDesignerLayer.swift */; };
 		BDB75E391BDF009200242397 /* MultiButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB75E381BDF009200242397 /* MultiButton.swift */; };
 		BDB75E3B1BDF00A100242397 /* MultiButtonLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB75E3A1BDF00A100242397 /* MultiButtonLayer.swift */; };
 /* End PBXBuildFile section */
@@ -101,6 +103,8 @@
 		BD9593BE1BE048AD00EE098F /* MonoSynth-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MonoSynth-Bridging-Header.h"; sourceTree = "<group>"; };
 		BD9593C51BE04AE400EE098F /* AudioRender.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AudioRender.m; path = ../AudioRender.m; sourceTree = "<group>"; };
 		BD9593C71BE04B2E00EE098F /* AudioRender.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AudioRender.h; sourceTree = "<group>"; };
+		BD98E8321BFE2A2D00C283D3 /* WaveFormDesigner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaveFormDesigner.swift; sourceTree = "<group>"; };
+		BD98E8341BFE2A4D00C283D3 /* WaveFormDesignerLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaveFormDesignerLayer.swift; sourceTree = "<group>"; };
 		BDB1FBE71BD9BC03001B05E8 /* Impact Label Licence.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Impact Label Licence.txt"; sourceTree = "<group>"; };
 		BDB75E381BDF009200242397 /* MultiButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MultiButton.swift; path = MonoSynth/MultiButton.swift; sourceTree = "<group>"; };
 		BDB75E3A1BDF00A100242397 /* MultiButtonLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MultiButtonLayer.swift; path = MonoSynth/MultiButtonLayer.swift; sourceTree = "<group>"; };
@@ -200,6 +204,8 @@
 			children = (
 				374594531BE6D33E007EAB03 /* ADSRPlot.swift */,
 				BDB75E381BDF009200242397 /* MultiButton.swift */,
+				BD98E8321BFE2A2D00C283D3 /* WaveFormDesigner.swift */,
+				BD98E8341BFE2A4D00C283D3 /* WaveFormDesignerLayer.swift */,
 				BDB75E3A1BDF00A100242397 /* MultiButtonLayer.swift */,
 				BD87176F1BD881E000A6A4BD /* Knob.swift */,
 				BD8717711BD881E900A6A4BD /* KnobLayer.swift */,
@@ -288,6 +294,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BD68B3AE1BE9CE76008671CB /* vco.c in Sources */,
+				BD98E8351BFE2A4D00C283D3 /* WaveFormDesignerLayer.swift in Sources */,
 				375D36031BDC207C00C55DBE /* PianoKey.swift in Sources */,
 				BD7296F11BFB89B60016491E /* wave_form.c in Sources */,
 				BD4A5D1F1BEBBE4600B0AD55 /* lfo.c in Sources */,
@@ -313,6 +320,7 @@
 				375D36051BDC286900C55DBE /* PianoKeyLayer.swift in Sources */,
 				374594541BE6D33E007EAB03 /* ADSRPlot.swift in Sources */,
 				37660A181BE1C19700AFDD0B /* ladder.c in Sources */,
+				BD98E8331BFE2A2D00C283D3 /* WaveFormDesigner.swift in Sources */,
 				37BE9DF61BDDADA600CE8751 /* SignalPathView.swift in Sources */,
 				37117C1B1BEE81A2005278AF /* lfo_pulse.c in Sources */,
 				BD8717701BD881E000A6A4BD /* Knob.swift in Sources */,
