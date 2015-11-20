@@ -17,8 +17,8 @@ class WaveFormDesignerLayer: CALayer {
         savingContext(ctx) {
             let n = self.waveFormDesigner.x.count
             CGContextMoveToPoint(ctx,
-                CGFloat(self.waveFormDesigner.x[0]),
-                CGFloat(0.5-0.5*self.waveFormDesigner.y[0]))
+                CGFloat(self.waveFormDesigner.x[0])*self.bounds.width,
+                CGFloat(0.5-0.5*self.waveFormDesigner.y[0])*self.bounds.height)
                 
             for i in 1..<n {
                 CGContextAddLineToPoint(ctx,

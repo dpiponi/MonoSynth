@@ -10,8 +10,8 @@ import UIKit
 
 class WaveFormDesigner: UIControl {
 
-    var x : [Double] = [0.0, 0.25, 0.5, 0.75]
-    var y : [Double] = [0.0, 0.0, 0.25, 0.75]
+    var x : [Double] = [0.0, 0.25, 0.5, 0.75, 1.0]
+    var y : [Double] = [0.0, 0.0, 0.25, 0.75, 0.0]
     
     
     var waveFormLayer : WaveFormDesignerLayer! = nil
@@ -92,8 +92,23 @@ class WaveFormDesigner: UIControl {
         let deltaX = touchPoint.x-initialTouchPoint.x
         let deltaY = touchPoint.y-initialTouchPoint.y
         
-        x[selectedPoint] = clamp(initialX+Double(deltaX/bounds.width), a: 0.0, b: 1.0)
+        var newX = clamp(initialX+Double(deltaX/bounds.width), a: 0.0, b: 1.0)
+        if selectedPoint > 0 {
+            newX = clamp(newX, a: x[selectedPoint-1], b: 1.0)
+        }
+        if selectedPoint < x.count-1 {
+            newX = clamp(newX, a: 0.0, b: x[selectedPoint+1])
+        }
+        x[0] = 0.0
+        x[x.count-1] = 1.0
+        x[selectedPoint] = newX
         y[selectedPoint] = clamp(initialY-2.0*Double(deltaY/bounds.height), a: -1.0, b: 1.0)
+        if selectedPoint==0 {
+            y[x.count-1] = y[0]
+        }
+        if selectedPoint==x.count-1 {
+            y[0] = y[x.count-1]
+        }
         
         //        previousTouchPoint = touchPoint
         
