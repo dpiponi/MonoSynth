@@ -78,13 +78,13 @@ struct WaveForm *make_weird_wave() {
 }
 
 struct WaveForm *new_wave_form(int n) {
-    struct WaveForm *wave_form = malloc(8*sizeof(wave_form));
+    struct WaveForm *wave_form = malloc(sizeof(struct WaveForm));
     printf("Created wave form at %lx\n", wave_form);
     
     wave_form->n_segments = n;
-    wave_form->x = malloc(8*n*sizeof(double));
-    wave_form->y0 = malloc(8*n*sizeof(double));
-    wave_form->y1 = malloc(8*n*sizeof(double));
+    wave_form->x = malloc(n*sizeof(double));
+    wave_form->y0 = malloc(n*sizeof(double));
+    wave_form->y1 = malloc(n*sizeof(double));
     printf("%lx %lx %lx\n", wave_form->x, wave_form->y0, wave_form->y1);
     return wave_form;
 }
