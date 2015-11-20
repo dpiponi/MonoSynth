@@ -1409,6 +1409,9 @@
                                                 <rect key="frame" x="8" y="61" width="463" height="181"/>
                                                 <animations/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <connections>
+                                                    <action selector="waveFormChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="fol-jn-ibr"/>
+                                                </connections>
                                             </view>
                                         </subviews>
                                         <animations/>
@@ -1453,6 +1456,7 @@
                         <outlet property="vco1DetuneModulationSource" destination="fbl-1r-Fkb" id="gYM-lX-rgz"/>
                         <outlet property="vco2DetuneModulationSource" destination="h3A-I0-ein" id="7aT-N3-Cmg"/>
                         <outlet property="vco2WaveformSelector" destination="qia-NF-mH3" id="mxD-bF-lYT"/>
+                        <outlet property="waveFormDesigner" destination="U44-Ab-qyg" id="ji7-tm-MOH"/>
                         <outlet property="waveformSelector" destination="mmz-UZ-Yms" id="mCh-fs-sGu"/>
                         <outletCollection property="knobs" destination="QTG-zB-OZS" collectionClass="NSMutableArray" id="kgS-nI-Qrc"/>
                         <outletCollection property="knobs" destination="eqT-j3-1ME" collectionClass="NSMutableArray" id="yiB-vm-vCA"/>

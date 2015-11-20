@@ -270,6 +270,48 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
         print("Setting", sender.id)
     }
     
+    @IBOutlet weak var waveFormDesigner: WaveFormDesigner!
+    
+    @IBAction func waveFormChanged(sender: WaveFormDesigner) {
+        print("Waveform changed")
+        print(waveFormDesigner.x.count)
+        let n = waveFormDesigner.x.count
+        var x : [Double] = []
+        var y0 : [Double] = []
+        var y1 : [Double] = []
+        
+        for i in 0..<n-1 {
+            if i < n-2 && waveFormDesigner.x[i]==waveFormDesigner.x[i+1] {
+            } else if i < n-2 && waveFormDesigner.x[i]==waveFormDesigner.x[i+1] {
+                x.append(waveFormDesigner.x[i-1])
+                y0.append(waveFormDesigner.y[i-1])
+                y1.append(waveFormDesigner.y[i])
+            } else {
+                x.append(waveFormDesigner.x[i])
+                y0.append(waveFormDesigner.y[i])
+                y1.append(waveFormDesigner.y[i])
+            }
+        }
+        
+        let m = x.count
+        let waveForm1 = new_wave_form(Int32(m))
+        
+        for i in 0..<m {
+            (waveForm1.memory.x+i).memory = x[i]
+            (waveForm1.memory.y0+i).memory = y0[i]
+            (waveForm1.memory.y1+i).memory = y1[i]
+        }
+        state.vco.0.wave_state.0.new_wave = waveForm1
+        state.vco.0.wave_state.1.new_wave = waveForm1
+        state.vco.0.wave_state.2.new_wave = waveForm1
+        state.vco.0.wave_state.3.new_wave = waveForm1
+        state.vco.0.wave_state.4.new_wave = waveForm1
+        state.vco.0.wave_state.5.new_wave = waveForm1
+        state.vco.0.wave_state.6.new_wave = waveForm1
+        state.vco.0.wave_state.7.new_wave = waveForm1
+        
+    }
+    
     typealias Field = Bound<Double>
     var knobList : [String: (Knob, Field)] = [:]
     func knobDescriptions() -> [String: (Knob, Field)] {
@@ -609,6 +651,11 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
         }
         panels.last!.hidden = false
         
+        
+        //
+        // Start audio
+        //
+        
         let audioSession = AVAudioSession.sharedInstance()
         
         if audioSession.otherAudioPlaying {
@@ -635,6 +682,44 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
         lfo2Type.icons = [.Sine, .Square, .Saw, .Rand]
         
         init_audio_state(&state)
+        
+        //        static double x[2] = { 0.0, 0.5 };
+        //        static double y0[2] = { -1.0, 1.0 };
+        //        static double y1[2] = { 1.0, -1.0 };
+        
+        let waveForm1 = new_wave_form(2)
+        waveForm1.memory.x.memory = 0.0
+        (waveForm1.memory.x+1).memory = 0.5
+        waveForm1.memory.y0.memory = -1.0
+        (waveForm1.memory.y0+1).memory = 1.0
+        waveForm1.memory.y1.memory = 1.0
+        (waveForm1.memory.y1+1).memory = -1.0
+//
+//        let waveForm2 = new_wave_form(2)
+//        waveForm2.memory.x.memory = 0.0
+//        (waveForm2.memory.x+1).memory = 0.5
+//        waveForm2.memory.y0.memory = -1.0
+//        (waveForm2.memory.y0+1).memory = 1.0
+//        waveForm2.memory.y1.memory = 1.0
+//        (waveForm2.memory.y1+1).memory = -1.0
+//
+        state.vco.0.wave_state.0.new_wave = waveForm1
+        state.vco.0.wave_state.1.new_wave = waveForm1
+        state.vco.0.wave_state.2.new_wave = waveForm1
+        state.vco.0.wave_state.3.new_wave = waveForm1
+        state.vco.0.wave_state.4.new_wave = waveForm1
+        state.vco.0.wave_state.5.new_wave = waveForm1
+        state.vco.0.wave_state.6.new_wave = waveForm1
+        state.vco.0.wave_state.7.new_wave = waveForm1
+        
+//        state.vco.1.wave_state.0.new_wave = waveForm2
+//        state.vco.1.wave_state.1.new_wave = waveForm2
+//        state.vco.1.wave_state.2.new_wave = waveForm2
+//        state.vco.1.wave_state.3.new_wave = waveForm2
+//        state.vco.1.wave_state.4.new_wave = waveForm2
+//        state.vco.1.wave_state.5.new_wave = waveForm2
+//        state.vco.1.wave_state.6.new_wave = waveForm2
+//        state.vco.1.wave_state.7.new_wave = waveForm2
         
         restoreState()
         

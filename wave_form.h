@@ -20,6 +20,7 @@ struct WaveForm {
 struct Wave {
     struct BandLimited band_limited;
     struct WaveForm *wave_form;
+    struct WaveForm *new_wave;
     int i;
     int index;
     double t_next_control_point;
@@ -33,6 +34,7 @@ struct Wave {
 void init_wave(struct Wave *wave);
 void output_wave(struct Wave *wave, int end);
 void exec_wave(struct Wave *wave, double dt, double frequency);
-
+struct WaveForm *new_wave_form(int);
+void delete_wave_form(struct WaveForm *);
 
 #endif /* wave_form_h */

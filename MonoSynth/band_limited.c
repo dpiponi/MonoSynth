@@ -4929,15 +4929,7 @@ void add_discontinuity0(struct BandLimited *limited,
         }
         double old = limited->data[(limited->ptr+i) & 63];
         double neww = old+x*lerp(foffset, tab0, tab1);
-        if (limited->count > 40000 && i > 0 && (neww < -0.5 || neww > 0.5)) { // XXX
-//            assert(0);
-        }
         limited->data[(limited->ptr+i) & 63] = neww;
-//        assert(fabs(new-0.6912035449)>0.00000001);
-        if (fabs(neww-(-0.58507641323213522))<0.00000001) {
-//            assert(0);
-            printf("x\n");
-        }
         ioffset += 8;
     }
 }

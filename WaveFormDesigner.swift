@@ -13,7 +13,6 @@ class WaveFormDesigner: UIControl {
     var x : [Double] = [0.0, 0.25, 0.5, 0.75, 1.0]
     var y : [Double] = [0.0, 0.0, 0.25, 0.75, 0.0]
     
-    
     var waveFormLayer : WaveFormDesignerLayer! = nil
     
     var initialTouchPoint : CGPoint = CGPoint()

@@ -58,18 +58,44 @@ struct WaveForm *make_hybrid_wave() {
 }
 
 struct WaveForm *make_weird_wave() {
-    static struct WaveForm wave_form;
+    struct WaveForm *wave_form = new_wave_form(3);
     
     static double x[3] = { 0.0, 0.25, 0.6 };
     static double y0[3] = { 0.0, 1.0, -0.2};
     static double y1[3] = { 0.0, -1.0, 0.2 };
-    wave_form.n_segments = 3;
-    wave_form.wave_period = 1.0;
-    wave_form.x = x;
-    wave_form.y0 = y0;
-    wave_form.y1 = y1;
+    for (int i = 0; i < 3; ++i) {
+        wave_form->x[i] = x[i];
+        wave_form->y0[i] = y0[i];
+        wave_form->y1[i] = y1[i];
+    }
+    wave_form->n_segments = 3;
+    wave_form->wave_period = 1.0;
+    wave_form->x = x;
+    wave_form->y0 = y0;
+    wave_form->y1 = y1;
     
-    return &wave_form;
+    return wave_form;
+}
+
+struct WaveForm *new_wave_form(int n) {
+    struct WaveForm *wave_form = malloc(8*sizeof(wave_form));
+    printf("Created wave form at %lx\n", wave_form);
+    
+    wave_form->n_segments = n;
+    wave_form->x = malloc(8*n*sizeof(double));
+    wave_form->y0 = malloc(8*n*sizeof(double));
+    wave_form->y1 = malloc(8*n*sizeof(double));
+    printf("%lx %lx %lx\n", wave_form->x, wave_form->y0, wave_form->y1);
+    return wave_form;
+}
+
+void delete_wave_form(struct WaveForm *wave_form) {
+    return;
+    printf("Freeing wave form at %lx\n", wave_form);
+    free(wave_form->x);
+    free(wave_form->y0);
+    free(wave_form->y1);
+    free(wave_form);
 }
 
 void init_wave(struct Wave *wave) {
@@ -79,14 +105,37 @@ void init_wave(struct Wave *wave) {
     wave->index = 0;
     wave->t = 0.0;
     wave->y = 0.0;
-    wave->wave_form = make_weird_wave();
+    wave->wave_form = 0;
+}
+
+void reinit_wave(struct Wave *wave) {
+    init_band_limited(&wave->band_limited);
+    wave->i = 0;
+    wave->t_next_control_point = 0.0;
+    wave->index = 0;
+    wave->t = 0.0;
+    wave->y = 0.0;
     struct WaveForm *wave_form = wave->wave_form;
-    wave->gradient = (wave_form->y0[0]-wave_form->y1[wave_form->n_segments-1])/(wave_form->wave_period*(1.0-wave_form->x[0]));
+    if (wave_form) {
+        wave->gradient = (wave_form->y0[0]-wave_form->y1[wave_form->n_segments-1])/(wave_form->wave_period*(1.0-wave_form->x[0]));
+    }
 }
 
 void exec_wave(struct Wave *wave, double dt, double frequency) {
-    wave->wave_form->wave_period = 44100.0/frequency; // Hard coded XXX
-    output_wave(wave, wave->i+1);
+    struct WaveForm *w = wave->new_wave;
+    if (w != wave->wave_form) {
+        struct WaveForm *old_wave = wave->wave_form;
+        wave->wave_form = w;
+        wave->wave_form->wave_period = 44100.0/frequency; // Hard coded XXX
+        reinit_wave(wave);
+        if (old_wave) {
+            delete_wave_form(old_wave);
+        }
+    }
+    if (wave->wave_form) {
+        wave->wave_form->wave_period = 44100.0/frequency; // Hard coded XXX
+        output_wave(wave, wave->i+1);
+    }
 }
 
 //void output_wave(struct Wave *wave, int end) {
