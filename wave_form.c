@@ -106,6 +106,7 @@ void init_wave(struct Wave *wave) {
     wave->phase = 0.0;
 }
 
+// Reinit wasn't needed after all
 void reinit_wave(struct Wave *wave) {
 //    init_band_limited(&wave->band_limited);
 //    wave->i = 0;
