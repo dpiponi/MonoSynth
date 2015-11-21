@@ -79,19 +79,16 @@ struct WaveForm *make_weird_wave() {
 
 struct WaveForm *new_wave_form(int n) {
     struct WaveForm *wave_form = malloc(sizeof(struct WaveForm));
-    printf("Created wave form at %lx\n", wave_form);
     
     wave_form->n_segments = n;
     wave_form->x = malloc(n*sizeof(double));
     wave_form->y0 = malloc(n*sizeof(double));
     wave_form->y1 = malloc(n*sizeof(double));
-    printf("%lx %lx %lx\n", wave_form->x, wave_form->y0, wave_form->y1);
     return wave_form;
 }
 
 void delete_wave_form(struct WaveForm *wave_form) {
     return;
-    printf("Freeing wave form at %lx\n", wave_form);
     free(wave_form->x);
     free(wave_form->y0);
     free(wave_form->y1);
@@ -106,6 +103,7 @@ void init_wave(struct Wave *wave) {
     wave->t = 0.0;
     wave->y = 0.0;
     wave->wave_form = 0;
+    wave->phase = 0.0;
 }
 
 void reinit_wave(struct Wave *wave) {
@@ -115,6 +113,7 @@ void reinit_wave(struct Wave *wave) {
     wave->index = 0;
     wave->t = 0.0;
     wave->y = 0.0;
+    wave->phase = 0.0;
     struct WaveForm *wave_form = wave->wave_form;
     if (wave_form) {
         wave->gradient = (wave_form->y0[0]-wave_form->y1[wave_form->n_segments-1])/(wave_form->wave_period*(1.0-wave_form->x[0]));
@@ -138,77 +137,20 @@ void exec_wave(struct Wave *wave, double dt, double frequency) {
     }
 }
 
-//void output_wave(struct Wave *wave, int end) {
-//    struct WaveForm *wave_form = wave->wave_form;
-//    int added_sample = 0; // XXX
-//    double sample_added; // XXX
-//    
-//    while (wave->i < end) {
-//        
-//        int index = wave->index;
-//        
-//        if (wave->i < wave->t_next_control_point) {
-//            double y_new = wave->y+wave->gradient*(wave->i-wave->t);
-//            add_sample(&wave->band_limited, y_new);
-//            sample_added = y_new;
-//            added_sample = 1;
-//            wave->t = wave->i;
-//            ++wave->i;
-//            wave->y = y_new;
-//        } else {
-//            double gradient_new;
-//            int new_index = (index+1)%wave_form->n_segments;
-//            int wrap = new_index <= index;
-//            gradient_new = (wave_form->y0[new_index]-wave_form->y1[index])/
-//            (wave_form->wave_period*(wave_form->x[new_index]-wave_form->x[index]+wrap));
-//            if (wave->i == wave->t_next_control_point) {
-//                //                add_sample(&wave->band_limited, 0.5*(wave_form->y0[index]+wave_form->y1[index]));
-//                add_sample(&wave->band_limited, wave_form->y1[index]);
-//                added_sample = 1;
-//                sample_added = wave_form->y1[index];
-//                ++wave->i;
-//            }
-//            //
-//            // wave->i is pointing at next sample but the offset we send to
-//            // band_limited is relative to previous sample.
-//            //
-//            if (wave_form->y1[index] != wave_form->y0[index]) {
-//                add_discontinuity0(&wave->band_limited, 1+wave->t_next_control_point-wave->i,
-//                                   wave_form->y1[index]-wave_form->y0[index]);
-//                
-//                //                printf("%d %f\n", wave->i, wave_form->y1[index]-wave_form->y0[index]);
-//            }
-//            if (gradient_new != wave->gradient) {
-//                add_discontinuity1(&wave->band_limited, 1+wave->t_next_control_point-wave->i,
-//                                   gradient_new-wave->gradient);
-//            }
-//            wave->t = wave->t_next_control_point;
-//            wave->t_next_control_point += wave_form->wave_period*(wave_form->x[new_index]-wave_form->x[index]+wrap);
-//            wave->index = new_index;
-//            wave->y = wave_form->y1[index];
-//            wave->gradient = gradient_new;
-//        }
-//    }
-//    
-//    assert(added_sample);
-//    wave->result = get_sample(&wave->band_limited);
-//}
-
+// wave->phase = wave->t/period
 void output_wave(struct Wave *wave, int end) {
     struct WaveForm *wave_form = wave->wave_form;
-    int added_sample = 0; // XXX
-    double sample_added; // XXX
     
-    // Need to handle on-sample ecent
+    // Need to handle on-sample event XXX
     double y_new = wave->y+wave->gradient*(wave->i-wave->t);
     add_sample(&wave->band_limited, y_new);
-    sample_added = y_new;
-    added_sample = 1;
+    wave->phase += (wave->i-wave->t)/wave_form->wave_period;
     wave->t = wave->i;
-//    ++wave->i;
     wave->y = y_new;
-
-    while (wave->t_next_control_point < wave->i+1) {
+    assert(wave->i <= wave->t_next_control_point);
+    double time_before_next_sample = 1+wave->i-wave->t_next_control_point;
+//    while (1+wave->i-wave->t_next_control_point > 0) {
+    while (time_before_next_sample > 0) {
     
         int index = wave->index;
         
@@ -217,35 +159,25 @@ void output_wave(struct Wave *wave, int end) {
         int wrap = new_index <= index;
         gradient_new = (wave_form->y0[new_index]-wave_form->y1[index])/
         (wave_form->wave_period*(wave_form->x[new_index]-wave_form->x[index]+wrap));
-//        if (wave->i == wave->t_next_control_point) {
-////                add_sample(&wave->band_limited, 0.5*(wave_form->y0[index]+wave_form->y1[index]));
-//            add_sample(&wave->band_limited, wave_form->y1[index]);
-//            added_sample = 1;
-//            sample_added = wave_form->y1[index];
-//            ++wave->i;
-//        }
-        //
-        // wave->i is pointing at next sample but the offset we send to
-        // band_limited is relative to previous sample.
-        //
         if (wave_form->y1[index] != wave_form->y0[index]) {
             add_discontinuity0(&wave->band_limited, wave->t_next_control_point-wave->i,
                                                     wave_form->y1[index]-wave_form->y0[index]);
             
-//                printf("%d %f\n", wave->i, wave_form->y1[index]-wave_form->y0[index]);
         }
         if (gradient_new != wave->gradient) {
             add_discontinuity1(&wave->band_limited, wave->t_next_control_point-wave->i,
                                                     gradient_new-wave->gradient);
         }
+//        wave->phase += (wave->t_next_control_point-wave->t)/wave_form->wave_period;
         wave->t = wave->t_next_control_point;
         wave->t_next_control_point += wave_form->wave_period*(wave_form->x[new_index]-wave_form->x[index]+wrap);
+        time_before_next_sample -= wave_form->wave_period*(wave_form->x[new_index]-wave_form->x[index]+wrap);
+//        assert(time_before_next_sample>=0);
         wave->index = new_index;
         wave->y = wave_form->y1[index];
         wave->gradient = gradient_new;
     }
 
-//    assert(added_sample);
     wave->result = get_sample(&wave->band_limited);
     ++wave->i;
 }

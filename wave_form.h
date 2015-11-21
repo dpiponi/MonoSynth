@@ -24,6 +24,7 @@ struct Wave {
     int i;
     int index;
     double t_next_control_point;
+    double phase;
     double t;
     double y;
     double gradient;
