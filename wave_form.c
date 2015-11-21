@@ -107,17 +107,17 @@ void init_wave(struct Wave *wave) {
 }
 
 void reinit_wave(struct Wave *wave) {
-    init_band_limited(&wave->band_limited);
-    wave->i = 0;
-    wave->t_next_control_point = 0.0;
-    wave->index = 0;
-    wave->t = 0.0;
-    wave->y = 0.0;
-    wave->phase = 0.0;
-    struct WaveForm *wave_form = wave->wave_form;
-    if (wave_form) {
-        wave->gradient = (wave_form->y0[0]-wave_form->y1[wave_form->n_segments-1])/(wave_form->wave_period*(1.0-wave_form->x[0]));
-    }
+//    init_band_limited(&wave->band_limited);
+//    wave->i = 0;
+//    wave->t_next_control_point = 0.0;
+//    wave->index = 0;
+//    wave->t = 0.0;
+//    wave->y = 0.0;
+//    wave->phase = 0.0;
+//    struct WaveForm *wave_form = wave->wave_form;
+//    if (wave_form) {
+//        wave->gradient = (wave_form->y0[0]-wave_form->y1[wave_form->n_segments-1])/(wave_form->wave_period*(1.0-wave_form->x[0]));
+//    }
 }
 
 void exec_wave(struct Wave *wave, double dt, double frequency) {
@@ -149,7 +149,6 @@ void output_wave(struct Wave *wave, int end) {
     wave->y = y_new;
     assert(wave->i <= wave->t_next_control_point);
     double time_before_next_sample = 1+wave->i-wave->t_next_control_point;
-//    while (1+wave->i-wave->t_next_control_point > 0) {
     while (time_before_next_sample > 0) {
     
         int index = wave->index;
@@ -168,11 +167,10 @@ void output_wave(struct Wave *wave, int end) {
             add_discontinuity1(&wave->band_limited, wave->t_next_control_point-wave->i,
                                                     gradient_new-wave->gradient);
         }
-//        wave->phase += (wave->t_next_control_point-wave->t)/wave_form->wave_period;
         wave->t = wave->t_next_control_point;
-        wave->t_next_control_point += wave_form->wave_period*(wave_form->x[new_index]-wave_form->x[index]+wrap);
-        time_before_next_sample -= wave_form->wave_period*(wave_form->x[new_index]-wave_form->x[index]+wrap);
-//        assert(time_before_next_sample>=0);
+        double t_step = wave_form->wave_period*(wave_form->x[new_index]-wave_form->x[index]+wrap);
+        wave->t_next_control_point += t_step;
+        time_before_next_sample -= t_step;
         wave->index = new_index;
         wave->y = wave_form->y1[index];
         wave->gradient = gradient_new;
