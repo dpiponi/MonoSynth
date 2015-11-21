@@ -151,7 +151,7 @@ void output_wave(struct Wave *wave, int end) {
     double time_before_next_sample = 1+wave->i-wave->t_next_control_point;
     while (time_before_next_sample > 0) {
     
-        int index = wave->index;
+        int index = wave->index%wave_form->n_segments;
         
         double gradient_new;
         int new_index = (index+1)%wave_form->n_segments;

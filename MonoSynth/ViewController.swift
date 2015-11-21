@@ -282,7 +282,7 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
         
         for i in 0..<n-1 {
             if i < n-2 && waveFormDesigner.x[i]==waveFormDesigner.x[i+1] {
-            } else if i < n-2 && waveFormDesigner.x[i]==waveFormDesigner.x[i+1] {
+            } else if i > 0 && waveFormDesigner.x[i]==waveFormDesigner.x[i-1] {
                 x.append(waveFormDesigner.x[i-1])
                 y0.append(waveFormDesigner.y[i-1])
                 y1.append(waveFormDesigner.y[i])
@@ -292,6 +292,7 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
                 y1.append(waveFormDesigner.y[i])
             }
         }
+        print(x,y0,y1)
         
         let m = x.count
         let waveForm1 = new_wave_form(Int32(m))
