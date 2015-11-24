@@ -28,6 +28,7 @@
 		BD4A5D1F1BEBBE4600B0AD55 /* lfo.c in Sources */ = {isa = PBXBuildFile; fileRef = BD4A5D1D1BEBBE4600B0AD55 /* lfo.c */; };
 		BD68B3AE1BE9CE76008671CB /* vco.c in Sources */ = {isa = PBXBuildFile; fileRef = BD68B3AC1BE9CE76008671CB /* vco.c */; };
 		BD7296F11BFB89B60016491E /* wave_form.c in Sources */ = {isa = PBXBuildFile; fileRef = BD7296EF1BFB89B60016491E /* wave_form.c */; };
+		BD74CEAE1C04C44300E2F33A /* biquad.c in Sources */ = {isa = PBXBuildFile; fileRef = BD74CEAC1C04C44300E2F33A /* biquad.c */; };
 		BD7D6C0D1BED0C9C0050C433 /* lfo_rand.c in Sources */ = {isa = PBXBuildFile; fileRef = BD7D6C0B1BED0C9C0050C433 /* lfo_rand.c */; };
 		BD7D6C0F1BED83DB0050C433 /* VUMeter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7D6C0E1BED83DB0050C433 /* VUMeter.swift */; };
 		BD7D6C111BED85A90050C433 /* VUMeterLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7D6C101BED85A90050C433 /* VUMeterLayer.swift */; };
@@ -84,6 +85,8 @@
 		BD68B3AD1BE9CE76008671CB /* vco.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vco.h; sourceTree = "<group>"; };
 		BD7296EF1BFB89B60016491E /* wave_form.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = wave_form.c; path = ../wave_form.c; sourceTree = "<group>"; };
 		BD7296F01BFB89B60016491E /* wave_form.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = wave_form.h; path = ../wave_form.h; sourceTree = "<group>"; };
+		BD74CEAC1C04C44300E2F33A /* biquad.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = biquad.c; sourceTree = "<group>"; };
+		BD74CEAD1C04C44300E2F33A /* biquad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = biquad.h; sourceTree = "<group>"; };
 		BD7D6C0B1BED0C9C0050C433 /* lfo_rand.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lfo_rand.c; sourceTree = "<group>"; };
 		BD7D6C0C1BED0C9C0050C433 /* lfo_rand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lfo_rand.h; sourceTree = "<group>"; };
 		BD7D6C0E1BED83DB0050C433 /* VUMeter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VUMeter.swift; sourceTree = "<group>"; };
@@ -130,6 +133,8 @@
 				378074401BE17D1700FF58A9 /* band_limited.h */,
 				378074411BE17D2700FF58A9 /* band_limited.c */,
 				BD7296EF1BFB89B60016491E /* wave_form.c */,
+				BD74CEAC1C04C44300E2F33A /* biquad.c */,
+				BD74CEAD1C04C44300E2F33A /* biquad.h */,
 				BD7296F01BFB89B60016491E /* wave_form.h */,
 				378074431BE17D5300FF58A9 /* audio_square.c */,
 				378074441BE17D5300FF58A9 /* audio_square.h */,
@@ -310,6 +315,7 @@
 				BD8717721BD881E900A6A4BD /* KnobLayer.swift in Sources */,
 				BD9593B81BDFC89A00EE098F /* CGUtils.swift in Sources */,
 				37660A161BE1B9BB00AFDD0B /* exp_decay.c in Sources */,
+				BD74CEAE1C04C44300E2F33A /* biquad.c in Sources */,
 				BD7D6C111BED85A90050C433 /* VUMeterLayer.swift in Sources */,
 				BD7D6C0F1BED83DB0050C433 /* VUMeter.swift in Sources */,
 				BDB75E391BDF009200242397 /* MultiButton.swift in Sources */,
