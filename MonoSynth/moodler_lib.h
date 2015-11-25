@@ -4,7 +4,7 @@
 #include <math.h>
 #include "band_limited.h"
 
-typedef double sample;
+#define sample double
 
 // 0.1 "V"/Octave
 static inline double signal_to_frequency(double x) {

@@ -94,6 +94,7 @@ void init_audio_state(struct AudioState *state) {
     }
     
     init_ladder(&state->ladder);
+    state->filter = 0;
     
     
     //
@@ -175,15 +176,25 @@ OSStatus audio_render(void *inRefCon,
         //
         // LPF
         //
-        double shift = state->uiState.filter_cutoff_modulation*source[state->uiState.filter_cutoff_modulation_source];
-        double filter_frequency = state->uiState.frequency*pow(2.0, state->uiState.filter_cutoff+shift);
-        double filter_resonance = state->uiState.filter_resonance+state->uiState.filter_resonance_modulation*source[state->uiState.filter_resonance_modulation_source];
-        step_ladder(&state->ladder, dt,
-                    filter_frequency,
-                    filter_resonance,
-                    result);
-//        double final = result;// XXX 1.0*state->ladder.result;
-        double final = 1.0*state->ladder.result;
+//        double shift = state->uiState.filter_cutoff_modulation*source[state->uiState.filter_cutoff_modulation_source];
+//        double filter_frequency = state->uiState.frequency*pow(2.0, state->uiState.filter_cutoff+shift);
+//        double filter_resonance = state->uiState.filter_resonance+state->uiState.filter_resonance_modulation*source[state->uiState.filter_resonance_modulation_source];
+//        step_ladder(&state->ladder, dt,
+//                    filter_frequency,
+//                    filter_resonance,
+//                    result);
+//        double final = 1.0*state->ladder.result;
+        double final;
+        if (state->filter) {
+            exec_filter(state->filter, result);
+            final = state->filter->result*0.01;
+        } else {
+            final = result;
+        }
+        
+        if (i==0) { printf("%f\n", final); }
+        
+        
         final = clamp_double(-1.0, 1.0, final);
         buffer[i] = final;// XXX 1.0*state->ladder.result;
         

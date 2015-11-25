@@ -119,6 +119,28 @@
                                             <action selector="panelSelectorPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="B7X-w2-O9T"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" tag="9" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2IF-4t-kiy">
+                                        <rect key="frame" x="0.0" y="216" width="72" height="24"/>
+                                        <animations/>
+                                        <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="24"/>
+                                        <state key="normal" title="WAV1">
+                                            <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="panelSelectorPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Rv3-QG-1mg"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="10" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W5W-0O-o88">
+                                        <rect key="frame" x="0.0" y="231" width="72" height="42"/>
+                                        <animations/>
+                                        <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="24"/>
+                                        <state key="normal" title="Filter">
+                                            <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="panelSelectorPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tZO-A0-jUY"/>
+                                        </connections>
+                                    </button>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1MW-Iz-elu" userLabel="ENV1 Panel">
                                         <rect key="frame" x="100" y="8" width="600" height="250"/>
                                         <subviews>
@@ -1417,17 +1439,28 @@
                                         <animations/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
-                                    <button opaque="NO" tag="9" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2IF-4t-kiy">
-                                        <rect key="frame" x="0.0" y="216" width="72" height="24"/>
+                                    <view tag="10" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yhe-ZH-BxI" userLabel="Filter">
+                                        <rect key="frame" x="100" y="8" width="600" height="250"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" tag="8" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Filter" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PyL-uU-cj1">
+                                                <rect key="frame" x="8" y="8" width="137" height="62"/>
+                                                <animations/>
+                                                <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="36"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oRm-DC-so4" customClass="FilterDesigner" customModule="MonoSynth" customModuleProvider="target">
+                                                <rect key="frame" x="8" y="61" width="463" height="181"/>
+                                                <animations/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <connections>
+                                                    <action selector="filterChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="dNf-dv-L4S"/>
+                                                </connections>
+                                            </view>
+                                        </subviews>
                                         <animations/>
-                                        <fontDescription key="fontDescription" name="BradleyHandITCTT-Bold" family="Bradley Hand" pointSize="24"/>
-                                        <state key="normal" title="WAV1">
-                                            <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="panelSelectorPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Rv3-QG-1mg"/>
-                                        </connections>
-                                    </button>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
                                 </subviews>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1445,6 +1478,7 @@
                     <connections>
                         <outlet property="env1Graph" destination="NUx-4r-X36" id="hHp-pN-joV"/>
                         <outlet property="env2Graph" destination="bMQ-FZ-LFD" id="c04-kD-g1r"/>
+                        <outlet property="filterDesigner" destination="oRm-DC-so4" id="76p-pV-HSk"/>
                         <outlet property="lfo1Type" destination="G0g-WW-Aqg" id="Xle-Bi-sx1"/>
                         <outlet property="lfo2Type" destination="tE1-nh-IcZ" id="SyI-G7-kxg"/>
                         <outlet property="lpfFrequencyModulationSource" destination="QHY-wJ-APc" id="XUy-II-mb8"/>
@@ -1502,6 +1536,7 @@
                         <outletCollection property="knobs" destination="Kc4-BS-T1O" collectionClass="NSMutableArray" id="qhv-Ya-buf"/>
                         <outletCollection property="panels" destination="v8M-h9-BBl" collectionClass="NSMutableArray" id="dwJ-Rm-Pfc"/>
                         <outletCollection property="panels" destination="Vhw-io-IsU" collectionClass="NSMutableArray" id="wwC-O6-yyy"/>
+                        <outletCollection property="panels" destination="Yhe-ZH-BxI" collectionClass="NSMutableArray" id="TGb-Lb-dOV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

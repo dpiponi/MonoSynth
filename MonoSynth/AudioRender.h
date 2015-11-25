@@ -17,6 +17,7 @@
 #include "envelope.h"
 #include "vco.h"
 #include "lfo.h"
+#include "biquad.h"
 
 enum Source {
     SOURCE_LFO1 = 0,
@@ -105,6 +106,7 @@ struct AudioState {
     // Filter
     //
     struct Ladder ladder;
+    struct BiquadFilter *filter;
     
     double actualFrequency;
     double phase;

@@ -80,35 +80,55 @@ sample complex control_to_complex(sample f, sample y) {
     return z;
 }
 
-struct Filter {
-    int n_biquads;
-    struct Biquad *biquads;
-    sample result;
-};
+//struct BiquadFilter {
+//    int n_biquads;
+//    struct Biquad *biquads;
+//    sample result;
+//};
 
-void init_filter(struct Filter *filter,
-                 int n_zeros, int n_poles,
-                 sample complex *zeros, sample complex *poles) {
+struct BiquadFilter *new_filter(int n_zeros, int n_poles) {
+    struct BiquadFilter *filter = malloc(sizeof(struct BiquadFilter));
     int n_biquads = n_poles > n_zeros ? n_poles : n_zeros;
     filter->n_biquads = n_biquads;
+    filter->n_zeros = n_zeros;
+    filter->n_poles = n_poles;
     struct Biquad *biquads = malloc(n_biquads*sizeof(struct Biquad));
     filter->biquads = biquads;
+    filter->zeros = malloc(n_zeros*sizeof(sample complex));
+    filter->poles = malloc(n_poles*sizeof(sample complex));
+    return filter;
+}
+
+void init_filter(struct BiquadFilter *filter) {
+    int n_biquads = filter->n_biquads;
+    int n_zeros = filter->n_zeros;
+    int n_poles = filter->n_poles;
     for (int i = 0; i < n_biquads; ++i) {
         if (i < n_zeros && i < n_poles) {
-            init_biquad(&biquads[i], zeros[i], poles[i]);
+            init_biquad(&filter->biquads[i], filter->zeros[i], filter->poles[i]);
+            printf("%f + %fi / %f + %fi\n",
+                   creal(filter->zeros[i]), cimag(filter->zeros[i]),
+                   creal(filter->poles[i]), cimag(filter->poles[i]));
         } else if (i < n_zeros) {
-            init_biquad_with_zero(&biquads[i], zeros[i]);
+            init_biquad_with_zero(&filter->biquads[i], filter->zeros[i]);
+            printf("%f + %fi / 1\n",
+                   creal(filter->zeros[i]), cimag(filter->zeros[i]));
         } else if (i < n_poles) {
-            init_biquad_with_pole(&biquads[i], poles[i]);
+            init_biquad_with_pole(&filter->biquads[i], filter->poles[i]);
+            printf("1 / %f + %fi\n",
+                   creal(filter->poles[i]), cimag(filter->poles[i]));
         }
     }
 }
 
-void delete_filter(struct Filter *filter) {
+void delete_filter(struct BiquadFilter *filter) {
     free(filter->biquads);
+    free(filter->zeros);
+    free(filter->poles);
+    free(filter);
 }
 
-void exec_filter(struct Filter *filter, sample input) {
+void exec_filter(struct BiquadFilter *filter, sample input) {
     struct Biquad *biquads = filter->biquads;
     exec_biquad(&biquads[0], input);
     sample result = biquads[0].result;

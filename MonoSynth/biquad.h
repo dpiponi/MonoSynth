@@ -1,6 +1,8 @@
 #ifndef BIQUAD_H
 #define BIQUAD_H
 
+#include <complex.h>
+
 #define sample double
 
 struct Biquad {
@@ -12,24 +14,23 @@ struct Biquad {
 };
 
 void exec_biquad(struct Biquad *biquad, sample in);
-void init_biquad(struct Biquad *biquad,
-                 sample complex zero,
-                 sample complex pole);
-void init_biquad_with_zero(struct Biquad *biquad,
-                           sample complex zero);
-void init_biquad_with_pole(struct Biquad *biquad,
-                           sample complex pole);
+void init_biquad(struct Biquad *biquad, sample complex zero, sample complex pole);
+void init_biquad_with_zero(struct Biquad *biquad, sample complex zero);
+void init_biquad_with_pole(struct Biquad *biquad, sample complex pole);
 
-struct Filter {
+struct BiquadFilter {
+    int n_zeros;
+    int n_poles;
+    sample complex *zeros;
+    sample complex *poles;
     int n_biquads;
     struct Biquad *biquads;
     sample result;
 };
 
-void init_filter(struct Filter *filter,
-                 int n_zeros, int n_poles,
-                 sample complex *zeros, sample complex *poles);;
-void delete_filter(struct Filter *filter);
-void exec_filter(struct Filter *filter, sample input);
+void init_filter(struct BiquadFilter *filter);
+void delete_filter(struct BiquadFilter *filter);
+void exec_filter(struct BiquadFilter *filter, sample input);
+struct BiquadFilter *new_filter(int n_zeros, int n_poles);
 
 #endif

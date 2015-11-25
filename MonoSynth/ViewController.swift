@@ -112,7 +112,7 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
     
     @IBAction func panelSelectorPressed(sender: UIButton) {
         for i in 0..<panels.count {
-            panels[i].hidden = !(sender.tag == panels[i].tag)
+            panels[i].hidden = sender.tag != panels[i].tag
         }
     }
     
@@ -270,8 +270,43 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
         print("Setting", sender.id)
     }
     
-    @IBOutlet weak var waveFormDesigner: WaveFormDesigner!
+    @IBOutlet weak var filterDesigner: FilterDesigner!
     
+    @IBAction func filterChanged(sender: FilterDesigner) {
+        print("Filter changed")
+        print("nodes:", filterDesigner.x.map(exp), filterDesigner.y, filterDesigner.nodeType)
+        
+        let n_zeros = filterDesigner.nodeType.filter({$0 == FilterNodeType.Zero}).count
+        let n_poles = filterDesigner.nodeType.filter({$0 == FilterNodeType.Pole}).count
+        let filter = new_filter(Int32(n_zeros), Int32(n_poles))
+        var iz = 0
+        var ip = 0
+        for i in 0 ..< filterDesigner.x.count {
+            let f = exp(filterDesigner.x[i])
+            let r = 1-exp(filterDesigner.y[i]*0.5)/f
+            let nx = r*cos(2*3.1415926535897*f/44000.0)
+            let ny = r*sin(2*3.1415926535897*f/44000.0)
+            switch filterDesigner.nodeType[i] {
+            case .Zero:
+                (UnsafeMutablePointer<Double>(filter.memory.zeros)+2*iz).memory = nx
+                (UnsafeMutablePointer<Double>(filter.memory.zeros)+2*iz+1).memory = ny
+                iz = iz+1
+            case .Pole:
+                (UnsafeMutablePointer<Double>(filter.memory.poles)+2*ip).memory = nx
+                (UnsafeMutablePointer<Double>(filter.memory.poles)+2*ip+1).memory = ny
+                ip = ip+1
+            default: break
+            }
+        }
+        assert(iz == n_zeros)
+        assert(ip == n_poles)
+        init_filter(filter)
+        
+        state.filter = filter
+    }
+    
+    @IBOutlet weak var waveFormDesigner: WaveFormDesigner!
+
     @IBAction func waveFormChanged(sender: WaveFormDesigner) {
         print("Waveform changed")
         print(waveFormDesigner.x.count)
