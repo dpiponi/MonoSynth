@@ -187,12 +187,12 @@ OSStatus audio_render(void *inRefCon,
         double final;
         if (state->filter) {
             exec_filter(state->filter, result);
-            final = state->filter->result*0.01;
+            final = state->filter->result;
         } else {
             final = result;
         }
         
-        if (i==0) { printf("%f\n", final); }
+//        if (i==0) { printf("%f\n", final); }
         
         
         final = clamp_double(-1.0, 1.0, final);
@@ -226,7 +226,6 @@ OSStatus audio_render(void *inRefCon,
             
         state->osc_previous = buffer[i];
     }
-    
     
     return noErr;
 }

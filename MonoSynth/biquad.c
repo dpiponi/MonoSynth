@@ -4,6 +4,16 @@
 #include <stdlib.h>
 
 #include "biquad.h"
+
+sample saturate(sample x) {
+//    if (x < -0.25) {
+//        return -0.25;
+//    }
+//    if (x > 0.25) {
+//        return 0.25;
+//    }
+    return 0.25*tanh(4.0*x);
+}
 //
 // y = (a[0]+a[1]Z+a[2]Z^2)/(b[0]+b[1]Z+b[2]Z^2) x
 //
@@ -136,7 +146,7 @@ void exec_filter(struct BiquadFilter *filter, sample input) {
         exec_biquad(&biquads[j], result);
         result = biquads[j].result;
     }
-    filter->result = result;
+    filter->result = filter->scale*result;
 }
 
 #if 0

@@ -125,6 +125,48 @@ class FilterDesigner: UIControl {
         filterLayer.setNeedsDisplay()
     }
     
+    func computeMax() -> Double {
+        var max : Double = 0.0
+        
+        for i in 0..<1000 {
+            let logf = log(20000.0)*Double(i)/1000
+            let f = exp(logf)
+            let z = exp(2*3.14159265358*1.i*f/44100.0)
+            // XXX Carry on here!
+            //                scale = abs(g(zeros, poles, exp(2*3.14159265358*1.i*f/44100.0)))
+            
+            var prod = Complex64(1.0, 0.0)
+            for j in 0 ..< x.count {
+                var dir : Double
+                switch nodeType[j] {
+                case .Zero:
+                    dir = 1.0
+                case .Pole:
+                    dir = -1.0
+                }
+                let f0 = exp(x[j])
+                let r0 = 1-exp(dir*y[j]*0.5)/f0
+                let nx = r0*cos(2*3.1415926535897*f0/44000.0)
+                let ny = r0*sin(2*3.1415926535897*f0/44000.0)
+                
+                switch nodeType[j] {
+                case .Zero:
+                    prod *= z-Complex64(nx, ny)
+                    prod *= z-Complex64(nx, -ny)
+                case .Pole:
+                    prod /= z-Complex64(nx, ny)
+                    prod /= z-Complex64(nx, -ny)
+                }
+            }
+            let trans = prod.abs
+            if trans > max {
+                max = trans
+            }
+        }
+        return max;
+    }
+    
+    
     //
     // http://stackoverflow.com/questions/30745026/checking-if-code-is-running-in-interface-builder-in-swift
     //

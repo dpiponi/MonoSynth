@@ -267,7 +267,7 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
     
     @IBAction func knobChanged(sender: Knob) {
         knobDescriptions()[sender.id]!.1.set(Double(sender.value))
-        print("Setting", sender.id)
+        print("Setting", sender.id, sender.value)
     }
     
     @IBOutlet weak var filterDesigner: FilterDesigner!
@@ -276,14 +276,23 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
         print("Filter changed")
         print("nodes:", filterDesigner.x.map(exp), filterDesigner.y, filterDesigner.nodeType)
         
+        let m = filterDesigner.computeMax()
         let n_zeros = filterDesigner.nodeType.filter({$0 == FilterNodeType.Zero}).count
         let n_poles = filterDesigner.nodeType.filter({$0 == FilterNodeType.Pole}).count
         let filter = new_filter(Int32(n_zeros), Int32(n_poles))
+        filter.memory.scale = 1.0/m;
         var iz = 0
         var ip = 0
         for i in 0 ..< filterDesigner.x.count {
+            var dir : Double
+            switch filterDesigner.nodeType[i] {
+            case .Zero:
+                dir = 1.0
+            case .Pole:
+                dir = -1.0
+            }
             let f = exp(filterDesigner.x[i])
-            let r = 1-exp(filterDesigner.y[i]*0.5)/f
+            let r = 1-exp(dir*filterDesigner.y[i]*0.5)/f
             let nx = r*cos(2*3.1415926535897*f/44000.0)
             let ny = r*sin(2*3.1415926535897*f/44000.0)
             switch filterDesigner.nodeType[i] {
@@ -295,7 +304,6 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
                 (UnsafeMutablePointer<Double>(filter.memory.poles)+2*ip).memory = nx
                 (UnsafeMutablePointer<Double>(filter.memory.poles)+2*ip+1).memory = ny
                 ip = ip+1
-            default: break
             }
         }
         assert(iz == n_zeros)
@@ -802,7 +810,7 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
         let octave : [Int] = [0, 2, 4, 5, 7, 9, 11, 12]
         let octaveNumber = keyNumber/7
         let noteNumber = octave[keyNumber%7]+12*octaveNumber
-        return frequencyFromNote(noteNumber)*2
+        return frequencyFromNote(noteNumber)
     }
     
     func keyDown(sender: PianoKey, event: UIEvent) -> Void{

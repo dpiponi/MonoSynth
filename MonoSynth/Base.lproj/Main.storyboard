@@ -227,7 +227,7 @@
                                                         <real key="value" value="0.0"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
-                                                        <real key="value" value="1"/>
+                                                        <real key="value" value="30"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="id" value="env1Hold"/>
                                                 </userDefinedRuntimeAttributes>
@@ -444,7 +444,7 @@
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <view tag="1" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pcj-1p-cWQ" customClass="Knob" customModule="MonoSynth" customModuleProvider="target">
+                                            <view tag="1" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pcj-1p-cWQ" userLabel="Hold" customClass="Knob" customModule="MonoSynth" customModuleProvider="target">
                                                 <rect key="frame" x="192" y="8" width="80" height="80"/>
                                                 <animations/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -459,7 +459,7 @@
                                                         <real key="value" value="0.0"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
-                                                        <real key="value" value="1"/>
+                                                        <real key="value" value="30"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="string" keyPath="id" value="env2Hold"/>
                                                 </userDefinedRuntimeAttributes>

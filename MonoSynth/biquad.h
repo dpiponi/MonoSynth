@@ -25,6 +25,7 @@ struct BiquadFilter {
     sample complex *poles;
     int n_biquads;
     struct Biquad *biquads;
+    sample scale;
     sample result;
 };
 
