@@ -7,6 +7,7 @@
 //
 
 #include <math.h>
+#include <stdlib.h>
 
 #include "vco.h"
 #include "wave_form.h"
@@ -44,24 +45,24 @@ void exec_vco(struct VCO *state, enum VcoType oscType, double dt, double frequen
             }
             break;
             
-//        case VCO_TYPE_SINE:
-//            for (int i = 0; i < vco1_number; ++i) {
-//                double detune = vco1_detune+(double)i*vco1_spread*offset[i];
-//                double sync_level = sync_ratio > 0.0 ? state->sync[i].result : 0.0;
-//                sample += step_sin(&state->sin_state[i],
-//                                   dt,
-//                                   sync_frequency*pow(2.0, detune), sync_level);
-//                exec_lfo_pulse(&state->sync[i], dt, frequency*pow(2.0, detune));
-//            }
-//            break;
-            
         case VCO_TYPE_SINE:
             for (int i = 0; i < vco1_number; ++i) {
                 double detune = vco1_detune+(double)i*vco1_spread*offset[i];
-                exec_wave(&state->wave_state[i], dt, frequency*pow(2.0, detune));
-                sample += state->wave_state[i].result;
+                double sync_level = sync_ratio > 0.0 ? state->sync[i].result : 0.0;
+                sample += step_sin(&state->sin_state[i],
+                                   dt,
+                                   sync_frequency*pow(2.0, detune), sync_level);
+                exec_lfo_pulse(&state->sync[i], dt, frequency*pow(2.0, detune));
             }
             break;
+            
+//        case VCO_TYPE_SINE:
+//            for (int i = 0; i < vco1_number; ++i) {
+//                double detune = vco1_detune+(double)i*vco1_spread*offset[i];
+//                exec_wave(&state->wave_state[i], dt, frequency*pow(2.0, detune));
+//                sample += state->wave_state[i].result;
+//            }
+//            break;
             
         case VCO_TYPE_SAW:
             for (int i = 0; i < vco1_number; ++i) {
@@ -71,8 +72,11 @@ void exec_vco(struct VCO *state, enum VcoType oscType, double dt, double frequen
                                    dt,
                                    sync_frequency*pow(2.0, detune), sync_level);
                 exec_lfo_pulse(&state->sync[i], dt, frequency*pow(2.0, detune));
-
+                
             }
+            break;
+        case VCO_TYPE_RAND:
+            sample = ((double)(arc4random() & 0xffffff)/0x1000000-0.5)*100.0;
             break;
         default:
             printf("Error!\n");

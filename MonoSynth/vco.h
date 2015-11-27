@@ -23,7 +23,8 @@
 enum VcoType {
     VCO_TYPE_SINE = 0,
     VCO_TYPE_SQUARE = 1,
-    VCO_TYPE_SAW = 2
+    VCO_TYPE_SAW = 2,
+    VCO_TYPE_RAND = 3
 };
 
 struct VCO {

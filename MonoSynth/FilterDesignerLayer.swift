@@ -107,7 +107,7 @@ class FilterDesignerLayer: CALayer {
                     }
                 }
                 let px = CGFloat(i)/1000.0
-                let trans = prod.abs
+                let trans = prod.abs/self.filterDesigner.maxValue
                 let py = 0.5-CGFloat(log(trans))/40.0
 //                print(px, py)
                 CGContextAddLineToPoint(ctx, px*self.bounds.width, py*self.bounds.height)

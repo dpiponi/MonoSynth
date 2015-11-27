@@ -20,6 +20,8 @@ class FilterDesigner: UIControl {
     
     var filterLayer : FilterDesignerLayer! = nil
     
+    var maxValue : Double = 1.0
+    
     var initialTouchPoint : CGPoint = CGPoint()
     var nodeType : [FilterNodeType] = [.Zero, .Zero, .Pole, .Pole]
     var selectedPoint : Int = -1
@@ -77,6 +79,7 @@ class FilterDesigner: UIControl {
                         initialX = x[i]
                         initialY = y[i]
                         print("Selected", i)
+
                         return true
             }
         }
@@ -112,6 +115,7 @@ class FilterDesigner: UIControl {
         setLayerFrames()
         CATransaction.setAnimationDuration(0.0)
         CATransaction.commit()
+        maxValue = computeMax()
         
         sendActionsForControlEvents(.ValueChanged)
         

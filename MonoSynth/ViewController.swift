@@ -276,7 +276,7 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
 //        print("Filter changed")
 //        print("nodes:", filterDesigner.x.map(exp), filterDesigner.y, filterDesigner.nodeType)
         
-        let m = filterDesigner.computeMax()
+        let m = filterDesigner.maxValue //filterDesigner.computeMax()
         let n_zeros = filterDesigner.nodeType.filter({$0 == FilterNodeType.Zero}).count
         let n_poles = filterDesigner.nodeType.filter({$0 == FilterNodeType.Pole}).count
         let filter = new_filter(Int32(n_zeros), Int32(n_poles))
@@ -722,8 +722,8 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
             name: AVAudioSessionInterruptionNotification,
             object: nil)
         
-        waveformSelector.icons = [.Sine, .Square, .Saw]
-        vco2WaveformSelector.icons = [.Sine, .Square, .Saw]
+        waveformSelector.icons = [.Sine, .Square, .Saw, .Rand]
+        vco2WaveformSelector.icons = [.Sine, .Square, .Saw, .Rand]
         lfo1Type.icons = [.Sine, .Square, .Saw, .Rand]
         lfo2Type.icons = [.Sine, .Square, .Saw, .Rand]
         
@@ -831,6 +831,7 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
         let frequency = noteFromXY(touchPoint.x, y: touchPoint.y)
         state.uiState.frequency = frequency
         filterDesigner.frequency = frequency
+        filterDesigner.setNeedsDisplay()
         filterDesigner.layer.setNeedsDisplay()
 
         print("frequency, gate=", state.uiState.frequency, state.uiState.gate)
@@ -898,7 +899,7 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
             ("vco1Waveform", waveformSelector, // XXX change to vco1WaveformSelector
                 IntField(
                     set: {(inout a : AudioState, b) in
-                        a.uiState.vco_type.0 = [VCO_TYPE_SINE, VCO_TYPE_SQUARE, VCO_TYPE_SAW][b]
+                        a.uiState.vco_type.0 = [VCO_TYPE_SINE, VCO_TYPE_SQUARE, VCO_TYPE_SAW, VCO_TYPE_RAND][b]
                     },
                     get: {(a : AudioState) in
                         switch a.uiState.vco_type.0 {
@@ -908,6 +909,8 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
                             return 1
                         case VCO_TYPE_SAW:
                             return 2
+                        case VCO_TYPE_RAND:
+                            return 3
                         default:
                             return 0
                         }
@@ -917,7 +920,7 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
             ("vco2Waveform", vco2WaveformSelector,
                 IntField(
                     set: {(inout a : AudioState, b) in
-                        a.uiState.vco_type.1 = [VCO_TYPE_SINE, VCO_TYPE_SQUARE, VCO_TYPE_SAW][b]
+                        a.uiState.vco_type.1 = [VCO_TYPE_SINE, VCO_TYPE_SQUARE, VCO_TYPE_SAW, VCO_TYPE_RAND][b]
                     },
                     get: {(a : AudioState) in
                         switch a.uiState.vco_type.1 {
@@ -927,6 +930,8 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
                             return 1
                         case VCO_TYPE_SAW:
                             return 2
+                        case VCO_TYPE_RAND:
+                            return 3
                         default:
                             return 0
                         }
@@ -947,7 +952,7 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
                         case LFO_TYPE_SAW:
                             return 2
                         case LFO_TYPE_RAND:
-                            return 2
+                            return 3
                         default:
                             return 0
                         }
@@ -968,7 +973,7 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
                         case LFO_TYPE_SAW:
                             return 2
                         case LFO_TYPE_RAND:
-                            return 2
+                            return 3
                         default:
                             return 0
                         }
