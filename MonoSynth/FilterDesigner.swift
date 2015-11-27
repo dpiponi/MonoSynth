@@ -15,16 +15,18 @@ enum FilterNodeType {
 
 class FilterDesigner: UIControl {
 
-    var x : [Double] = [log(440.0), log(600.0), log(1000.0)]
-    var y : [Double] = [-4.0, 4.0, 4.0]
+    var x : [Double] = [log(440.0), log(600.0), log(1000.0), log(1200.0)]
+    var y : [Double] = [-4.0, -4.0, 4.0, 4.0]
     
     var filterLayer : FilterDesignerLayer! = nil
     
     var initialTouchPoint : CGPoint = CGPoint()
-    var nodeType : [FilterNodeType] = [.Zero, .Pole, .Pole]
+    var nodeType : [FilterNodeType] = [.Zero, .Zero, .Pole, .Pole]
     var selectedPoint : Int = -1
     var initialX : Double = 0.0
     var initialY : Double = 0.0
+    
+    var frequency : Double = 440.0
     
     override init(frame: CGRect) {
         super.init(frame: frame)

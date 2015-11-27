@@ -14,6 +14,35 @@ class FilterDesignerLayer: CALayer {
     
     
     override func drawInContext(ctx: CGContextRef) -> Void {
+        print("Redraw!!!!!")
+        
+        savingContext(ctx) {
+            let color1 = UIColor(white: 0.5, alpha: 1.0)
+            CGContextSetStrokeColorWithColor(ctx, color1.CGColor)
+            print("f=", self.filterDesigner.frequency)
+            
+            CGContextMoveToPoint(ctx, CGFloat(log(self.filterDesigner.frequency)/log(20000.0))*self.bounds.width, 0.0)
+            CGContextAddLineToPoint(ctx, CGFloat(log(self.filterDesigner.frequency)/log(20000.0))*self.bounds.width, self.bounds.height)
+            CGContextDrawPath(ctx, .FillStroke)
+            
+            let color2 = UIColor(white: 0.7, alpha: 1.0)
+            CGContextSetStrokeColorWithColor(ctx, color2.CGColor)
+            CGContextMoveToPoint(ctx, CGFloat(log(2.0*self.filterDesigner.frequency)/log(20000.0))*self.bounds.width, 0.0)
+            CGContextAddLineToPoint(ctx, CGFloat(log(2.0*self.filterDesigner.frequency)/log(20000.0))*self.bounds.width, self.bounds.height)
+            CGContextDrawPath(ctx, .FillStroke)
+            
+            let color3 = UIColor(white: 0.8, alpha: 1.0)
+            CGContextSetStrokeColorWithColor(ctx, color3.CGColor)
+            CGContextMoveToPoint(ctx, CGFloat(log(3.0*self.filterDesigner.frequency)/log(20000.0))*self.bounds.width, 0.0)
+            CGContextAddLineToPoint(ctx, CGFloat(log(3.0*self.filterDesigner.frequency)/log(20000.0))*self.bounds.width, self.bounds.height)
+            CGContextDrawPath(ctx, .FillStroke)
+            
+            let color4 = UIColor(white: 0.9, alpha: 1.0)
+            CGContextSetStrokeColorWithColor(ctx, color4.CGColor)
+            CGContextMoveToPoint(ctx, CGFloat(log(4.0*self.filterDesigner.frequency)/log(20000.0))*self.bounds.width, 0.0)
+            CGContextAddLineToPoint(ctx, CGFloat(log(4.0*self.filterDesigner.frequency)/log(20000.0))*self.bounds.width, self.bounds.height)
+            CGContextDrawPath(ctx, .FillStroke)
+        }
         
         savingContext(ctx) {
             let n = self.filterDesigner.x.count

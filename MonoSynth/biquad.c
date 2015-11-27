@@ -116,17 +116,17 @@ void init_filter(struct BiquadFilter *filter) {
     for (int i = 0; i < n_biquads; ++i) {
         if (i < n_zeros && i < n_poles) {
             init_biquad(&filter->biquads[i], filter->zeros[i], filter->poles[i]);
-            printf("%f + %fi / %f + %fi\n",
-                   creal(filter->zeros[i]), cimag(filter->zeros[i]),
-                   creal(filter->poles[i]), cimag(filter->poles[i]));
+//            printf("%f + %fi / %f + %fi\n",
+//                   creal(filter->zeros[i]), cimag(filter->zeros[i]),
+//                   creal(filter->poles[i]), cimag(filter->poles[i]));
         } else if (i < n_zeros) {
             init_biquad_with_zero(&filter->biquads[i], filter->zeros[i]);
-            printf("%f + %fi / 1\n",
-                   creal(filter->zeros[i]), cimag(filter->zeros[i]));
+//            printf("%f + %fi / 1\n",
+//                   creal(filter->zeros[i]), cimag(filter->zeros[i]));
         } else if (i < n_poles) {
             init_biquad_with_pole(&filter->biquads[i], filter->poles[i]);
-            printf("1 / %f + %fi\n",
-                   creal(filter->poles[i]), cimag(filter->poles[i]));
+//            printf("1 / %f + %fi\n",
+//                   creal(filter->poles[i]), cimag(filter->poles[i]));
         }
     }
 }

@@ -273,8 +273,8 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
     @IBOutlet weak var filterDesigner: FilterDesigner!
     
     @IBAction func filterChanged(sender: FilterDesigner) {
-        print("Filter changed")
-        print("nodes:", filterDesigner.x.map(exp), filterDesigner.y, filterDesigner.nodeType)
+//        print("Filter changed")
+//        print("nodes:", filterDesigner.x.map(exp), filterDesigner.y, filterDesigner.nodeType)
         
         let m = filterDesigner.computeMax()
         let n_zeros = filterDesigner.nodeType.filter({$0 == FilterNodeType.Zero}).count
@@ -516,7 +516,9 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
             //
             "lfo1Frequency": (
                 Field(
-                    set: {b in self.state.uiState.lfo_frequency.0 = b},
+                    set: {b in
+                        self.state.uiState.lfo_frequency.0 = b
+                    },
                     get: {return self.state.uiState.lfo_frequency.0}
                 )
             ),
@@ -801,7 +803,7 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
                 if keyMask[blackKeyNumber] {
                     let octave : [Int] = [0, 2, 4, 5, 7, 9, 11, 12]
                     let noteNumber = octave[blackKeyNumber]+1
-                    return frequencyFromNote(noteNumber)*2
+                    return frequencyFromNote(noteNumber)
                 }
             }
         }
@@ -826,7 +828,11 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
 //            state.targetAmplitude = 1.0
             state.uiState.gate = 1.0
         }
-        state.uiState.frequency = noteFromXY(touchPoint.x, y: touchPoint.y)
+        let frequency = noteFromXY(touchPoint.x, y: touchPoint.y)
+        state.uiState.frequency = frequency
+        filterDesigner.frequency = frequency
+        filterDesigner.layer.setNeedsDisplay()
+
         print("frequency, gate=", state.uiState.frequency, state.uiState.gate)
     }
     
@@ -845,8 +851,11 @@ class ViewController: UIViewController { // , UIPopoverPresentationController {
             state.uiState.gate = 1.0
             print("down")
         }
-        state.uiState.frequency = noteFromXY(touchPoint.x, y: touchPoint.y)
-//        print("frequency=", frequency)
+        
+        let frequency = noteFromXY(touchPoint.x, y: touchPoint.y)
+        state.uiState.frequency = frequency
+        filterDesigner.frequency = frequency
+        filterDesigner.layer.setNeedsDisplay()
     }
     
     func keyUp(sender: PianoKey) -> Void {
